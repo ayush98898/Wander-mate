@@ -6,6 +6,7 @@ import { useEffect, useId, useRef, useState } from "react";
 
 import { WhatsAppIcon } from "@/components/site/icons";
 import { experiences, feelings, whatsappLink, type FeelingId } from "@/lib/content";
+import { destinations } from "@/lib/destinations";
 import { cn } from "@/lib/utils";
 
 const parties = ["Solo", "A couple", "Family", "Friends", "A group"] as const;
@@ -14,7 +15,7 @@ const styles = [
   { id: "premium", name: "Premium", line: "Hassle-free, with premium hospitality" },
   { id: "private", name: "In Private", line: "Serene, luxurious, complete privacy" },
 ] as const;
-const routes = ["Kashi only", "Kashi + Ayodhya", "Kashi + Ayodhya + Prayagraj"] as const;
+const places = ["Not sure yet", ...destinations.map((d) => d.name)];
 const steps = ["Who", "When", "Feel", "Style", "You"] as const;
 
 export type PlannerInitial = {
@@ -22,7 +23,9 @@ export type PlannerInitial = {
   nights?: number;
   style?: (typeof styles)[number]["id"];
   experience?: string;
-  route?: (typeof routes)[number];
+  where?: string;
+  /** A specific journey the traveller came from. */
+  trip?: string;
 };
 
 export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
@@ -37,7 +40,7 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
   const [feels, setFeels] = useState<FeelingId[]>(initial.feeling ? [initial.feeling] : []);
   const [picked, setPicked] = useState<string[]>(initial.experience ? [initial.experience] : []);
   const [style, setStyle] = useState<(typeof styles)[number]["id"]>(initial.style ?? "premium");
-  const [route, setRoute] = useState<(typeof routes)[number]>(initial.route ?? "Kashi only");
+  const [where, setWhere] = useState(initial.where && places.includes(initial.where) ? initial.where : "Not sure yet");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
@@ -66,7 +69,8 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
     feels.length && `I want to feel: ${feels.join(", ")}`,
     chosen.length && `Moments: ${chosen.map((e) => e.title).join(", ")}`,
     `Style: ${styleName}`,
-    `Route: ${route}`,
+    `Where: ${where}`,
+    initial.trip && `Journey: ${initial.trip}`,
     notes && `Notes: ${notes}`,
   ]
     .filter(Boolean)
@@ -193,7 +197,7 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
                     </div>
                   </div>
                   <div>
-                    <p className="label text-smoke">Moments you&apos;d love — the Aarti and a sunrise boat come with every journey</p>
+                    <p className="label text-smoke">Moments in Kashi you&apos;d love (elsewhere, your companion suggests the local equivalents)</p>
                     <div className="mt-3 grid gap-2 sm:grid-cols-2">
                       {experiences
                         .filter((e) => e.slug !== "ganga-aarti" && e.slug !== "sunrise-boat")
@@ -228,10 +232,10 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
                     ))}
                   </div>
                   <div>
-                    <p className="label text-smoke">Route</p>
-                    <div className="mt-3 grid gap-2 md:grid-cols-3">
-                      {routes.map((r) => (
-                        <button key={r} type="button" aria-pressed={route === r} onClick={() => setRoute(r)} className={choice(route === r)}>
+                    <p className="label text-smoke">Where</p>
+                    <div className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+                      {places.map((r) => (
+                        <button key={r} type="button" aria-pressed={where === r} onClick={() => setWhere(r)} className={choice(where === r)}>
                           {r}
                         </button>
                       ))}
@@ -281,7 +285,7 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
                 rel="noreferrer"
                 className="label inline-flex min-h-12 items-center gap-3 bg-ink px-6 text-bone transition-colors hover:bg-ochre"
               >
-                <WhatsAppIcon className="size-4 text-[#25D366]" /> Send to a Kashi companion
+                <WhatsAppIcon className="size-4 text-[#25D366]" /> Send to a WanderMate companion
               </a>
             )}
           </div>
@@ -299,8 +303,8 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
               ["Travelling", `${party}, ${people}`],
               ["Arriving", date || "Flexible"],
               ["Feeling", feels.length ? feels.map((f) => f[0].toUpperCase() + f.slice(1)).join(", ") : "—"],
-              ["Moments", chosen.length ? chosen.map((e) => e.title).join(", ") : "Aarti & sunrise boat"],
-              ["Route", route],
+              ["Moments", chosen.length ? chosen.map((e) => e.title).join(", ") : where === "Kashi" ? "Aarti & sunrise boat" : "Chosen with your companion"],
+              ["Where", initial.trip ? `${where} · ${initial.trip}` : where],
             ].map(([k, v]) => (
               <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 py-3">
                 <dt className="label pt-0.5 text-bone/45">{k}</dt>
@@ -309,7 +313,7 @@ export function Planner({ initial = {} }: { initial?: PlannerInitial }) {
             ))}
           </dl>
           <p className="mt-6 text-sm leading-relaxed text-bone/60">
-            A Kashi companion replies on WhatsApp — usually within two hours — with a day-by-day
+            A WanderMate companion replies on WhatsApp, usually within two hours, with a day-by-day
             itinerary and quote. No payment upfront.
           </p>
         </div>

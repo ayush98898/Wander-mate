@@ -3,6 +3,13 @@ import {
   Host_Grotesk,
   Instrument_Serif,
   JetBrains_Mono,
+  Noto_Sans_Javanese,
+  Noto_Serif_Kannada,
+  Noto_Serif_Khmer,
+  Noto_Serif_Oriya,
+  Noto_Serif_Sinhala,
+  Noto_Serif_Tamil,
+  Noto_Serif_Tibetan,
   Tiro_Devanagari_Hindi,
 } from "next/font/google";
 
@@ -42,10 +49,20 @@ const tiro = Tiro_Devanagari_Hindi({
   display: "swap",
 });
 
+// Local scripts for destination plates — not preloaded, they sit below the fold.
+const kannada = Noto_Serif_Kannada({ variable: "--font-kannada", subsets: ["kannada"], weight: "400", preload: false });
+const tamil = Noto_Serif_Tamil({ variable: "--font-tamil", subsets: ["tamil"], weight: "400", preload: false });
+const oriya = Noto_Serif_Oriya({ variable: "--font-oriya", subsets: ["oriya"], weight: "400", preload: false });
+const sinhala = Noto_Serif_Sinhala({ variable: "--font-sinhala", subsets: ["sinhala"], weight: "400", preload: false });
+const tibetan = Noto_Serif_Tibetan({ variable: "--font-tibetan", subsets: ["tibetan"], weight: "400", preload: false });
+const khmer = Noto_Serif_Khmer({ variable: "--font-khmer", subsets: ["khmer"], weight: "400", preload: false });
+const javanese = Noto_Sans_Javanese({ variable: "--font-javanese", subsets: ["javanese"], weight: "400", preload: false });
+const scripts = [kannada, tamil, oriya, sinhala, tibetan, khmer, javanese].map((f) => f.variable).join(" ");
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "WanderMate — Private Cultural & Heritage Journeys in Varanasi",
+    default: "WanderMate — Heritage & Cultural Journeys, from Kashi to Angkor",
     template: "%s — WanderMate",
   },
   description: site.description,
@@ -76,7 +93,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${instrument.variable} ${host.variable} ${jetbrains.variable} ${tiro.variable}`}
+      className={`${instrument.variable} ${host.variable} ${jetbrains.variable} ${tiro.variable} ${scripts}`}
     >
       <body className="min-h-svh">
         <a

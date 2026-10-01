@@ -2,9 +2,9 @@
 
 export const site = {
   name: "WanderMate",
-  tagline: "Private cultural & heritage journeys through Kashi",
+  tagline: "Heritage and cultural journeys, from Kashi to Angkor",
   description:
-    "Private, story-led cultural and heritage journeys through Varanasi (Kashi) — the ghats at first light, the Ganga Aarti from the front row, silk looms in hidden lanes and the city's living traditions.",
+    "Story-led heritage and cultural journeys led by local people: Kashi first, then Braj, Rishikesh and Rajputana, and beyond India to Nepal, Sri Lanka, Bhutan, Angkor, Java and Bali.",
   // Set NEXT_PUBLIC_SITE_URL to the production domain when deploying.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   whatsapp: "919214313559",
@@ -21,6 +21,7 @@ export function whatsappLink(message: string) {
 }
 
 export const nav = [
+  { href: "/destinations", label: "Destinations", image: "/images/temple-white.jpg" },
   { href: "/journeys", label: "Journeys", image: "/images/hero-ghats.jpg" },
   { href: "/experiences", label: "Experiences", image: "/images/aarti-night.jpg" },
   { href: "/journeys/banaras-unfiltered", label: "Solo Series", image: "/images/holi.jpg" },

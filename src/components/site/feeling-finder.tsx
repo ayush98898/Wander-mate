@@ -1,12 +1,11 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 
 import { experiences, feelings, type FeelingId } from "@/lib/content";
-import { journeys } from "@/lib/journeys";
+import { allTrips, tripHref } from "@/lib/destinations";
 import { cn } from "@/lib/utils";
 
 /**
@@ -18,7 +17,11 @@ export function FeelingFinder() {
   const [active, setActive] = useState<FeelingId>("awe");
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const feeling = feelings.find((f) => f.id === active)!;
-  const matchJourneys = journeys.filter((j) => j.feelings.includes(active)).slice(0, 3);
+  // Spread matches across destinations: at most one trip per place.
+  const matchJourneys = allTrips
+    .filter((t) => t.feelings.includes(active))
+    .filter((t, i, arr) => arr.findIndex((x) => x.destination.slug === t.destination.slug) === i)
+    .slice(0, 4);
   const matchExperiences = experiences.filter((e) => e.feelings.includes(active)).slice(0, 3);
 
   function onKeyDown(e: KeyboardEvent, i: number) {
@@ -100,13 +103,13 @@ export function FeelingFinder() {
               {matchJourneys.map((j) => (
                 <li key={j.slug}>
                   <Link
-                    href={j.external ?? `/journeys/${j.slug}`}
+                    href={tripHref(j)}
                     className="group flex items-center justify-between gap-4 py-3"
                   >
                     <span className="font-display text-xl">
                       <span className="ul">{j.name}</span>
                     </span>
-                    <ArrowUpRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span className="label shrink-0 text-right text-smoke">{j.destination.name}</span>
                   </Link>
                 </li>
               ))}

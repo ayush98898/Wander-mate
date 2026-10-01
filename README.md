@@ -14,7 +14,8 @@ Marquee (reviews).
 | Route | What it is |
 | --- | --- |
 | `/` | Home: hero with a "feel × length" search, manifesto, feeling finder, horizontal journey rail, "One day in Kashi", cinematic experience list, how it works, reviews, team, journal |
-| `/journeys`, `/journeys/[slug]` | Journeys (Banaras Unfiltered, Kashi Classic / Premium / In Private, Spiritual Triangle, Kashi & Ayodhya) |
+| `/destinations`, `/destinations/[slug]` | 8 Indian regions and 5 international destinations (Nepal, Sri Lanka, Bhutan, Angkor, Java & Bali), each with 3–4 journeys and 2–3 experiences |
+| `/journeys`, `/journeys/[slug]` | Every journey, grouped by destination; full pages for the Kashi journeys |
 | `/experiences` | Experiences ordered by hour of day |
 | `/plan` | 5-step planner that sends a summary on WhatsApp (accepts `?feeling=`, `?nights=`, `?journey=`, `?experience=`) |
 | `/journal`, `/journal/[slug]` | Journal |
@@ -27,11 +28,16 @@ Old URLs (`/packages`, `/banaras-unfiltered`, `/enquire`) redirect to their new 
 All copy lives in `src/lib/`:
 
 - `content.ts`: contact details, feelings, experiences, reviews, team, hotels
-- `journeys.ts`: journeys and sample itineraries
+- `destinations.ts`: destinations, their journeys and experiences, featured journeys, festival calendar
+- `journeys.ts`: full Kashi journey pages and sample itineraries
 - `solo.ts`: Banaras Unfiltered itinerary, inclusions and **departure dates** (update these regularly)
 - `journal.ts`: journal posts
 
-Images are in `public/images/`.
+Images are in `public/images/`. Destinations without our own photography show a designed plate
+(the place name in its own script); add `image` to a destination or trip in `destinations.ts`
+to replace it with a photo.
+
+The business plan behind the catalogue is in `docs/BLUEPRINT.md`.
 
 ## Development
 

@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import { Planner, type PlannerInitial } from "@/components/site/planner";
 import { Eyebrow } from "@/components/site/ui";
 import { experiences, feelings, type FeelingId } from "@/lib/content";
+import { allTrips, getDestination } from "@/lib/destinations";
 import { getJourney } from "@/lib/journeys";
 
 export const metadata: Metadata = {
   title: "Plan a Journey",
   description:
-    "Tell us who's travelling, when, and how you want to feel. A WanderMate Kashi companion replies on WhatsApp with a tailored itinerary.",
+    "Tell us who's travelling, when, and how you want to feel. A WanderMate companion replies on WhatsApp with a tailored itinerary.",
 };
 
 type SP = { [key: string]: string | string[] | undefined };
@@ -19,8 +20,8 @@ const fromJourney: Record<string, PlannerInitial> = {
   "kashi-classic": { style: "classic" },
   "kashi-premium": { style: "premium" },
   "kashi-luxury": { style: "private", feeling: "stillness" },
-  "spiritual-triangle": { route: "Kashi + Ayodhya + Prayagraj", feeling: "devotion" },
-  "kashi-ayodhya": { route: "Kashi + Ayodhya", feeling: "devotion" },
+  "spiritual-triangle": { where: "Kashi", trip: "The Spiritual Triangle", feeling: "devotion" },
+  "kashi-ayodhya": { where: "Kashi", trip: "Kashi & Ayodhya", feeling: "devotion" },
 };
 
 export default async function PlanPage({ searchParams }: { searchParams: Promise<SP> }) {
@@ -29,6 +30,12 @@ export default async function PlanPage({ searchParams }: { searchParams: Promise
 
   const journey = first(sp.journey);
   if (journey && getJourney(journey)) Object.assign(initial, fromJourney[journey]);
+
+  const trip = allTrips.find((t) => t.slug === first(sp.trip));
+  if (trip) Object.assign(initial, { where: trip.destination.name, trip: trip.name, feeling: trip.feelings[0] });
+
+  const dest = getDestination(first(sp.destination) ?? "");
+  if (dest) initial.where = dest.name;
 
   const feeling = first(sp.feeling);
   if (feelings.some((f) => f.id === feeling)) initial.feeling = feeling as FeelingId;
@@ -50,7 +57,7 @@ export default async function PlanPage({ searchParams }: { searchParams: Promise
             </h1>
           </div>
           <p className="max-w-md text-smoke md:justify-self-end">
-            Share a few details and a Kashi companion will shape a journey around you — the places,
+            Share a few details and a WanderMate companion will shape a journey around you — the places,
             the people and the hours of the day that matter.
           </p>
         </div>

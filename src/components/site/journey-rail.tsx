@@ -5,8 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, type ReactNode } from "react";
 
-import { JourneyCard } from "@/components/site/journey-card";
-import type { Journey } from "@/lib/journeys";
+import { TripCard } from "@/components/site/trip-card";
+import type { TripWithPlace } from "@/lib/destinations";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -15,7 +15,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
  * section pins and vertical scroll drives the track sideways. On small screens or
  * with reduced motion it is a native, swipeable scroll-snap row.
  */
-export function JourneyRail({ journeys, intro }: { journeys: Journey[]; intro: ReactNode }) {
+export function JourneyRail({ trips, intro }: { trips: TripWithPlace[]; intro: ReactNode }) {
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
@@ -56,10 +56,10 @@ export function JourneyRail({ journeys, intro }: { journeys: Journey[]; intro: R
         <div className="hidden shrink-0 flex-col justify-end lg:flex lg:w-[34vw] lg:pr-10">
           {intro}
         </div>
-        {journeys.map((j) => (
-          <JourneyCard
-            key={j.slug}
-            journey={j}
+        {trips.map((t) => (
+          <TripCard
+            key={t.slug}
+            trip={t}
             className="w-[78vw] shrink-0 snap-start sm:w-[46vw] lg:w-[27vw]"
             sizes="(min-width:1024px) 27vw, 78vw"
           />

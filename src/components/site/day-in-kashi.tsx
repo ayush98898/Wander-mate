@@ -37,7 +37,7 @@ export function DayInKashi() {
     return (
       <section className="bg-ink py-20 text-bone">
         <div className="wrap">
-          <p className="label text-bone/70">Chapter 03 · One day in Kashi</p>
+          <p className="label text-bone/70">Our flagship · One day in Kashi</p>
           <ol className="mt-10 grid gap-10 md:grid-cols-5">
             {hours.map((x) => (
               <li key={x.time}>
@@ -69,7 +69,7 @@ export function DayInKashi() {
       <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-ink/60 via-ink/10 to-ink/80" />
       <div className="absolute inset-x-0 top-0 z-[2] pt-24 md:pt-28">
         <div className="wrap flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <p className="label text-bone/70">Chapter 03 · One day in Kashi</p>
+          <p className="label text-bone/70">Our flagship · One day in Kashi</p>
           <ol className="flex gap-3" aria-label="Hours of the day">
             {hours.map((x, i) => (
               <li
