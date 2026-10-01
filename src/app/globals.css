@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --color-parchment: #f7f1e6;
+  --color-sand: #ece1cd;
+  --color-sand-deep: #dccbad;
+  --color-ink: #1c1511;
+  --color-ink-soft: #4a3f37;
+  --color-ink-muted: #75685c;
+  --color-sindoor: #b23a1e;
+  --color-sindoor-deep: #8c2a14;
+  --color-marigold: #e2a034;
+  --color-marigold-soft: #f3d79c;
+  --color-ganga: #1f4a55;
+  --color-ganga-deep: #12313a;
+  --color-night: #120d0a;
+
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-deva: var(--font-tiro), "Tiro Devanagari Hindi", serif;
+
+  --animate-marquee-left: marquee-left var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-right: marquee-right var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-left-rtl: marquee-left-rtl var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-right-rtl: marquee-right-rtl var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-up: marquee-up var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-down: marquee-down var(--marquee-duration) linear var(--marquee-loop-count);
+
+  @keyframes marquee-left {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(calc(-100% - var(--marquee-gap))); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(calc(-100% - var(--marquee-gap))); }
+    100% { transform: translateX(0%); }
+  }
+  @keyframes marquee-left-rtl {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(calc(100% + var(--marquee-gap))); }
+  }
+  @keyframes marquee-right-rtl {
+    0% { transform: translateX(calc(100% + var(--marquee-gap))); }
+    100% { transform: translateX(0%); }
+  }
+  @keyframes marquee-up {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(calc(-100% - var(--marquee-gap))); }
+  }
+  @keyframes marquee-down {
+    0% { transform: translateY(calc(-100% - var(--marquee-gap))); }
+    100% { transform: translateY(0%); }
+  }
+}
+
+/* shadcn-style tokens used by the 21st.dev components */
+@theme inline {
+  --color-background: var(--color-parchment);
+  --color-foreground: var(--color-ink);
+  --color-card: #fffaf1;
+  --color-card-foreground: var(--color-ink);
+  --color-muted-foreground: var(--color-ink-muted);
+  --color-ring: var(--color-sindoor);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-parchment);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-marigold-soft);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sindoor);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x { padding-inline: 2rem; }
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  /* Temple-arch (jharokha) frame, the site's signature shape */
+  .arch {
+    border-radius: 999px 999px 0.75rem 0.75rem;
+    overflow: hidden;
+  }
+
+  /* Subtle paper grain */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Ornamental divider: line · lotus-diamond · line */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-marigold);
+  }
+  .ornament::before,
+  .ornament::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.35s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
