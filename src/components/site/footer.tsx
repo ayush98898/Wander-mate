@@ -1,84 +1,69 @@
 import Link from "next/link";
 
-import { InstagramIcon, Lotus, WhatsAppIcon } from "@/components/site/icons";
-import { Logo } from "@/components/site/logo";
+import { InstagramIcon, WhatsAppIcon } from "@/components/site/icons";
+import { Btn } from "@/components/site/ui";
 import { site, whatsappLink } from "@/lib/content";
-
-const columns = [
-  {
-    title: "Journeys",
-    links: [
-      { href: "/packages", label: "Varanasi packages" },
-      { href: "/banaras-unfiltered", label: "Banaras Unfiltered — Solo" },
-      { href: "/packages#circuits", label: "The Spiritual Triangle" },
-      { href: "/plan", label: "Plan your own trip" },
-    ],
-  },
-  {
-    title: "Discover",
-    links: [
-      { href: "/experiences", label: "Experiences" },
-      { href: "/journal", label: "Travel journal" },
-      { href: "/about", label: "About us" },
-      { href: "/enquire", label: "Enquire" },
-    ],
-  },
-];
+import { journeys } from "@/lib/journeys";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-night text-parchment/80">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-10 bottom-0 select-none font-deva text-[16rem] leading-none text-white/[0.03] sm:text-[22rem]"
-      >
-        काशी
-      </div>
-
-      <div className="container-x relative py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-          <div>
-            <Logo tone="light" />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-parchment/60">
-              Local roots, modern ease. Bespoke cultural and heritage journeys through
-              Varanasi for families, couples and private groups.
-            </p>
-            <p className="mt-6 max-w-xs font-display text-lg italic leading-snug text-parchment/90">
-              “Varanasi is older than history, older than tradition, older even than
-              legend.”
-              <span className="mt-1 block font-sans text-xs not-italic tracking-widest text-parchment/50 uppercase">
-                Mark Twain
-              </span>
-            </p>
+    <footer className="relative overflow-hidden bg-ink text-bone">
+      <div className="wrap pt-20 md:pt-28">
+        <div className="grid gap-10 border-b border-bone/12 pb-16 md:grid-cols-[1.4fr_1fr] md:items-end">
+          <p className="display max-w-3xl text-5xl md:text-7xl">
+            Every journey begins with <em>a conversation.</em>
+          </p>
+          <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+            <Btn href="/plan" variant="light">
+              Plan a journey
+            </Btn>
+            <Btn href={whatsappLink("Namaste WanderMate! I'd like to plan a journey.")} variant="line-light">
+              WhatsApp us
+            </Btn>
           </div>
+        </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h2 className="eyebrow text-marigold">{col.title}</h2>
-              <ul className="mt-5 space-y-3 text-sm">
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="link-underline hover:text-white">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
+        <div className="grid gap-10 py-14 text-sm sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h2 className="eyebrow text-marigold">Talk to us</h2>
-            <ul className="mt-5 space-y-4 text-sm">
+            <p className="label text-bone/45">Journeys</p>
+            <ul className="mt-5 space-y-2.5">
+              {journeys.slice(0, 5).map((j) => (
+                <li key={j.slug}>
+                  <Link href={`/journeys/${j.slug}`} className="ul">
+                    {j.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="label text-bone/45">Discover</p>
+            <ul className="mt-5 space-y-2.5">
+              {[
+                ["/experiences", "Experiences"],
+                ["/journal", "Journal"],
+                ["/about", "About WanderMate"],
+                ["/plan", "Plan a journey"],
+              ].map(([href, label]) => (
+                <li key={href}>
+                  <Link href={href} className="ul">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="label text-bone/45">Contact</p>
+            <ul className="mt-5 space-y-2.5">
               <li>
                 <a
-                  href={whatsappLink("Namaste WanderMate! I'd like to plan a trip to Varanasi.")}
+                  href={whatsappLink("Namaste WanderMate!")}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-3 hover:text-white"
+                  className="inline-flex items-center gap-2 hover:text-ochre-lit"
                 >
-                  <WhatsAppIcon className="size-5 text-[#25D366]" />
-                  {site.phoneDisplay}
+                  <WhatsAppIcon className="size-4" /> {site.phoneDisplay}
                 </a>
               </li>
               <li>
@@ -86,25 +71,34 @@ export function Footer() {
                   href={site.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-3 hover:text-white"
+                  className="inline-flex items-center gap-2 hover:text-ochre-lit"
                 >
-                  <InstagramIcon className="size-5" />
-                  {site.instagramHandle}
+                  <InstagramIcon className="size-4" /> {site.instagramHandle}
                 </a>
               </li>
-              <li className="text-parchment/60">Varanasi, Uttar Pradesh, India</li>
+              <li className="text-bone/55">Varanasi, Uttar Pradesh, India</li>
             </ul>
           </div>
+          <div>
+            <p className="label text-bone/45">Kashi</p>
+            <p className="mt-5 font-display text-2xl leading-snug italic text-bone/85">
+              “Older than history, older than tradition, older even than legend.”
+            </p>
+            <p className="label mt-3 text-bone/45">Mark Twain</p>
+          </div>
         </div>
+      </div>
 
-        <div className="ornament mt-16">
-          <Lotus className="h-5 w-8" />
-        </div>
+      <div aria-hidden className="select-none px-2 leading-none">
+        <p className="display translate-y-[0.18em] text-center text-[20.5vw] tracking-[-0.04em] text-bone/[0.07]">
+          WanderMate
+        </p>
+      </div>
 
-        <div className="mt-8 flex flex-col items-center justify-between gap-3 text-xs text-parchment/45 sm:flex-row">
-          <p>© {new Date().getFullYear()} WanderMate. All rights reserved.</p>
-          <p>Designed by Ayush Singh</p>
-        </div>
+      <div className="wrap flex flex-col gap-2 border-t border-bone/12 py-6 text-bone/45 sm:flex-row sm:justify-between">
+        <p className="label">© {new Date().getFullYear()} WanderMate</p>
+        <p className="label">{site.coordinates}</p>
+        <p className="label">Designed by Ayush Singh</p>
       </div>
     </footer>
   );

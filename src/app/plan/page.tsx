@@ -1,48 +1,61 @@
 import type { Metadata } from "next";
 
-import { PageHero } from "@/components/site/blocks";
-import { TripBuilder } from "@/components/site/trip-builder";
-import { experiences, tiers, type Tier } from "@/lib/content";
+import { Planner, type PlannerInitial } from "@/components/site/planner";
+import { Eyebrow } from "@/components/site/ui";
+import { experiences, feelings, type FeelingId } from "@/lib/content";
+import { getJourney } from "@/lib/journeys";
 
 export const metadata: Metadata = {
-  title: "Plan Your Varanasi Trip",
+  title: "Plan a Journey",
   description:
-    "Craft your own Varanasi journey — choose your style, days, experiences and route, then send it to a WanderMate Kashi companion on WhatsApp.",
+    "Tell us who's travelling, when, and how you want to feel. A WanderMate Kashi companion replies on WhatsApp with a tailored itinerary.",
 };
 
-export default async function PlanPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
+type SP = { [key: string]: string | string[] | undefined };
+const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
+
+// Map a journey page to sensible planner defaults.
+const fromJourney: Record<string, PlannerInitial> = {
+  "kashi-classic": { style: "classic" },
+  "kashi-premium": { style: "premium" },
+  "kashi-luxury": { style: "private", feeling: "stillness" },
+  "spiritual-triangle": { route: "Kashi + Ayodhya + Prayagraj", feeling: "devotion" },
+  "kashi-ayodhya": { route: "Kashi + Ayodhya", feeling: "devotion" },
+};
+
+export default async function PlanPage({ searchParams }: { searchParams: Promise<SP> }) {
   const sp = await searchParams;
-  const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
+  const initial: PlannerInitial = {};
+
+  const journey = first(sp.journey);
+  if (journey && getJourney(journey)) Object.assign(initial, fromJourney[journey]);
+
+  const feeling = first(sp.feeling);
+  if (feelings.some((f) => f.id === feeling)) initial.feeling = feeling as FeelingId;
 
   const n = Number(first(sp.nights));
-  const nights = Number.isInteger(n) && n >= 1 && n <= 6 ? n : 2;
-  const tierParam = first(sp.tier);
-  const tier = tiers.some((t) => t.id === tierParam) ? (tierParam as Tier["id"]) : "premium";
-  const addParam = first(sp.add);
-  const add = experiences.some((e) => e.slug === addParam) ? [addParam as string] : [];
+  if (Number.isInteger(n) && n >= 1 && n <= 14) initial.nights = n;
+
+  const exp = first(sp.experience);
+  if (experiences.some((e) => e.slug === exp)) initial.experience = exp;
 
   return (
-    <>
-      <PageHero
-        image="/images/river-clouds.jpg"
-        eyebrow="Self-planning"
-        deva="योजना"
-        title={
-          <>
-            Craft your journey <em className="text-marigold">on your own.</em>
-          </>
-        }
-        intro="Shape it here in a minute. Your Kashi companion turns it into a day-by-day itinerary and quote — usually within a couple of hours."
-      />
-      <section className="py-16 md:py-24">
-        <div className="container-x">
-          <TripBuilder initialNights={nights} initialTier={tier} initialAdd={add} />
+    <section className="bg-bone pt-32 pb-24 md:pt-40 md:pb-32">
+      <div className="wrap">
+        <div className="mb-16 grid gap-6 border-b border-ink/15 pb-12 md:grid-cols-[1.4fr_1fr] md:items-end">
+          <div>
+            <Eyebrow className="text-smoke">Plan a journey · 5 short steps</Eyebrow>
+            <h1 className="display mt-6 text-6xl md:text-8xl">
+              Begin with <em>a conversation.</em>
+            </h1>
+          </div>
+          <p className="max-w-md text-smoke md:justify-self-end">
+            Share a few details and a Kashi companion will shape a journey around you — the places,
+            the people and the hours of the day that matter.
+          </p>
         </div>
-      </section>
-    </>
+        <Planner initial={initial} />
+      </div>
+    </section>
   );
 }

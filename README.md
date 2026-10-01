@@ -3,28 +3,31 @@
 Website for **WanderMate**: cultural and heritage journeys through Varanasi (Kashi).
 Content, photography and team details come from the original Wix site.
 
-Built with Next.js 16 (App Router), Tailwind CSS v4, Motion and GSAP, plus two
-components from [21st.dev](https://21st.dev): a scroll-pinned image gallery and an
-accessible marquee.
+Built with Next.js 16 (App Router), Tailwind CSS v4, GSAP (ScrollTrigger, SplitText) and
+Motion. The visual direction is referenced from Black Tomato and derived from the
+`ui-ux-pro-max` skill; see `design-system/wandermate/MASTER.md`. Two components come
+from [21st.dev](https://21st.dev): the Scroll Gallery ("One day in Kashi") and the
+Marquee (reviews).
 
 ## Pages
 
 | Route | What it is |
 | --- | --- |
-| `/` | Home: hero, Why Kashi, Solo Series feature, pinned experiences gallery, packages, why us, reviews, team, journal |
-| `/packages` | Classic / Premium / Luxury tiers, a duration grid (1N2D to 6N7D) and pilgrim circuits (Spiritual Triangle) |
-| `/banaras-unfiltered` | The 2N/3D solo small-group weekend: itinerary, stays, inclusions, departures, booking |
-| `/experiences` | Signature experiences (Aarti, sunrise boat, silk walk, food walk and more) |
-| `/plan` | Trip builder: pick a style, days, people and experiences, then send the plan on WhatsApp |
-| `/enquire` | Enquiry form (same fields as the Wix form); submits via WhatsApp |
-| `/journal`, `/journal/[slug]` | Travel journal |
-| `/about` | Story and team |
+| `/` | Home: hero with a "feel × length" search, manifesto, feeling finder, horizontal journey rail, "One day in Kashi", cinematic experience list, how it works, reviews, team, journal |
+| `/journeys`, `/journeys/[slug]` | Journeys (Banaras Unfiltered, Kashi Classic / Premium / In Private, Spiritual Triangle, Kashi & Ayodhya) |
+| `/experiences` | Experiences ordered by hour of day |
+| `/plan` | 5-step planner that sends a summary on WhatsApp (accepts `?feeling=`, `?nights=`, `?journey=`, `?experience=`) |
+| `/journal`, `/journal/[slug]` | Journal |
+| `/about` | Story, team, approach |
+
+Old URLs (`/packages`, `/banaras-unfiltered`, `/enquire`) redirect to their new homes.
 
 ## Editing content
 
 All copy lives in `src/lib/`:
 
-- `content.ts`: contact details, nav, packages, experiences, reviews, team, hotels
+- `content.ts`: contact details, feelings, experiences, reviews, team, hotels
+- `journeys.ts`: journeys and sample itineraries
 - `solo.ts`: Banaras Unfiltered itinerary, inclusions and **departure dates** (update these regularly)
 - `journal.ts`: journal posts
 

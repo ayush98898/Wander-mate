@@ -2,59 +2,56 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { PageHero } from "@/components/site/blocks";
+import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { posts } from "@/lib/journal";
 
 export const metadata: Metadata = {
-  title: "Travel Journal",
+  title: "Journal",
   description: "Stories, guides and reflections on travelling through Varanasi from the WanderMate team.",
 };
 
 export default function JournalPage() {
-  const [lead, ...rest] = posts;
   return (
     <>
       <PageHero
         image="/images/ghats-panorama.jpg"
-        eyebrow="Travel journal"
-        deva="कथा"
+        label="The WanderMate journal"
         title={
           <>
-            Stories from <em className="text-marigold">the ghats.</em>
+            Notes from <em>the ghats.</em>
           </>
         }
       />
-      <section className="py-20 md:py-28">
-        <div className="container-x">
-          <Reveal>
-            <Link href={`/journal/${lead.slug}`} className="group grid gap-8 md:grid-cols-2 md:items-center md:gap-14">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-sand">
-                <Image src={lead.image} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-              </div>
-              <div>
-                <p className="eyebrow text-sindoor">Featured · {lead.readTime}</p>
-                <h2 className="mt-3 font-display text-4xl leading-tight group-hover:text-sindoor md:text-5xl">{lead.title}</h2>
-                <p className="mt-4 text-lg leading-relaxed text-ink-soft">{lead.excerpt}</p>
-                <span className="mt-6 inline-block font-semibold text-sindoor">Read the story →</span>
-              </div>
-            </Link>
-          </Reveal>
-
-          <div className="mt-20 grid gap-10 md:grid-cols-2">
-            {rest.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.08}>
-                <Link href={`/journal/${p.slug}`} className="group block">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-sand">
-                    <Image src={p.image} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  </div>
-                  <p className="eyebrow mt-5 text-ink-muted">{p.readTime}</p>
-                  <h3 className="mt-2 font-display text-3xl leading-snug group-hover:text-sindoor">{p.title}</h3>
-                  <p className="mt-2 leading-relaxed text-ink-soft">{p.excerpt}</p>
-                </Link>
+      <section className="py-24 md:py-32">
+        <div className="wrap">
+          <ol className="border-t border-ink/15">
+            {posts.map((p, i) => (
+              <Reveal key={p.slug}>
+                <li className="border-b border-ink/15">
+                  <Link href={`/journal/${p.slug}`} className="group grid gap-6 py-10 md:grid-cols-12 md:items-center md:py-14">
+                    <span className="label text-smoke md:col-span-1">{String(i + 1).padStart(2, "0")}</span>
+                    <div className="md:col-span-6">
+                      <h2 className="display text-4xl leading-[1] md:text-6xl">
+                        <span className="ul">{p.title}</span>
+                      </h2>
+                      <p className="mt-4 max-w-xl text-smoke">{p.excerpt}</p>
+                      <p className="label mt-4 text-smoke">{p.readTime}</p>
+                    </div>
+                    <div className="relative aspect-[4/3] overflow-hidden bg-stone md:col-span-4 md:col-start-9">
+                      <Image
+                        src={p.image}
+                        alt=""
+                        fill
+                        sizes="(min-width:768px) 30vw, 100vw"
+                        className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.05]"
+                      />
+                    </div>
+                  </Link>
+                </li>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
     </>

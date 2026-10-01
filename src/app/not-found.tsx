@@ -1,20 +1,20 @@
-import { ButtonLink } from "@/components/site/blocks";
+import { Btn } from "@/components/site/ui";
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-[80svh] items-center bg-night pt-28 pb-16 text-parchment">
-      <div className="container-x text-center">
-        <p aria-hidden className="font-deva text-[7rem] leading-none text-marigold/40 sm:text-[10rem]">
-          ॐ
+    <section className="flex min-h-svh items-end bg-ink pt-32 pb-16 text-bone">
+      <div className="wrap">
+        <p className="label text-bone/55">404 · Lost in the galis</p>
+        <h1 className="display mt-6 max-w-5xl text-6xl md:text-9xl">
+          This lane leads <em>nowhere.</em>
+        </h1>
+        <p className="mt-6 max-w-md text-bone/70">
+          Even the lanes of Kashi have dead ends. Let&apos;s get you back to the river.
         </p>
-        <h1 className="mt-4 font-display text-5xl md:text-6xl">This lane leads nowhere.</h1>
-        <p className="mx-auto mt-4 max-w-md text-parchment/70">
-          Even the galis of Kashi have dead ends. Let&apos;s get you back to the river.
-        </p>
-        <div className="mt-8 flex justify-center">
-          <ButtonLink href="/" variant="light">
-            Back to home
-          </ButtonLink>
+        <div className="mt-10">
+          <Btn href="/" variant="light">
+            Back to the ghats
+          </Btn>
         </div>
       </div>
     </section>

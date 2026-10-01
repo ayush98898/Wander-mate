@@ -1,27 +1,39 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { Logo } from "@/components/site/logo";
-import { nav, site } from "@/lib/content";
+import { InstagramIcon, WhatsAppIcon } from "@/components/site/icons";
+import { nav, site, whatsappLink } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+  const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [preview, setPreview] = useState(0);
+  const menuBtn = useRef<HTMLButtonElement>(null);
+  const firstLink = useRef<HTMLAnchorElement>(null);
 
+  // Solid after the hero; hide while scrolling down, reveal on scroll up.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 60);
+      setHidden(y > 400 && y > last);
+      last = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the drawer on navigation
   const [lastPath, setLastPath] = useState(pathname);
   if (pathname !== lastPath) {
     setLastPath(pathname);
@@ -29,114 +41,176 @@ export function Header() {
   }
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    if (open) firstLink.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        menuBtn.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+      document.documentElement.style.overflow = "";
     };
   }, [open]);
 
-  const solid = scrolled || open;
+  const solid = scrolled && !open;
 
   return (
     <>
-      <a
-        href={site.devDeepawaliUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="relative z-50 block bg-sindoor-deep px-4 py-2 text-center text-[0.78rem] font-medium tracking-wide text-parchment transition-colors hover:bg-sindoor"
-      >
-        <span className="mr-2 inline-block size-1.5 -translate-y-px animate-pulse rounded-full bg-marigold" />
-        Dev Deepawali 2026 — bookings now open
-        <span className="ml-2 underline underline-offset-4">Reserve your ghat view →</span>
-      </a>
-
       <header
         className={cn(
-          "sticky top-0 z-40 -mb-[72px] h-[72px] transition-[background-color,box-shadow,color] duration-300",
-          solid
-            ? "bg-parchment/90 text-ink shadow-[0_1px_0_rgba(28,21,17,0.08)] backdrop-blur-md"
-            : "bg-transparent text-white",
+          "fixed inset-x-0 top-0 z-50 transition-[transform,background-color,color] duration-500 ease-[var(--ease-expo)]",
+          hidden && !open ? "-translate-y-full" : "translate-y-0",
+          solid ? "bg-bone/95 text-ink backdrop-blur-sm" : "bg-transparent text-bone",
+          open && "text-bone",
         )}
       >
-        <div className="container-x flex h-full items-center justify-between gap-6">
-          <Logo tone={solid ? "dark" : "light"} />
+        <div className="wrap grid h-16 grid-cols-[1fr_auto_1fr] items-center md:h-20">
+          <button
+            ref={menuBtn}
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="site-menu"
+            className="label group flex min-h-11 items-center gap-3 justify-self-start"
+          >
+            <span aria-hidden className="relative block h-3 w-6">
+              <span
+                className={cn(
+                  "absolute left-0 h-px w-6 bg-current transition-transform duration-500",
+                  open ? "top-1.5 rotate-45" : "top-0",
+                )}
+              />
+              <span
+                className={cn(
+                  "absolute left-0 h-px bg-current transition-all duration-500",
+                  open ? "top-1.5 w-6 -rotate-45" : "top-3 w-4 group-hover:w-6",
+                )}
+              />
+            </span>
+            {open ? "Close" : "Menu"}
+          </button>
 
-          <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex items-center gap-7 text-[0.9rem] font-medium">
-              {nav.map((item) => {
-                const active = pathname.startsWith(item.href);
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "link-underline pb-0.5 transition-opacity",
-                        active ? "opacity-100" : "opacity-80 hover:opacity-100",
-                        active && "bg-[length:100%_1px]",
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/enquire"
+          <Link href="/" aria-label="WanderMate — home" className="flex items-center gap-2.5">
+            <span
               className={cn(
-                "hidden rounded-full px-5 py-2.5 text-sm font-semibold transition-colors sm:inline-flex",
-                solid
-                  ? "bg-sindoor text-white hover:bg-sindoor-deep"
-                  : "bg-white text-ink hover:bg-marigold-soft",
+                "grid size-8 place-items-center rounded-full transition-colors",
+                solid ? "bg-ink" : "bg-transparent ring-1 ring-current/40",
               )}
             >
-              Enquire now
-            </Link>
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              aria-label={open ? "Close menu" : "Open menu"}
-              className="grid size-11 place-items-center rounded-full lg:hidden"
+              <Image src="/images/logo-mark.png" alt="" width={22} height={23} className="h-[23px] w-auto" priority />
+            </span>
+            <span className="display text-[1.6rem] leading-none tracking-[-0.01em] md:text-[1.9rem]">
+              WanderMate
+            </span>
+          </Link>
+
+          <div className="flex items-center justify-self-end gap-6">
+            <a
+              href={whatsappLink("Namaste WanderMate! I'd like to plan a journey.")}
+              target="_blank"
+              rel="noreferrer"
+              className="label ul hidden lg:inline"
             >
-              {open ? <X className="size-6" /> : <Menu className="size-6" />}
-            </button>
+              {site.phoneDisplay}
+            </a>
+            <Link
+              href="/plan"
+              className={cn(
+                "label hidden min-h-11 items-center px-4 transition-colors sm:inline-flex md:px-5",
+                solid ? "bg-ink text-bone hover:bg-ochre" : "border border-current/60 hover:bg-bone hover:text-ink",
+              )}
+            >
+              Plan a journey
+            </Link>
           </div>
         </div>
       </header>
 
-      <div
-        id="mobile-nav"
-        hidden={!open}
-        className="fixed inset-0 z-30 overflow-y-auto bg-parchment pt-[120px] lg:hidden"
-      >
-        <nav aria-label="Mobile" className="container-x pb-12">
-          <ul className="divide-y divide-ink/10 border-y border-ink/10">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="flex items-center justify-between py-4 font-display text-3xl"
-                >
-                  {item.label}
-                  <span aria-hidden className="text-base text-sindoor">→</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/enquire"
-            className="mt-8 flex w-full items-center justify-center rounded-full bg-sindoor px-6 py-4 font-semibold text-white"
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            id="site-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
+            className="fixed inset-0 z-40 overflow-y-auto bg-ink text-bone"
+            initial={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}
+            animate={reduce ? { opacity: 1 } : { clipPath: "inset(0 0 0% 0)" }}
+            exit={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            Enquire now
-          </Link>
-        </nav>
-      </div>
+            <div className="wrap grid min-h-full gap-10 pt-28 pb-10 md:grid-cols-[1.3fr_1fr] md:gap-16 md:pt-32">
+              <nav aria-label="Main">
+                <ol>
+                  {nav.map((item, i) => (
+                    <li key={item.href} className="border-b border-bone/12">
+                      <Link
+                        ref={i === 0 ? firstLink : undefined}
+                        href={item.href}
+                        onMouseEnter={() => setPreview(i)}
+                        onFocus={() => setPreview(i)}
+                        aria-current={pathname === item.href ? "page" : undefined}
+                        className="group flex items-baseline gap-5 py-3 md:py-4"
+                      >
+                        <span className="label w-8 text-bone/40">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="display text-[2.6rem] transition-[color,transform] duration-500 group-hover:translate-x-3 group-hover:text-ochre-lit sm:text-6xl md:text-7xl">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+
+              <div className="flex flex-col justify-between gap-10">
+                <div className="relative hidden aspect-[4/5] overflow-hidden md:block">
+                  {nav.map((item, i) => (
+                    <Image
+                      key={item.href}
+                      src={item.image}
+                      alt=""
+                      fill
+                      sizes="40vw"
+                      className={cn(
+                        "object-cover transition-[opacity,transform] duration-700",
+                        preview === i ? "scale-100 opacity-100" : "scale-105 opacity-0",
+                      )}
+                    />
+                  ))}
+                </div>
+                <div className="grid gap-6 text-sm sm:grid-cols-2">
+                  <div>
+                    <p className="label text-bone/50">Talk to a Kashi companion</p>
+                    <a
+                      href={whatsappLink("Namaste WanderMate! I'd like to plan a journey.")}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 flex items-center gap-2 hover:text-ochre-lit"
+                    >
+                      <WhatsAppIcon className="size-4" /> {site.phoneDisplay}
+                    </a>
+                  </div>
+                  <div>
+                    <p className="label text-bone/50">Follow</p>
+                    <a
+                      href={site.instagram}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 flex items-center gap-2 hover:text-ochre-lit"
+                    >
+                      <InstagramIcon className="size-4" /> {site.instagramHandle}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 }

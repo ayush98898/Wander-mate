@@ -1,472 +1,300 @@
-import { ArrowRight, Clock, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ButtonLink, CtaBand, SectionHeading } from "@/components/site/blocks";
-import { ExperienceGallery } from "@/components/site/experience-gallery";
-import { InstagramIcon, Lotus } from "@/components/site/icons";
+import { CinematicList } from "@/components/site/cinematic-list";
+import { DayInKashi } from "@/components/site/day-in-kashi";
+import { FeelingFinder } from "@/components/site/feeling-finder";
+import { HeroSearch } from "@/components/site/hero-search";
+import { JourneyRail } from "@/components/site/journey-rail";
 import { Reveal } from "@/components/site/reveal";
-import { Testimonials } from "@/components/site/testimonials";
-import { circuits, pillars, site, team, tiers, whyKashi } from "@/lib/content";
+import { Reviews } from "@/components/site/reviews";
+import { SplitHeading } from "@/components/site/split-heading";
+import { Btn, Eyebrow } from "@/components/site/ui";
+import { approach, experiences, site, team } from "@/lib/content";
 import { posts } from "@/lib/journal";
-import { solo } from "@/lib/solo";
+import { journeys } from "@/lib/journeys";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <WhyKashi />
-      <SoloFeature />
-      <ExperienceGallery />
-      <Journeys />
-      <WhyUs />
-      <Reviews />
-      <Team />
-      <Journal />
-      <CtaBand />
-    </>
-  );
-}
+      {/* ---------- Hero ---------- */}
+      <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden bg-ink text-bone">
+        <Image
+          src="/images/hero-ghats.jpg"
+          alt="The ghats of Varanasi from above, boats gathered on the Ganga"
+          fill
+          priority
+          sizes="100vw"
+          className="animate-kenburns -z-20 object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/35 to-ink/45" />
 
-function Hero() {
-  return (
-    <section className="relative isolate flex min-h-svh items-end overflow-hidden bg-night text-white">
-      <Image
-        src="/images/hero-ghats.jpg"
-        alt="Aerial view of the Varanasi ghats and boats on the Ganga"
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 scale-105 object-cover"
-      />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-night via-night/45 to-night/35" />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute top-[14%] right-[-2%] -z-10 select-none font-deva text-[clamp(8rem,26vw,24rem)] leading-none text-white/[0.12]"
-      >
-        काशी
-      </span>
-
-      <div className="container-x pt-40 pb-14 md:pb-20">
-        <Reveal>
-          <p className="eyebrow flex items-center gap-3 text-marigold">
-            <Lotus className="h-4 w-7" /> Cultural & heritage journeys · Varanasi
-          </p>
-          <h1 className="mt-6 max-w-5xl font-display text-[clamp(3rem,8.5vw,7.5rem)] leading-[0.95] tracking-tight text-balance">
-            Wander the city <em className="text-marigold">older</em> than history.
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/80">
-            Ghats at first light, the Ganga Aarti from the front row, silk looms in
-            hidden lanes, and stories passed down for generations — Kashi, the way
-            locals know it.
-          </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="/packages">
-              Explore journeys <ArrowRight className="size-4" />
-            </ButtonLink>
-            <ButtonLink href="/plan" variant="outline-light">
-              Craft your own trip
-            </ButtonLink>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <dl className="mt-14 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/20 pt-6 text-sm sm:grid-cols-4">
-            <div>
-              <dt className="text-white/60">Traveller rating</dt>
-              <dd className="mt-1 font-display text-2xl">
-                {site.rating.score} <span className="text-marigold">★</span>
-                <span className="ml-2 font-sans text-xs text-white/60">
-                  {site.rating.count} reviews
-                </span>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-white/60">Solo departures</dt>
-              <dd className="mt-1 font-display text-2xl">Every Friday</dd>
-            </div>
-            <div>
-              <dt className="text-white/60">Journeys</dt>
-              <dd className="mt-1 font-display text-2xl">1 – 7 days</dd>
-            </div>
-            <div>
-              <dt className="text-white/60">Made by</dt>
-              <dd className="mt-1 font-display text-2xl">Locals of Kashi</dd>
-            </div>
-          </dl>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function WhyKashi() {
-  return (
-    <section className="relative overflow-hidden py-24 md:py-36">
-      <div className="container-x grid items-center gap-16 lg:grid-cols-[1fr_1.05fr]">
-        <div className="relative mx-auto grid w-full max-w-lg grid-cols-2 gap-4">
-          <Reveal className="arch relative mt-16 aspect-[3/4.6] bg-sand">
-            <Image
-              src="/images/priest-river.jpg"
-              alt="A priest standing at the edge of the Ganga"
-              fill
-              sizes="(min-width:1024px) 22vw, 45vw"
-              className="object-cover"
-            />
-          </Reveal>
-          <Reveal delay={0.12} className="arch relative aspect-[3/4.6] bg-sand">
-            <Image
-              src="/images/stairs-sunset.jpg"
-              alt="Sunrise seen through a narrow stairway to the ghats"
-              fill
-              sizes="(min-width:1024px) 22vw, 45vw"
-              className="object-cover"
-            />
-          </Reveal>
-          <div
-            aria-hidden
-            className="absolute -bottom-8 left-2 grid size-28 sm:-left-6 place-items-center rounded-full bg-marigold text-center font-display text-sm leading-tight text-ink shadow-xl sm:size-32"
-          >
-            <span>
-              5,000
-              <br />
-              <span className="text-xs italic">years of stories</span>
+        <div className="wrap pt-36 pb-8 md:pb-12">
+          <div className="flex items-end justify-between gap-8">
+            <SplitHeading
+              as="h1"
+              onLoad
+              delay={0.2}
+              className="display text-[clamp(4rem,13.5vw,15rem)] leading-[0.82]"
+            >
+              Feel the <em>centuries.</em>
+            </SplitHeading>
+            <span
+              aria-hidden
+              className="hidden pb-4 font-deva text-[clamp(3rem,6vw,6rem)] leading-none text-bone/30 lg:block"
+            >
+              काशी
             </span>
           </div>
-        </div>
-
-        <div>
-          <SectionHeading
-            index="01"
-            eyebrow="About the journey"
-            title={
-              <>
-                Why <em className="text-sindoor">Kashi</em>?
-              </>
-            }
-          />
-          <Reveal delay={0.1} className="mt-8 space-y-5 text-[1.05rem] leading-relaxed text-ink-soft">
-            {whyKashi.map((p, i) => (
-              <p key={i} className={i === 0 ? "text-lg text-ink first-letter:float-left first-letter:mr-2 first-letter:font-display first-letter:text-6xl first-letter:leading-[0.85] first-letter:text-sindoor" : undefined}>
-                {p}
-              </p>
-            ))}
-          </Reveal>
-          <Reveal delay={0.15} className="mt-8">
-            <Link href="/experiences" className="inline-flex items-center gap-2 font-semibold text-sindoor">
-              <span className="link-underline">Find the hidden trails</span>
-              <ArrowRight className="size-4" />
-            </Link>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SoloFeature() {
-  const next = solo.departures[0];
-  return (
-    <section className="relative isolate overflow-hidden bg-night text-parchment">
-      <div className="grid lg:grid-cols-2">
-        <div className="relative min-h-[60svh] lg:min-h-[86svh]">
-          <Image
-            src="/images/holi.jpg"
-            alt="A crowd celebrating Holi in the lanes of Varanasi"
-            fill
-            sizes="(min-width:1024px) 50vw, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-night/80 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-night/30" />
-          <div className="absolute bottom-6 left-5 rounded-full bg-parchment px-4 py-2 text-xs font-semibold text-ink shadow-lg md:left-8">
-            Next departure · {next.dates} · <span className="text-sindoor">{next.spots} spots left</span>
-          </div>
-        </div>
-
-        <div className="flex items-center px-5 py-20 md:px-14 lg:py-24">
-          <div className="max-w-xl">
-            <Reveal>
-              <p className="eyebrow text-marigold">02 — {solo.series}</p>
-              <h2 className="mt-5 font-display text-6xl leading-[0.95] tracking-tight md:text-7xl">
-                Banaras <em className="text-marigold">Unfiltered</em>
-              </h2>
-              <p className="mt-6 text-lg text-parchment/75">{solo.lede}</p>
-              <p className="mt-3 text-parchment/60">
-                A curated weekend for the independent traveller — {solo.groupSize}, one expert
-                guide.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <ul className="mt-8 grid grid-cols-3 gap-4 border-y border-white/15 py-6 text-sm">
-                <li>
-                  <Clock className="mb-2 size-5 text-marigold" />
-                  {solo.format}
-                </li>
-                <li>
-                  <Users className="mb-2 size-5 text-marigold" />
-                  4–8 travellers
-                </li>
-                <li>
-                  <MapPin className="mb-2 size-5 text-marigold" />
-                  {solo.schedule}
-                </li>
-              </ul>
-              <div className="mt-8 flex flex-wrap items-center gap-6">
-                <p>
-                  <span className="font-display text-4xl text-white">{solo.price}</span>
-                  <span className="ml-2 text-sm text-parchment/60">/ person, all inclusive</span>
-                </p>
-                <ButtonLink href="/banaras-unfiltered" variant="light">
-                  See the itinerary <ArrowRight className="size-4" />
-                </ButtonLink>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Journeys() {
-  return (
-    <section className="py-24 md:py-32">
-      <div className="container-x">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <SectionHeading
-            index="03"
-            eyebrow="Start your journey"
-            title={
-              <>
-                Experience the soul of Varanasi, <em className="text-sindoor">exactly how you want to.</em>
-              </>
-            }
-          />
-          <Reveal>
-            <ButtonLink href="/packages" variant="outline">
-              View all packages
-            </ButtonLink>
-          </Reveal>
-        </div>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {tiers.map((t, i) => (
-            <Reveal key={t.id} delay={i * 0.08}>
-              <Link
-                href={`/plan?tier=${t.id}`}
-                className="group relative block aspect-[3/4] overflow-hidden rounded-[1.25rem] bg-night text-white"
-              >
-                <Image
-                  src={t.image}
-                  alt=""
-                  fill
-                  sizes="(min-width:768px) 33vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-                  <p className="eyebrow text-marigold">1 – 7 days</p>
-                  <h3 className="mt-2 font-display text-4xl">{t.name}</h3>
-                  <p className="mt-2 text-sm text-white/75">{t.bestFor}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">
-                    Build this trip
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-
-        <div id="circuits" className="mt-20 grid gap-6 rounded-[1.5rem] bg-sand p-6 md:grid-cols-[0.9fr_1.1fr] md:p-10">
-          <Reveal className="flex flex-col justify-center">
-            <p className="eyebrow text-sindoor">Pilgrim circuits</p>
-            <h3 className="mt-3 font-display text-4xl leading-tight md:text-5xl">
-              The Spiritual Triangle
-            </h3>
-            <p className="mt-4 text-ink-soft">
-              Kashi, Ayodhya and Prayagraj — three of India&apos;s holiest cities, joined in
-              one seamless journey with a companion who knows each one.
+          <div className="mt-8 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
+            <p className="max-w-xl text-lg leading-relaxed text-bone/85 md:text-xl">
+              Private cultural and heritage journeys through Kashi — the world&apos;s oldest living
+              city — designed around how you want to feel.
             </p>
-            <div className="mt-6">
-              <ButtonLink href="/packages#circuits">See circuits</ButtonLink>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-3 gap-3">
-            {circuits.map((c, i) => (
-              <Reveal key={c.name} delay={i * 0.08} className="arch relative aspect-[3/5] bg-night">
-                <Image src={c.image} alt="" fill sizes="20vw" className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent" />
-                <p className="absolute inset-x-0 bottom-3 px-2 text-center text-[0.7rem] font-semibold tracking-wide text-white sm:text-xs">
-                  {c.route}
+            <p className="label text-bone/60 md:text-right">
+              Varanasi, India
+              <br />
+              {site.coordinates}
+            </p>
+          </div>
+          <div className="mt-10">
+            <HeroSearch />
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- 01 Manifesto ---------- */}
+      <section className="py-28 md:py-44">
+        <div className="wrap">
+          <Eyebrow index="01" className="text-smoke">
+            Our approach
+          </Eyebrow>
+          <SplitHeading className="display mt-10 max-w-[18ch] text-[2.8rem] leading-[0.98] sm:text-6xl md:text-[5.6rem]">
+            We don&apos;t sell tours. We open the doors <em>Kashi</em> keeps closed to most visitors.
+          </SplitHeading>
+          <div className="mt-16 grid gap-12 md:grid-cols-12">
+            <Reveal className="relative aspect-[3/4] md:col-span-4 md:col-start-2">
+              <Image src="/images/priest-river.jpg" alt="A priest at the edge of the Ganga at dawn" fill sizes="(min-width:768px) 30vw, 100vw" className="object-cover" />
+            </Reveal>
+            <div className="flex flex-col justify-end gap-8 md:col-span-5 md:col-start-7">
+              <Reveal>
+                <p className="text-lg leading-relaxed text-ink-2 md:text-xl">
+                  The lanes where silk has been woven for twenty generations. A temple tucked away
+                  from the crowds. The river at 5am, from the middle of the Ganga, with no one else
+                  around. WanderMate is built by a team with local roots in Varanasi — people who
+                  know these stories, and who know who to call.
                 </p>
               </Reveal>
-            ))}
+              <Reveal delay={0.1} className="grid grid-cols-3 border-t border-ink/15 pt-6">
+                <div>
+                  <p className="display text-5xl">{site.rating.score}</p>
+                  <p className="label mt-2 text-smoke">{site.rating.count} reviews</p>
+                </div>
+                <div>
+                  <p className="display text-5xl">Fri</p>
+                  <p className="label mt-2 text-smoke">Weekly solo departures</p>
+                </div>
+                <div>
+                  <p className="display text-5xl">2h</p>
+                  <p className="label mt-2 text-smoke">Reply on WhatsApp</p>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function WhyUs() {
-  return (
-    <section className="relative overflow-hidden bg-ganga-deep py-24 text-parchment md:py-32">
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 select-none font-deva text-[14rem] leading-none text-white/[0.04] md:text-[22rem]"
-      >
-        गंगा
-      </span>
-      <div className="container-x relative">
-        <SectionHeading
-          index="04"
-          tone="light"
-          align="center"
-          eyebrow="Why WanderMate?"
-          title={
-            <>
-              We believe every traveller <em className="text-marigold">is unique.</em>
-            </>
-          }
-          intro="Local roots, modern ease — traditional knowledge of Kashi with the convenience of a modern travel company."
-        />
-        <ol className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
-          {pillars.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.06} className="h-full">
-              <li className="flex h-full flex-col bg-ganga-deep p-7 transition-colors hover:bg-ganga">
-                <span className="font-display text-3xl text-marigold italic">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-6 font-display text-2xl">{p.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-parchment/65">{p.body}</p>
-              </li>
-            </Reveal>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
-}
-
-function Reviews() {
-  return (
-    <section className="py-24 md:py-32">
-      <div className="container-x flex flex-col justify-between gap-8 md:flex-row md:items-end">
-        <SectionHeading
-          index="05"
-          eyebrow="What travellers say"
-          title={
-            <>
-              Treated like <em className="text-sindoor">family</em> in the city of Mahadev.
-            </>
-          }
-        />
-        <Reveal className="shrink-0 rounded-2xl border border-ink/10 bg-card px-7 py-5 text-center">
-          <p className="font-display text-5xl">{site.rating.score}</p>
-          <p className="mt-1 tracking-[0.2em] text-marigold">★★★★★</p>
-          <p className="eyebrow mt-2 text-ink-muted">Based on {site.rating.count} reviews</p>
-        </Reveal>
-      </div>
-      <div className="mt-14">
-        <Testimonials />
-      </div>
-    </section>
-  );
-}
-
-function Team() {
-  return (
-    <section className="bg-sand/60 py-24 md:py-32">
-      <div className="container-x">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-          <div>
-            <SectionHeading
-              index="06"
-              eyebrow="About us"
-              title={
-                <>
-                  Local roots, <em className="text-sindoor">modern ease.</em>
-                </>
-              }
-            />
-            <Reveal delay={0.1}>
-              <p className="mt-6 leading-relaxed text-ink-soft">
-                WanderMate was built on a shared passion for exploration and a deep
-                appreciation for the rich heritage of Varanasi. Founded by Ayush Singh, an
-                IIT Delhi alumnus, alongside co-founders Ritesh Singh and Vineet, our team
-                bridges the gap between traditional local knowledge and modern convenience.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/about" variant="outline">
-                  Our story
-                </ButtonLink>
-                <ButtonLink href={site.instagram} external variant="outline">
-                  <InstagramIcon className="size-4" /> {site.instagramHandle}
-                </ButtonLink>
-              </div>
-            </Reveal>
+      {/* ---------- 02 Feeling finder ---------- */}
+      <section className="border-t border-ink/12 py-24 md:py-36">
+        <div className="wrap">
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <Eyebrow index="02" className="text-smoke">
+                Travel by feeling
+              </Eyebrow>
+              <SplitHeading className="display mt-6 text-5xl md:text-7xl">
+                How do you want to <em>feel?</em>
+              </SplitHeading>
+            </div>
+            <p className="max-w-sm text-smoke">
+              Start with the feeling, not the itinerary. We&apos;ll find the places, people and
+              hours of the day that bring it to life.
+            </p>
           </div>
+          <FeelingFinder />
+        </div>
+      </section>
 
-          <div className="grid gap-5 sm:grid-cols-3">
+      {/* ---------- Journeys rail ---------- */}
+      <JourneyRail
+        journeys={journeys}
+        intro={
+          <>
+            <Eyebrow index="03" className="text-smoke">
+              Journeys
+            </Eyebrow>
+            <h2 className="display mt-6 text-5xl md:text-7xl">
+              Ways into <em>Kashi.</em>
+            </h2>
+            <p className="mt-6 max-w-sm text-smoke">
+              From a small-group weekend to a private pilgrimage across three holy cities. Every
+              journey is tailored.
+            </p>
+            <div className="mt-8">
+              <Btn href="/journeys" variant="line">
+                All journeys
+              </Btn>
+            </div>
+          </>
+        }
+      />
+
+      {/* ---------- One day in Kashi (pinned) ---------- */}
+      <DayInKashi />
+
+      {/* ---------- 04 Experiences ---------- */}
+      <section className="bg-ink pt-24 text-bone md:pt-32">
+        <div className="wrap flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <Eyebrow index="04" className="text-bone/55">
+              Moments
+            </Eyebrow>
+            <SplitHeading className="display mt-6 text-5xl md:text-7xl">
+              Hours you&apos;ll <em>keep.</em>
+            </SplitHeading>
+          </div>
+          <Btn href="/experiences" variant="line-light">
+            All experiences
+          </Btn>
+        </div>
+        <CinematicList items={experiences} />
+      </section>
+
+      {/* ---------- 05 How we work ---------- */}
+      <section className="py-24 md:py-36">
+        <div className="wrap grid gap-16 lg:grid-cols-[1fr_1.4fr]">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <Eyebrow index="05" className="text-smoke">
+              How it works
+            </Eyebrow>
+            <SplitHeading className="display mt-6 text-5xl md:text-7xl">
+              Local roots, <em>modern ease.</em>
+            </SplitHeading>
+            <div className="relative mt-10 hidden aspect-[4/3] lg:block">
+              <Image src="/images/group.jpg" alt="A WanderMate group in the lanes of Varanasi" fill sizes="35vw" className="object-cover" />
+            </div>
+          </div>
+          <ol className="border-t border-ink/15">
+            {approach.map((a, i) => (
+              <Reveal key={a.title}>
+                <li className="grid grid-cols-[3rem_1fr] gap-4 border-b border-ink/15 py-8 md:grid-cols-[5rem_1fr] md:py-10">
+                  <span className="label pt-3 text-smoke">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="display text-4xl md:text-5xl">{a.title}</h3>
+                    <p className="mt-4 max-w-lg leading-relaxed text-smoke">{a.body}</p>
+                  </div>
+                </li>
+              </Reveal>
+            ))}
+            <Reveal className="pt-10">
+              <Btn href="/plan">Start a conversation</Btn>
+            </Reveal>
+          </ol>
+        </div>
+      </section>
+
+      {/* ---------- 06 Reviews ---------- */}
+      <section className="border-t border-ink/12 py-24 md:py-32">
+        <div className="wrap mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <Eyebrow index="06" className="text-smoke">
+              In their words
+            </Eyebrow>
+            <h2 className="display mt-6 text-5xl md:text-7xl">
+              {site.rating.score} <span className="text-ochre">★</span>
+            </h2>
+          </div>
+          <p className="label text-smoke">Based on {site.rating.count} traveller reviews</p>
+        </div>
+        <Reviews />
+      </section>
+
+      {/* ---------- 07 People ---------- */}
+      <section className="bg-paper py-24 md:py-32">
+        <div className="wrap">
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <Eyebrow index="07" className="text-smoke">
+                The people
+              </Eyebrow>
+              <SplitHeading className="display mt-6 text-5xl md:text-7xl">
+                Your companions <em>in Kashi.</em>
+              </SplitHeading>
+            </div>
+            <Btn href="/about" variant="line">
+              About us
+            </Btn>
+          </div>
+          <div className="grid gap-10 md:grid-cols-3">
             {team.map((m, i) => (
               <Reveal key={m.name} delay={i * 0.08}>
-                <div className="arch relative aspect-[3/4] bg-night">
+                <div className="relative aspect-[4/5] overflow-hidden bg-stone">
                   <Image
                     src={m.image}
                     alt={`${m.name}, ${m.role}`}
                     fill
-                    sizes="(min-width:640px) 25vw, 90vw"
-                    className="object-cover"
+                    sizes="(min-width:768px) 30vw, 100vw"
+                    className="object-cover grayscale transition-[filter] duration-700 hover:grayscale-0"
                     style={{ objectPosition: m.position }}
                   />
                 </div>
-                <h3 className="mt-4 font-display text-2xl">{m.name}</h3>
-                <p className="eyebrow mt-1 text-sindoor">{m.role}</p>
+                <h3 className="display mt-5 text-3xl">{m.name}</h3>
+                <p className="label mt-2 text-smoke">{m.role}</p>
               </Reveal>
             ))}
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function Journal() {
-  return (
-    <section className="py-24 md:py-32">
-      <div className="container-x">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <SectionHeading index="07" eyebrow="Travel journal" title="Stories from the ghats" />
-          <Reveal>
-            <ButtonLink href="/journal" variant="outline">
-              Read all
-            </ButtonLink>
-          </Reveal>
+      {/* ---------- 08 Journal ---------- */}
+      <section className="py-24 md:py-32">
+        <div className="wrap">
+          <div className="mb-14 flex items-end justify-between gap-6">
+            <div>
+              <Eyebrow index="08" className="text-smoke">
+                Journal
+              </Eyebrow>
+              <h2 className="display mt-6 text-5xl md:text-7xl">
+                Notes from <em>the ghats.</em>
+              </h2>
+            </div>
+            <Link href="/journal" className="label ul hidden md:inline">
+              Read the journal
+            </Link>
+          </div>
+          <div className="grid gap-10 md:grid-cols-3">
+            {posts.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 0.08}>
+                <Link href={`/journal/${p.slug}`} className="group block">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-stone">
+                    <Image
+                      src={p.image}
+                      alt=""
+                      fill
+                      sizes="(min-width:768px) 30vw, 100vw"
+                      className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.05]"
+                    />
+                  </div>
+                  <p className="label mt-5 text-smoke">{p.readTime}</p>
+                  <h3 className="display mt-2 text-3xl leading-[1.02]">
+                    <span className="ul">{p.title}</span>
+                  </h3>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {posts.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 0.08}>
-              <Link href={`/journal/${p.slug}`} className="group block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand">
-                  <Image
-                    src={p.image}
-                    alt=""
-                    fill
-                    sizes="(min-width:768px) 33vw, 100vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <p className="eyebrow mt-5 text-ink-muted">{p.readTime}</p>
-                <h3 className="mt-2 font-display text-2xl leading-snug group-hover:text-sindoor">
-                  {p.title}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-ink-soft">{p.excerpt}</p>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

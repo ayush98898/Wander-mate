@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Playfair_Display, Tiro_Devanagari_Hindi } from "next/font/google";
+import {
+  Host_Grotesk,
+  Instrument_Serif,
+  JetBrains_Mono,
+  Tiro_Devanagari_Hindi,
+} from "next/font/google";
 
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
@@ -8,16 +13,25 @@ import { site } from "@/lib/content";
 
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
   subsets: ["latin"],
+  weight: "400",
   style: ["normal", "italic"],
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const host = Host_Grotesk({
+  variable: "--font-host",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -31,22 +45,22 @@ const tiro = Tiro_Devanagari_Hindi({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "WanderMate — Cultural & Heritage Tours in Varanasi",
-    template: "%s | WanderMate",
+    default: "WanderMate — Private Cultural & Heritage Journeys in Varanasi",
+    template: "%s — WanderMate",
   },
   description: site.description,
   keywords: [
-    "Varanasi tour packages",
-    "Kashi heritage tour",
-    "Banaras cultural tour",
+    "Varanasi heritage tour",
+    "Kashi cultural journey",
+    "luxury Varanasi travel",
     "Ganga Aarti",
-    "Varanasi solo trip",
+    "Banaras private tour",
     "Kashi Ayodhya Prayagraj",
   ],
   openGraph: {
     type: "website",
     siteName: "WanderMate",
-    title: "WanderMate — Cultural & Heritage Tours in Varanasi",
+    title: "WanderMate — Feel the centuries",
     description: site.description,
     images: [{ url: "/images/hero-ghats.jpg", width: 1600, height: 1066 }],
     locale: "en_IN",
@@ -55,23 +69,19 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#120d0a",
+  themeColor: "#100e0b",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${manrope.variable} ${tiro.variable}`}
+      className={`${instrument.variable} ${host.variable} ${jetbrains.variable} ${tiro.variable}`}
     >
       <body className="min-h-svh">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
+          className="label sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[80] focus:bg-ink focus:px-4 focus:py-3 focus:text-bone"
         >
           Skip to content
         </a>
