@@ -16,8 +16,8 @@ type BtnProps = {
 /** Rectangular, 0-radius button link (Swiss editorial). */
 export function Btn({ href, children, variant = "solid", className, external, arrow = true }: BtnProps) {
   const styles = {
-    solid: "bg-ink text-bone hover:bg-ochre",
-    line: "border border-ink text-ink hover:bg-ink hover:text-bone",
+    solid: "bg-ochre text-bone hover:bg-ink",
+    line: "border border-ochre text-ochre hover:bg-ochre hover:text-bone",
     light: "bg-bone text-ink hover:bg-ochre-lit",
     "line-light": "border border-bone/60 text-bone hover:bg-bone hover:text-ink",
   }[variant];

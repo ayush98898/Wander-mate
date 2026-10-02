@@ -11,9 +11,9 @@
   --color-paper: #fbfaf7;
   --color-stone: #d6d9e2;
   --color-smoke: #5b6380;
-  --color-ochre: #2f55b4;
-  --color-ochre-lit: #a8bdf2;
-  --color-river: #04174a;
+  --color-ochre: #1f45d6; /* royal blue — actions and highlights */
+  --color-ochre-lit: #9db4ff; /* royal blue, light — accents on navy */
+  --color-river: #1838b8; /* royal blue band */
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
