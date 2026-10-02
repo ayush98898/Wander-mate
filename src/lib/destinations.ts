@@ -138,6 +138,7 @@ export const destinations: Destination[] = [
     coords: "27.49° N · 77.67° E",
     line: "Krishna's land, where the temples sing and Holi lasts a week.",
     season: "Oct – Mar · Holi in Feb or Mar",
+    image: "/images/destinations/braj.jpg",
     tone: 1,
     trips: [
       {
@@ -187,6 +188,7 @@ export const destinations: Destination[] = [
     coords: "30.09° N · 78.27° E",
     line: "Where the Ganga leaves the mountains, and the mind slows down.",
     season: "Mar – May · Sep – Nov",
+    image: "/images/destinations/rishikesh.jpg",
     tone: 2,
     trips: [
       {
@@ -236,6 +238,7 @@ export const destinations: Destination[] = [
     coords: "24.58° N · 73.71° E",
     line: "Forts, palaces and the crafts that built them.",
     season: "Oct – Mar",
+    image: "/images/destinations/rajputana.jpg",
     tone: 3,
     trips: [
       {
@@ -296,6 +299,7 @@ export const destinations: Destination[] = [
     coords: "24.85° N · 79.93° E",
     line: "A thousand years of stories carved in sandstone.",
     season: "Oct – Mar · Dance festival in Feb",
+    image: "/images/destinations/khajuraho.jpg",
     tone: 4,
     trips: [
       {
@@ -344,6 +348,7 @@ export const destinations: Destination[] = [
     coords: "15.33° N · 76.46° E",
     line: "The ruined capital of Vijayanagara, scattered among the boulders.",
     season: "Nov – Feb",
+    image: "/images/destinations/hampi.jpg",
     tone: 5,
     trips: [
       {
@@ -392,6 +397,7 @@ export const destinations: Destination[] = [
     coords: "9.93° N · 78.12° E",
     line: "Living temples where the rituals have run for a thousand years.",
     season: "Nov – Feb",
+    image: "/images/destinations/temple-country.jpg",
     tone: 6,
     trips: [
       {
@@ -441,6 +447,7 @@ export const destinations: Destination[] = [
     coords: "19.81° N · 85.83° E",
     line: "Jagannath, the Sun Temple and a village of painters.",
     season: "Oct – Mar · Rath Yatra in Jun or Jul",
+    image: "/images/destinations/odisha.jpg",
     tone: 7,
     trips: [
       {
@@ -491,6 +498,7 @@ export const destinations: Destination[] = [
     coords: "27.72° N · 85.32° E",
     line: "Pagoda temples, Newar craft and the birthplace of the Buddha.",
     season: "Oct – Apr",
+    image: "/images/destinations/nepal.jpg",
     tone: 8,
     trips: [
       {
@@ -540,6 +548,7 @@ export const destinations: Destination[] = [
     coords: "7.29° N · 80.63° E",
     line: "The Ramayana's island, and two thousand years of Buddhist kingdoms.",
     season: "Dec – Apr · Esala Perahera in Jul or Aug",
+    image: "/images/destinations/sri-lanka.jpg",
     tone: 9,
     trips: [
       {
@@ -589,6 +598,7 @@ export const destinations: Destination[] = [
     coords: "27.43° N · 89.42° E",
     line: "Dzongs, prayer flags and festivals of masked dances.",
     season: "Mar – May · Sep – Nov",
+    image: "/images/destinations/bhutan.jpg",
     tone: 10,
     trips: [
       {
@@ -638,6 +648,7 @@ export const destinations: Destination[] = [
     coords: "13.36° N · 103.86° E",
     line: "The largest religious monument on earth, and Hindu epics carved in stone.",
     season: "Nov – Mar",
+    image: "/images/destinations/cambodia.jpg",
     tone: 11,
     trips: [
       {
@@ -687,6 +698,7 @@ export const destinations: Destination[] = [
     coords: "7.80° S · 110.36° E",
     line: "Borobudur, Prambanan and the Ramayana danced under the stars.",
     season: "Apr – Oct",
+    image: "/images/destinations/java-bali.jpg",
     tone: 12,
     trips: [
       {
