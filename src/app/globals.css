@@ -3,15 +3,17 @@
 /* WanderMate v2 — see design-system/wandermate/MASTER.md */
 
 @theme {
-  --color-ink: #100e0b;
-  --color-ink-2: #2a2620;
-  --color-bone: #f2eee6;
-  --color-paper: #faf8f3;
-  --color-stone: #d9d1c2;
-  --color-smoke: #6a6358;
-  --color-ochre: #a16207;
-  --color-ochre-lit: #d9a441;
-  --color-river: #16211f;
+  /* Brand: WanderMate navy (#072268) and off-white. The "ochre" names are kept
+     for existing classes but now hold the brand's lighter blues. */
+  --color-ink: #072268;
+  --color-ink-2: #23336b;
+  --color-bone: #f5f2ec;
+  --color-paper: #fbfaf7;
+  --color-stone: #d6d9e2;
+  --color-smoke: #5b6380;
+  --color-ochre: #2f55b4;
+  --color-ochre-lit: #a8bdf2;
+  --color-river: #04174a;
 
   --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;

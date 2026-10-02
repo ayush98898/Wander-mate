@@ -3,21 +3,21 @@ import Image from "next/image";
 import type { Destination, Script } from "@/lib/destinations";
 import { cn } from "@/lib/utils";
 
-// Deep, slightly warm tones — one per destination, all readable with bone text.
+// Deep brand-navy variations — one per destination, all readable with bone text.
 const tones = [
-  "#1a1712", // kashi
-  "#2a1a24", // braj
-  "#14262a", // rishikesh
-  "#2d1c12", // rajputana
-  "#251f17", // khajuraho
-  "#272212", // hampi
-  "#2a1515", // temple country
-  "#1b2119", // odisha
-  "#1f1a26", // nepal
-  "#132420", // sri lanka
-  "#26181a", // bhutan
-  "#2a2010", // cambodia
-  "#14201f", // java & bali
+  "#072268", // kashi
+  "#0b1d55", // braj
+  "#0a2a5e", // rishikesh
+  "#102062", // rajputana
+  "#081b4f", // khajuraho
+  "#0d2766", // hampi
+  "#0a1f5a", // temple country
+  "#062558", // odisha
+  "#111d5c", // nepal
+  "#05265a", // sri lanka
+  "#0e1a52", // bhutan
+  "#0b2360", // cambodia
+  "#062a5e", // java & bali
 ];
 
 // Ring centres: the stupa seen from different corners.
@@ -83,7 +83,7 @@ export function DestinationPlate({
       style={{
         backgroundColor: tones.at(d.tone % tones.length),
         backgroundImage:
-          `repeating-radial-gradient(circle at ${ring}, transparent 0 22px, rgba(217,164,65,0.09) 22px 23px), radial-gradient(120% 90% at ${ring}, rgba(217,164,65,0.18), transparent 60%)`,
+          `repeating-radial-gradient(circle at ${ring}, transparent 0 22px, rgba(168,189,242,0.10) 22px 23px), radial-gradient(120% 90% at ${ring}, rgba(168,189,242,0.16), transparent 60%)`,
       }}
     >
       <span
