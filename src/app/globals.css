@@ -75,7 +75,7 @@
     background: var(--color-bone);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 400;
     font-feature-settings: "kern";
     -webkit-font-smoothing: antialiased;
   }

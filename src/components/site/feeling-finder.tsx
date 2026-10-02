@@ -63,9 +63,6 @@ export function FeelingFinder() {
                 >
                   {f.label}
                 </span>
-                <span className={cn("label transition-opacity", on ? "opacity-100" : "opacity-0")}>
-                  {String(i + 1).padStart(2, "0")} / {String(feelings.length).padStart(2, "0")}
-                </span>
               </button>
             );
           })}

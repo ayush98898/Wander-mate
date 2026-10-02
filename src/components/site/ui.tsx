@@ -51,20 +51,18 @@ export function Btn({ href, children, variant = "solid", className, external, ar
   );
 }
 
-/** Mono eyebrow with an index number: "01 / Journeys". */
+/** Small tracked-caps eyebrow. `index` is kept for callers but no longer shown. */
 export function Eyebrow({
-  index,
   children,
   className,
 }: {
+  /** @deprecated Section numbers were removed from the design. */
   index?: string;
   children: ReactNode;
   className?: string;
 }) {
   return (
     <p className={cn("label flex items-center gap-3", className)}>
-      {index ? <span className="opacity-60">{index}</span> : null}
-      {index ? <span aria-hidden className="h-px w-6 bg-current opacity-40" /> : null}
       <span>{children}</span>
     </p>
   );

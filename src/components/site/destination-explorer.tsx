@@ -59,7 +59,7 @@ export function DestinationExplorer() {
                 )}
               >
                 <span className={cn("display text-4xl md:text-5xl", on && "italic")}>{g.label}</span>
-                <span className="label">{String(g.count).padStart(2, "0")}</span>
+                <span className="label">{g.count}</span>
               </button>
             );
           })}

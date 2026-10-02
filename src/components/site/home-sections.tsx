@@ -16,12 +16,9 @@ const ladder = [
 export function WaysToTravel() {
   return (
     <ol className="grid border-t border-ink/15 sm:grid-cols-2 lg:grid-cols-5">
-      {ladder.map((l, i) => (
+      {ladder.map((l) => (
         <li key={l.name} className="border-b border-ink/15 lg:border-r lg:border-b-0 lg:last:border-r-0">
           <Link href={l.href} className="group flex h-full flex-col gap-6 py-8 pr-6 lg:min-h-[19rem] lg:px-6 lg:first:pl-0">
-            <span className="label text-smoke">
-              {String(i + 1).padStart(2, "0")} / 05
-            </span>
             <h3 className="display text-4xl">
               <span className="ul">{l.name}</span>
             </h3>
