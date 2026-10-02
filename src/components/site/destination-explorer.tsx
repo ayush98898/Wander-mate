@@ -74,9 +74,12 @@ export function DestinationExplorer() {
         className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
       >
         {group.list.map((d, i) => {
-          // Fill the 4-column grid exactly: a large first card, and (for India's 8) a wide last card.
+          // Fill the 4-column grid exactly: a large first card (4 cells), then widen
+          // just enough of the last cards to close the final row.
           const big = i === 0;
-          const wide = active === "india" && i === group.list.length - 1;
+          const n = group.list.length;
+          const spare = (4 - ((n + 3) % 4)) % 4;
+          const wide = i >= n - spare;
           return (
             <Link
               key={d.slug}

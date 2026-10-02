@@ -32,6 +32,16 @@ const scriptFont: Record<Script, string> = {
   tibetan: "var(--font-tibetan)",
   khmer: "var(--font-khmer)",
   javanese: "var(--font-javanese)",
+  // System fonts — these destinations all have photographs, so plates rarely render.
+  gurmukhi: "serif",
+  bengali: "serif",
+  malayalam: "serif",
+  gujarati: "serif",
+  arabic: "serif",
+  japanese: "serif",
+  greek: "var(--font-display), serif",
+  thai: "serif",
+  latin: "var(--font-display), serif",
 };
 
 /**
