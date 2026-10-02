@@ -9,6 +9,7 @@ import { Timeline } from "@/components/ui/timeline";
 import { whatsappLink } from "@/lib/content";
 import {
   addOns,
+  bands,
   boatRoute,
   booking,
   contact,
@@ -27,7 +28,7 @@ import {
 export const metadata: Metadata = {
   title: "Wandermate Premium · 2 nights in Varanasi",
   description: premium.intro,
-  openGraph: { images: ["/images/golden-boats.jpg"] },
+  openGraph: { images: ["/images/premium/stock/hero-aarti.jpg"] },
 };
 
 const enquire = whatsappLink("Namaste WanderMate! I'd like to book Wandermate Premium (2N3D) in Varanasi.");
@@ -69,11 +70,12 @@ export default function PremiumPage() {
       {/* ---------- Hero ---------- */}
       <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden text-bone">
         <Image
-          src="/images/golden-boats.jpg"
-          alt="Wooden boats on the Ganga in golden morning light"
+          src="/images/premium/stock/hero-aarti.jpg"
+          alt="The Aarti flame raised above the crowd on the ghats at night"
           fill
           priority
           sizes="100vw"
+          style={{ objectPosition: "50% 22%" }}
           className="animate-kenburns -z-20 object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/30 to-black/45" />
@@ -186,6 +188,8 @@ export default function PremiumPage() {
         </div>
       </section>
 
+      <PhotoBand band={bands.aarti} />
+
       {/* ---------- Itinerary ---------- */}
       <section id="itinerary" className="scroll-mt-14 border-t border-ink/10 bg-paper py-24 md:py-36">
         <div className="wrap">
@@ -209,8 +213,15 @@ export default function PremiumPage() {
                 subtitle: d.title,
                 content: (
                   <div className="pb-6">
-                    <div className="relative aspect-[16/9] overflow-hidden bg-ink">
-                      <Image src={d.image} alt={d.alt} fill sizes="(min-width:1024px) 55vw, 90vw" className="object-cover" />
+                    <div className="relative aspect-[3/2] overflow-hidden bg-ink">
+                      <Image
+                        src={d.image}
+                        alt={d.alt}
+                        fill
+                        sizes="(min-width:1024px) 55vw, 90vw"
+                        style={{ objectPosition: d.position }}
+                        className="object-cover"
+                      />
                     </div>
                     <ol className="mt-4">
                       {d.moments.map((m) => (
@@ -231,8 +242,15 @@ export default function PremiumPage() {
                             </ul>
                             {d.n === 2 && m.title.startsWith("Banarasi breakfast") ? <BoatRoute /> : null}
                             {m.image ? (
-                              <div className="relative mt-6 aspect-[6/5] max-w-sm overflow-hidden bg-ink">
-                                <Image src={m.image.src} alt={m.image.alt} fill sizes="24rem" className="object-cover" />
+                              <div className="relative mt-6 aspect-[4/3] max-w-md overflow-hidden bg-ink">
+                                <Image
+                                  src={m.image.src}
+                                  alt={m.image.alt}
+                                  fill
+                                  sizes="28rem"
+                                  style={{ objectPosition: m.image.position }}
+                                  className="object-cover"
+                                />
                               </div>
                             ) : null}
                           </div>
@@ -389,6 +407,8 @@ export default function PremiumPage() {
         </div>
       </section>
 
+      <PhotoBand band={bands.deepawali} />
+
       {/* ---------- Booking ---------- */}
       <section id="booking" className="scroll-mt-14 border-t border-ink/10 bg-paper py-24 md:py-36">
         <div className="wrap grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
@@ -498,5 +518,28 @@ function BoatRoute() {
         ))}
       </ol>
     </div>
+  );
+}
+
+/** A full-width photograph between chapters, with one line set over a black gradient. */
+function PhotoBand({ band }: { band: (typeof bands)[keyof typeof bands] }) {
+  return (
+    <figure className="relative isolate flex min-h-[90svh] items-end overflow-hidden text-bone">
+      <Image
+        src={band.src}
+        alt={band.alt}
+        fill
+        sizes="100vw"
+        style={{ objectPosition: band.position }}
+        className="-z-20 object-cover"
+      />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
+      <div className="wrap pb-12 md:pb-16">
+        <Reveal>
+          <p className="display max-w-4xl text-[clamp(2.25rem,5vw,4.75rem)] leading-[1.05]">{band.line}</p>
+          <figcaption className="label mt-6 text-bone/70">{band.caption}</figcaption>
+        </Reveal>
+      </div>
+    </figure>
   );
 }

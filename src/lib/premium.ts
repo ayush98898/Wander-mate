@@ -52,16 +52,17 @@ export type Moment = {
   title: string;
   points: string[];
   optional?: boolean;
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; position?: string };
 };
-export type Day = { n: number; title: string; image: string; alt: string; moments: Moment[] };
+export type Day = { n: number; title: string; image: string; alt: string; position?: string; moments: Moment[] };
 
 export const days: Day[] = [
   {
     n: 1,
     title: "Arrival, the central old city & Ganga Aarti",
-    image: "/images/aarti-night.jpg",
-    alt: "Priests performing the Ganga Aarti at night",
+    image: "/images/premium/stock/day1-aarti-priest.jpg",
+    alt: "A priest in saffron raises the brass Aarti lamp at Dashashwamedh Ghat",
+    position: "50% 30%",
     moments: [
       {
         title: "Arrival & check-in",
@@ -79,6 +80,7 @@ export const days: Day[] = [
       {
         time: "Evening",
         title: "The Ganga Aarti, premium riverside",
+        image: { src: "/images/premium/stock/aarti-flame.jpg", alt: "The tiered Aarti flame raised into the night", position: "50% 25%" },
         points: [
           "Head to the ghats with your local companion",
           "Disembark at Dashashwamedh Ghat and take reserved premium seats right next to the main ceremony",
@@ -88,6 +90,7 @@ export const days: Day[] = [
       {
         time: "Night",
         title: "Street food walk — Chowk & the old city",
+        image: { src: "/images/premium/stock/food-tikki.jpg", alt: "Aloo tikki crisping on a street-side tawa" },
         points: [
           "Tamatar chaat, aloo tikki, Banarasi paan, gol-gappe, thandai, palangtod mithai (seasonal) and Banarasi sweets",
           "Each dish with its full story — the vendor, the history, the craft behind it",
@@ -107,13 +110,13 @@ export const days: Day[] = [
   {
     n: 2,
     title: "Pre-dawn river, north city temples & Manikarnika",
-    image: "/images/sunrise-boats.jpg",
-    alt: "Boats on the Ganga at sunrise",
+    image: "/images/premium/stock/day2-vishwanath.jpg",
+    alt: "The golden spire of Kashi Vishwanath",
+    position: "50% 35%",
     moments: [
       {
         time: "4:30 am",
         title: "Temple circuit — north & central",
-        image: { src: "/images/premium/q-spire.jpg", alt: "The golden spire of Kashi Vishwanath through a carved arch" },
         points: [
           "Kashi Vishwanath — VIP darshan before the crowds gather; the Jyotirlinga and its golden spire",
           "Annapurna — goddess of nourishment, right beside Vishwanath and almost always missed",
@@ -123,6 +126,7 @@ export const days: Day[] = [
       {
         time: "Morning",
         title: "Banarasi breakfast & your private boat",
+        image: { src: "/images/premium/stock/food-jalebi.jpg", alt: "Jalebi frying in a wide iron pan" },
         points: [
           "Kachori sabzi, jalebi and chai at an iconic old-city shop — with the story of the shop, the dish and the street",
           "Board your private boat at Panchaganga Ghat",
@@ -158,8 +162,9 @@ export const days: Day[] = [
   {
     n: 3,
     title: "Morning ghats, street food & farewell",
-    image: "/images/fog-boats.jpg",
-    alt: "Boats in the morning mist on the Ganga",
+    image: "/images/premium/stock/day3-boats.jpg",
+    alt: "Wooden boats moored below the ghats in clear morning light",
+    position: "50% 55%",
     moments: [
       {
         time: "First light",
@@ -434,4 +439,22 @@ export const contact = {
   web: "wandermate.in",
   instagram: "wandermate.in",
   address: "First floor, B27/92-13, Durgakund Road, Jawahar Nagar Colony, Bhelupur, Varanasi, Uttar Pradesh 221005",
+};
+
+/** Full-width photo breaks between chapters. */
+export const bands = {
+  aarti: {
+    src: "/images/premium/stock/band-aarti-fan.jpg",
+    alt: "A priest raises the yak-tail fan during the evening Ganga Aarti",
+    position: "50% 22%",
+    line: "Every dusk, the sky erupts in the golden flames of the Ganga Aarti.",
+    caption: "The evening Aarti, Dashashwamedh Ghat",
+  },
+  deepawali: {
+    src: "/images/premium/stock/band-dev-deepawali.jpg",
+    alt: "Fireworks over the Ganga on Dev Deepawali",
+    position: "50% 30%",
+    line: "Kashi is not just a city. It is an experience that lives within you.",
+    caption: "Dev Deepawali on the Ganga",
+  },
 };
