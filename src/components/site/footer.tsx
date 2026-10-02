@@ -23,7 +23,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-10 py-14 text-sm sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 py-14 text-sm sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <p className="label text-bone/45">Journeys</p>
             <ul className="mt-5 space-y-2.5">
@@ -79,25 +79,11 @@ export function Footer() {
               <li className="text-bone/55">Varanasi, Uttar Pradesh, India</li>
             </ul>
           </div>
-          <div>
-            <p className="label text-bone/45">Kashi</p>
-            <p className="mt-5 font-display text-2xl leading-snug italic text-bone/85">
-              “Older than history, older than tradition, older even than legend.”
-            </p>
-            <p className="label mt-3 text-bone/45">Mark Twain</p>
-          </div>
         </div>
-      </div>
-
-      <div aria-hidden className="select-none px-2 leading-none">
-        <p className="display translate-y-[0.18em] text-center text-[20.5vw] tracking-[-0.04em] text-bone/[0.07]">
-          WanderMate
-        </p>
       </div>
 
       <div className="wrap flex flex-col gap-2 border-t border-bone/12 py-6 text-bone/45 sm:flex-row sm:justify-between">
         <p className="label">© {new Date().getFullYear()} WanderMate</p>
-        <p className="label">{site.coordinates}</p>
         <p className="label">Designed by Ayush Singh</p>
       </div>
     </footer>

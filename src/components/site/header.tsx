@@ -94,39 +94,13 @@ export function Header() {
             {open ? "Close" : "Menu"}
           </button>
 
-          <Link href="/" aria-label="WanderMate — home" className="flex items-center gap-2.5">
-            <span
-              className={cn(
-                "grid size-8 place-items-center rounded-full transition-colors",
-                solid ? "bg-ink" : "bg-transparent ring-1 ring-current/40",
-              )}
-            >
-              <Image src="/images/logo-mark.png" alt="" width={22} height={23} className="h-[23px] w-auto" priority />
-            </span>
-            <span className="display text-[1.6rem] leading-none tracking-[-0.01em] md:text-[1.9rem]">
-              WanderMate
-            </span>
+          <Link href="/" aria-label="WanderMate — home" className="text-[0.95rem] font-normal tracking-[0.42em] uppercase md:text-[1.05rem]">
+            WanderMate
           </Link>
 
-          <div className="flex items-center justify-self-end gap-6">
-            <a
-              href={whatsappLink("Namaste WanderMate! I'd like to plan a journey.")}
-              target="_blank"
-              rel="noreferrer"
-              className="label ul hidden lg:inline"
-            >
-              {site.phoneDisplay}
-            </a>
-            <Link
-              href="/plan"
-              className={cn(
-                "label hidden min-h-11 items-center px-4 transition-colors sm:inline-flex md:px-5",
-                solid ? "bg-ink text-bone hover:bg-ochre" : "border border-current/60 hover:bg-bone hover:text-ink",
-              )}
-            >
-              Plan a journey
-            </Link>
-          </div>
+          <Link href="/plan" className="label ul hidden justify-self-end sm:inline">
+            Enquire
+          </Link>
         </div>
       </header>
 
@@ -156,7 +130,6 @@ export function Header() {
                         aria-current={pathname === item.href ? "page" : undefined}
                         className="group flex items-baseline gap-5 py-3 md:py-4"
                       >
-                        <span className="label w-8 text-bone/40">{String(i + 1).padStart(2, "0")}</span>
                         <span className="display text-[2.6rem] transition-[color,transform] duration-500 group-hover:translate-x-3 group-hover:text-ochre-lit sm:text-6xl md:text-7xl">
                           {item.label}
                         </span>

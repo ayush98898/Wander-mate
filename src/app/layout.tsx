@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Host_Grotesk,
-  Instrument_Serif,
-  JetBrains_Mono,
+  Cormorant_Garamond,
+  Jost,
   Noto_Sans_Javanese,
   Noto_Serif_Kannada,
   Noto_Serif_Khmer,
@@ -20,25 +19,18 @@ import { site } from "@/lib/content";
 
 import "./globals.css";
 
-const instrument = Instrument_Serif({
-  variable: "--font-instrument",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["300", "400", "500"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
-const host = Host_Grotesk({
-  variable: "--font-host",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   display: "swap",
 });
 
@@ -93,7 +85,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${instrument.variable} ${host.variable} ${jetbrains.variable} ${tiro.variable} ${scripts}`}
+      className={`${cormorant.variable} ${jost.variable} ${tiro.variable} ${scripts}`}
     >
       <body className="min-h-svh">
         <a
