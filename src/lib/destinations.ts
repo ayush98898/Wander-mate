@@ -85,11 +85,11 @@ export const destinations: Destination[] = [
       },
       {
         slug: "kashi-premium",
-        name: "Kashi Premium",
+        name: "Wandermate Premium",
         format: "Private",
-        duration: "2 – 4N",
-        summary: "Premium stays, a private boat at sunrise and front-row seats at the Aarti.",
-        highlights: ["Sugam Darshan", "Private sunrise boat", "Expert guide throughout"],
+        duration: "2N · 3D",
+        summary: "Our most popular journey: a boutique heritage stay, a private boat and reserved seats beside the Aarti.",
+        highlights: ["VIP darshan at Kashi Vishwanath", "Private wooden boat", "Three food walks with a Kashi companion"],
         feelings: ["devotion", "awe"],
         href: "/journeys/kashi-premium",
         image: "/images/golden-boats.jpg",
@@ -756,6 +756,7 @@ export function tripHref(t: TripWithPlace) {
 
 /** A hand-picked spread across India and beyond for the home page rail. */
 export const featuredTripSlugs = [
+  "kashi-premium",
   "banaras-unfiltered",
   "spiritual-triangle",
   "braj-holi-unfiltered",

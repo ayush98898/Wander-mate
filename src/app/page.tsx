@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { CinematicList } from "@/components/site/cinematic-list";
 import { DayInKashi } from "@/components/site/day-in-kashi";
@@ -11,7 +12,7 @@ import { Reveal } from "@/components/site/reveal";
 import { Reviews } from "@/components/site/reviews";
 import { SplitHeading } from "@/components/site/split-heading";
 import { Btn, Eyebrow } from "@/components/site/ui";
-import { approach, experiences, site, team } from "@/lib/content";
+import { approach, experiences, site, team, whatsappLink } from "@/lib/content";
 import { allTrips, destinations, featuredTripSlugs } from "@/lib/destinations";
 
 const featured = featuredTripSlugs.map((s) => allTrips.find((t) => t.slug === s)!);
@@ -87,6 +88,55 @@ export default function Home() {
               </Reveal>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ---------- Most popular: Wandermate Premium ---------- */}
+      <section id="premium" className="scroll-mt-20 border-t border-ink/12 py-24 md:py-32">
+        <div className="wrap grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+          <Reveal className="lg:col-span-7">
+            <Link href="/journeys/kashi-premium" className="group relative block aspect-[4/3] overflow-hidden bg-ink">
+              <Image
+                src="/images/golden-boats.jpg"
+                alt="Wooden boats on the Ganga in golden morning light"
+                fill
+                sizes="(min-width:1024px) 55vw, 100vw"
+                className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.04]"
+              />
+              <span className="label absolute bottom-5 left-5 bg-bone px-3 py-2 text-ink">Most popular</span>
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <Eyebrow className="text-ochre">Our most popular journey · 2 nights, 3 days</Eyebrow>
+            <h2 className="display mt-6 text-5xl md:text-7xl">
+              Wandermate <em>Premium</em>
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-ink-2">
+              Your first encounter with Kashi: a boutique heritage stay, a private wooden boat, reserved seats beside the
+              Ganga Aarti, VIP darshan at Kashi Vishwanath and three food walks — with a Kashi companion throughout.
+            </p>
+            <ul className="mt-8 grid grid-cols-3 border-t border-ink/15 pt-6">
+              {[
+                ["3", "days, hour by hour"],
+                ["3", "food walks"],
+                ["24/7", "WhatsApp support"],
+              ].map(([n, l]) => (
+                <li key={l}>
+                  <p className="display text-4xl text-ochre">{n}</p>
+                  <p className="mt-1 text-sm text-smoke">{l}</p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Btn href="/journeys/kashi-premium">See the full journey</Btn>
+              <Btn
+                href={whatsappLink("Namaste WanderMate! I'd like to book Wandermate Premium (2N3D) in Varanasi.")}
+                variant="line"
+              >
+                Request it
+              </Btn>
+            </div>
+          </Reveal>
         </div>
       </section>
 

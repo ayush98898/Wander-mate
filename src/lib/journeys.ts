@@ -64,9 +64,9 @@ export const journeys: Journey[] = [
   },
   {
     slug: "kashi-premium",
-    name: "Kashi Premium",
+    name: "Wandermate Premium",
     kind: "Private journey",
-    duration: "1 – 7 days",
+    duration: "2 nights, 3 days",
     route: "Varanasi",
     image: "/images/golden-boats.jpg",
     feelings: ["devotion", "awe"],
