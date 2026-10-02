@@ -14,7 +14,8 @@ import { getJourney, journeys } from "@/lib/journeys";
 import { exclusions, inclusions, itinerary, solo } from "@/lib/solo";
 
 export function generateStaticParams() {
-  return journeys.filter((j) => !j.external).map((j) => ({ slug: j.slug }));
+  // kashi-premium has its own page at journeys/kashi-premium.
+  return journeys.filter((j) => !j.external && j.slug !== "kashi-premium").map((j) => ({ slug: j.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
