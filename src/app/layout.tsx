@@ -54,17 +54,19 @@ const scripts = [kannada, tamil, oriya, sinhala, tibetan, khmer, javanese].map((
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "WanderMate — Heritage & Cultural Journeys, from Kashi to Angkor",
+    default: "WanderMate — Heritage & Cultural Journeys across India and the World",
     template: "%s — WanderMate",
   },
   description: site.description,
   keywords: [
+    "heritage travel",
+    "cultural journeys",
+    "living traditions",
+    "India heritage tours",
     "Varanasi heritage tour",
-    "Kashi cultural journey",
-    "luxury Varanasi travel",
-    "Ganga Aarti",
-    "Banaras private tour",
-    "Kashi Ayodhya Prayagraj",
+    "Kyoto temples tour",
+    "Angkor Wat private tour",
+    "Petra and Wadi Rum journey",
   ],
   openGraph: {
     type: "website",

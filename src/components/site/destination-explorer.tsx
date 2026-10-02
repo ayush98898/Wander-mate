@@ -8,8 +8,14 @@ import { beyond, india, type Destination } from "@/lib/destinations";
 import { cn } from "@/lib/utils";
 
 const groups = [
-  { id: "india", label: "India", count: india.length, list: india, note: "Kashi now; Braj, Rishikesh and Rajputana open in 2027." },
-  { id: "beyond", label: "Beyond India", count: beyond.length, list: beyond, note: "Private journeys on request, where India's stories travelled." },
+  {
+    id: "beyond",
+    label: "The world",
+    count: beyond.length,
+    list: beyond,
+    note: "Private journeys on request — living heritage across Asia, the Middle East, Africa, Europe and the Americas.",
+  },
+  { id: "india", label: "India", count: india.length, list: india, note: "Kashi now; Braj, Rishikesh and Rajputana open in 2027, then the rest of India." },
 ] as const;
 
 const statusTone: Record<Destination["status"], string> = {
@@ -22,7 +28,7 @@ const statusTone: Record<Destination["status"], string> = {
 /** Destinations by group — an accessible two-tab switch over a card grid. */
 export function DestinationExplorer() {
   const uid = useId();
-  const [active, setActive] = useState<(typeof groups)[number]["id"]>("india");
+  const [active, setActive] = useState<(typeof groups)[number]["id"]>("beyond");
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const group = groups.find((g) => g.id === active)!;
 

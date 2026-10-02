@@ -1761,15 +1761,16 @@ export function tripHref(t: TripWithPlace) {
 
 /** A hand-picked spread across India and beyond for the home page rail. */
 export const featuredTripSlugs = [
-  "kashi-premium",
-  "banaras-unfiltered",
-  "spiritual-triangle",
-  "braj-holi-unfiltered",
-  "rajputana-in-private",
-  "kathmandu-valley-heritage",
-  "ramayana-trail",
   "angkor-in-depth",
-  "borobudur-and-prambanan",
+  "temples-of-kyoto",
+  "petra-by-night",
+  "kashi-premium",
+  "the-nile-by-dahabiya",
+  "silk-road-cities",
+  "golden-temple-at-dawn",
+  "machu-picchu-unhurried",
+  "monasteries-of-the-indus",
+  "inside-the-medina-of-fes",
 ];
 
 /** Festivals that recur through the year, across destinations. */

@@ -2,9 +2,9 @@
 
 export const site = {
   name: "WanderMate",
-  tagline: "Heritage and cultural journeys, from Kashi to Angkor",
+  tagline: "Heritage and cultural journeys across India and the world",
   description:
-    "Story-led heritage and cultural journeys led by local people: Kashi first, then Braj, Rishikesh and Rajputana, and beyond India to Nepal, Sri Lanka, Bhutan, Angkor, Java and Bali.",
+    "Story-led heritage and cultural journeys led by local people — temples, rituals, crafts and festivals across India and the world, from Kashi and Amritsar to Kyoto, Petra, Angkor and Machu Picchu.",
   // Set NEXT_PUBLIC_SITE_URL to the production domain when deploying.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   whatsapp: "919214313559",

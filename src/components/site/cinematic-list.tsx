@@ -11,7 +11,12 @@ import { cn } from "@/lib/utils";
  * Cinematic list — rows that reveal a full-bleed image behind the whole section
  * on hover/focus (pattern inspired by 21st.dev "Cinematic List").
  */
-export function CinematicList({ items }: { items: Experience[] }) {
+export type CinematicItem = Pick<Experience, "slug" | "title" | "kicker" | "time" | "duration" | "image"> & {
+  /** Where the row links; defaults to the experience on /experiences. */
+  href?: string;
+};
+
+export function CinematicList({ items }: { items: CinematicItem[] }) {
   const [active, setActive] = useState(0);
   return (
     <div className="relative isolate overflow-hidden bg-ink text-bone">
@@ -36,7 +41,7 @@ export function CinematicList({ items }: { items: Experience[] }) {
           return (
             <li key={e.slug} className="border-b border-bone/15 first:border-t">
               <Link
-                href={`/experiences#${e.slug}`}
+                href={e.href ?? `/experiences#${e.slug}`}
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
                 className="grid grid-cols-[3.5rem_1fr] items-baseline gap-x-4 py-5 md:grid-cols-[6rem_1fr_16rem_6rem] md:py-7"
