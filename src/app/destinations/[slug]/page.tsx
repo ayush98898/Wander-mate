@@ -48,7 +48,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ink text-bone">
         <DestinationPlate d={d} priority sizes="100vw" showName={false} className="absolute inset-0 -z-10 opacity-90" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/40 to-ink/30" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/40 to-black/30" />
         <div className="wrap flex min-h-[82svh] flex-col justify-end pt-32 pb-12 md:pb-16">
           <p className="label text-bone/75">
             {d.country} · {d.status}

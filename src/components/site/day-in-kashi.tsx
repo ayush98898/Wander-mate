@@ -66,7 +66,7 @@ export function DayInKashi() {
       className="bg-ink"
       onSlideChange={setActive}
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-ink/60 via-ink/10 to-ink/80" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/60 via-black/10 to-black/80" />
       <div className="absolute inset-x-0 top-0 z-[2] pt-24 md:pt-28">
         <div className="wrap flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <p className="label text-bone/70">Our flagship · One day in Kashi</p>

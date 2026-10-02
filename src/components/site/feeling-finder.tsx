@@ -84,7 +84,7 @@ export function FeelingFinder() {
               )}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
           <p
             key={active}
             className="display absolute inset-x-6 bottom-6 max-w-lg text-[1.9rem] leading-[1.05] text-bone md:inset-x-8 md:bottom-8 md:text-4xl"

@@ -30,7 +30,7 @@ export default function Home() {
           sizes="100vw"
           className="animate-kenburns -z-20 object-cover"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/35 to-ink/45" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/35 to-black/45" />
 
         <div className="wrap pt-36 pb-8 md:pb-12">
           <div className="flex items-end justify-between gap-8">

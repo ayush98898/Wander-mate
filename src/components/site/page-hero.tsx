@@ -34,7 +34,7 @@ export function PageHero({
         className="animate-kenburns -z-20 object-cover"
         style={{ objectPosition: position }}
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/90 via-black/30 to-black/40" />
       <div className="wrap pt-32 pb-12 md:pb-16">
         <p className="label text-bone/75">{label}</p>
         <SplitHeading as="h1" onLoad className="display mt-5 max-w-6xl text-[3.4rem] sm:text-7xl md:text-8xl lg:text-[8.5rem]">

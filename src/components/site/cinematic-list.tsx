@@ -28,7 +28,7 @@ export function CinematicList({ items }: { items: Experience[] }) {
           )}
         />
       ))}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/75 to-ink/30" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/75 to-black/30" />
 
       <ol className="wrap py-10 md:py-16">
         {items.map((e, i) => {
