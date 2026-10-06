@@ -175,7 +175,7 @@ export const packages: TourPackage[] = [
     goodFor: ["Families with elders", "Children", "First visits", "Slow travellers"],
     reviews: [
       {
-        quote: "They didn't treat me like just another traveller — they treated me like family.",
+        quote: "They didn’t treat me like just another traveller — they treated me like family.",
         name: "Shivani Mishra",
         from: "Jaipur",
         trip: "Luxury package",

@@ -182,11 +182,8 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* ---------- Guests ---------- */}
-      <section className="py-24 md:py-32">
+      <section className="bg-ink py-24 text-bone md:py-32">
         <div className="wrap">
-          <Reveal className="mb-14">
-            <p className="label text-ochre">Guests who travelled Kashi with us</p>
-          </Reveal>
           <Reveal>
             <GuestReviews reviews={p.reviews} score={site.rating.score} count={site.rating.count} />
           </Reveal>
