@@ -9,6 +9,8 @@
 import { whatsappLink } from "@/lib/content";
 
 export const store = {
+  /** Hidden for now — set to true to show the store section on package and destination pages. */
+  live: false,
   name: "WanderMate Heritage Store",
   // TODO: replace with the heritage store's own address once it is live.
   url: whatsappLink("Namaste WanderMate! I'd like to see the Heritage Store."),
@@ -62,5 +64,5 @@ export const shelves: Record<string, Shelf> = {
 };
 
 export function getShelf(slug?: string) {
-  return slug ? shelves[slug] : undefined;
+  return store.live && slug ? shelves[slug] : undefined;
 }
