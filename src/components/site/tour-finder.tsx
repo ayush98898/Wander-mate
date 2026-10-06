@@ -179,7 +179,14 @@ export function TourFinder({ initial }: { initial: TourFilters }) {
       {results.length ? (
         <ul className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {results.map((t) => (
-            <li key={`${t.destination.slug}-${t.slug}`}>
+            <li
+              key={`${t.destination.slug}-${t.slug}`}
+              data-region={t.destination.group}
+              data-dest={t.destination.slug}
+              data-nights={nights(t)}
+              data-style={t.format}
+              data-feel={t.feelings.join(" ")}
+            >
               <TripCard trip={t} sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 100vw" />
               <p className="mt-3 text-sm leading-relaxed text-smoke">{t.summary}</p>
             </li>
