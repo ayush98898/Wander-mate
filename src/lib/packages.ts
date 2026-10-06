@@ -55,6 +55,8 @@ export type TourPackage = {
   goodFor: string[];
   reviews: Review[];
   faqs: Faq[];
+  /** Journal stories to read before the trip (post slugs), lead story first. */
+  stories?: string[];
   closing: { image: string; alt: string; line: string };
 };
 
@@ -234,6 +236,7 @@ export const packages: TourPackage[] = [
         icon: "plus",
       },
     ],
+    stories: ["the-ganga-aarti-explained", "kashi-city-of-light", "dev-deepawali"],
     closing: {
       image: "/images/golden-boats.jpg",
       alt: "Boats on the Ganga in a golden morning haze",

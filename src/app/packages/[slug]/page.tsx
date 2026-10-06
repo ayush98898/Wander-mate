@@ -1,10 +1,12 @@
 import { ArrowUpRight, Check, X } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { DayExplorer } from "@/components/package/day-explorer";
 import { Faq } from "@/components/package/faq";
+import { KashiStories } from "@/components/package/kashi-stories";
 import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
 import { PackageHero } from "@/components/package/package-hero";
@@ -13,6 +15,7 @@ import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
 import { Reveal } from "@/components/site/reveal";
 import { site } from "@/lib/content";
+import { getPost, type Post } from "@/lib/journal";
 import { getPackage, packages } from "@/lib/packages";
 
 export function generateStaticParams() {
@@ -30,6 +33,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const p = getPackage(slug);
   if (!p) notFound();
+  const stories = (p.stories ?? []).map(getPost).filter((s): s is Post => Boolean(s));
 
   return (
     <>
@@ -183,6 +187,31 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
           <Faq items={p.faqs} />
         </div>
       </section>
+
+      {/* ---------- Stories from the Journal ---------- */}
+      {stories.length ? (
+        <section className="border-t border-ink/12 bg-paper py-24 md:py-32">
+          <div className="wrap">
+            <Reveal className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+              <div>
+                <p className="label text-ochre">From the Journal</p>
+                <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
+                  Stories of <em>Kashi</em>
+                </h2>
+              </div>
+              <div className="max-w-xs md:text-right">
+                <p className="text-smoke">A few pages to read before you go — the trip means more when you know the story.</p>
+                <Link href="/journal" className="group label mt-5 inline-flex min-h-11 items-center gap-3 border-b border-ink/30 transition-colors hover:border-ink">
+                  All stories <ArrowUpRight aria-hidden className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal>
+              <KashiStories stories={stories} />
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* ---------- Closing ---------- */}
       <section className="relative isolate flex min-h-[80svh] items-end overflow-hidden text-bone">
