@@ -8,7 +8,7 @@ import { stopIcons } from "@/components/package/icons";
 import type { PackageDay } from "@/lib/packages";
 import { cn } from "@/lib/utils";
 
-/** Day tabs: one big photograph, and the day's itinerary as timed rows — a few words each. */
+/** Day tabs: one big photograph, and the day's itinerary as numbered rows, each with a line or two of detail. */
 export function DayExplorer({ days }: { days: PackageDay[] }) {
   const uid = useId();
   const reduce = useReducedMotion();
@@ -84,21 +84,20 @@ export function DayExplorer({ days }: { days: PackageDay[] }) {
                   initial={reduce ? false : { opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: reduce ? 0 : 0.06 * n, ease: [0.16, 1, 0.3, 1] }}
-                  className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-3 border-b sm:grid-cols-[4.75rem_2.75rem_minmax(0,1fr)] sm:gap-4 border-ink/12 py-4 first:border-t"
+                  className="grid grid-cols-[2rem_minmax(0,1fr)] items-start gap-3 border-b border-ink/12 py-5 first:border-t sm:grid-cols-[2.25rem_2.75rem_minmax(0,1fr)] sm:gap-4"
                 >
-                  <time className="label text-[0.7rem] whitespace-nowrap text-ochre tabular-nums">{s.time}</time>
+                  <span className="label pt-2 text-ochre tabular-nums">{String(n + 1).padStart(2, "0")}</span>
                   <span className="hidden size-11 place-items-center bg-ink text-bone sm:grid">
                     <Icon aria-hidden className="size-5" strokeWidth={1.4} />
                   </span>
                   <span className="min-w-0">
                     <span className="display block text-2xl leading-tight">{s.title}</span>
-                    <span className="mt-0.5 block text-sm text-smoke">{s.note}</span>
+                    <span className="mt-1.5 block text-[0.95rem] leading-relaxed text-ink-2">{s.note}</span>
                   </span>
                 </motion.li>
               );
             })}
           </ol>
-          <p className="label mt-5 text-smoke">Times are a guide · they move with sunrise and your pace</p>
         </div>
       </div>
     </div>
