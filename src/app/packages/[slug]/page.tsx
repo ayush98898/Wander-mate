@@ -7,10 +7,10 @@ import { DayExplorer } from "@/components/package/day-explorer";
 import { Faq } from "@/components/package/faq";
 import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
-import { MiniMap } from "@/components/package/mini-map";
 import { RiverRoute } from "@/components/package/river-route";
 import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
+import { TripOnGround } from "@/components/package/trip-on-ground";
 import { WhenToGo } from "@/components/package/when-to-go";
 import { Reveal } from "@/components/site/reveal";
 import { HoverExpand } from "@/components/ui/hover-expand";
@@ -149,22 +149,20 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* ---------- Beyond the ghats ---------- */}
-      {p.beyond ? (
+      {/* ---------- Your trip on the ground ---------- */}
+      {p.ground ? (
         <section className="py-24 md:py-32">
-          <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center lg:gap-20">
-            <Reveal>
-              <p className="label text-ochre">Days 3 & 4</p>
-              <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
-                Beyond <em>the ghats</em>
-              </h2>
-              <div className="relative mt-10 aspect-[4/3] overflow-hidden bg-ink">
-                <Image src="/images/packages/old-city-lane.jpg" alt="A lane in old Varanasi with a painted Ganesha on the wall" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+          <div className="wrap">
+            <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <p className="label text-ochre">Your trip on the ground</p>
+                <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
+                  More time there, <em>less in the car</em>
+                </h2>
               </div>
+              <p className="max-w-xs text-smoke">How you arrive, where you stay, and how each day moves.</p>
             </Reveal>
-            <Reveal delay={0.1}>
-              <MiniMap places={p.beyond} />
-            </Reveal>
+            <TripOnGround ground={p.ground} />
           </div>
         </section>
       ) : null}
