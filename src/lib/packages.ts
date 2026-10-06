@@ -6,10 +6,10 @@
  * the layout between a multi-day journey and a single-day program.
  */
 
-export type Moment = "dawn" | "morning" | "afternoon" | "evening" | "night";
 export type StopIcon = "boat" | "temple" | "walk" | "stupa" | "fort" | "car" | "hotel" | "flame" | "museum" | "campus";
 
-export type Stop = { title: string; note?: string; when: Moment; icon: StopIcon };
+/** One stop in the day, in order. `time` is a typical start (it moves with sunrise and sunset). */
+export type Stop = { time: string; title: string; note: string; icon: StopIcon };
 
 export type PackageDay = {
   n: number;
@@ -81,9 +81,11 @@ export const packages: TourPackage[] = [
         imageAlt: "A priest raises the brass Aarti lamp at Dashashwamedh Ghat",
         position: "50% 30%",
         stops: [
-          { title: "Arrival & check-in", note: "Hotel near the ghats", when: "afternoon", icon: "hotel" },
-          { title: "Private Aarti boat", note: "Dashashwamedh Ghat", when: "evening", icon: "boat" },
-          { title: "The Ganga Aarti", note: "From the water", when: "evening", icon: "flame" },
+          { time: "12:00 PM", title: "Arrive & check in", note: "Rest after the journey", icon: "hotel" },
+          { time: "5:00 PM", title: "To Dashashwamedh Ghat", note: "Short ride, last stretch on foot", icon: "walk" },
+          { time: "5:45 PM", title: "Private Aarti boat", note: "Your own boat, front row on the water", icon: "boat" },
+          { time: "6:30 PM", title: "The Ganga Aarti", note: "About 45 min of lamps, conch and chant", icon: "flame" },
+          { time: "8:00 PM", title: "Back to the hotel", note: "Dinner on your own · overnight", icon: "hotel" },
         ],
       },
       {
@@ -93,10 +95,12 @@ export const packages: TourPackage[] = [
         image: "/images/sunrise-boats.jpg",
         imageAlt: "Boats on the Ganga at sunrise",
         stops: [
-          { title: "Sunrise boat ride", note: "Assi to Raj Ghat", when: "dawn", icon: "boat" },
-          { title: "Kashi Vishwanath", note: "The Jyotirlinga", when: "morning", icon: "temple" },
-          { title: "Sankat Mochan", note: "Founded by Tulsidas", when: "afternoon", icon: "temple" },
-          { title: "Durga Temple", note: "Durga Kund", when: "afternoon", icon: "temple" },
+          { time: "5:15 AM", title: "Sunrise boat ride", note: "Assi to Raj Ghat, about 1½ hours", icon: "boat" },
+          { time: "8:00 AM", title: "Breakfast & rest", note: "Back at the hotel", icon: "hotel" },
+          { time: "10:00 AM", title: "Kashi Vishwanath", note: "Darshan at the Jyotirlinga · no phones inside", icon: "temple" },
+          { time: "1:30 PM", title: "Sankat Mochan", note: "Hanuman temple founded by Tulsidas", icon: "temple" },
+          { time: "2:30 PM", title: "Durga Temple", note: "Red-stone temple by Durga Kund, 5 min away", icon: "temple" },
+          { time: "4:00 PM", title: "Evening free", note: "Hotel · overnight", icon: "hotel" },
         ],
       },
       {
@@ -107,9 +111,10 @@ export const packages: TourPackage[] = [
         imageAlt: "A temple tower among palm trees at Sarnath",
         position: "50% 35%",
         stops: [
-          { title: "Sarnath", note: "Dhamek Stupa & museum", when: "morning", icon: "stupa" },
-          { title: "Markandey Mahadev", note: "Where the Gomti meets the Ganga", when: "afternoon", icon: "temple" },
-          { title: "Old city walk", note: "The galis of Banaras", when: "evening", icon: "walk" },
+          { time: "9:00 AM", title: "Sarnath", note: "Dhamek Stupa, temple & museum (shut Fridays)", icon: "stupa" },
+          { time: "12:30 PM", title: "Markandey Mahadev", note: "Kaithi, where the Gomti meets the Ganga", icon: "temple" },
+          { time: "3:30 PM", title: "Back to the hotel", note: "Rest before the evening", icon: "hotel" },
+          { time: "5:30 PM", title: "Old city walk", note: "Lanes, shrines and sweet shops, on foot", icon: "walk" },
         ],
       },
       {
@@ -119,10 +124,11 @@ export const packages: TourPackage[] = [
         image: "/images/packages/ganga-waterfront.jpg",
         imageAlt: "The waterfront of Varanasi seen from the Ganga",
         stops: [
-          { title: "Ramnagar Fort", note: "The Maharaja's museum", when: "morning", icon: "fort" },
-          { title: "BHU & New Vishwanath", note: "A campus temple in marble", when: "morning", icon: "campus" },
-          { title: "Bharat Mata Mandir", note: "A relief map of India", when: "afternoon", icon: "museum" },
-          { title: "Departure", note: "Onward journey", when: "afternoon", icon: "car" },
+          { time: "9:00 AM", title: "Check out", note: "After breakfast, bags in the cab", icon: "hotel" },
+          { time: "10:00 AM", title: "Ramnagar Fort", note: "The Maharaja's fort & museum", icon: "fort" },
+          { time: "12:30 PM", title: "BHU & New Vishwanath", note: "Marble temple on the campus", icon: "campus" },
+          { time: "2:00 PM", title: "Bharat Mata Mandir", note: "India carved in marble relief", icon: "museum" },
+          { time: "3:30 PM", title: "Drop-off", note: "Airport or station, for your onward journey", icon: "car" },
         ],
       },
     ],

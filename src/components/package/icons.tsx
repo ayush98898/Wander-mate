@@ -11,15 +11,11 @@ import {
   MapPinned,
   Moon,
   Sailboat,
-  Sun,
-  SunDim,
-  Sunrise,
-  Sunset,
   Users,
   type LucideIcon,
 } from "lucide-react";
 
-import type { Moment, StopIcon, TourPackage } from "@/lib/packages";
+import type { StopIcon, TourPackage } from "@/lib/packages";
 
 export const stopIcons: Record<StopIcon, LucideIcon> = {
   boat: Sailboat,
@@ -32,14 +28,6 @@ export const stopIcons: Record<StopIcon, LucideIcon> = {
   flame: Flame,
   museum: MapPinned,
   campus: GraduationCap,
-};
-
-export const momentIcons: Record<Moment, { icon: LucideIcon; label: string }> = {
-  dawn: { icon: Sunrise, label: "Dawn" },
-  morning: { icon: Sun, label: "Morning" },
-  afternoon: { icon: SunDim, label: "Afternoon" },
-  evening: { icon: Sunset, label: "Evening" },
-  night: { icon: Moon, label: "Night" },
 };
 
 export const statIcons: Record<TourPackage["stats"][number]["icon"], LucideIcon> = {

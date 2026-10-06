@@ -4,11 +4,11 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 
-import { momentIcons, stopIcons } from "@/components/package/icons";
+import { stopIcons } from "@/components/package/icons";
 import type { PackageDay } from "@/lib/packages";
 import { cn } from "@/lib/utils";
 
-/** Day tabs: one big photograph, and the day's stops as icon rows — almost no prose. */
+/** Day tabs: one big photograph, and the day's itinerary as timed rows — a few words each. */
 export function DayExplorer({ days }: { days: PackageDay[] }) {
   const uid = useId();
   const reduce = useReducedMotion();
@@ -74,33 +74,32 @@ export function DayExplorer({ days }: { days: PackageDay[] }) {
           </AnimatePresence>
         </div>
 
-        <ol className="self-center">
-          {d.stops.map((s, n) => {
-            const Icon = stopIcons[s.icon];
-            const M = momentIcons[s.when];
-            return (
-              <motion.li
-                key={`${d.n}-${s.title}`}
-                initial={reduce ? false : { opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: reduce ? 0 : 0.08 * n, ease: [0.16, 1, 0.3, 1] }}
-                className="grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 border-b border-ink/12 py-5 first:border-t"
-              >
-                <span className="grid size-14 place-items-center bg-ink text-bone">
-                  <Icon aria-hidden className="size-6" strokeWidth={1.4} />
-                </span>
-                <span className="min-w-0">
-                  <span className="display block text-[1.7rem] leading-tight">{s.title}</span>
-                  {s.note ? <span className="mt-0.5 block text-sm text-smoke">{s.note}</span> : null}
-                </span>
-                <span className="flex flex-col items-center gap-1 text-ochre">
-                  <M.icon aria-hidden className="size-5" strokeWidth={1.5} />
-                  <span className="label text-[0.62rem] text-smoke">{M.label}</span>
-                </span>
-              </motion.li>
-            );
-          })}
-        </ol>
+        <div className="self-center">
+          <ol>
+            {d.stops.map((s, n) => {
+              const Icon = stopIcons[s.icon];
+              return (
+                <motion.li
+                  key={`${d.n}-${s.title}`}
+                  initial={reduce ? false : { opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: reduce ? 0 : 0.06 * n, ease: [0.16, 1, 0.3, 1] }}
+                  className="grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-3 border-b sm:grid-cols-[4.75rem_2.75rem_minmax(0,1fr)] sm:gap-4 border-ink/12 py-4 first:border-t"
+                >
+                  <time className="label text-[0.7rem] whitespace-nowrap text-ochre tabular-nums">{s.time}</time>
+                  <span className="hidden size-11 place-items-center bg-ink text-bone sm:grid">
+                    <Icon aria-hidden className="size-5" strokeWidth={1.4} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="display block text-2xl leading-tight">{s.title}</span>
+                    <span className="mt-0.5 block text-sm text-smoke">{s.note}</span>
+                  </span>
+                </motion.li>
+              );
+            })}
+          </ol>
+          <p className="label mt-5 text-smoke">Times are a guide · they move with sunrise and your pace</p>
+        </div>
       </div>
     </div>
   );
