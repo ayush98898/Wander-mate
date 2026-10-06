@@ -123,7 +123,7 @@ export default function Home() {
               All destinations
             </Btn>
           </div>
-          <DestinationExplorer />
+          <DestinationExplorer limit={8} />
         </div>
       </section>
 
@@ -181,7 +181,7 @@ export default function Home() {
             </p>
             <div className="mt-8">
               <Btn href="/journeys" variant="line">
-                All journeys
+                See all {tripCount} tours
               </Btn>
             </div>
           </>

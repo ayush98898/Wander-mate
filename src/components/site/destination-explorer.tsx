@@ -25,8 +25,11 @@ const statusTone: Record<Destination["status"], string> = {
   "On request": "bg-bone text-ink",
 };
 
-/** Destinations by group — an accessible two-tab switch over a card grid. */
-export function DestinationExplorer() {
+/**
+ * Destinations by group — an accessible two-tab switch over a card grid.
+ * With `limit`, shows a short, even selection (equal cards, full rows) and a link to the rest.
+ */
+export function DestinationExplorer({ limit }: { limit?: number }) {
   const uid = useId();
   const [active, setActive] = useState<(typeof groups)[number]["id"]>("beyond");
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -77,15 +80,16 @@ export function DestinationExplorer() {
         id={`${uid}-panel`}
         role="tabpanel"
         aria-labelledby={`${uid}-${active}`}
-        className="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
+        className={cn("mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4", limit && "grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6")}
       >
-        {group.list.map((d, i) => {
-          // Fill the 4-column grid exactly: a large first card (4 cells), then widen
-          // just enough of the last cards to close the final row.
-          const big = i === 0;
+        {(limit ? group.list.slice(0, limit) : group.list).map((d, i) => {
+          // Full list: fill the 4-column grid exactly — a large first card (4 cells),
+          // then widen just enough of the last cards to close the final row.
+          // Short selection: equal cards only.
+          const big = !limit && i === 0;
           const n = group.list.length;
           const spare = (4 - ((n + 3) % 4)) % 4;
-          const wide = i >= n - spare;
+          const wide = !limit && i >= n - spare;
           return (
             <Link
               key={d.slug}
@@ -101,16 +105,27 @@ export function DestinationExplorer() {
                 <span className={cn("label absolute bottom-4 left-4 px-2.5 py-1.5", statusTone[d.status])}>{d.status}</span>
               </div>
               <div className="mt-4 flex items-baseline justify-between gap-4">
-                <h3 className="display text-3xl">
+                <h3 className={cn("display text-3xl", limit && "max-sm:text-2xl max-sm:leading-tight")}>
                   <span className="ul">{d.name}</span>
                 </h3>
-                <span className="label shrink-0 text-smoke">{d.trips.length} journeys</span>
+                <span className={cn("label shrink-0 text-smoke", limit && "max-sm:hidden")}>{d.trips.length} journeys</span>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-smoke">{d.line}</p>
+              <p className={cn("mt-2 text-sm leading-relaxed text-smoke", limit && "max-sm:line-clamp-2 max-sm:text-[0.8rem]")}>{d.line}</p>
             </Link>
           );
         })}
       </div>
+
+      {limit && group.list.length > limit ? (
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-ink/15 pt-6 sm:flex-row sm:items-center">
+          <p className="text-smoke">
+            Showing {limit} of {group.list.length} destinations {group.id === "india" ? "in India" : "around the world"}.
+          </p>
+          <Link href="/destinations" className="group label inline-flex min-h-11 items-center gap-3 border-b border-ink/30 transition-colors hover:border-ink">
+            See all {group.list.length} <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 }

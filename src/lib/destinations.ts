@@ -113,6 +113,17 @@ export const destinations: Destination[] = [
         image: "/images/golden-boats.jpg",
       },
       {
+        slug: "kashi-in-four-days",
+        name: "Kashi in Four Days",
+        format: "Private",
+        duration: "3N · 4D",
+        summary: "The river twice, the great temples, Sarnath and Ramnagar — at a pace the whole family can keep.",
+        highlights: ["Private Aarti boat and a sunrise boat ride", "Sarnath and Markandey Mahadev", "AC cab all four days"],
+        feelings: ["awe", "devotion", "curiosity"],
+        href: "/packages/kashi-in-four-days",
+        image: "/images/premium/stock/day1-aarti-priest.jpg",
+      },
+      {
         slug: "kashi-luxury",
         name: "Kashi in Private",
         format: "Private",
@@ -1761,16 +1772,12 @@ export function tripHref(t: TripWithPlace) {
 
 /** A hand-picked spread across India and beyond for the home page rail. */
 export const featuredTripSlugs = [
+  "kashi-premium",
   "angkor-in-depth",
   "temples-of-kyoto",
+  "kashi-in-four-days",
   "petra-by-night",
-  "kashi-premium",
-  "the-nile-by-dahabiya",
   "silk-road-cities",
-  "golden-temple-at-dawn",
-  "machu-picchu-unhurried",
-  "monasteries-of-the-indus",
-  "inside-the-medina-of-fes",
 ];
 
 /** Festivals that recur through the year, across destinations. */
