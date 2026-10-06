@@ -3,12 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { DestinationPlate } from "@/components/site/destination-plate";
+import { HeritageStore } from "@/components/site/heritage-store";
 import { Reveal } from "@/components/site/reveal";
 import { SplitHeading } from "@/components/site/split-heading";
 import { TripCard } from "@/components/site/trip-card";
 import { Btn, Eyebrow } from "@/components/site/ui";
 import { feelings } from "@/lib/content";
 import { allTrips, destinations, getDestination } from "@/lib/destinations";
+import { getShelf } from "@/lib/store";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -37,6 +39,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const d = getDestination(slug);
   if (!d) notFound();
+  const shelf = getShelf(d.slug);
 
   const trips = allTrips.filter((t) => t.destination.slug === d.slug);
   const idx = destinations.findIndex((x) => x.slug === d.slug);
@@ -144,6 +147,9 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
           </ol>
         </div>
       </section>
+
+      {/* The Heritage Store, where we have a shelf for this place */}
+      {shelf ? <HeritageStore shelf={shelf} tone="light" /> : null}
 
       {/* Next destination */}
       <section className="py-20 md:py-28">

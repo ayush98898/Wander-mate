@@ -13,10 +13,12 @@ import { PackageHero } from "@/components/package/package-hero";
 import { RiverRoute } from "@/components/package/river-route";
 import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
+import { HeritageStore } from "@/components/site/heritage-store";
 import { Reveal } from "@/components/site/reveal";
 import { site } from "@/lib/content";
 import { getPost, type Post } from "@/lib/journal";
 import { getPackage, packages } from "@/lib/packages";
+import { getShelf } from "@/lib/store";
 
 export function generateStaticParams() {
   return packages.map((p) => ({ slug: p.slug }));
@@ -33,6 +35,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const p = getPackage(slug);
   if (!p) notFound();
+  const shelf = getShelf(p.shop);
   const stories = (p.stories ?? []).map(getPost).filter((s): s is Post => Boolean(s));
 
   return (
@@ -187,6 +190,9 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
           <Faq items={p.faqs} />
         </div>
       </section>
+
+      {/* ---------- The Heritage Store ---------- */}
+      {shelf ? <HeritageStore shelf={shelf} /> : null}
 
       {/* ---------- Stories from the Journal ---------- */}
       {stories.length ? (

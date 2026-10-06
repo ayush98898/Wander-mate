@@ -55,6 +55,8 @@ export type TourPackage = {
   goodFor: string[];
   reviews: Review[];
   faqs: Faq[];
+  /** Heritage Store shelf to show (a destination slug in src/lib/store.ts). */
+  shop?: string;
   /** Journal stories to read before the trip (post slugs), lead story first. */
   stories?: string[];
   closing: { image: string; alt: string; line: string };
@@ -236,6 +238,7 @@ export const packages: TourPackage[] = [
         icon: "plus",
       },
     ],
+    shop: "kashi",
     stories: ["the-ganga-aarti-explained", "kashi-city-of-light", "dev-deepawali"],
     closing: {
       image: "/images/golden-boats.jpg",
