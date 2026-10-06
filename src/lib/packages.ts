@@ -23,26 +23,8 @@ export type PackageDay = {
   stops: Stop[];
 };
 
-export type LatLng = [number, number];
-export type GroundPoint = { name: string; at: LatLng };
-
-/**
- * "Your trip on the ground": real coordinates for the map, and typical drive
- * times in minutes (estimates — traffic varies; adjust to how you operate).
- */
-export type Ground = {
-  hotel: GroundPoint & { note: string };
-  zones: { ghatSide: { center: LatLng; rx: number; ry: number }; citySide: LatLng };
-  arrivals: (GroundPoint & { toHotel: number; toGhats: number })[];
-  days: {
-    label: string;
-    stops: GroundPoint[];
-    /** Minutes for each leg between consecutive stops; 0 means on foot. */
-    legs: number[];
-    /** Roughly how long is spent at the places themselves, in hours. */
-    siteHours: number;
-  }[];
-};
+/** One place on the journey line, in the order you reach it. `key` marks the highlights. */
+export type Place = { day: number; name: string; note: string; key?: boolean };
 
 export type MonthInfo = {
   m: string;
@@ -77,7 +59,8 @@ export type TourPackage = {
   days: PackageDay[];
   /** The river route for the boat ride, south to north. */
   ghats?: string[];
-  ground?: Ground;
+  /** Every place the journey covers, drawn as one line on the page. */
+  places?: Place[];
   included: string[];
   excluded: string[];
   stays: StayTier[];
@@ -168,63 +151,19 @@ export const packages: TourPackage[] = [
       "Panchaganga",
       "Raj Ghat",
     ],
-    ground: {
-      hotel: { name: "Your hotel", at: [25.3215, 82.9905], note: "City side, near Cantt station" },
-      zones: { ghatSide: { center: [25.3045, 83.0085], rx: 0.0075, ry: 0.0175 }, citySide: [25.3215, 82.9905] },
-      arrivals: [
-        { name: "Varanasi airport", at: [25.4524, 82.8593], toHotel: 45, toGhats: 60 },
-        { name: "Varanasi Junction (Cantt)", at: [25.327, 82.9865], toHotel: 10, toGhats: 25 },
-        { name: "Banaras station", at: [25.2925, 82.9707], toHotel: 20, toGhats: 25 },
-      ],
-      days: [
-        {
-          label: "Day 1",
-          stops: [
-            { name: "Hotel", at: [25.3215, 82.9905] },
-            { name: "Dashashwamedh Ghat", at: [25.3068, 83.0104] },
-            { name: "Hotel", at: [25.3215, 82.9905] },
-          ],
-          legs: [25, 25],
-          siteHours: 3,
-        },
-        {
-          label: "Day 2",
-          stops: [
-            { name: "Hotel", at: [25.3215, 82.9905] },
-            { name: "Assi Ghat · boat", at: [25.2866, 83.0066] },
-            { name: "Kashi Vishwanath", at: [25.3109, 83.0107] },
-            { name: "Sankat Mochan", at: [25.2826, 82.9997] },
-            { name: "Durga Temple", at: [25.289, 83.0003] },
-            { name: "Hotel", at: [25.3215, 82.9905] },
-          ],
-          legs: [20, 15, 20, 5, 20],
-          siteHours: 6,
-        },
-        {
-          label: "Day 3",
-          stops: [
-            { name: "Hotel", at: [25.3215, 82.9905] },
-            { name: "Sarnath", at: [25.3811, 83.0247] },
-            { name: "Markandey Mahadev", at: [25.4943, 83.131] },
-            { name: "Old city walk", at: [25.3095, 83.0085] },
-            { name: "Hotel", at: [25.3215, 82.9905] },
-          ],
-          legs: [25, 45, 60, 25],
-          siteHours: 6,
-        },
-        {
-          label: "Day 4",
-          stops: [
-            { name: "Hotel", at: [25.3215, 82.9905] },
-            { name: "Ramnagar Fort", at: [25.2697, 83.0247] },
-            { name: "BHU · New Vishwanath", at: [25.2645, 82.992] },
-            { name: "Bharat Mata Mandir", at: [25.3232, 82.9927] },
-          ],
-          legs: [40, 20, 25],
-          siteHours: 4,
-        },
-      ],
-    },
+    places: [
+      { day: 1, name: "Dashashwamedh Ghat", note: "Aarti from your boat", key: true },
+      { day: 2, name: "Assi Ghat", note: "Sunrise boat sets off" },
+      { day: 2, name: "Kashi Vishwanath", note: "The Jyotirlinga", key: true },
+      { day: 2, name: "Sankat Mochan", note: "Founded by Tulsidas" },
+      { day: 2, name: "Durga Temple", note: "Durga Kund" },
+      { day: 3, name: "Sarnath", note: "Where the Buddha first taught", key: true },
+      { day: 3, name: "Markandey Mahadev", note: "Where the Gomti meets the Ganga" },
+      { day: 3, name: "The old city", note: "The galis, on foot" },
+      { day: 4, name: "Ramnagar Fort", note: "The Maharaja's museum", key: true },
+      { day: 4, name: "BHU & New Vishwanath", note: "A campus temple in marble" },
+      { day: 4, name: "Bharat Mata Mandir", note: "India carved in marble" },
+    ],
     included: [
       "3 nights near the ghats",
       "AC cab, days 2 to 4",

@@ -7,10 +7,10 @@ import { DayExplorer } from "@/components/package/day-explorer";
 import { Faq } from "@/components/package/faq";
 import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
+import { PlacesRoute } from "@/components/package/places-route";
 import { RiverRoute } from "@/components/package/river-route";
 import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
-import { TripOnGround } from "@/components/package/trip-on-ground";
 import { WhenToGo } from "@/components/package/when-to-go";
 import { Reveal } from "@/components/site/reveal";
 import { HoverExpand } from "@/components/ui/hover-expand";
@@ -149,20 +149,18 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* ---------- Your trip on the ground ---------- */}
-      {p.ground ? (
-        <section className="py-24 md:py-32">
-          <div className="wrap">
-            <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div>
-                <p className="label text-ochre">Your trip on the ground</p>
-                <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
-                  More time there, <em>less in the car</em>
-                </h2>
-              </div>
-              <p className="max-w-xs text-smoke">How you arrive, where you stay, and how each day moves.</p>
+      {/* ---------- Every place on the way ---------- */}
+      {p.places ? (
+        <section className="bg-ink py-24 text-bone md:py-32">
+          <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+            <Reveal className="lg:sticky lg:top-32 lg:self-start">
+              <p className="label text-ochre-lit">The whole journey</p>
+              <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
+                {p.places.length} places, <em>one line.</em>
+              </h2>
+              <p className="mt-6 max-w-sm text-bone/65">Scroll, and the journey draws itself, day by day.</p>
             </Reveal>
-            <TripOnGround ground={p.ground} />
+            <PlacesRoute places={p.places} days={p.days} />
           </div>
         </section>
       ) : null}
