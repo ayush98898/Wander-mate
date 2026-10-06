@@ -23,19 +23,6 @@ export type PackageDay = {
   stops: Stop[];
 };
 
-/** One place on the journey line, in the order you reach it. `key` marks the highlights. */
-export type Place = { day: number; name: string; note: string; key?: boolean };
-
-export type MonthInfo = {
-  m: string;
-  /** Typical daytime high / night low, °C. */
-  hi: number;
-  lo: number;
-  sky: "clear" | "fog" | "hot" | "rain";
-  verdict: "Best" | "Good" | "Hot" | "Monsoon";
-  festival?: string;
-};
-
 export type StayTier = {
   name: string;
   line: string;
@@ -59,14 +46,11 @@ export type TourPackage = {
   days: PackageDay[];
   /** The river route for the boat ride, south to north. */
   ghats?: string[];
-  /** Every place the journey covers, drawn as one line on the page. */
-  places?: Place[];
   included: string[];
   excluded: string[];
   stays: StayTier[];
   vehicles: { name: string; seats: string }[];
   goodFor: string[];
-  months: MonthInfo[];
   reviews: Review[];
   faqs: Faq[];
   closing: { image: string; alt: string; line: string };
@@ -151,19 +135,6 @@ export const packages: TourPackage[] = [
       "Panchaganga",
       "Raj Ghat",
     ],
-    places: [
-      { day: 1, name: "Dashashwamedh Ghat", note: "Aarti from your boat", key: true },
-      { day: 2, name: "Assi Ghat", note: "Sunrise boat sets off" },
-      { day: 2, name: "Kashi Vishwanath", note: "The Jyotirlinga", key: true },
-      { day: 2, name: "Sankat Mochan", note: "Founded by Tulsidas" },
-      { day: 2, name: "Durga Temple", note: "Durga Kund" },
-      { day: 3, name: "Sarnath", note: "Where the Buddha first taught", key: true },
-      { day: 3, name: "Markandey Mahadev", note: "Where the Gomti meets the Ganga" },
-      { day: 3, name: "The old city", note: "The galis, on foot" },
-      { day: 4, name: "Ramnagar Fort", note: "The Maharaja's museum", key: true },
-      { day: 4, name: "BHU & New Vishwanath", note: "A campus temple in marble" },
-      { day: 4, name: "Bharat Mata Mandir", note: "India carved in marble" },
-    ],
     included: [
       "3 nights near the ghats",
       "AC cab, days 2 to 4",
@@ -202,20 +173,6 @@ export const packages: TourPackage[] = [
       { name: "Tempo Traveller", seats: "Up to 12" },
     ],
     goodFor: ["Families with elders", "Children", "First visits", "Slow travellers"],
-    months: [
-      { m: "Jan", hi: 22, lo: 8, sky: "fog", verdict: "Good", festival: "Makar Sankranti" },
-      { m: "Feb", hi: 26, lo: 11, sky: "clear", verdict: "Best", festival: "Mahashivratri" },
-      { m: "Mar", hi: 32, lo: 16, sky: "clear", verdict: "Best", festival: "Holi" },
-      { m: "Apr", hi: 38, lo: 22, sky: "hot", verdict: "Hot" },
-      { m: "May", hi: 40, lo: 26, sky: "hot", verdict: "Hot" },
-      { m: "Jun", hi: 38, lo: 28, sky: "hot", verdict: "Hot", festival: "Ganga Dussehra" },
-      { m: "Jul", hi: 33, lo: 27, sky: "rain", verdict: "Monsoon", festival: "Sawan" },
-      { m: "Aug", hi: 32, lo: 26, sky: "rain", verdict: "Monsoon" },
-      { m: "Sep", hi: 32, lo: 25, sky: "rain", verdict: "Monsoon", festival: "Ramnagar Ramlila" },
-      { m: "Oct", hi: 32, lo: 20, sky: "clear", verdict: "Best", festival: "Diwali" },
-      { m: "Nov", hi: 28, lo: 14, sky: "clear", verdict: "Best", festival: "Dev Deepawali" },
-      { m: "Dec", hi: 23, lo: 9, sky: "fog", verdict: "Good" },
-    ],
     reviews: [
       {
         quote: "They didn't treat me like just another traveller — they treated me like family.",

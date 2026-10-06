@@ -7,11 +7,9 @@ import { DayExplorer } from "@/components/package/day-explorer";
 import { Faq } from "@/components/package/faq";
 import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
-import { PlacesRoute } from "@/components/package/places-route";
 import { RiverRoute } from "@/components/package/river-route";
 import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
-import { WhenToGo } from "@/components/package/when-to-go";
 import { Reveal } from "@/components/site/reveal";
 import { HoverExpand } from "@/components/ui/hover-expand";
 import { site } from "@/lib/content";
@@ -133,40 +131,8 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* ---------- When to go ---------- */}
-      <section className="bg-river py-24 text-bone md:py-32">
-        <div className="wrap">
-          <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="label text-bone/60">When to go</p>
-              <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
-                Pick your <em>month</em>
-              </h2>
-            </div>
-            <p className="max-w-xs text-bone/70">October to March is kindest. Festival months are unforgettable, and busier.</p>
-          </Reveal>
-          <WhenToGo months={p.months} />
-        </div>
-      </section>
-
-      {/* ---------- Every place on the way ---------- */}
-      {p.places ? (
-        <section className="bg-ink py-24 text-bone md:py-32">
-          <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-            <Reveal className="lg:sticky lg:top-32 lg:self-start">
-              <p className="label text-ochre-lit">The whole journey</p>
-              <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
-                {p.places.length} places, <em>one line.</em>
-              </h2>
-              <p className="mt-6 max-w-sm text-bone/65">Scroll, and the journey draws itself, day by day.</p>
-            </Reveal>
-            <PlacesRoute places={p.places} days={p.days} />
-          </div>
-        </section>
-      ) : null}
-
       {/* ---------- Where you'll stay ---------- */}
-      <section className="py-24 md:py-32">
+      <section className="border-t border-ink/12 py-24 md:py-32">
         <div className="wrap">
           <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
