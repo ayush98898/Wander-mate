@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Check, X } from "lucide-react";
+import { ArrowUpRight, Check, X } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -7,11 +7,11 @@ import { DayExplorer } from "@/components/package/day-explorer";
 import { Faq } from "@/components/package/faq";
 import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
+import { PackageHero } from "@/components/package/package-hero";
 import { RiverRoute } from "@/components/package/river-route";
 import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
 import { Reveal } from "@/components/site/reveal";
-import { HoverExpand } from "@/components/ui/hover-expand";
 import { site } from "@/lib/content";
 import { getPackage, packages } from "@/lib/packages";
 
@@ -33,44 +33,8 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      {/* ---------- Hero: the four days as expanding panels ---------- */}
-      <section className="bg-ink pt-28 pb-6 text-bone md:pt-32">
-        <div className="wrap">
-          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-            <div>
-              <p className="label text-bone/60">Varanasi · {p.length}</p>
-              <h1 className="display mt-5 text-[clamp(3.5rem,9vw,8.5rem)] leading-[0.88]">
-                {p.name.split(" ").slice(0, -2).join(" ")} <em className="text-ochre-lit">{p.name.split(" ").slice(-2).join(" ")}</em>
-              </h1>
-            </div>
-            <div className="max-w-sm lg:pb-3">
-              <p className="text-lg leading-relaxed text-bone/75">{p.tagline}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a href="#price" className="group label inline-flex min-h-12 items-center gap-5 bg-bone px-6 text-ink transition-colors hover:bg-ochre-lit">
-                  Get my price <ArrowUpRight aria-hidden className="size-4" />
-                </a>
-                <a href="#days" className="label inline-flex min-h-12 items-center gap-3 border-b border-bone/40 hover:border-bone">
-                  The four days <ArrowDown aria-hidden className="size-4" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-10 px-1.5 md:mt-14">
-          <HoverExpand
-            className="h-[72svh] min-h-[30rem] md:h-[68svh]"
-            items={p.days.map((d) => ({
-              id: `day-${d.n}`,
-              kicker: `Day ${d.n}`,
-              title: d.title,
-              description: d.line,
-              image: d.image,
-              alt: d.imageAlt,
-              position: d.position,
-            }))}
-          />
-        </div>
-      </section>
+      {/* ---------- Hero: one quiet, full-bleed photograph per day ---------- */}
+      <PackageHero name={p.name} length={p.length} tagline={p.tagline} days={p.days} />
 
       {/* ---------- At a glance ---------- */}
       <section className="border-b border-ink/12">
