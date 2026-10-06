@@ -169,3 +169,17 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* A bar that sticks just under the site header, and slides up when the header hides. */
+.under-head {
+  top: 4rem;
+  transition: top 0.5s var(--ease-expo);
+}
+@media (min-width: 48rem) {
+  .under-head {
+    top: 5rem;
+  }
+}
+html[data-head="hidden"] .under-head {
+  top: 0;
+}

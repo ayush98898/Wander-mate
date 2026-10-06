@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
@@ -14,19 +15,33 @@ export function DayExplorer({ days }: { days: PackageDay[] }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const panel = useRef<HTMLDivElement>(null);
   const d = days[i];
+  const next = days[i + 1];
+
+  // Switch day; if you had scrolled down into the old day, bring the new one's start into view.
+  const show = (j: number) => {
+    setI(j);
+    const top = panel.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) panel.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  };
 
   const onKey = (e: KeyboardEvent, n: number) => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
     e.preventDefault();
     const j = (n + (e.key === "ArrowRight" ? 1 : days.length - 1)) % days.length;
-    setI(j);
+    show(j);
     tabs.current[j]?.focus();
   };
 
   return (
     <div>
-      <div role="tablist" aria-label="Days" className="grid grid-cols-4 border-b border-ink/15">
+      {/* On phones the day tabs stick under the header, so you always know (and can change) the day while reading. */}
+      <div
+        role="tablist"
+        aria-label="Days"
+        className="under-head sticky z-30 -mx-5 grid grid-cols-4 border-b border-ink/15 bg-bone/95 px-5 backdrop-blur-sm md:-mx-10 md:px-10 lg:static lg:mx-0 lg:bg-transparent lg:px-0 lg:backdrop-blur-none"
+      >
         {days.map((day, n) => {
           const on = n === i;
           return (
@@ -40,11 +55,11 @@ export function DayExplorer({ days }: { days: PackageDay[] }) {
               aria-selected={on}
               aria-controls={`${uid}-p`}
               tabIndex={on ? 0 : -1}
-              onClick={() => setI(n)}
+              onClick={() => show(n)}
               onKeyDown={(e) => onKey(e, n)}
-              className="group relative pt-2 pb-5 text-left"
+              className="group relative pt-3 pb-3 text-left md:pt-2 md:pb-5"
             >
-              <span className={cn("display block text-[clamp(3rem,8vw,7rem)] leading-[0.85] transition-colors", on ? "text-ink" : "text-ink/15 group-hover:text-ink/40")}>
+              <span className={cn("display block text-[clamp(2.4rem,8vw,7rem)] leading-[0.85] transition-colors", on ? "text-ink" : "text-ink/15 group-hover:text-ink/40")}>
                 {String(day.n).padStart(2, "0")}
               </span>
               <span className={cn("label mt-3 hidden transition-colors sm:block", on ? "text-ochre" : "text-smoke")}>{day.title}</span>
@@ -56,7 +71,7 @@ export function DayExplorer({ days }: { days: PackageDay[] }) {
         })}
       </div>
 
-      <div id={`${uid}-p`} role="tabpanel" aria-labelledby={`${uid}-t${i}`} className="mt-10 grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+      <div ref={panel} id={`${uid}-p`} role="tabpanel" aria-labelledby={`${uid}-t${i}`} className="mt-10 grid scroll-mt-40 md:scroll-mt-48 lg:scroll-mt-28 gap-10 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
         <div className="relative aspect-[4/3] overflow-hidden bg-ink lg:aspect-auto lg:min-h-[34rem]">
           <AnimatePresence initial={false} mode="popLayout">
             <motion.div
@@ -98,6 +113,19 @@ export function DayExplorer({ days }: { days: PackageDay[] }) {
               );
             })}
           </ol>
+          {next ? (
+            <button
+              type="button"
+              onClick={() => show(i + 1)}
+              className="group mt-6 flex min-h-12 w-full items-center justify-between gap-4 text-left"
+            >
+              <span>
+                <span className="label block text-smoke">Next · Day {next.n}</span>
+                <span className="display mt-1 block text-2xl">{next.title}</span>
+              </span>
+              <ArrowRight aria-hidden className="size-5 text-ochre transition-transform group-hover:translate-x-1" />
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

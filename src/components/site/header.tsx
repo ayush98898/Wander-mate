@@ -26,7 +26,10 @@ export function Header() {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 60);
-      setHidden(y > 400 && y > last);
+      const hide = y > 400 && y > last;
+      setHidden(hide);
+      // Lets sticky bars further down sit just under the header while it shows.
+      document.documentElement.dataset.head = hide ? "hidden" : "shown";
       last = y;
     };
     onScroll();
