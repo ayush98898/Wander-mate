@@ -68,7 +68,7 @@ export const packages: TourPackage[] = [
     hero: { image: "/images/hero-ghats.jpg", alt: "The ghats of Varanasi from above, boats gathered on the Ganga" },
     stats: [
       { value: "3", label: "nights near the ghats", icon: "moon" },
-      { value: "3", label: "days with an AC cab", icon: "car" },
+      { value: "4", label: "days with an AC cab", icon: "car" },
       { value: "2", label: "private boat rides", icon: "boat" },
       { value: "12", label: "temples, ghats & sites", icon: "landmark" },
     ],
@@ -81,11 +81,11 @@ export const packages: TourPackage[] = [
         imageAlt: "A priest raises the brass Aarti lamp at Dashashwamedh Ghat",
         position: "50% 30%",
         stops: [
-          { title: "Arrive & check in", note: "Settle into your hotel and rest after the journey. The afternoon is yours.", icon: "hotel" },
-          { title: "Down to Dashashwamedh Ghat", note: "Late afternoon, a short ride to the old city, then the last stretch on foot through the lanes to the river.", icon: "walk" },
+          { title: "Pickup & check in", note: "We meet you at the airport or railway station and drive you to your hotel. Rest — the afternoon is yours.", icon: "car" },
+          { title: "Down to Dashashwamedh Ghat", note: "Late afternoon, your cab takes you to the old city; the last stretch is on foot through the lanes to the river.", icon: "walk" },
           { title: "Private Aarti boat", note: "Step aboard your own boat and take a front-row place on the water, facing the ghat.", icon: "boat" },
           { title: "The Ganga Aarti", note: "Priests in saffron raise brass lamps to the river, with conch, bells and chant — about 45 minutes.", icon: "flame" },
-          { title: "Back to the hotel", note: "Return through the evening crowds. Dinner on your own, overnight at the hotel.", icon: "hotel" },
+          { title: "Back to the hotel", note: "Your cab drives you back through the evening crowds. Dinner on your own, overnight at the hotel.", icon: "hotel" },
         ],
       },
       {
@@ -145,7 +145,7 @@ export const packages: TourPackage[] = [
     ],
     included: [
       "3 nights near the ghats",
-      "AC cab, days 2 to 4",
+      "AC cab all 4 days, with pickup & drop",
       "Private Aarti boat",
       "Sunrise boat ride",
       "All sightseeing in the plan",
