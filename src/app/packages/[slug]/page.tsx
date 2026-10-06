@@ -34,7 +34,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       {/* ---------- Hero: one quiet, full-bleed photograph per day ---------- */}
-      <PackageHero name={p.name} length={p.length} tagline={p.tagline} days={p.days} />
+      <PackageHero name={p.name} length={p.length} days={p.days} />
 
       {/* ---------- At a glance ---------- */}
       <section className="border-b border-ink/12">
