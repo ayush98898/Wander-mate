@@ -29,6 +29,8 @@ export type StayTier = {
   features: string[];
   /** Real partner hotels for this tier (leave empty until confirmed). */
   hotels: { name: string; image: string }[];
+  /** A mood photograph for a tier with no named hotels yet. */
+  image?: string;
 };
 
 export type Review = { quote: string; name: string; from: string; trip: string };
@@ -145,14 +147,8 @@ export const packages: TourPackage[] = [
     excluded: ["Meals", "Entry tickets", "Tips & personal spends", "Flights or trains"],
     stays: [
       {
-        name: "Budget",
-        line: "Simple, clean and close to it all.",
-        features: ["Private room, attached bath", "Near the ghats or old city", "For backpackers & long stays"],
-        hotels: [],
-      },
-      {
-        name: "3-star",
-        line: "Comfort without fuss, near Vishwanath.",
+        name: "Premium",
+        line: "3-star comfort without fuss, near Vishwanath.",
         features: ["Air-conditioned rooms", "Short ride to the ghats", "Hotels we work with today"],
         hotels: [
           { name: "Hotel Dev Residency", image: "/images/hotel-dev.jpg" },
@@ -161,8 +157,9 @@ export const packages: TourPackage[] = [
         ],
       },
       {
-        name: "4–5 star",
+        name: "Luxury",
         line: "A riverside palace or a 5-star room.",
+        image: "/images/ghats-lamps.jpg",
         features: ["River views on request", "Heritage or modern luxury", "For occasions worth marking"],
         hotels: [],
       },

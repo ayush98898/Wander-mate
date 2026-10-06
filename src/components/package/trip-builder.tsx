@@ -21,7 +21,7 @@ export function TripBuilder({
   vehicles: { name: string; seats: string }[];
 }) {
   const uid = useId();
-  const [stay, setStay] = useState(stays[1] ?? stays[0]);
+  const [stay, setStay] = useState(stays[0]);
   const [vehicle, setVehicle] = useState(vehicles[0].name);
   const [people, setPeople] = useState(2);
   const [month, setMonth] = useState(months[0]);
