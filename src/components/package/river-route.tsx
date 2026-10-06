@@ -54,7 +54,7 @@ export function RiverRoute({ ghats }: { ghats: string[] }) {
                 x={pt.x - 34}
                 y={pt.y + 8}
                 textAnchor="end"
-                className={cn("fill-bone font-display", key ? "text-[44px] italic" : "text-[32px]")}
+                className={cn("fill-bone font-display", key ? "text-[47px] italic md:text-[44px]" : "text-[42px] md:text-[32px]")}
               >
                 {ghats[i]}
               </text>

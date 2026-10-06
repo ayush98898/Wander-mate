@@ -235,8 +235,8 @@ export const packages: TourPackage[] = [
       },
     ],
     closing: {
-      image: "/images/premium/stock/band-dev-deepawali.jpg",
-      alt: "Fireworks over the Ganga",
+      image: "/images/golden-boats.jpg",
+      alt: "Boats on the Ganga in a golden morning haze",
       line: "Four days. One river. A city older than history.",
     },
   },

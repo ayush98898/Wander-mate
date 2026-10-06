@@ -63,6 +63,10 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
               {g}
             </span>
           ))}
+          <a href="#price" className="group label ml-auto inline-flex min-h-11 items-center gap-3 text-ochre max-md:w-full max-md:justify-between max-md:border-t max-md:border-ink/12 max-md:pt-4">
+            Get my price
+            <ArrowUpRight aria-hidden className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
         </div>
       </section>
 

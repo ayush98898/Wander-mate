@@ -61,8 +61,13 @@ export function PackageHero({
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/10 to-black/70" />
 
       <div className="wrap w-full pb-16 text-center md:pb-24">
-        <motion.p {...rise(0.2)} className="label text-bone/75">
+        <motion.p
+          {...rise(0.2)}
+          className="label inline-flex items-center gap-4 text-[0.8rem] font-medium text-bone [text-shadow:0_1px_14px_rgb(0_0_0/0.7)] md:text-sm"
+        >
+          <span aria-hidden className="h-px w-8 bg-bone/70" />
           {length}
+          <span aria-hidden className="h-px w-8 bg-bone/70" />
         </motion.p>
         <motion.h1 {...rise(0.4)} className="display mt-6 text-[clamp(3.2rem,8vw,7.5rem)] leading-[0.92] text-balance">
           {words.slice(0, -2).join(" ")} <em>{words.slice(-2).join(" ")}</em>
