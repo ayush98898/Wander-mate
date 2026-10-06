@@ -21,11 +21,30 @@ export type PackageDay = {
   imageAlt: string;
   position?: string;
   stops: Stop[];
-  /** Active hours for the rhythm chart, 24h clock, e.g. [[5.5, 9], [15, 19]]. */
-  hours: [number, number][];
 };
 
 export type Place = { name: string; km: number; bearing: number; note: string };
+
+export type MonthInfo = {
+  m: string;
+  /** Typical daytime high / night low, °C. */
+  hi: number;
+  lo: number;
+  sky: "clear" | "fog" | "hot" | "rain";
+  verdict: "Best" | "Good" | "Hot" | "Monsoon";
+  festival?: string;
+};
+
+export type StayTier = {
+  name: string;
+  line: string;
+  features: string[];
+  /** Real partner hotels for this tier (leave empty until confirmed). */
+  hotels: { name: string; image: string }[];
+};
+
+export type Review = { quote: string; name: string; from: string; trip: string };
+export type Faq = { q: string; a: string; icon: "users" | "phone" | "shirt" | "waves" | "wallet" | "plus" };
 
 export type TourPackage = {
   slug: string;
@@ -43,9 +62,12 @@ export type TourPackage = {
   beyond?: Place[];
   included: string[];
   excluded: string[];
-  stays: string[];
+  stays: StayTier[];
   vehicles: { name: string; seats: string }[];
   goodFor: string[];
+  months: MonthInfo[];
+  reviews: Review[];
+  faqs: Faq[];
   closing: { image: string; alt: string; line: string };
 };
 
@@ -76,7 +98,6 @@ export const packages: TourPackage[] = [
           { title: "Private Aarti boat", note: "Dashashwamedh Ghat", when: "evening", icon: "boat" },
           { title: "The Ganga Aarti", note: "From the water", when: "evening", icon: "flame" },
         ],
-        hours: [[15, 20]],
       },
       {
         n: 2,
@@ -89,10 +110,6 @@ export const packages: TourPackage[] = [
           { title: "Kashi Vishwanath", note: "The Jyotirlinga", when: "morning", icon: "temple" },
           { title: "Sankat Mochan", note: "Founded by Tulsidas", when: "afternoon", icon: "temple" },
           { title: "Durga Temple", note: "Durga Kund", when: "afternoon", icon: "temple" },
-        ],
-        hours: [
-          [5.5, 11],
-          [15, 18.5],
         ],
       },
       {
@@ -107,10 +124,6 @@ export const packages: TourPackage[] = [
           { title: "Markandey Mahadev", note: "Where the Gomti meets the Ganga", when: "afternoon", icon: "temple" },
           { title: "Old city walk", note: "The galis of Banaras", when: "evening", icon: "walk" },
         ],
-        hours: [
-          [9, 14],
-          [16.5, 19.5],
-        ],
       },
       {
         n: 4,
@@ -124,7 +137,6 @@ export const packages: TourPackage[] = [
           { title: "Bharat Mata Mandir", note: "A relief map of India", when: "afternoon", icon: "museum" },
           { title: "Departure", note: "Onward journey", when: "afternoon", icon: "car" },
         ],
-        hours: [[9, 15]],
       },
     ],
     ghats: [
@@ -152,13 +164,108 @@ export const packages: TourPackage[] = [
       "All sightseeing in the plan",
     ],
     excluded: ["Meals", "Entry tickets", "Tips & personal spends", "Flights or trains"],
-    stays: ["Budget", "3-star", "4–5 star"],
+    stays: [
+      {
+        name: "Budget",
+        line: "Simple, clean and close to it all.",
+        features: ["Private room, attached bath", "Near the ghats or old city", "For backpackers & long stays"],
+        hotels: [],
+      },
+      {
+        name: "3-star",
+        line: "Comfort without fuss, near Vishwanath.",
+        features: ["Air-conditioned rooms", "Short ride to the ghats", "Hotels we work with today"],
+        hotels: [
+          { name: "Hotel Dev Residency", image: "/images/hotel-dev.jpg" },
+          { name: "Hotel Ganesha Palace", image: "/images/hotel-ganesha.jpg" },
+          { name: "Hotel Elegance Inn", image: "/images/hotel-elegance.jpg" },
+        ],
+      },
+      {
+        name: "4–5 star",
+        line: "A riverside palace or a 5-star room.",
+        features: ["River views on request", "Heritage or modern luxury", "For occasions worth marking"],
+        hotels: [],
+      },
+    ],
     vehicles: [
       { name: "Sedan", seats: "Up to 4" },
       { name: "Innova Crysta", seats: "Up to 6" },
       { name: "Tempo Traveller", seats: "Up to 12" },
     ],
     goodFor: ["Families with elders", "Children", "First visits", "Slow travellers"],
+    months: [
+      { m: "Jan", hi: 22, lo: 8, sky: "fog", verdict: "Good", festival: "Makar Sankranti" },
+      { m: "Feb", hi: 26, lo: 11, sky: "clear", verdict: "Best", festival: "Mahashivratri" },
+      { m: "Mar", hi: 32, lo: 16, sky: "clear", verdict: "Best", festival: "Holi" },
+      { m: "Apr", hi: 38, lo: 22, sky: "hot", verdict: "Hot" },
+      { m: "May", hi: 40, lo: 26, sky: "hot", verdict: "Hot" },
+      { m: "Jun", hi: 38, lo: 28, sky: "hot", verdict: "Hot", festival: "Ganga Dussehra" },
+      { m: "Jul", hi: 33, lo: 27, sky: "rain", verdict: "Monsoon", festival: "Sawan" },
+      { m: "Aug", hi: 32, lo: 26, sky: "rain", verdict: "Monsoon" },
+      { m: "Sep", hi: 32, lo: 25, sky: "rain", verdict: "Monsoon", festival: "Ramnagar Ramlila" },
+      { m: "Oct", hi: 32, lo: 20, sky: "clear", verdict: "Best", festival: "Diwali" },
+      { m: "Nov", hi: 28, lo: 14, sky: "clear", verdict: "Best", festival: "Dev Deepawali" },
+      { m: "Dec", hi: 23, lo: 9, sky: "fog", verdict: "Good" },
+    ],
+    reviews: [
+      {
+        quote: "They didn't treat me like just another traveller — they treated me like family.",
+        name: "Shivani Mishra",
+        from: "Jaipur",
+        trip: "Luxury package",
+      },
+      {
+        quote: "Helped out in everything, from temple visits to the food walk to good eating joints and shopping.",
+        name: "Navdeep",
+        from: "Delhi",
+        trip: "Luxury package",
+      },
+      {
+        quote: "A great trip, well planned over 3 days — always around with practical tips and advice.",
+        name: "Ashish Garg",
+        from: "Delhi",
+        trip: "Luxury package",
+      },
+      {
+        quote: "Banaras ghumo toh bas inke saath ghumo. Maza aa gaya.",
+        name: "Amit Goel",
+        from: "Jaipur",
+        trip: "Luxury package",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is it comfortable for elders?",
+        a: "Yes — only one early start, and the cab takes you door to door wherever cars can go. Some ghat steps and old-city lanes are unavoidable; tell us about mobility needs and we plan around them.",
+        icon: "users",
+      },
+      {
+        q: "Can I carry my phone into Kashi Vishwanath?",
+        a: "No. Phones, bags and leather items are not allowed inside; lockers are available near the gates, and we'll guide you through.",
+        icon: "phone",
+      },
+      {
+        q: "What should we wear?",
+        a: "Modest, comfortable clothes for temples — shoulders and knees covered — and shoes that slip off easily.",
+        icon: "shirt",
+      },
+      {
+        q: "What if the river is too high?",
+        a: "In the monsoon, boats can be stopped for safety. If that happens we rework the day, and you watch the Aarti from the ghat steps or a rooftop.",
+        icon: "waves",
+      },
+      {
+        q: "How do booking and payment work?",
+        a: "Share your dates and we send a tailored quote within 24 hours. A 50% advance confirms the booking; the balance is due 7 days before travel.",
+        icon: "wallet",
+      },
+      {
+        q: "Can we add days or experiences?",
+        a: "Of course — a photography session, a day in Prayagraj, Ayodhya or Vindhyachal, or another night. Ask, and we'll build it in.",
+        icon: "plus",
+      },
+    ],
     closing: {
       image: "/images/premium/stock/band-dev-deepawali.jpg",
       alt: "Fireworks over the Ganga",

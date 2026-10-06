@@ -4,13 +4,17 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { DayExplorer } from "@/components/package/day-explorer";
-import { DayRhythm } from "@/components/package/day-rhythm";
+import { Faq } from "@/components/package/faq";
+import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
 import { MiniMap } from "@/components/package/mini-map";
 import { RiverRoute } from "@/components/package/river-route";
+import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
+import { WhenToGo } from "@/components/package/when-to-go";
 import { Reveal } from "@/components/site/reveal";
 import { HoverExpand } from "@/components/ui/hover-expand";
+import { site } from "@/lib/content";
 import { getPackage, packages } from "@/lib/packages";
 
 export function generateStaticParams() {
@@ -90,6 +94,14 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
             );
           })}
         </div>
+        <div className="wrap flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/12 py-5">
+          <span className="label text-smoke">Made for</span>
+          {p.goodFor.map((g) => (
+            <span key={g} className="label border border-ink/20 px-3 py-1.5 text-ink">
+              {g}
+            </span>
+          ))}
+        </div>
       </section>
 
       {/* ---------- The river at dawn ---------- */}
@@ -121,25 +133,19 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {/* ---------- Rhythm ---------- */}
+      {/* ---------- When to go ---------- */}
       <section className="bg-river py-24 text-bone md:py-32">
-        <div className="wrap grid gap-14 lg:grid-cols-[1fr_1.7fr] lg:gap-20">
-          <Reveal>
-            <p className="label text-bone/60">The pace</p>
-            <h2 className="display mt-6 text-5xl leading-[1] md:text-6xl">
-              One early start. <em>The rest, unhurried.</em>
-            </h2>
-            <ul className="mt-10 flex flex-wrap gap-2">
-              {p.goodFor.map((g) => (
-                <li key={g} className="label border border-bone/30 px-3 py-2 text-bone/85">
-                  {g}
-                </li>
-              ))}
-            </ul>
+        <div className="wrap">
+          <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="label text-bone/60">When to go</p>
+              <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
+                Pick your <em>month</em>
+              </h2>
+            </div>
+            <p className="max-w-xs text-bone/70">October to March is kindest. Festival months are unforgettable, and busier.</p>
           </Reveal>
-          <Reveal delay={0.1}>
-            <DayRhythm days={p.days} />
-          </Reveal>
+          <WhenToGo months={p.months} />
         </div>
       </section>
 
@@ -162,6 +168,22 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       ) : null}
+
+      {/* ---------- Where you'll stay ---------- */}
+      <section className="py-24 md:py-32">
+        <div className="wrap">
+          <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="label text-ochre">Three nights</p>
+              <h2 className="display mt-6 text-5xl md:text-7xl">
+                Where you&rsquo;ll <em>stay</em>
+              </h2>
+            </div>
+            <p className="max-w-xs text-smoke">Choose a tier — it&rsquo;s the biggest thing that changes the price.</p>
+          </Reveal>
+          <StayTiers tiers={p.stays} />
+        </div>
+      </section>
 
       {/* ---------- Included ---------- */}
       <section className="border-t border-ink/12 bg-paper py-24 md:py-32">
@@ -197,8 +219,20 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+      {/* ---------- Guests ---------- */}
+      <section className="py-24 md:py-32">
+        <div className="wrap">
+          <Reveal className="mb-14">
+            <p className="label text-ochre">Guests who travelled Kashi with us</p>
+          </Reveal>
+          <Reveal>
+            <GuestReviews reviews={p.reviews} score={site.rating.score} count={site.rating.count} />
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------- Build your trip ---------- */}
-      <section id="price" className="scroll-mt-16 py-24 md:py-32">
+      <section id="price" className="scroll-mt-16 border-t border-ink/12 bg-paper py-24 md:py-32">
         <div className="wrap">
           <Reveal className="mb-12">
             <p className="label text-ochre">Your price in three taps</p>
@@ -206,7 +240,20 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
               Build <em>your trip</em>
             </h2>
           </Reveal>
-          <TripBuilder name={p.name} length={p.length} stays={p.stays} vehicles={p.vehicles} />
+          <TripBuilder name={p.name} length={p.length} stays={p.stays.map((t) => t.name)} vehicles={p.vehicles} />
+        </div>
+      </section>
+
+      {/* ---------- Before you go ---------- */}
+      <section className="py-24 md:py-32">
+        <div className="wrap">
+          <Reveal className="mb-12">
+            <p className="label text-ochre">Before you go</p>
+            <h2 className="display mt-6 text-5xl md:text-7xl">
+              Good to <em>know</em>
+            </h2>
+          </Reveal>
+          <Faq items={p.faqs} />
         </div>
       </section>
 

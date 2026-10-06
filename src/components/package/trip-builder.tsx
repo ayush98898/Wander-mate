@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { whatsappLink } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -25,6 +25,16 @@ export function TripBuilder({
   const [vehicle, setVehicle] = useState(vehicles[0].name);
   const [people, setPeople] = useState(2);
   const [month, setMonth] = useState(months[0]);
+
+  // "Plan for <month>" in the When to go strip picks the month here.
+  useEffect(() => {
+    const on = (e: Event) => {
+      const m = (e as CustomEvent<string>).detail;
+      if (months.includes(m)) setMonth(m);
+    };
+    window.addEventListener("wm:month", on);
+    return () => window.removeEventListener("wm:month", on);
+  }, []);
 
   const suggested = people <= 4 ? vehicles[0].name : people <= 6 ? vehicles[1]?.name : vehicles[2]?.name;
   const message = `Namaste WanderMate! I'd like a price for ${name} (${length}): ${stay} stay, ${vehicle}, ${people} ${people === 1 ? "traveller" : "travellers"}, ${month === "Any time" ? "dates flexible" : `in ${month}`}.`;
