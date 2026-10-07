@@ -3,7 +3,7 @@ import Link from "next/link";
 import { InstagramIcon, WhatsAppIcon } from "@/components/site/icons";
 import { Btn } from "@/components/site/ui";
 import { site, whatsappLink } from "@/lib/content";
-import { journeys } from "@/lib/journeys";
+import { journeyHref, journeys } from "@/lib/journeys";
 
 export function Footer() {
   return (
@@ -29,7 +29,7 @@ export function Footer() {
             <ul className="mt-5 space-y-2.5">
               {journeys.slice(0, 5).map((j) => (
                 <li key={j.slug}>
-                  <Link href={`/journeys/${j.slug}`} className="ul">
+                  <Link href={journeyHref(j)} className="ul">
                     {j.name}
                   </Link>
                 </li>

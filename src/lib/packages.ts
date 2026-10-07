@@ -46,16 +46,20 @@ export type TourPackage = {
   length: string;
   tagline: string;
   hero: { image: string; alt: string; position?: string };
-  stats: { value: string; label: string; icon: "moon" | "car" | "boat" | "landmark" | "clock" | "users" }[];
+  stats: { value: string; label: string; icon: "moon" | "car" | "boat" | "landmark" | "clock" | "users" | "wallet" | "calendar" }[];
   days: PackageDay[];
-  /** The river route for the boat ride, south to north. */
-  ghats?: string[];
+  /** The boat ride, ghat by ghat in the order you pass them (drawn bottom to top). */
+  river?: { ghats: string[]; kicker: string; note: string; caption: string };
   included: string[];
   excluded: string[];
   stays: StayTier[];
-  vehicles: { name: string; seats: string }[];
+  /** Private trips: vehicle choices for the trip builder. */
+  vehicles?: { name: string; seats: string }[];
+  /** Fixed-date group trips: a per-person price and departures, booked by the seat. */
+  booking?: { price: string; per: string; group: string; departures: { dates: string; days: string; seats: number }[] };
   goodFor: string[];
-  reviews: Review[];
+  /** Guest words for this trip; the section is left out when there are none. */
+  reviews?: Review[];
   faqs: Faq[];
   /** Heritage Store shelf to show (a destination slug in src/lib/store.ts). */
   shop?: string;
@@ -143,17 +147,12 @@ export const packages: TourPackage[] = [
         ],
       },
     ],
-    ghats: [
-      "Assi",
-      "Tulsi",
-      "Harishchandra",
-      "Kedar",
-      "Dashashwamedh",
-      "Manikarnika",
-      "Scindia",
-      "Panchaganga",
-      "Raj Ghat",
-    ],
+    river: {
+      ghats: ["Assi", "Tulsi", "Harishchandra", "Kedar", "Dashashwamedh", "Manikarnika", "Scindia", "Panchaganga", "Raj Ghat"],
+      kicker: "Day 2 · Sunrise boat",
+      note: "Scroll, and the boat moves north with the light.",
+      caption: "South → North · first light",
+    },
     included: [
       "3 nights near the ghats",
       "AC cab all 4 days, with pickup & drop",
@@ -253,7 +252,151 @@ export const packages: TourPackage[] = [
       line: "Four days. One river. A city older than history.",
     },
   },
+  {
+    slug: "banaras-unfiltered",
+    seo: {
+      title: "Varanasi Solo Group Tour, 2N3D | WanderMate",
+      description:
+        "A small-group weekend in Varanasi for solo travellers: front-row Ganga Aarti, VIP darshan, a private boat, food and silk walks. INR 8,999 all-inclusive.",
+    },
+    kind: "multi-day",
+    name: "Banaras Unfiltered",
+    length: "2 nights · 3 days",
+    tagline: "Three days to understand a city that has been burning for five thousand years — with a small group, and a guide who knows its character.",
+    hero: { image: "/images/aarti-night.jpg", alt: "The Ganga Aarti at night in Varanasi" },
+    stats: [
+      { value: "8,999", label: "INR per person, all-inclusive", icon: "wallet" },
+      { value: "4–8", label: "travellers in a group", icon: "users" },
+      { value: "Fri–Sun", label: "every weekend", icon: "calendar" },
+      { value: "1", label: "private boat for your group", icon: "boat" },
+    ],
+    days: [
+      {
+        n: 1,
+        title: "Fire and the old city",
+        line: "Arrive, sit beside the Aarti, then the old city after dark.",
+        image: "/images/aarti-night.jpg",
+        imageAlt: "Priests perform the Ganga Aarti at night",
+        stops: [
+          { title: "Pickup & check in", note: "Private AC pickup from the airport or station, a welcome kit and a briefing with your Kashi companion at Dev Residency or similar.", icon: "car" },
+          { title: "Rest & unwind", note: "Time at the hotel — no rush, no itinerary.", icon: "hotel" },
+          { title: "The Ganga Aarti, front row", note: "Reserved seats beside the main Aarti at Dashashwamedh; float diyas and share kulhad chai as the crowds thin.", icon: "flame" },
+          { title: "Night food walk", note: "Chowk and the old city — tamatar chaat, aloo tikki, Banarasi paan and thandai, each with the vendor's story.", icon: "walk" },
+          { title: "Kaal Bhairav darshan", note: "The fierce guardian of Kashi, then Mrityunjay Mahadev and the ancient Dhanvantari well.", icon: "temple" },
+        ],
+      },
+      {
+        n: 2,
+        title: "The river at first light",
+        line: "Darshan before dawn, your own boat past Manikarnika, and the weavers' lanes.",
+        image: "/images/sunrise-boats.jpg",
+        imageAlt: "Boats on the Ganga at sunrise",
+        stops: [
+          { title: "VIP darshan before dawn", note: "Kashi Vishwanath before the crowds, then Annapurna and Vishalakshi — one of the 51 Shakti Peethas.", icon: "temple" },
+          { title: "Banarasi breakfast", note: "Kachori sabzi, jalebi and chai at an old-city institution.", icon: "walk" },
+          { title: "Private boat ride", note: "Your group's own boat from Panchaganga, past the painted ghats and Manikarnika, to Harishchandra.", icon: "boat" },
+          { title: "Lunch & rest", note: "Back to the hotel for a proper rest.", icon: "hotel" },
+          { title: "Silk walk, Madanpura", note: "Weaver homes where families have worked the loom for 15–20 generations — watch, then buy at source.", icon: "walk" },
+          { title: "Evening temples & BHU", note: "Durga Kund, Tulsi Manas where the Ramcharitmanas was written, Sankat Mochan and the New Vishwanath Temple.", icon: "temple" },
+        ],
+      },
+      {
+        n: 3,
+        title: "Farewell to the ghats",
+        line: "Subah-e-Banaras at Assi, one last food walk, and home.",
+        image: "/images/fog-boats.jpg",
+        imageAlt: "Boats in the morning mist on the Ganga",
+        stops: [
+          { title: "Morning at Assi Ghat", note: "Subah-e-Banaras — yoga and Vedic chanting — then north past Tulsi and Chet Singh ghats, and a farewell chai by the river.", icon: "walk" },
+          { title: "Farewell food walk", note: "Assi and Lanka: kachori, jalebi, kulhad chai and lassi — the definitive Banarasi morning.", icon: "walk" },
+          { title: "Ramnagar Fort", note: "A short drive to the Maharaja's fort and museum, if time allows.", icon: "fort" },
+          { title: "Drop-off", note: "Private AC transfer to the airport or station, with a parting handwritten note from your companion.", icon: "car" },
+        ],
+      },
+    ],
+    river: {
+      ghats: ["Panchaganga", "Bundi Parkota", "Manikarnika", "Lalita", "Dashashwamedh", "Kedar", "Harishchandra"],
+      kicker: "Day 2 · Your private boat",
+      note: "Scroll, and the boat drifts downriver past the burning ghat. The route shifts with the season.",
+      caption: "North → South · after breakfast",
+    },
+    included: [
+      "2 nights, twin sharing (same gender)",
+      "All transfers, incl. station pickup",
+      "An expert guide for all 3 days",
+      "Private boat for your group",
+      "Breakfast & dinner",
+      "Food walk & silk walk",
+      "VIP Sugam Darshan",
+      "Photos & video of your trip",
+    ],
+    excluded: ["Train or flight tickets", "Personal shopping", "Travel insurance", "Personal expenses"],
+    stays: [
+      {
+        name: "3-star premium",
+        line: "Twin sharing with a traveller of the same gender, close to the old city.",
+        features: ["Air-conditioned rooms", "Welcome kit on arrival", "Dev Residency or similar"],
+        hotels: [
+          { name: "Hotel Dev Residency", image: "/images/hotel-dev.jpg" },
+          { name: "Hotel Ganesha Palace", image: "/images/hotel-ganesha.jpg" },
+          { name: "Hotel Elegance Inn", image: "/images/hotel-elegance.jpg" },
+        ],
+      },
+    ],
+    booking: {
+      price: "INR 8,999",
+      per: "per person, all-inclusive",
+      group: "4–8 travellers",
+      departures: [{ dates: "6–8 November 2026", days: "Fri – Sun", seats: 8 }],
+    },
+    goodFor: ["Solo travellers", "First visits", "Food lovers", "Small groups"],
+    faqs: [
+      {
+        q: "Who travels on Banaras Unfiltered?",
+        a: "Independent travellers — 4 to 8 in a group. You share the cab, the boat and the table, and the kind of people you'd want to meet anyway.",
+        icon: "users",
+      },
+      {
+        q: "Do I share a room?",
+        a: "Yes. Rooms are twin sharing with a traveller of the same gender, in a 3-star premium hotel such as Dev Residency.",
+        icon: "plus",
+      },
+      {
+        q: "What does INR 8,999 cover?",
+        a: "Two nights' stay, every transfer including station pickup, a guide for all three days, your group's private boat, breakfasts and dinners, the food and silk walks and VIP Sugam Darshan. Travel to Varanasi is not included.",
+        icon: "wallet",
+      },
+      {
+        q: "Can I carry my phone into Kashi Vishwanath?",
+        a: "No. Phones, bags and leather items are not allowed inside; lockers are available near the gates, and we'll guide you through.",
+        icon: "phone",
+      },
+      {
+        q: "What should I wear?",
+        a: "Modest, comfortable clothes for temples — shoulders and knees covered — and shoes that slip off easily.",
+        icon: "shirt",
+      },
+      {
+        q: "When is the next departure?",
+        a: "6–8 November 2026, Friday to Sunday. Reserve a seat on WhatsApp and we confirm it with you directly.",
+        icon: "waves",
+      },
+    ],
+    stories: ["the-ganga-aarti-explained", "kashi-city-of-light", "dev-deepawali"],
+    closing: {
+      image: "/images/ghats-evening.jpg",
+      alt: "The ghats of Varanasi at dusk",
+      line: "Come on your own. Leave with a city — and the people you met in it.",
+    },
+  },
 ];
+
+/** A package name split for display: the last word or two set in italic ("Kashi in *Four Days*"). */
+export function splitName(name: string): [string, string] {
+  const words = name.split(" ");
+  const n = words.length > 2 ? 2 : 1;
+  return [words.slice(0, -n).join(" "), words.slice(-n).join(" ")];
+}
 
 export function getPackage(slug: string) {
   return packages.find((p) => p.slug === slug);

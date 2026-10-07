@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { Journey } from "@/lib/journeys";
+import { journeyHref, type Journey } from "@/lib/journeys";
 import { cn } from "@/lib/utils";
 
 export function JourneyCard({
@@ -15,7 +15,7 @@ export function JourneyCard({
   sizes?: string;
   tone?: "light" | "dark";
 }) {
-  const href = journey.external ?? `/journeys/${journey.slug}`;
+  const href = journeyHref(journey);
   const external = Boolean(journey.external);
   return (
     <Link

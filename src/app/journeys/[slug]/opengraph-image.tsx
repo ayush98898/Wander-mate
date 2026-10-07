@@ -6,7 +6,7 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export function generateStaticParams() {
-  return journeys.filter((j) => !j.external && j.slug !== "kashi-premium").map((j) => ({ slug: j.slug }));
+  return journeys.filter((j) => !j.external && !j.page && j.slug !== "kashi-premium").map((j) => ({ slug: j.slug }));
 }
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {

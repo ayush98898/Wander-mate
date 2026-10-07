@@ -1,5 +1,5 @@
 import { ogContentType, ogImage, ogSize, oneLine } from "@/lib/og";
-import { getPackage, packages } from "@/lib/packages";
+import { getPackage, packages, splitName } from "@/lib/packages";
 
 export const alt = "A WanderMate journey";
 export const size = ogSize;
@@ -12,13 +12,13 @@ export function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = getPackage(slug)!;
-  const words = p.name.split(" ");
+  const [lead, last] = splitName(p.name);
   return ogImage({
     image: p.days[0]?.image ?? p.hero.image,
     position: p.days[0]?.position,
     kicker: `Varanasi · ${p.length}`,
-    title: words.slice(0, -2).join(" "),
-    italic: words.slice(-2).join(" "),
+    title: lead,
+    italic: last,
     line: oneLine(p.tagline),
   });
 }

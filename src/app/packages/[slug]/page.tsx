@@ -11,6 +11,7 @@ import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
 import { PackageHero } from "@/components/package/package-hero";
 import { RiverRoute } from "@/components/package/river-route";
+import { SeatBooker } from "@/components/package/seat-booker";
 import { StayTiers } from "@/components/package/stay-tiers";
 import { TripBuilder } from "@/components/package/trip-builder";
 import { HeritageStore } from "@/components/site/heritage-store";
@@ -18,7 +19,7 @@ import { Reveal } from "@/components/site/reveal";
 import { site } from "@/lib/content";
 import { getPost, type Post } from "@/lib/journal";
 import { getPackage, packages } from "@/lib/packages";
-import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta, parsePrice } from "@/lib/seo";
 import { getShelf } from "@/lib/store";
 
 export function generateStaticParams() {
@@ -51,6 +52,15 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
       image: [...new Set(p.days.map((d) => abs(d.image)))],
       touristType: p.goodFor,
       provider: { "@id": ORG_ID },
+      ...(p.booking && {
+        offers: p.booking.departures.map((d) => ({
+          "@type": "Offer",
+          ...parsePrice(p.booking!.price),
+          url,
+          availability: "https://schema.org/InStock",
+          description: `${d.dates} (${d.days}), ${p.booking!.per}`,
+        })),
+      }),
       itinerary: {
         "@type": "ItemList",
         numberOfItems: places.length,
@@ -106,24 +116,24 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
             </span>
           ))}
           <a href="#price" className="group label ml-auto inline-flex min-h-11 items-center gap-3 text-ochre max-md:w-full max-md:justify-between max-md:border-t max-md:border-ink/12 max-md:pt-4">
-            Get my price
+            {p.booking ? "Reserve a seat" : "Get my price"}
             <ArrowUpRight aria-hidden className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </div>
       </section>
 
       {/* ---------- The river at dawn ---------- */}
-      {p.ghats ? (
+      {p.river ? (
         <section className="overflow-hidden bg-ink py-24 text-bone md:py-32">
           <div className="wrap grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:items-center lg:gap-20">
             <Reveal>
-              <p className="label text-ochre-lit">Day 2 · Sunrise boat</p>
+              <p className="label text-ochre-lit">{p.river.kicker}</p>
               <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
                 The river, <em>ghat by ghat.</em>
               </h2>
-              <p className="mt-6 max-w-sm text-bone/65">Scroll, and the boat moves north with the light.</p>
+              <p className="mt-6 max-w-sm text-bone/65">{p.river.note}</p>
             </Reveal>
-            <RiverRoute ghats={p.ghats} />
+            <RiverRoute ghats={p.river.ghats} caption={p.river.caption} />
           </div>
         </section>
       ) : null}
@@ -146,12 +156,16 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         <div className="wrap">
           <Reveal className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
-              <p className="label text-ochre">Three nights</p>
+              <p className="label text-ochre">{p.length.split(" · ")[0]}</p>
               <h2 className="display mt-6 text-5xl md:text-7xl">
                 Where you&rsquo;ll <em>stay</em>
               </h2>
             </div>
-            <p className="max-w-xs text-smoke">Choose a tier — it&rsquo;s the biggest thing that changes the price.</p>
+            <p className="max-w-xs text-smoke">
+              {p.stays.length > 1
+                ? "Choose a tier — it\u2019s the biggest thing that changes the price."
+                : "One stay for the whole group, chosen and checked by us."}
+            </p>
           </Reveal>
           <StayTiers tiers={p.stays} />
         </div>
@@ -192,24 +206,40 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* ---------- Guests ---------- */}
-      <section className="bg-ink py-24 text-bone md:py-32">
-        <div className="wrap">
-          <Reveal>
-            <GuestReviews reviews={p.reviews} score={site.rating.score} count={site.rating.count} />
-          </Reveal>
-        </div>
-      </section>
+      {p.reviews?.length ? (
+        <section className="bg-ink py-24 text-bone md:py-32">
+          <div className="wrap">
+            <Reveal>
+              <GuestReviews reviews={p.reviews} score={site.rating.score} count={site.rating.count} />
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* ---------- Build your trip ---------- */}
       <section id="price" className="scroll-mt-16 border-t border-ink/12 bg-paper py-24 md:py-32">
         <div className="wrap">
-          <Reveal className="mb-12">
-            <p className="label text-ochre">Your price in three taps</p>
-            <h2 className="display mt-6 text-5xl md:text-7xl">
-              Build <em>your trip</em>
-            </h2>
-          </Reveal>
-          <TripBuilder name={p.name} length={p.length} stays={p.stays.map((t) => t.name)} vehicles={p.vehicles} />
+          {p.booking ? (
+            <>
+              <Reveal className="mb-12">
+                <p className="label text-ochre">Small group · fixed dates</p>
+                <h2 className="display mt-6 text-5xl md:text-7xl">
+                  Reserve <em>your seat</em>
+                </h2>
+              </Reveal>
+              <SeatBooker name={p.name} length={p.length} booking={p.booking} included={p.included} />
+            </>
+          ) : (
+            <>
+              <Reveal className="mb-12">
+                <p className="label text-ochre">Your price in three taps</p>
+                <h2 className="display mt-6 text-5xl md:text-7xl">
+                  Build <em>your trip</em>
+                </h2>
+              </Reveal>
+              <TripBuilder name={p.name} length={p.length} stays={p.stays.map((t) => t.name)} vehicles={p.vehicles ?? []} />
+            </>
+          )}
         </div>
       </section>
 
@@ -261,7 +291,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         <Reveal className="wrap flex flex-col items-start justify-between gap-8 pb-14 md:flex-row md:items-end md:pb-20">
           <p className="display max-w-3xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[1]">{p.closing.line}</p>
           <a href="#price" className="group label inline-flex min-h-12 shrink-0 items-center gap-5 bg-bone px-6 text-ink transition-colors hover:bg-ochre-lit">
-            Get my price <ArrowUpRight aria-hidden className="size-4" />
+            {p.booking ? "Reserve a seat" : "Get my price"} <ArrowUpRight aria-hidden className="size-4" />
           </a>
         </Reveal>
       </section>

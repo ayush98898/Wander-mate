@@ -19,11 +19,14 @@ export type Journey = {
   /** Sample day-by-day outline. Every private journey is tailored. */
   days?: JourneyDay[];
   external?: string;
+  /** Lives on another page on this site (e.g. a package page). */
+  page?: string;
 };
 
 export const journeys: Journey[] = [
   {
     slug: "banaras-unfiltered",
+    page: "/packages/banaras-unfiltered",
     name: "Banaras Unfiltered",
     kind: "Solo series · small group",
     duration: "2 nights · 3 days",
@@ -163,4 +166,9 @@ export const journeys: Journey[] = [
 
 export function getJourney(slug: string) {
   return journeys.find((j) => j.slug === slug);
+}
+
+/** Where a journey's page lives: an external site, a package page, or its own journey page. */
+export function journeyHref(j: Journey) {
+  return j.external ?? j.page ?? `/journeys/${j.slug}`;
 }

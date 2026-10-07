@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
 // A stylised crescent of the Ganga at Varanasi, south (bottom) to north (top).
 const RIVER = "M 820 640 C 560 610, 330 520, 300 380 C 270 240, 420 110, 700 40";
 
-/** The sunrise boat route: the river draws itself, and each ghat lights up as the line reaches it. */
-export function RiverRoute({ ghats }: { ghats: string[] }) {
+/** The boat route: the river draws itself, and each ghat lights up as the line reaches it. */
+export function RiverRoute({ ghats, caption }: { ghats: string[]; caption: string }) {
   const measure = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<{ x: number; y: number; at: number }[]>([]);
   const [progress, setProgress] = useState(0);
@@ -40,7 +40,7 @@ export function RiverRoute({ ghats }: { ghats: string[] }) {
         onProgress={onProgress}
         start="top 70%"
         end="bottom 60%"
-        title={`The sunrise boat route past ${ghats.length} ghats, from ${ghats[0]} to ${ghats.at(-1)}`}
+        title={`The boat route past ${ghats.length} ghats, from ${ghats[0]} to ${ghats.at(-1)}`}
       >
         <path ref={measure} d={RIVER} fill="none" stroke="none" />
         {points.map((pt, i) => {
@@ -62,7 +62,7 @@ export function RiverRoute({ ghats }: { ghats: string[] }) {
           );
         })}
       </LineDrawSvg>
-      <p className="label mt-4 text-right text-bone/50">South → North · first light</p>
+      <p className="label mt-4 text-right text-bone/50">{caption}</p>
     </div>
   );
 }

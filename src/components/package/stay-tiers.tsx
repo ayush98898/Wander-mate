@@ -4,19 +4,23 @@ import Image from "next/image";
 import type { StayTier } from "@/lib/packages";
 import { cn } from "@/lib/utils";
 
-/** The stay tiers side by side; tiers with confirmed partner hotels show them, others a mood photograph. */
+/**
+ * The stay tiers side by side; tiers with confirmed partner hotels show them, others a
+ * mood photograph. A single tier (a group trip with one stay) becomes one wide card.
+ */
 export function StayTiers({ tiers }: { tiers: StayTier[] }) {
+  const single = tiers.length === 1;
   return (
-    <div className="grid gap-px bg-ink/12 md:grid-cols-2">
+    <div className={cn("grid gap-px bg-ink/12", !single && "md:grid-cols-2")}>
       {tiers.map((t) => {
         const featured = t.hotels.length > 0;
         return (
-          <article key={t.name} className={cn("flex flex-col", featured ? "bg-ink text-bone" : "bg-bone")}>
+          <article key={t.name} className={cn("flex flex-col", single && "lg:grid lg:grid-cols-[1.35fr_1fr]", featured ? "bg-ink text-bone" : "bg-bone")}>
             {featured ? (
-              <div className="grid h-64 grid-cols-3 gap-px bg-ink md:h-80">
+              <div className={cn("grid h-64 grid-cols-3 gap-px bg-ink md:h-80", single && "lg:h-full lg:min-h-[28rem]")}>
                 {t.hotels.slice(0, 3).map((h) => (
                   <figure key={h.name} className="group relative overflow-hidden">
-                    <Image src={h.image} alt={h.name} fill sizes="(min-width:768px) 17vw, 33vw" className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-expo)] group-hover:scale-105" />
+                    <Image src={h.image} alt={h.name} fill sizes={single ? "(min-width:1024px) 19vw, 33vw" : "(min-width:768px) 17vw, 33vw"} className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-expo)] group-hover:scale-105" />
                   </figure>
                 ))}
               </div>
@@ -25,7 +29,7 @@ export function StayTiers({ tiers }: { tiers: StayTier[] }) {
                 <Image src={t.image} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-expo)] group-hover:scale-105" />
               </figure>
             ) : null}
-            <div className="flex flex-1 flex-col p-7 md:p-9">
+            <div className={cn("flex flex-1 flex-col p-7 md:p-9", single && "lg:justify-center lg:p-14")}>
               <p className={cn("label", featured ? "text-ochre-lit" : "text-ochre")}>{featured ? "Our partner hotels" : "Chosen for your dates"}</p>
               <h3 className="display mt-3 text-5xl">{t.name}</h3>
               <p className={cn("mt-3", featured ? "text-bone/75" : "text-ink-2")}>{t.line}</p>

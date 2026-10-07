@@ -98,7 +98,7 @@ export const destinations: Destination[] = [
         summary: "A small-group weekend for independent travellers, departing every Friday.",
         highlights: ["Front-row Ganga Aarti", "Pre-dawn temple circuit", "Silk walk and two food walks"],
         feelings: ["curiosity", "awe"],
-        href: "/journeys/banaras-unfiltered",
+        href: "/packages/banaras-unfiltered",
         image: "/images/holi.jpg",
       },
       {

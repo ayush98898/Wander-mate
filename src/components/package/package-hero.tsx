@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import type { PackageDay } from "@/lib/packages";
+import { splitName, type PackageDay } from "@/lib/packages";
 import { cn } from "@/lib/utils";
 
 const HOLD = 7000;
@@ -32,7 +32,7 @@ export function PackageHero({
     return () => window.clearTimeout(t);
   }, [i, reduce, days.length]);
 
-  const words = name.split(" ");
+  const [lead, last] = splitName(name);
   const rise = (d: number) => ({
     initial: reduce ? false : { opacity: 0, y: 24 },
     animate: { opacity: 1, y: 0 },
@@ -70,7 +70,7 @@ export function PackageHero({
           <span aria-hidden className="h-px w-8 bg-bone/70" />
         </motion.p>
         <motion.h1 {...rise(0.4)} className="display mt-6 text-[clamp(3.2rem,8vw,7.5rem)] leading-[0.92] text-balance">
-          {words.slice(0, -2).join(" ")} <em>{words.slice(-2).join(" ")}</em>
+          {lead} <em>{last}</em>
         </motion.h1>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import {
   BedDouble,
+  CalendarDays,
   Car,
   Castle,
   Clock,
@@ -12,6 +13,7 @@ import {
   Moon,
   Sailboat,
   Users,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 
@@ -32,6 +34,8 @@ export const stopIcons: Record<StopIcon, LucideIcon> = {
 
 export const statIcons: Record<TourPackage["stats"][number]["icon"], LucideIcon> = {
   moon: Moon,
+  wallet: Wallet,
+  calendar: CalendarDays,
   car: Car,
   boat: Sailboat,
   landmark: Landmark,

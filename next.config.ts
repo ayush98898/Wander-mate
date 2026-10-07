@@ -15,7 +15,8 @@ const nextConfig: NextConfig = isExport
       redirects() {
         return [
           { source: "/packages", destination: "/journeys", permanent: true },
-          { source: "/banaras-unfiltered", destination: "/journeys/banaras-unfiltered", permanent: true },
+          { source: "/banaras-unfiltered", destination: "/packages/banaras-unfiltered", permanent: true },
+          { source: "/journeys/banaras-unfiltered", destination: "/packages/banaras-unfiltered", permanent: true },
           { source: "/enquire", destination: "/plan", permanent: true },
         ];
       },

@@ -24,7 +24,7 @@ export const nav = [
   { href: "/destinations", label: "Destinations", image: "/images/temple-white.jpg" },
   { href: "/journeys", label: "Journeys", image: "/images/hero-ghats.jpg" },
   { href: "/experiences", label: "Experiences", image: "/images/aarti-night.jpg" },
-  { href: "/journeys/banaras-unfiltered", label: "Solo Series", image: "/images/holi.jpg" },
+  { href: "/packages/banaras-unfiltered", label: "Solo Series", image: "/images/holi.jpg" },
   { href: "/journal", label: "Journal", image: "/images/priest-river.jpg" },
   { href: "/about", label: "About", image: "/images/group.jpg" },
   { href: "/plan", label: "Plan a journey", image: "/images/river-clouds.jpg" },

@@ -16,7 +16,7 @@ import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta, parsePrice } from "@/lib/se
 
 export function generateStaticParams() {
   // kashi-premium has its own page at journeys/kashi-premium.
-  return journeys.filter((j) => !j.external && j.slug !== "kashi-premium").map((j) => ({ slug: j.slug }));
+  return journeys.filter((j) => !j.external && !j.page && j.slug !== "kashi-premium").map((j) => ({ slug: j.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
