@@ -16,6 +16,7 @@ import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { site } from "@/lib/content";
+import { JsonLd, organization, website } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -54,10 +55,11 @@ const scripts = [kannada, tamil, oriya, sinhala, tibetan, khmer, javanese].map((
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "WanderMate — Heritage & Cultural Journeys across India and the World",
+    default: "WanderMate — Heritage & Cultural Journeys, India & Beyond",
     template: "%s — WanderMate",
   },
-  description: site.description,
+  description:
+    "Heritage and cultural journeys led by local people — temples, rituals, crafts and festivals, from Kashi and Amritsar to Kyoto, Petra and Angkor.",
   keywords: [
     "heritage travel",
     "cultural journeys",
@@ -73,10 +75,17 @@ export const metadata: Metadata = {
     siteName: "WanderMate",
     title: "WanderMate — Feel the centuries",
     description: site.description,
-    images: [{ url: "/images/hero-ghats.jpg", width: 1600, height: 1066 }],
     locale: "en_IN",
   },
-  icons: { icon: "/images/logo-mark.png" },
+  twitter: { card: "summary_large_image", title: "WanderMate — Feel the centuries", description: site.description },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  icons: { icon: "/images/logo-mark.png", apple: "/images/logo-mark.png" },
+  formatDetection: { telephone: false },
+  category: "travel",
 };
 
 export const viewport: Viewport = {
@@ -90,6 +99,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${cormorant.variable} ${jost.variable} ${tiro.variable} ${scripts}`}
     >
       <body className="min-h-svh">
+        <JsonLd data={[organization(), website()]} />
         <a
           href="#main"
           className="label sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[80] focus:bg-ink focus:px-4 focus:py-3 focus:text-bone"

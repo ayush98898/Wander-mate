@@ -7,12 +7,14 @@ import { Reveal } from "@/components/site/reveal";
 import { Btn } from "@/components/site/ui";
 import { experiences, feelings } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Experiences",
+export const metadata: Metadata = pageMeta({
+  title: "Varanasi Experiences: Boats, Aarti & Food Walks",
   description:
-    "Pre-dawn darshan, a private sunrise boat, Madanpura's silk weavers, the Ganga Aarti from the front row and night food walks — the hours of Kashi you'll keep.",
-};
+    "Pre-dawn darshan, a private sunrise boat, Madanpura\u2019s silk weavers, the Ganga Aarti from the front row and night food walks — the hours of Kashi you\u2019ll keep.",
+  path: "/experiences",
+});
 
 const feelingLabel = Object.fromEntries(feelings.map((f) => [f.id, f.label]));
 const sorted = [...experiences].sort((a, b) => a.time.localeCompare(b.time));

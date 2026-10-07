@@ -24,12 +24,41 @@ import {
   stays,
   whyVaranasi,
 } from "@/lib/premium";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Wandermate Premium · 2 nights in Varanasi",
-  description: premium.intro,
-  openGraph: { images: ["/images/premium/stock/hero-aarti.jpg"] },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Varanasi 2 Nights 3 Days Premium Tour | WanderMate",
+  absolute: true,
+  description:
+    "Our most popular Varanasi tour: a boutique heritage stay, VIP darshan at Kashi Vishwanath, a private boat and reserved seats beside the Ganga Aarti.",
+  path: "/journeys/kashi-premium",
+});
+
+const premiumUrl = abs("/journeys/kashi-premium");
+const premiumSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "@id": `${premiumUrl}#trip`,
+    name: premium.name,
+    description: premium.intro,
+    url: premiumUrl,
+    image: abs("/images/premium/stock/hero-aarti.jpg"),
+    provider: { "@id": ORG_ID },
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: days.flatMap((d) => d.moments.map((m) => ({ day: d.n, m }))).map(({ day, m }, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: { "@type": "TouristAttraction", name: m.title, description: `Day ${day}${m.points[0] ? `: ${m.points[0]}` : ""}` },
+      })),
+    },
+  },
+  breadcrumbs([
+    ["All tours", "/journeys"],
+    [premium.name, "/journeys/kashi-premium"],
+  ]),
+];
 
 const enquire = whatsappLink("Namaste WanderMate! I'd like to book Wandermate Premium (2N3D) in Varanasi.");
 
@@ -67,6 +96,7 @@ function EnquireButton({ light, children = "Request this journey" }: { light?: b
 export default function PremiumPage() {
   return (
     <>
+      <JsonLd data={premiumSchema} />
       {/* ---------- Hero ---------- */}
       <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden text-bone">
         <Image

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { ReadingProgress } from "@/components/journal/reading-progress";
 import { getDestination } from "@/lib/destinations";
 import { getPost, posts, readTime, type Block } from "@/lib/journal";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt, openGraph: { images: [post.image] } };
+  return pageMeta({ title: post.title, description: post.excerpt, path: `/journal/${post.slug}`, type: "article" });
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -33,8 +34,32 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   ].slice(0, 3);
   const firstP = post.body.findIndex((b) => b.t === "p");
 
+  const url = abs(`/journal/${post.slug}`);
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${url}#article`,
+      headline: post.title,
+      description: post.excerpt,
+      image: abs(post.image),
+      url,
+      mainEntityOfPage: url,
+      articleSection: post.category,
+      about: { "@type": "Place", name: post.place },
+      author: { "@id": ORG_ID },
+      publisher: { "@id": ORG_ID },
+      inLanguage: "en-IN",
+    },
+    breadcrumbs([
+      ["Journal", "/journal"],
+      [post.title, `/journal/${post.slug}`],
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={schema} />
       <ReadingProgress />
 
       {/* ---------- Opening ---------- */}

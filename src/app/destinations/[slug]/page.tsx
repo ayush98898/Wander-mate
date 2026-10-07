@@ -9,8 +9,9 @@ import { SplitHeading } from "@/components/site/split-heading";
 import { TripCard } from "@/components/site/trip-card";
 import { Btn, Eyebrow } from "@/components/site/ui";
 import { feelings } from "@/lib/content";
-import { allTrips, destinations, getDestination } from "@/lib/destinations";
+import { allTrips, destinations, getDestination, tripHref } from "@/lib/destinations";
 import { getShelf } from "@/lib/store";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -20,10 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const d = getDestination(slug);
   if (!d) return {};
-  return {
-    title: `${d.name}, ${d.country}`,
-    description: `${d.line} ${d.trips.length} heritage journeys and ${d.experiences.length} experiences with WanderMate.`,
-  };
+  return pageMeta({
+    title: `${d.name} Heritage Tours, ${d.country}`,
+    description: `${d.line} ${d.trips.length} heritage journeys and ${d.experiences.length} experiences, planned with local people by WanderMate.`,
+    path: `/destinations/${d.slug}`,
+  });
 }
 
 const feelingLabel = Object.fromEntries(feelings.map((f) => [f.id, f.label]));
@@ -46,8 +48,29 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
   const next = destinations.at((idx + 1) % destinations.length)!;
   const live = d.status === "Now";
 
+  const url = abs(`/destinations/${d.slug}`);
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristDestination",
+      "@id": `${url}#place`,
+      name: d.name,
+      description: d.line,
+      url,
+      ...(d.image && { image: abs(d.image) }),
+      containedInPlace: { "@type": "Country", name: d.country },
+      includesAttraction: d.experiences.map((e) => ({ "@type": "TouristAttraction", name: e.name, description: e.line })),
+      subjectOf: trips.map((t) => ({ "@type": "TouristTrip", name: t.name, description: t.summary, url: abs(tripHref(t)), provider: { "@id": ORG_ID } })),
+    },
+    breadcrumbs([
+      ["Destinations", "/destinations"],
+      [d.name, `/destinations/${d.slug}`],
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={schema} />
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-ink text-bone">
         <DestinationPlate d={d} priority sizes="100vw" showName={false} className="absolute inset-0 -z-10 opacity-90" />

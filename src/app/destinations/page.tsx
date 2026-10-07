@@ -6,12 +6,14 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { Btn, Eyebrow } from "@/components/site/ui";
 import { beyond, india, type Destination } from "@/lib/destinations";
+import { abs, breadcrumbs, JsonLd, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Destinations",
+export const metadata: Metadata = pageMeta({
+  title: "Heritage Destinations in India & the World",
   description:
-    "Heritage and cultural destinations: Kashi, Braj, Rishikesh, Rajputana, Khajuraho, Hampi, Temple Country and Odisha in India, and Nepal, Sri Lanka, Bhutan, Angkor, Java and Bali beyond.",
-};
+    "Heritage and cultural destinations: Kashi, Braj, Rishikesh, Rajputana and Hampi in India, and Nepal, Sri Lanka, Bhutan, Angkor, Kyoto, Petra and Machu Picchu beyond.",
+  path: "/destinations",
+});
 
 function Row({ d, i }: { d: Destination; i: number }) {
   return (
@@ -44,8 +46,15 @@ function Row({ d, i }: { d: Destination; i: number }) {
 }
 
 export default function DestinationsPage() {
+  const list = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "WanderMate destinations",
+    itemListElement: [...india, ...beyond].map((d, i) => ({ "@type": "ListItem", position: i + 1, name: d.name, url: abs(`/destinations/${d.slug}`) })),
+  };
   return (
     <>
+      <JsonLd data={[list, breadcrumbs([["Destinations", "/destinations"]])]} />
       <PageHero
         image="/images/ghats-panorama.jpg"
         label={`Destinations · ${india.length} in India · ${beyond.length} beyond`}

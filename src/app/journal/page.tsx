@@ -7,12 +7,14 @@ import { JournalBrowser } from "@/components/journal/journal-browser";
 import { Reveal } from "@/components/site/reveal";
 import { Btn } from "@/components/site/ui";
 import { glossary, posts, readTime } from "@/lib/journal";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "The Journal",
+export const metadata: Metadata = pageMeta({
+  title: "The Journal — Heritage, Rituals & Festivals",
   description:
-    "Stories of heritage, culture and tradition from India and the world — from the Ganga Aarti to the gates of Fushimi Inari.",
-};
+    "Stories of heritage, culture and tradition from India and the world — from the Ganga Aarti and Dev Deepawali to the gates of Fushimi Inari.",
+  path: "/journal",
+});
 
 const featured = posts[0];
 const places = new Set(posts.map((p) => p.place)).size;
@@ -30,8 +32,17 @@ const cards = posts.slice(1).map((p) => ({
 }));
 
 export default function JournalPage() {
+  const blog = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "The WanderMate Journal",
+    url: abs("/journal"),
+    publisher: { "@id": ORG_ID },
+    blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: abs(`/journal/${p.slug}`), image: abs(p.image) })),
+  };
   return (
     <>
+      <JsonLd data={[blog, breadcrumbs([["Journal", "/journal"]])]} />
       {/* ---------- Featured story ---------- */}
       <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden text-bone">
         <Image

@@ -38,6 +38,8 @@ export type Faq = { q: string; a: string; icon: "users" | "phone" | "shirt" | "w
 
 export type TourPackage = {
   slug: string;
+  /** Search title (complete, under 60 characters) and description (under 160) — the words people type. */
+  seo: { title: string; description: string };
   kind: "multi-day" | "day";
   name: string;
   /** e.g. "3 nights · 4 days" */
@@ -65,6 +67,11 @@ export type TourPackage = {
 export const packages: TourPackage[] = [
   {
     slug: "kashi-in-four-days",
+    seo: {
+      title: "Varanasi 3 Nights 4 Days Tour Package | WanderMate",
+      description:
+        "A private 4-day Varanasi tour: Ganga Aarti from your own boat, sunrise boat ride, Kashi Vishwanath, Sarnath and Ramnagar Fort. Hotel and AC cab included.",
+    },
     kind: "multi-day",
     name: "Kashi in Four Days",
     length: "3 nights · 4 days",

@@ -5,12 +5,14 @@ import { Suspense } from "react";
 import { Planner } from "@/components/site/planner";
 import { PlannerFromUrl } from "@/components/site/planner-from-url";
 import { Eyebrow } from "@/components/site/ui";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Plan a Journey",
+export const metadata: Metadata = pageMeta({
+  title: "Plan a Heritage Journey",
   description:
-    "Tell us who's travelling, when, and how you want to feel. A WanderMate companion replies on WhatsApp with a tailored itinerary.",
-};
+    "Tell us who\u2019s travelling, when, and how you want to feel. A WanderMate companion replies on WhatsApp with a tailored itinerary.",
+  path: "/plan",
+});
 
 export default function PlanPage() {
   return (

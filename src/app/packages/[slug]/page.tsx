@@ -18,6 +18,7 @@ import { Reveal } from "@/components/site/reveal";
 import { site } from "@/lib/content";
 import { getPost, type Post } from "@/lib/journal";
 import { getPackage, packages } from "@/lib/packages";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 import { getShelf } from "@/lib/store";
 
 export function generateStaticParams() {
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = getPackage(slug);
   if (!p) return {};
-  return { title: `${p.name} · ${p.length}`, description: p.tagline, openGraph: { images: [p.hero.image] } };
+  return pageMeta({ title: p.seo.title, absolute: true, description: p.seo.description, path: `/packages/${p.slug}` });
 }
 
 export default async function PackagePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -37,9 +38,43 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
   const shelf = getShelf(p.shop);
   const stories = (p.stories ?? []).map(getPost).filter((s): s is Post => Boolean(s));
+  const url = abs(`/packages/${p.slug}`);
+  const places = p.days.flatMap((d) => d.stops.filter((s) => s.icon !== "hotel" && s.icon !== "car").map((s) => ({ ...s, day: d.n })));
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "@id": `${url}#trip`,
+      name: p.name,
+      description: p.seo.description,
+      url,
+      image: [...new Set(p.days.map((d) => abs(d.image)))],
+      touristType: p.goodFor,
+      provider: { "@id": ORG_ID },
+      itinerary: {
+        "@type": "ItemList",
+        numberOfItems: places.length,
+        itemListElement: places.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: { "@type": "TouristAttraction", name: s.title, description: `Day ${s.day}: ${s.note}` },
+        })),
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: p.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    },
+    breadcrumbs([
+      ["All tours", "/journeys"],
+      [p.name, `/packages/${p.slug}`],
+    ]),
+  ];
 
   return (
     <>
+      <JsonLd data={schema} />
       {/* ---------- Hero: one quiet, full-bleed photograph per day ---------- */}
       <PackageHero name={p.name} length={p.length} days={p.days} />
 

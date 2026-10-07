@@ -12,6 +12,7 @@ import { Btn, Eyebrow } from "@/components/site/ui";
 import { hotels, whatsappLink } from "@/lib/content";
 import { getJourney, journeys } from "@/lib/journeys";
 import { exclusions, inclusions, itinerary, solo } from "@/lib/solo";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta, parsePrice } from "@/lib/seo";
 
 export function generateStaticParams() {
   // kashi-premium has its own page at journeys/kashi-premium.
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const j = getJourney(slug);
   if (!j) return {};
-  return { title: j.name, description: j.summary, openGraph: { images: [j.image] } };
+  return pageMeta({ title: `${j.name} · ${j.duration}`, description: j.summary, path: `/journeys/${j.slug}` });
 }
 
 export default async function JourneyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -34,8 +35,41 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
   const planHref = `/plan?journey=${j.slug}`;
   const others = journeys.filter((x) => x.slug !== j.slug).slice(0, 3);
 
+  const url = abs(`/journeys/${j.slug}`);
+  const price = parsePrice(j.price);
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      "@id": `${url}#trip`,
+      name: j.name,
+      description: j.summary,
+      url,
+      image: abs(j.image),
+      provider: { "@id": ORG_ID },
+      ...(j.days && {
+        itinerary: {
+          "@type": "ItemList",
+          itemListElement: j.days.map((d, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: { "@type": "TouristAttraction", name: d.title, description: d.points.join(" · ") },
+          })),
+        },
+      }),
+      ...(price && {
+        offers: { "@type": "Offer", ...price, url, availability: "https://schema.org/InStock", description: j.priceNote },
+      }),
+    },
+    breadcrumbs([
+      ["All tours", "/journeys"],
+      [j.name, `/journeys/${j.slug}`],
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={schema} />
       <PageHero image={j.image} label={`${j.kind} · ${j.route}`} title={j.name} intro={j.summary}>
         <div className="mt-10 flex flex-wrap items-end gap-x-12 gap-y-6 border-t border-bone/25 pt-6">
           <dl className="flex flex-wrap gap-x-12 gap-y-4">

@@ -6,16 +6,19 @@ import { Reveal } from "@/components/site/reveal";
 import { SplitHeading } from "@/components/site/split-heading";
 import { Btn, Eyebrow } from "@/components/site/ui";
 import { approach, site, team, whyKashi } from "@/lib/content";
+import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMeta({
+  title: "About WanderMate — Heritage Travel from Varanasi",
   description:
-    "WanderMate was founded by Ayush Singh, Ritesh Singh and Vineet — bridging traditional local knowledge of Varanasi with modern convenience.",
-};
+    "WanderMate was founded in Varanasi by Ayush Singh, Ritesh Singh and Vineet — heritage journeys led by local people, with modern comfort.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={[{ "@context": "https://schema.org", "@type": "AboutPage", url: abs("/about"), about: { "@id": ORG_ID } }, breadcrumbs([["About", "/about"]])]} />
       <PageHero
         image="/images/group.jpg"
         position="50% 35%"

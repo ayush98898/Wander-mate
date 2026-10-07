@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,6 +16,9 @@ import { Btn, Eyebrow } from "@/components/site/ui";
 import { approach, site, team, whatsappLink } from "@/lib/content";
 import { allTrips, destinations, featuredTripSlugs } from "@/lib/destinations";
 import { posts, readTime } from "@/lib/journal";
+
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const featured = featuredTripSlugs.map((s) => allTrips.find((t) => t.slug === s)!);
 const tripCount = allTrips.length;

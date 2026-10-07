@@ -4,20 +4,30 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { TourFinder, type TourFilters } from "@/components/site/tour-finder";
 import { Btn, Eyebrow } from "@/components/site/ui";
-import { allTrips, destinations } from "@/lib/destinations";
+import { allTrips, destinations, tripHref } from "@/lib/destinations";
+import { abs, breadcrumbs, JsonLd, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "All tours",
+export const metadata: Metadata = pageMeta({
+  title: "All Heritage Tours — India & Worldwide",
   description:
-    "Private and small-group heritage journeys, from Kashi, Braj and Rajputana to Kathmandu, Sri Lanka, Bhutan, Angkor, Java and Bali.",
-};
+    "Every WanderMate tour in one place: private and small-group heritage journeys from Kashi, Braj and Rajputana to Angkor, Kyoto and Petra. Filter by length and style.",
+  path: "/journeys",
+});
 
 export default async function JourneysPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
   const one = (k: string) => (typeof sp[k] === "string" ? (sp[k] as string) : undefined);
   const initial: TourFilters = { region: one("region"), dest: one("dest"), len: one("len"), style: one("style"), feel: one("feel") };
+  const list = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "WanderMate tours",
+    numberOfItems: allTrips.length,
+    itemListElement: allTrips.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t.name, url: abs(tripHref(t)) })),
+  };
   return (
     <>
+      <JsonLd data={[list, breadcrumbs([["All tours", "/journeys"]])]} />
       <PageHero
         image="/images/temple-tree.jpg"
         position="50% 40%"
