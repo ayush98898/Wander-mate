@@ -33,12 +33,28 @@ export type Post = {
   imagePosition?: string;
   /** "At a glance" facts shown beside the story. */
   facts?: { k: string; v: string }[];
+  /**
+   * Search: a title written for what people type (under 60 characters), a
+   * description (under 155) and a few keywords. The on-page title stays as written.
+   */
+  seo?: { title: string; description: string; keywords: string[] };
+  /** Tours to suggest, by trip slug in src/lib/destinations.ts (first three of the destination otherwise). */
+  tours?: string[];
+  /** Short notes stay out of search until they're expanded into full stories. */
+  index?: boolean;
   body: Block[];
 };
 
 export const posts: Post[] = [
   {
     slug: "the-ganga-aarti-explained",
+    seo: {
+      title: "Ganga Aarti in Varanasi: Meaning, Ritual & How to Watch",
+      description:
+        "What happens at the evening Ganga Aarti at Dashashwamedh Ghat, step by step — what it means, how long it lasts, and the best way to watch it.",
+      keywords: ["Ganga Aarti", "Varanasi", "Dashashwamedh Ghat", "Ganga Aarti timing", "Subah-e-Banaras"],
+    },
+    tours: ["kashi-in-four-days", "banaras-unfiltered", "kashi-premium"],
     title: "The Ganga Aarti, explained",
     excerpt:
       "Every evening at Dashashwamedh Ghat, priests offer fire, incense and song to a river they revere as a goddess. Here is what you are watching, and how to watch it well.",
@@ -90,6 +106,13 @@ export const posts: Post[] = [
   },
   {
     slug: "dev-deepawali",
+    seo: {
+      title: "Dev Deepawali in Varanasi: The Festival of Lamps Explained",
+      description:
+        "Dev Deepawali lights the ghats of Varanasi on Kartik Purnima, about two weeks after Diwali. What it means, when it falls and how to see it.",
+      keywords: ["Dev Deepawali", "Varanasi", "Kartik Purnima", "Dev Diwali", "festival of lamps"],
+    },
+    tours: ["kashi-premium", "kashi-in-four-days", "banaras-unfiltered"],
     title: "Dev Deepawali: the night the gods come down to the ghats",
     excerpt:
       "Fifteen days after Diwali, on the full moon of Kartik, Varanasi lights its riverfront with lamps — for the gods, who are said to descend to bathe in the Ganga.",
@@ -133,6 +156,13 @@ export const posts: Post[] = [
   },
   {
     slug: "kashi-city-of-light",
+    seo: {
+      title: "Why Varanasi Is Called Kashi, the City of Light",
+      description:
+        "Kashi, Varanasi, Banaras: where the city\u2019s three names come from, why it is called the City of Light, and how its ghats face the river.",
+      keywords: ["Kashi", "Varanasi", "Banaras", "City of Light", "Kashi Vishwanath"],
+    },
+    tours: ["kashi-in-four-days", "kashi-premium", "banaras-unfiltered"],
     title: "Why Kashi is called the City of Light",
     excerpt:
       "Varanasi has three names and a reputation older than history. A short introduction to the city we call home.",
@@ -176,6 +206,12 @@ export const posts: Post[] = [
   },
   {
     slug: "langar-the-kitchen-that-feeds-everyone",
+    seo: {
+      title: "Langar at the Golden Temple, Amritsar: The Free Kitchen",
+      description:
+        "At the Golden Temple in Amritsar, langar feeds tens of thousands a day, free, all seated together. How it began with Guru Nanak, and what to know.",
+      keywords: ["Langar", "Golden Temple", "Amritsar", "Harmandir Sahib", "Sikh community kitchen"],
+    },
     title: "Langar: the kitchen that feeds everyone",
     excerpt:
       "At the Golden Temple in Amritsar, a free kitchen serves tens of thousands of people a day, all seated together on the floor. It began with Guru Nanak.",
@@ -218,6 +254,12 @@ export const posts: Post[] = [
   },
   {
     slug: "under-the-bodhi-tree",
+    seo: {
+      title: "The Bodhi Tree at Bodh Gaya: Where the Buddha Awoke",
+      description:
+        "The sacred fig at the Mahabodhi Temple marks where Siddhartha became the Buddha. Its story, its journey to Sri Lanka and back, and when to go.",
+      keywords: ["Bodhi Tree", "Bodh Gaya", "Mahabodhi Temple", "Buddhist pilgrimage", "Bihar"],
+    },
     title: "Under the Bodhi Tree",
     excerpt:
       "In Bodh Gaya, a fig tree marks the place where Siddhartha Gautama became the Buddha. Its story travels to Sri Lanka and back.",
@@ -260,6 +302,12 @@ export const posts: Post[] = [
   },
   {
     slug: "angkor-the-epics-in-stone",
+    seo: {
+      title: "Angkor Wat Carvings: The Ramayana & Mahabharata in Stone",
+      description:
+        "Angkor Wat was built for Vishnu in the 12th century. How to read its galleries: the Ramayana, the Mahabharata and the churning of the ocean.",
+      keywords: ["Angkor Wat", "Angkor Wat carvings", "Ramayana", "Churning of the Ocean of Milk", "Cambodia"],
+    },
     title: "Angkor: the Indian epics in stone",
     excerpt:
       "The largest religious monument on earth was built for Vishnu. Its galleries carve the Ramayana, the Mahabharata and the churning of the ocean into sandstone.",
@@ -302,6 +350,12 @@ export const posts: Post[] = [
   },
   {
     slug: "fushimi-inari-a-thousand-gates",
+    seo: {
+      title: "Fushimi Inari Shrine, Kyoto: The Story of the Torii Gates",
+      description:
+        "Why thousands of vermilion torii climb Mount Inari in Kyoto, who gives them, and the foxes that guard Inari, the kami of rice. Plus when to walk it.",
+      keywords: ["Fushimi Inari", "Kyoto", "torii gates", "Inari", "Shinto shrine"],
+    },
     title: "Fushimi Inari: a mountain of gates",
     excerpt:
       "Thousands of vermilion torii climb a hillside in Kyoto, each one given by a person or a business. An introduction to Inari, the kami of rice.",
@@ -344,6 +398,12 @@ export const posts: Post[] = [
   },
   {
     slug: "petra-the-city-the-nabataeans-carved",
+    seo: {
+      title: "Petra, Jordan: The Nabataean City & the Treasury Story",
+      description:
+        "How the Nabataeans grew rich on the incense trade and carved Petra into rose-red cliffs — and why the Treasury was never a treasury at all.",
+      keywords: ["Petra", "Jordan", "Nabataeans", "Al-Khazneh", "The Siq"],
+    },
     title: "Petra: the city the Nabataeans carved",
     excerpt:
       "A desert people grew rich on the incense trade and carved their capital into rose-red cliffs. The building everyone calls the Treasury was never a treasury at all.",
@@ -388,6 +448,14 @@ export const posts: Post[] = [
   /* ---------------- Notes from WanderMate ---------------- */
   {
     slug: "guide-to-luxury-travel-in-varanasi",
+    seo: {
+      title: "Luxury Travel in Varanasi: Our Guide",
+      description:
+        "How WanderMate shapes private, luxury journeys in Varanasi — beyond the iconic sights of the oldest living city in the world.",
+      keywords: ["luxury travel Varanasi", "private Varanasi tour"],
+    },
+    tours: ["kashi-luxury", "kashi-premium", "kashi-in-four-days"],
+    index: false,
     title: "Our guide to luxury travel in Varanasi",
     excerpt:
       "We create bespoke luxury experiences for those who seek more than just the iconic sights of the oldest living city in the world.",
@@ -418,6 +486,13 @@ export const posts: Post[] = [
   },
   {
     slug: "the-pursuit-of-feeling",
+    seo: {
+      title: "The Pursuit of Feeling",
+      description:
+        "Travel is about more than checking a destination off a list. In a city as ancient as Varanasi, it is about feeling somewhere else.",
+      keywords: ["Varanasi travel"],
+    },
+    index: false,
     title: "The pursuit of feeling",
     excerpt:
       "Travel has always been about more than checking a destination off a list. In a city as visceral and ancient as Varanasi, travel is about feeling somewhere else.",
@@ -436,6 +511,13 @@ export const posts: Post[] = [
   },
   {
     slug: "what-we-do-and-why",
+    seo: {
+      title: "What We Do, and Why",
+      description:
+        "WanderMate crafts tailor-made journeys through the heart of Varanasi for families, couples and private groups from across the world.",
+      keywords: ["WanderMate", "Varanasi tours"],
+    },
+    index: false,
     title: "What we do, and why we do it",
     excerpt:
       "Since our founding, WanderMate has had one mission: crafting remarkable, tailor-made journeys through the heart of Varanasi.",
@@ -478,6 +560,16 @@ const WPM = 200;
 export function readTime(p: Post) {
   const words = p.body.reduce((n, b) => n + ("text" in b ? b.text.split(/\s+/).length : 0), 0);
   return `${Math.max(1, Math.ceil(words / WPM))} min read`;
+}
+
+/** Words in a story, for structured data. */
+export function wordCount(p: Post) {
+  return p.body.reduce((n, b) => n + ("text" in b ? b.text.split(/\s+/).length : 0), 0);
+}
+
+/** A heading's anchor, e.g. "How to watch it well" → "how-to-watch-it-well". */
+export function headingId(text: string) {
+  return text.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 export function getPost(slug: string) {

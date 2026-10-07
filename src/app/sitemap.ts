@@ -31,6 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...packages.map((p) => page(`/packages/${p.slug}`, 0.9, p.days[0]?.image ?? p.hero.image)),
     ...journeys.filter((j) => !j.external && !j.page).map((j) => page(`/journeys/${j.slug}`, 0.9, j.image)),
     ...destinations.map((d) => page(`/destinations/${d.slug}`, d.status === "Now" ? 0.8 : 0.6, d.image)),
-    ...posts.map((p) => page(`/journal/${p.slug}`, 0.6, p.image)),
+    ...posts.filter((p) => p.index !== false).map((p) => page(`/journal/${p.slug}`, 0.7, p.image)),
   ];
 }

@@ -5,8 +5,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ReadingProgress } from "@/components/journal/reading-progress";
-import { getDestination } from "@/lib/destinations";
-import { getPost, posts, readTime, type Block } from "@/lib/journal";
+import { allTrips, getDestination, tripHref, type TripWithPlace } from "@/lib/destinations";
+import { getPost, headingId, posts, readTime, wordCount, type Block } from "@/lib/journal";
 import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -17,7 +17,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return pageMeta({ title: post.title, description: post.excerpt, path: `/journal/${post.slug}`, type: "article" });
+  return {
+    ...pageMeta({
+      title: post.seo?.title ?? post.title,
+      description: post.seo?.description ?? post.excerpt,
+      path: `/journal/${post.slug}`,
+      type: "article",
+    }),
+    keywords: post.seo?.keywords,
+    // Short notes stay out of search until they're expanded; links on them are still followed.
+    ...(post.index === false && { robots: { index: false, follow: true } }),
+  };
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -26,12 +36,18 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   if (!post) notFound();
 
   const dest = post.destination ? getDestination(post.destination) : undefined;
-  // Related: same category first, then same region, never itself.
+  // Related: the same place first, then the same category, then the same region — full stories only.
+  const others = posts.filter((p) => p.slug !== slug && p.index !== false);
   const related = [
-    ...posts.filter((p) => p.slug !== slug && p.category === post.category),
-    ...posts.filter((p) => p.slug !== slug && p.category !== post.category && p.region === post.region),
-    ...posts.filter((p) => p.slug !== slug && p.region !== post.region),
+    ...others.filter((p) => p.place === post.place),
+    ...others.filter((p) => p.place !== post.place && p.category === post.category),
+    ...others.filter((p) => p.place !== post.place && p.category !== post.category && p.region === post.region),
+    ...others.filter((p) => p.region !== post.region),
   ].slice(0, 3);
+  // Tours this story belongs to: the ones named on the post, else the destination's first three.
+  const tourSlugs = post.tours?.length ? post.tours : (dest?.trips ?? []).slice(0, 3).map((t) => t.slug);
+  const tours = tourSlugs.map((t) => allTrips.find((x) => x.slug === t)).filter((t): t is TripWithPlace => Boolean(t));
+  const headings = post.body.filter((b): b is Extract<Block, { t: "h" }> => b.t === "h");
   const firstP = post.body.findIndex((b) => b.t === "p");
 
   const url = abs(`/journal/${post.slug}`);
@@ -41,11 +57,15 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       "@type": "Article",
       "@id": `${url}#article`,
       headline: post.title,
-      description: post.excerpt,
+      description: post.seo?.description ?? post.excerpt,
       image: abs(post.image),
       url,
       mainEntityOfPage: url,
+      isPartOf: { "@type": "Blog", name: "The WanderMate Journal", url: abs("/journal") },
       articleSection: post.category,
+      ...(post.seo && { keywords: post.seo.keywords.join(", ") }),
+      wordCount: wordCount(post),
+      timeRequired: `PT${Math.max(1, Math.ceil(wordCount(post) / 200))}M`,
       about: { "@type": "Place", name: post.place },
       author: { "@id": ORG_ID },
       publisher: { "@id": ORG_ID },
@@ -107,6 +127,20 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 </dl>
               </div>
             ) : null}
+            {headings.length > 1 ? (
+              <nav aria-label="In this story" className="mt-8 hidden border-t border-ink/15 pt-5 lg:block">
+                <p className="label text-smoke">In this story</p>
+                <ol className="mt-3 space-y-2">
+                  {headings.map((h) => (
+                    <li key={h.text}>
+                      <a href={`#${headingId(h.text)}`} className="text-sm leading-snug text-ink-2 underline-offset-4 hover:text-ochre hover:underline">
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            ) : null}
             {dest ? (
               <Link href={`/destinations/${dest.slug}`} className="group label mt-6 inline-flex items-center gap-2 text-ochre">
                 <span className="ul">Travel to {dest.name}</span>
@@ -130,8 +164,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       {dest ? (
         <section className="pb-24 md:pb-32">
           <div className="wrap">
-            <Link href={`/destinations/${dest.slug}`} className="group grid overflow-hidden bg-ink text-bone md:grid-cols-2">
-              <div className="relative aspect-[4/3] md:aspect-auto">
+            <div className="grid overflow-hidden bg-ink text-bone md:grid-cols-2">
+              <Link href={`/destinations/${dest.slug}`} className="group relative block aspect-[4/3] overflow-hidden md:aspect-auto" aria-label={`${dest.name}, ${dest.country}`}>
                 {dest.image ? (
                   <Image
                     src={dest.image}
@@ -141,26 +175,39 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.04]"
                   />
                 ) : null}
-              </div>
+              </Link>
               <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
                 <div>
                   <p className="label text-bone/60">Travel there with WanderMate · {dest.status}</p>
-                  <p className="display mt-6 text-5xl md:text-6xl">{dest.name}</p>
+                  <h2 className="display mt-6 text-5xl md:text-6xl">
+                    <Link href={`/destinations/${dest.slug}`} className="ul">
+                      {dest.name}
+                    </Link>
+                  </h2>
                   <p className="mt-5 max-w-md leading-relaxed text-bone/75">{dest.line}</p>
                 </div>
-                <ul className="border-t border-bone/20">
-                  {dest.trips.slice(0, 3).map((t) => (
-                    <li key={t.slug} className="flex items-baseline justify-between gap-4 border-b border-bone/15 py-3">
-                      <span className="display text-2xl">{t.name}</span>
-                      <span className="label shrink-0 text-bone/55">{t.duration}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="label inline-flex items-center gap-2 text-ochre-lit">
-                  <span className="ul">See the journeys</span> <ArrowUpRight aria-hidden className="size-4" />
-                </span>
+                {tours.length ? (
+                  <div>
+                    <p className="label text-bone/55">Tours that include it</p>
+                    <ul className="mt-3 border-t border-bone/20">
+                      {tours.map((t) => (
+                        <li key={t.slug} className="border-b border-bone/15">
+                          <Link href={tripHref(t)} className="group flex items-baseline justify-between gap-4 py-3">
+                            <span className="display text-2xl">
+                              <span className="ul">{t.name}</span>
+                            </span>
+                            <span className="label shrink-0 text-bone/55">{t.duration}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                <Link href={`/destinations/${dest.slug}`} className="group label inline-flex items-center gap-2 text-ochre-lit">
+                  <span className="ul">All journeys to {dest.name}</span> <ArrowUpRight aria-hidden className="size-4" />
+                </Link>
               </div>
-            </Link>
+            </div>
           </div>
         </section>
       ) : null}
@@ -222,7 +269,11 @@ function BlockView({ b, first }: { b: Block; first?: boolean }) {
         </p>
       );
     case "h":
-      return <h2 className="display mt-14 mb-6 text-[2.2rem] leading-[1.1] text-ink md:text-[2.6rem]">{b.text}</h2>;
+      return (
+        <h2 id={headingId(b.text)} className="display mt-14 mb-6 scroll-mt-28 text-[2.2rem] leading-[1.1] text-ink md:text-[2.6rem]">
+          {b.text}
+        </h2>
+      );
     case "quote":
       return (
         <figure className="my-14 border-l-2 border-ochre pl-6 md:-ml-8 md:pl-8">
