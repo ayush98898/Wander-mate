@@ -1,5 +1,11 @@
+import { dailyPosts } from "@/lib/journal-daily";
+
 /*
  * The Journal — heritage, culture and tradition, from Kashi outward.
+ *
+ * Long-form stories live below; the daily guides live in journal-daily.ts and
+ * carry a `published` date: a post stays hidden until that date (India time),
+ * and the journal pages refresh hourly, so a week can be written ahead.
  *
  * To publish a story, add a Post below. `body` is a list of blocks
  * (paragraphs, headings, pull quotes, images); read time is worked out
@@ -7,7 +13,7 @@
  * the story with an invitation to travel there.
  */
 
-export const categories = ["Heritage", "Tradition", "Festivals", "Culture", "Notes from WanderMate"] as const;
+export const categories = ["Guides", "Heritage", "Tradition", "Festivals", "Culture", "Notes from WanderMate"] as const;
 export type Category = (typeof categories)[number];
 
 export type Region = "India" | "World";
@@ -42,10 +48,25 @@ export type Post = {
   tours?: string[];
   /** Short notes stay out of search until they're expanded into full stories. */
   index?: boolean;
+  /** Publication date, "YYYY-MM-DD" (India time). Hidden before it; newest first. */
+  published?: string;
+  /** Last substantive update, "YYYY-MM-DD". */
+  updated?: string;
+  /** Who wrote it (a founder or guide); the organisation otherwise. */
+  author?: string;
+  /**
+   * The short answer, 40–70 words, shown first. Search and AI answer engines quote
+   * this, so it answers the title's question directly, with names and numbers.
+   */
+  answer?: string;
+  /** Questions people ask about the topic, answered in two or three sentences (FAQPage). */
+  faqs?: { q: string; a: string }[];
+  /** Where the facts come from. */
+  sources?: { name: string; url: string }[];
   body: Block[];
 };
 
-export const posts: Post[] = [
+const stories: Post[] = [
   {
     slug: "the-ganga-aarti-explained",
     seo: {
@@ -542,6 +563,29 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+/** Every story, the daily guides first (newest first), then the long-form stories. */
+export const posts: Post[] = [...[...dailyPosts].sort((a, b) => (b.published ?? "").localeCompare(a.published ?? "")), ...stories];
+
+/** Today's date in India, "YYYY-MM-DD". */
+export function todayIST(now = new Date()) {
+  return new Date(now.getTime() + 330 * 60_000).toISOString().slice(0, 10);
+}
+
+/** A post is live once its publication date has arrived (undated stories always are). */
+export function isLive(p: Post, now = new Date()) {
+  return !p.published || p.published <= todayIST(now);
+}
+
+/** The posts readers can see right now, in order. */
+export function livePosts(now = new Date()) {
+  return posts.filter((p) => isLive(p, now));
+}
+
+/** "2026-10-09" → "9 October 2026". */
+export function formatDate(iso: string) {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
 
 /** Words from traditions around the world, explained in a line. */
 export const glossary = [

@@ -6,19 +6,28 @@ import Link from "next/link";
 import { JournalBrowser } from "@/components/journal/journal-browser";
 import { Reveal } from "@/components/site/reveal";
 import { Btn } from "@/components/site/ui";
-import { glossary, posts, readTime } from "@/lib/journal";
+import { glossary, livePosts, readTime } from "@/lib/journal";
 import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = pageMeta({
+const meta = pageMeta({
   title: "The Journal — Heritage, Rituals & Festivals",
   description:
     "Stories of heritage, culture and tradition from India and the world — from the Ganga Aarti and Dev Deepawali to the gates of Fushimi Inari.",
   path: "/journal",
 });
+export const metadata: Metadata = {
+  ...meta,
+  alternates: { ...meta.alternates, types: { "application/rss+xml": [{ url: "/journal/feed.xml", title: "The WanderMate Journal" }] } },
+};
 
-const featured = posts[0];
-const places = new Set(posts.map((p) => p.place)).size;
-const cards = posts.slice(1).map((p) => ({
+// New guides go live on their publication date; refresh hourly so they appear without a deploy.
+export const revalidate = 3600;
+
+export default function JournalPage() {
+  const posts = livePosts();
+  const featured = posts[0];
+  const places = new Set(posts.map((p) => p.place)).size;
+  const cards = posts.slice(1).map((p) => ({
   slug: p.slug,
   title: p.title,
   excerpt: p.excerpt,
@@ -29,16 +38,20 @@ const cards = posts.slice(1).map((p) => ({
   imageAlt: p.imageAlt,
   imagePosition: p.imagePosition,
   read: readTime(p),
-}));
-
-export default function JournalPage() {
+  }));
   const blog = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "The WanderMate Journal",
     url: abs("/journal"),
     publisher: { "@id": ORG_ID },
-    blogPost: posts.map((p) => ({ "@type": "BlogPosting", headline: p.title, url: abs(`/journal/${p.slug}`), image: abs(p.image) })),
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: abs(`/journal/${p.slug}`),
+      image: abs(p.image),
+      ...(p.published && { datePublished: p.published }),
+    })),
   };
   return (
     <>

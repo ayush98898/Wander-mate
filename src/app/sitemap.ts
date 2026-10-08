@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 
-export const dynamic = "force-static";
+// New Journal guides go live on their date; rebuild the sitemap hourly to include them.
+export const revalidate = 3600;
 
 import { destinations } from "@/lib/destinations";
-import { posts } from "@/lib/journal";
+import { livePosts } from "@/lib/journal";
 import { journeys } from "@/lib/journeys";
 import { packages } from "@/lib/packages";
 import { abs } from "@/lib/seo";
@@ -31,6 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...packages.map((p) => page(`/packages/${p.slug}`, 0.9, p.days[0]?.image ?? p.hero.image)),
     ...journeys.filter((j) => !j.external && !j.page).map((j) => page(`/journeys/${j.slug}`, 0.9, j.image)),
     ...destinations.map((d) => page(`/destinations/${d.slug}`, d.status === "Now" ? 0.8 : 0.6, d.image)),
-    ...posts.filter((p) => p.index !== false).map((p) => page(`/journal/${p.slug}`, 0.7, p.image)),
+    ...livePosts()
+      .filter((p) => p.index !== false)
+      .map((p) => ({
+        ...page(`/journal/${p.slug}`, 0.7, p.image),
+        ...(p.published && { lastModified: new Date(p.updated ?? p.published) }),
+      })),
   ];
 }

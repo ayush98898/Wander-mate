@@ -6,8 +6,11 @@ import { notFound } from "next/navigation";
 
 import { ReadingProgress } from "@/components/journal/reading-progress";
 import { allTrips, getDestination, tripHref, type TripWithPlace } from "@/lib/destinations";
-import { getPost, headingId, posts, readTime, wordCount, type Block } from "@/lib/journal";
+import { formatDate, getPost, headingId, isLive, livePosts, posts, readTime, wordCount, type Block } from "@/lib/journal";
 import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
+
+// Guides written ahead go live on their publication date; pages refresh hourly.
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -16,13 +19,24 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post) return {};
+  if (!post || !isLive(post)) return {};
   return {
     ...pageMeta({
       title: post.seo?.title ?? post.title,
       description: post.seo?.description ?? post.excerpt,
       path: `/journal/${post.slug}`,
       type: "article",
+    }),
+    ...(post.published && {
+      openGraph: {
+        type: "article",
+        title: post.seo?.title ?? post.title,
+        description: post.seo?.description ?? post.excerpt,
+        url: `/journal/${post.slug}`,
+        publishedTime: post.published,
+        ...(post.updated && { modifiedTime: post.updated }),
+        section: post.category,
+      },
     }),
     keywords: post.seo?.keywords,
     // Short notes stay out of search until they're expanded; links on them are still followed.
@@ -33,11 +47,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post) notFound();
+  if (!post || !isLive(post)) notFound();
 
   const dest = post.destination ? getDestination(post.destination) : undefined;
   // Related: the same place first, then the same category, then the same region — full stories only.
-  const others = posts.filter((p) => p.slug !== slug && p.index !== false);
+  const others = livePosts().filter((p) => p.slug !== slug && p.index !== false);
   const related = [
     ...others.filter((p) => p.place === post.place),
     ...others.filter((p) => p.place !== post.place && p.category === post.category),
@@ -67,10 +81,22 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       wordCount: wordCount(post),
       timeRequired: `PT${Math.max(1, Math.ceil(wordCount(post) / 200))}M`,
       about: { "@type": "Place", name: post.place },
-      author: { "@id": ORG_ID },
+      ...(post.published && { datePublished: post.published, dateModified: post.updated ?? post.published }),
+      ...(post.answer && { abstract: post.answer }),
+      ...(post.sources?.length && { citation: post.sources.map((c) => ({ "@type": "CreativeWork", name: c.name, url: c.url })) }),
+      author: post.author ? { "@type": "Person", name: post.author, worksFor: { "@id": ORG_ID } } : { "@id": ORG_ID },
       publisher: { "@id": ORG_ID },
       inLanguage: "en-IN",
     },
+    ...(post.faqs?.length
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+          },
+        ]
+      : []),
     breadcrumbs([
       ["Journal", "/journal"],
       [post.title, `/journal/${post.slug}`],
@@ -105,6 +131,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <span>{post.place}</span>
             <span aria-hidden>·</span>
             <span>{readTime(post)}</span>
+            {post.published ? (
+              <>
+                <span aria-hidden>·</span>
+                <time dateTime={post.updated ?? post.published}>
+                  {post.updated ? `Updated ${formatDate(post.updated)}` : formatDate(post.published)}
+                </time>
+              </>
+            ) : null}
           </p>
           <h1 className="display mt-6 max-w-5xl text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.98]">{post.title}</h1>
         </div>
@@ -151,11 +185,47 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           <div className="min-w-0">
             <p className="display max-w-[34ch] text-[clamp(1.6rem,2.6vw,2.2rem)] leading-[1.3] text-ink">{post.excerpt}</p>
+            {post.answer ? (
+              <div className="mt-10 max-w-[68ch] border-l-2 border-ochre bg-paper px-6 py-6 md:px-8">
+                <p className="label text-ochre">The short answer</p>
+                <p className="mt-3 text-lg leading-relaxed text-ink">{post.answer}</p>
+                {post.author ? <p className="label mt-4 text-smoke">By {post.author}, WanderMate · Varanasi</p> : null}
+              </div>
+            ) : null}
             <div className="mt-12 max-w-[68ch] border-t border-ink/15 pt-12">
               {post.body.map((b, i) => (
                 <BlockView key={i} b={b} first={i === firstP} />
               ))}
             </div>
+            {post.faqs?.length ? (
+              <section aria-labelledby="faqs" className="mt-16 max-w-[68ch] border-t border-ink/15 pt-12">
+                <h2 id="faqs" className="display scroll-mt-28 text-[clamp(2rem,3.2vw,2.75rem)] leading-[1.1]">
+                  Questions people <em>ask</em>
+                </h2>
+                <dl className="mt-8">
+                  {post.faqs.map((f) => (
+                    <div key={f.q} className="border-b border-ink/12 py-6">
+                      <dt className="display text-2xl leading-snug">{f.q}</dt>
+                      <dd className="mt-3 leading-relaxed text-ink-2">{f.a}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            ) : null}
+            {post.sources?.length ? (
+              <section aria-label="Sources" className="mt-12 max-w-[68ch]">
+                <p className="label text-smoke">Sources</p>
+                <ul className="mt-3 space-y-1.5 text-sm">
+                  {post.sources.map((c) => (
+                    <li key={c.url}>
+                      <a href={c.url} target="_blank" rel="noopener" className="text-ink-2 underline underline-offset-4 hover:text-ochre">
+                        {c.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
           </div>
         </div>
       </article>
