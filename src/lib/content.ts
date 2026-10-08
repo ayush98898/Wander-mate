@@ -11,7 +11,6 @@ export const site = {
   phoneDisplay: "+91 92143 13559",
   instagram: "https://www.instagram.com/wandermate.in",
   instagramHandle: "@wandermate.in",
-  devDeepawaliUrl: "https://dev-deepawali-2026.vercel.app/",
   rating: { score: 4.9, count: 121 },
   coordinates: "25.3176° N · 82.9739° E",
 };

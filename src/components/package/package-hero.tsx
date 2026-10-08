@@ -11,26 +11,30 @@ const HOLD = 7000;
 const ease = [0.16, 1, 0.3, 1] as const;
 
 /**
- * One full-bleed photograph per day, drifting slowly and dissolving into the next.
+ * One full-bleed photograph per day, drifting slowly and dissolving into the next —
+ * or, when the trip has one, a short muted film loop over its poster.
  * Nothing else on screen but the trip's length and its name.
  */
 export function PackageHero({
   name,
   length,
   days,
+  video,
 }: {
   name: string;
   length: string;
   days: PackageDay[];
+  /** A muted loop and the still shown before it plays (and to reduced-motion visitors). */
+  video?: { src: string; poster: string; alt: string };
 }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
 
   useEffect(() => {
-    if (reduce) return;
+    if (reduce || video) return;
     const t = window.setTimeout(() => setI((n) => (n + 1) % days.length), HOLD);
     return () => window.clearTimeout(t);
-  }, [i, reduce, days.length]);
+  }, [i, reduce, days.length, video]);
 
   const [lead, last] = splitName(name);
   const rise = (d: number) => ({
@@ -41,7 +45,26 @@ export function PackageHero({
 
   return (
     <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink text-bone">
-      {days.map((d, n) => (
+      {video ? (
+        <>
+          <Image src={video.poster} alt={video.alt} fill priority sizes="100vw" className="-z-20 object-cover" />
+          {reduce ? null : (
+            <video
+              aria-hidden
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={video.poster}
+              className="absolute inset-0 -z-20 size-full object-cover"
+            >
+              <source src={video.src} type="video/mp4" />
+            </video>
+          )}
+        </>
+      ) : null}
+      {(video ? [] : days).map((d, n) => (
         <Image
           key={d.image}
           src={d.image}

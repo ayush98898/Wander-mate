@@ -112,7 +112,7 @@ export const posts: Post[] = [
         "Dev Deepawali lights the ghats of Varanasi on Kartik Purnima, about two weeks after Diwali. What it means, when it falls and how to see it.",
       keywords: ["Dev Deepawali", "Varanasi", "Kartik Purnima", "Dev Diwali", "festival of lamps"],
     },
-    tours: ["kashi-premium", "kashi-in-four-days", "banaras-unfiltered"],
+    tours: ["dev-deepawali-2026", "kashi-premium", "kashi-in-four-days"],
     title: "Dev Deepawali: the night the gods come down to the ghats",
     excerpt:
       "Fifteen days after Diwali, on the full moon of Kartik, Varanasi lights its riverfront with lamps — for the gods, who are said to descend to bathe in the Ganga.",

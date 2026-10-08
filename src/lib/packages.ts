@@ -6,7 +6,7 @@
  * the layout between a multi-day journey and a single-day program.
  */
 
-export type StopIcon = "boat" | "temple" | "walk" | "stupa" | "fort" | "car" | "hotel" | "flame" | "museum" | "campus";
+export type StopIcon = "boat" | "temple" | "walk" | "stupa" | "fort" | "car" | "hotel" | "flame" | "museum" | "campus" | "music" | "cup" | "craft" | "sparkle";
 
 /** One stop in the day, in the order you reach it, with a line or two of detail. */
 export type Stop = { title: string; note: string; icon: StopIcon };
@@ -31,7 +31,14 @@ export type StayTier = {
   hotels: { name: string; image: string }[];
   /** A mood photograph for a tier with no named hotels yet. */
   image?: string;
+  /** Set the tier on navy, as the top of the range. */
+  featured?: boolean;
+  /** Small line above the name (defaults to "Chosen for your dates"). */
+  kicker?: string;
 };
+
+/** A feature band: one big photograph and what the experience holds. */
+export type Feature = { kicker: string; title: string; italic: string; line: string; items: string[]; image: string; alt: string };
 
 export type Review = { quote: string; name: string; from: string; trip: string };
 export type Faq = { q: string; a: string; icon: "users" | "phone" | "shirt" | "waves" | "wallet" | "plus" };
@@ -46,23 +53,40 @@ export type TourPackage = {
   length: string;
   tagline: string;
   hero: { image: string; alt: string; position?: string };
+  /** A short muted loop for the hero, shown instead of the photographs (poster = hero.image). */
+  heroVideo?: string;
   stats: { value: string; label: string; icon: "moon" | "car" | "boat" | "landmark" | "clock" | "users" | "wallet" | "calendar" }[];
   days: PackageDay[];
   /** The boat ride, ghat by ghat in the order you pass them (drawn bottom to top). */
-  river?: { ghats: string[]; kicker: string; note: string; caption: string };
+  river?: { ghats: string[]; kicker: string; note: string; caption: string; title?: [string, string] };
+  /** Feature bands between the river and the days (e.g. a festival, a cruise). */
+  features?: Feature[];
   included: string[];
   excluded: string[];
   stays: StayTier[];
   /** Private trips: vehicle choices for the trip builder. */
   vehicles?: { name: string; seats: string }[];
   /** Fixed-date group trips: a per-person price and departures, booked by the seat. */
-  booking?: { price: string; per: string; group: string; departures: { dates: string; days: string; seats: number }[] };
+  booking?: {
+    price: string;
+    per: string;
+    group: string;
+    departures: { dates: string; days: string; seats?: number }[];
+    /** Price tiers to choose between; the first is the default and sets `price`. */
+    tiers?: { name: string; price: string; line: string }[];
+    /** Line under the seat counter (rooms, payment terms). */
+    note?: string;
+    /** Small line above the section title. */
+    kicker?: string;
+  };
   goodFor: string[];
   /** Guest words for this trip; the section is left out when there are none. */
   reviews?: Review[];
   faqs: Faq[];
   /** Heritage Store shelf to show (a destination slug in src/lib/store.ts). */
   shop?: string;
+  /** Booking terms, word for word, shown folded under the FAQs. */
+  terms?: { title: string; content: string }[];
   /** Journal stories to read before the trip (post slugs), lead story first. */
   stories?: string[];
   closing: { image: string; alt: string; line: string };
@@ -348,6 +372,8 @@ export const packages: TourPackage[] = [
       per: "per person, all-inclusive",
       group: "4–8 travellers",
       departures: [{ dates: "6–8 November 2026", days: "Fri – Sun", seats: 8 }],
+      note: "Rooms are twin sharing with a traveller of the same gender. Travelling with a friend? Book two seats and mention it in your message.",
+      kicker: "Small group · fixed dates",
     },
     goodFor: ["Solo travellers", "First visits", "Food lovers", "Small groups"],
     faqs: [
@@ -387,6 +413,247 @@ export const packages: TourPackage[] = [
       image: "/images/ghats-evening.jpg",
       alt: "The ghats of Varanasi at dusk",
       line: "Come on your own. Leave with a city — and the people you met in it.",
+    },
+  },
+  {
+    slug: "dev-deepawali-2026",
+    seo: {
+      title: "Dev Deepawali 2026 Varanasi Tour Package | WanderMate",
+      description:
+        "Dev Deepawali in Varanasi, 23–25 Nov 2026: Akashganga at Ramnagar Fort and a 4-hour private cruise past all 84 lit ghats. From ₹39,999, all-inclusive.",
+    },
+    kind: "multi-day",
+    name: "Dev Deepawali 2026",
+    length: "2 nights · 3 days",
+    tagline: "One night a year the gods come down to bathe in the Ganga, and Kashi lights a lamp on every step to greet them.",
+    hero: { image: "/images/dev-deepawali/fireworks.jpg", alt: "Fireworks over the lit ghats of Varanasi on Dev Deepawali" },
+    heroVideo: "/videos/dev-deepawali.mp4",
+    stats: [
+      { value: "39,999", label: "INR per person, all-inclusive", icon: "wallet" },
+      { value: "23–25", label: "November 2026", icon: "calendar" },
+      { value: "4 hrs", label: "private cruise on the Ganga", icon: "boat" },
+      { value: "84", label: "ghats lit with diyas", icon: "landmark" },
+    ],
+    features: [
+      {
+        kicker: "Day 2 · Ramnagar Fort",
+        title: "Akashganga,",
+        italic: "inside the fort.",
+        line: "A seven-hour festival in the Maharaja's fort across the river, open only to guests with a pass.",
+        items: [
+          "Exclusive QR-based entry",
+          "Ramnagar Fort museum walk",
+          "Handicraft workshop & cultural exhibition",
+          "Banaras hi-tea",
+          "Classical music & Kathak",
+          "Lanterns & fireworks",
+          "A professional event photographer",
+          "Security & event management",
+          "A curated return gift",
+        ],
+        image: "/images/dev-deepawali/akashganga-kathak.jpg",
+        alt: "Kathak dancers on the Akashganga stage at Ramnagar Fort",
+      },
+      {
+        kicker: "Day 2 · 4-hour private cruise",
+        title: "On the Ganga,",
+        italic: "under a sky of fire.",
+        line: "Board at 4:30 PM, watch the ghats glow at golden hour, and stay on the water until the last of the 84 is lit.",
+        items: [
+          "Private ghat boarding",
+          "QR-based fast boarding",
+          "Comfortable seating",
+          "On-board washroom",
+          "Refreshments",
+          "Dedicated medical support",
+          "A guide & storyteller",
+          "The full 84-ghat view",
+        ],
+        image: "/images/dev-deepawali/fireworks.jpg",
+        alt: "Fireworks over the lit ghats, seen from the river",
+      },
+    ],
+    days: [
+      {
+        n: 1,
+        title: "Old Kashi after dark",
+        line: "Arrive, settle in, then the old city's lanes and the evening Aarti.",
+        image: "/images/aarti-night.jpg",
+        imageAlt: "The Ganga Aarti at night in Varanasi",
+        stops: [
+          { title: "Pickup & check in", note: "From the airport or railway station to your hotel, with a welcome kit and a briefing from your Kashi companion.", icon: "car" },
+          { title: "Night food walk", note: "Chowk and the old city's lanes after dark, one stall and one story at a time.", icon: "walk" },
+          { title: "The Ganga Aarti", note: "Premium riverside seating for the evening Aarti.", icon: "flame" },
+          { title: "Diyas & kulhad chai", note: "Float a diya on the river, then chai in a clay cup as the crowds thin.", icon: "cup" },
+        ],
+      },
+      {
+        n: 2,
+        title: "The night of lamps",
+        line: "Akashganga at Ramnagar Fort by day, all 84 ghats lit from the river by night.",
+        image: "/images/dev-deepawali/ramnagar-fort.jpg",
+        imageAlt: "Ramnagar Fort on the Ganga, seen from above",
+        stops: [
+          { title: "Across to Ramnagar Fort", note: "Leave mid-morning for the Maharaja's fort on the far bank.", icon: "car" },
+          { title: "Akashganga begins", note: "Exclusive QR-based entry to the festival inside the fort.", icon: "fort" },
+          { title: "The fort museum", note: "A walk through the royal museum of the Kashi Naresh.", icon: "museum" },
+          { title: "Craft workshop", note: "Weaving, zardozi and a cultural exhibition, with the makers.", icon: "craft" },
+          { title: "Banaras hi-tea", note: "An afternoon spread of Banarasi sweets and savouries.", icon: "cup" },
+          { title: "Classical music & Kathak", note: "Musicians of the Banaras gharana, then Kathak in the courtyard.", icon: "music" },
+          { title: "Lanterns & fireworks", note: "Sky lanterns and a fireworks celebration before you head to the river.", icon: "sparkle" },
+          { title: "The Dev Deepawali cruise", note: "Board your private boat at 4:30 PM. The ghats begin to glow at golden hour; by nightfall all 84 are one line of fire. Back at the fort by 8:30 PM.", icon: "boat" },
+          { title: "Dinner at the fort", note: "Festival-night dinner at Ramnagar Fort: a Banarasi buffet, or fine dining on Luxury. At the hotel by 11 PM.", icon: "fort" },
+        ],
+      },
+      {
+        n: 3,
+        title: "Blessings & farewell",
+        line: "Assi at first light, the university town, and home.",
+        image: "/images/sunrise-boats.jpg",
+        imageAlt: "Boats on the Ganga at sunrise",
+        stops: [
+          { title: "Morning at Assi Ghat", note: "Subah-e-Banaras, a ghat walk with heritage stories, and a farewell chai by the river.", icon: "walk" },
+          { title: "Banarasi breakfast", note: "Kachori, jalebi and chai at an old favourite.", icon: "cup" },
+          { title: "BHU & New Vishwanath", note: "The university's campus and its marble Vishwanath temple.", icon: "campus" },
+          { title: "Drop-off", note: "To the airport or railway station.", icon: "car" },
+        ],
+      },
+    ],
+    included: [
+      "2 nights' accommodation",
+      "Airport or station pickup & private transport",
+      "WanderMate guide (personal guide on Luxury)",
+      "Akashganga: a 7-hour festival experience",
+      "4-hour Dev Deepawali Ganga cruise",
+      "Breakfast & curated Banarasi experiences",
+      "24×7 support on the trip",
+      "Entry fees, permits & logistics",
+    ],
+    excluded: [
+      "Airfare or train fare",
+      "Some lunches",
+      "Alcoholic drinks",
+      "Travel insurance",
+      "Camera fees where charged",
+      "Early check-in or late check-out",
+      "Personal expenses",
+    ],
+    stays: [
+      {
+        name: "Premium",
+        kicker: "₹39,999 per person",
+        line: "A premium 3-star hotel, with everything you need for the festival and nothing you don't.",
+        features: ["Premium 3-star hotel", "Private sedan transfers", "A WanderMate guide", "Festival-night dinner at the fort"],
+        hotels: [],
+        image: "/images/dev-deepawali/river-aerial.jpg",
+      },
+      {
+        name: "Luxury",
+        kicker: "₹59,999 per person",
+        line: "A 5-star stay and a guide of your own, for a Dev Deepawali that runs entirely at your pace.",
+        features: ["5-star hotel", "Luxury vehicle or SUV", "A dedicated personal guide", "Fine dining at Ramnagar Fort"],
+        hotels: [],
+        image: "/images/golden-boats.jpg",
+        featured: true,
+      },
+    ],
+    booking: {
+      price: "INR 39,999",
+      per: "per person, GST included",
+      group: "Limited seats",
+      kicker: "One night a year · limited seats",
+      departures: [{ dates: "23–25 November 2026", days: "Mon – Wed" }],
+      tiers: [
+        { name: "Premium", price: "INR 39,999", line: "3-star hotel · sedan · WanderMate guide" },
+        { name: "Luxury", price: "INR 59,999", line: "5-star hotel · SUV · personal guide · fort fine dining" },
+      ],
+      note: "Pay 50% to confirm your seat and the rest 15 days before travel. Bookings are non-refundable, so we suggest travel insurance.",
+    },
+    goodFor: ["Couples", "Families", "Festival travellers", "First visits"],
+    faqs: [
+      {
+        q: "When is Dev Deepawali in 2026?",
+        a: "On Kartik Purnima, Tuesday 24 November 2026. The journey runs from 23 to 25 November, so you are in Kashi for the evening before, the festival itself and the morning after.",
+        icon: "waves",
+      },
+      {
+        q: "What is the difference between Premium and Luxury?",
+        a: "Premium (₹39,999) has a 3-star hotel, a private sedan, a WanderMate guide and the festival-night dinner. Luxury (₹59,999) has a 5-star hotel, a luxury vehicle or SUV, a dedicated personal guide and fine dining at Ramnagar Fort. Both include Akashganga and the cruise.",
+        icon: "wallet",
+      },
+      {
+        q: "How do I book?",
+        a: "Message us on WhatsApp, Instagram or this site. We can adjust your arrival time, stay length or add experiences. Pay 50% to confirm; the balance is due 15 days before travel.",
+        icon: "phone",
+      },
+      {
+        q: "Can I cancel or change my dates?",
+        a: "No. Akashganga seats, cruise places and hotel rooms are held for you on a fixed festival date, so bookings are non-refundable and can't move to another date. Name changes may be possible up to 7 days before.",
+        icon: "plus",
+      },
+      {
+        q: "What should I carry?",
+        a: "A government photo ID for every guest: hotels require it, and the festival and cruise may ask for it. A warm layer helps on the river at night in late November.",
+        icon: "shirt",
+      },
+      {
+        q: "Will it be crowded?",
+        a: "Dev Deepawali is one of the busiest nights in Varanasi. That is why the evening is spent on your own boat and inside the fort, with entry passes and transfers arranged by us. Boarding times are fixed, so please follow your guide.",
+        icon: "users",
+      },
+    ],
+    terms: [
+      {
+        title: "Booking & payment",
+        content:
+          "A confirmed booking with WanderMate requires a 50% advance payment at the time of reservation. The remaining 50% balance must be paid no later than 15 days prior to the travel date, or as otherwise communicated by WanderMate at the time of booking. Bookings are confirmed only after the advance payment is realised, and remain subject to availability of Akashganga festival seats, cruise capacity, and hotel rooms. Given the highly limited nature of Akashganga seats and Dev Deepawali cruise capacity, early booking is strongly recommended. If the balance payment is not received by the due date, WanderMate reserves the right to cancel the booking, in which case the advance paid shall stand forfeited as per the cancellation policy below.",
+      },
+      {
+        title: "Pricing",
+        content:
+          "The package is priced at ₹39,999 per person for the Premium tier and ₹59,999 per person for the Luxury tier, fully inclusive of GST and all applicable government taxes. There are no hidden charges beyond what is explicitly listed under Exclusions. Prices are subject to change for new bookings made closer to the event date, depending on Akashganga and hotel availability.",
+      },
+      {
+        title: "Cancellation & refund",
+        content:
+          "This is a strict no-refund booking, owing to the fixed, festival-dated nature of the package and the limited third-party allocations it depends on — Akashganga festival seats, cruise capacity, and hotel block bookings. Once the 50% advance is paid, no cancellation, refund, or partial refund of the advance will be processed under any circumstances, including but not limited to a change in travel plans, illness, visa issues, or personal emergencies. If the balance 50% has also been paid, the full amount remains non-refundable. WanderMate strongly recommends that guests purchase independent travel insurance to cover any unforeseen circumstances.",
+      },
+      {
+        title: "Rescheduling",
+        content:
+          "Because Dev Deepawali is a fixed annual date tied to the lunar calendar, rescheduling to an alternate date is not possible within the same booking. Name changes or guest substitutions may be considered on a case-by-case basis, subject to approval, and must be requested at least 7 days prior to the event date.",
+      },
+      {
+        title: "Force majeure",
+        content:
+          "WanderMate is not liable for cancellations, delays, or itinerary changes caused by circumstances beyond its reasonable control, including but not limited to natural calamities, government restrictions, political disturbances, extreme weather, or partner and vendor cancellations. In such cases, WanderMate will make reasonable efforts to offer an alternative experience of comparable value, though no cash refund will be issued.",
+      },
+      {
+        title: "Itinerary changes",
+        content:
+          "The itinerary, including timings, sequence of activities, and specific inclusions, may be modified by WanderMate or its partners — Akashganga and the partner hotels — due to operational, safety, weather, or crowd-related reasons. Any such change will be communicated to guests at the earliest opportunity, and WanderMate will ensure that the overall experience and value remain consistent with what was originally promised.",
+      },
+      {
+        title: "Guest conduct & safety",
+        content:
+          "Guests are expected to follow the timing and instructions provided by WanderMate guides and Akashganga staff, particularly around boarding times for the cruise and entry to the festival, both of which are time-critical and cannot be relaxed once missed. WanderMate is not responsible for guests missing scheduled activities due to late arrival at designated meeting points. Guests with medical conditions are advised to inform WanderMate at the time of booking so that appropriate arrangements can be made in advance.",
+      },
+      {
+        title: "Identification",
+        content:
+          "Valid government-issued photo identification is mandatory for hotel check-in and may be required for entry to the Akashganga festival and cruise. WanderMate is not responsible for denial of entry due to a guest's failure to carry valid identification.",
+      },
+      {
+        title: "Liability",
+        content:
+          "WanderMate acts as a facilitator, coordinating accommodation, transport, guide services, and third-party experiences including the Akashganga festival and cruise. WanderMate is not liable for the independent acts, omissions, or service quality of third-party vendors, although all partners are vetted and selected for reliability. Travel is undertaken at the guest's own risk, and WanderMate recommends comprehensive travel insurance for all guests.",
+      },
+    ],
+    stories: ["dev-deepawali", "the-ganga-aarti-explained", "kashi-city-of-light"],
+    closing: {
+      image: "/images/dev-deepawali/sparklers.jpg",
+      alt: "Guests with sparklers on Dev Deepawali night",
+      line: "One night a year, Kashi lights a lamp for every god. Be on the river when it does.",
     },
   },
 ];

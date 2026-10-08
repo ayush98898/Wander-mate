@@ -151,16 +151,18 @@ export const journeys: Journey[] = [
   },
   {
     slug: "dev-deepawali-2026",
+    page: "/packages/dev-deepawali-2026",
     name: "Dev Deepawali 2026",
     kind: "Festival · bookings open",
-    duration: "Seasonal",
+    duration: "2 nights · 3 days",
+    price: "INR 39,999",
+    priceNote: "per person, all-inclusive",
     route: "Varanasi",
-    image: "/images/diya.jpg",
+    image: "/images/dev-deepawali/fireworks.jpg",
     feelings: ["awe", "indulgence"],
     summary:
-      "The night the gods are said to descend to the ghats, lit by countless diyas. Bookings are open for 2026.",
-    highlights: ["Ghat-side viewing", "Festival-night planning", "Limited availability"],
-    external: "https://dev-deepawali-2026.vercel.app/",
+      "23–25 November 2026: Akashganga at Ramnagar Fort, a 4-hour private cruise past all 84 lit ghats, and dinner at the fort.",
+    highlights: ["Akashganga festival pass", "4-hour private Ganga cruise", "Premium or Luxury stays"],
   },
 ];
 

@@ -10,18 +10,21 @@ import { cn } from "@/lib/utils";
 type Booking = NonNullable<TourPackage["booking"]>;
 
 /**
- * For fixed-date group trips: pick a departure and how many seats, see the total,
- * and reserve on WhatsApp with a ready-made message.
+ * For fixed-date trips: pick a departure (and a tier, where there are several) and
+ * how many seats, see the total, and reserve on WhatsApp with a ready-made message.
  */
 export function SeatBooker({ name, length, booking, included }: { name: string; length: string; booking: Booking; included: string[] }) {
   const uid = useId();
   const [d, setD] = useState(0);
   const [seats, setSeats] = useState(1);
+  const [t, setT] = useState(0);
   const dep = booking.departures[d];
-  const unit = Number(booking.price.replace(/[^\d]/g, ""));
-  const max = dep.seats;
+  const tier = booking.tiers?.[t];
+  const price = tier?.price ?? booking.price;
+  const unit = Number(price.replace(/[^\d]/g, ""));
+  const max = dep.seats ?? 10;
   const total = (unit * seats).toLocaleString("en-IN");
-  const message = `Namaste WanderMate! I'd like to reserve ${seats} ${seats === 1 ? "seat" : "seats"} on ${name} (${length}), departing ${dep.dates}.`;
+  const message = `Namaste WanderMate! I'd like to reserve ${seats} ${seats === 1 ? "seat" : "seats"} on ${name}${tier ? ` (${tier.name})` : ""}, ${length}, ${dep.dates}.`;
 
   return (
     <div className="grid gap-px bg-ink/12 lg:grid-cols-[1.4fr_1fr]">
@@ -38,7 +41,7 @@ export function SeatBooker({ name, length, booking, included }: { name: string; 
                   aria-pressed={on}
                   onClick={() => {
                     setD(i);
-                    setSeats((n) => Math.min(n, x.seats));
+                    setSeats((n) => Math.min(n, x.seats ?? 10));
                   }}
                   className={cn(
                     "flex min-h-11 flex-wrap items-center justify-between gap-x-8 gap-y-3 border p-5 text-left transition-colors md:p-6",
@@ -52,15 +55,47 @@ export function SeatBooker({ name, length, booking, included }: { name: string; 
                       <span className={cn("label mt-1 block", on ? "text-bone/60" : "text-smoke")}>{x.days}</span>
                     </span>
                   </span>
-                  <span className={cn("label inline-flex items-center gap-2", on ? "text-bone/75" : "text-smoke")}>
-                    <Users aria-hidden className="size-4" />
-                    Up to {x.seats} travellers
-                  </span>
+                  {x.seats ? (
+                    <span className={cn("label inline-flex items-center gap-2", on ? "text-bone/75" : "text-smoke")}>
+                      <Users aria-hidden className="size-4" />
+                      Up to {x.seats} travellers
+                    </span>
+                  ) : (
+                    <span className={cn("label", on ? "text-bone/75" : "text-smoke")}>{booking.group}</span>
+                  )}
                 </button>
               );
             })}
           </div>
         </fieldset>
+
+        {booking.tiers ? (
+          <div>
+            <p id={`${uid}-t`} className="label text-smoke">
+              Choose your package
+            </p>
+            <div role="group" aria-labelledby={`${uid}-t`} className="mt-4 grid gap-2 sm:grid-cols-2">
+              {booking.tiers.map((x, i) => {
+                const on = i === t;
+                return (
+                  <button
+                    key={x.name}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => setT(i)}
+                    className={cn("flex min-h-11 flex-col gap-2 border p-5 text-left transition-colors", on ? "border-ink bg-ink text-bone" : "border-ink/20 hover:border-ink")}
+                  >
+                    <span className="flex items-baseline justify-between gap-4">
+                      <span className="display text-3xl">{x.name}</span>
+                      <span className="display text-2xl tabular-nums">{x.price.replace(/^INR\s*/, "₹")}</span>
+                    </span>
+                    <span className={cn("text-sm leading-relaxed", on ? "text-bone/70" : "text-smoke")}>{x.line}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
 
         <div>
           <p id={`${uid}-s`} className="label text-smoke">
@@ -77,9 +112,7 @@ export function SeatBooker({ name, length, booking, included }: { name: string; 
               <Plus aria-hidden className="size-4" />
             </button>
           </div>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-smoke">
-            Rooms are twin sharing with a traveller of the same gender. Travelling with a friend? Book two seats and mention it in your message.
-          </p>
+          {booking.note ? <p className="mt-4 max-w-md text-sm leading-relaxed text-smoke">{booking.note}</p> : null}
         </div>
 
         <div className="border-t border-ink/12 pt-8">
@@ -97,8 +130,8 @@ export function SeatBooker({ name, length, booking, included }: { name: string; 
 
       <div className="flex flex-col justify-between gap-10 bg-ink p-6 text-bone md:p-10">
         <div>
-          <p className="label text-bone/55">Your seat</p>
-          <p className="display mt-6 text-6xl leading-none tabular-nums md:text-7xl">{booking.price.replace(/^INR\s*/, "₹")}</p>
+          <p className="label text-bone/55">{tier ? `Your seat · ${tier.name}` : "Your seat"}</p>
+          <p className="display mt-6 text-6xl leading-none tabular-nums md:text-7xl">{price.replace(/^INR\s*/, "₹")}</p>
           <p className="label mt-3 text-bone/60">{booking.per}</p>
           <dl className="mt-8 space-y-4">
             {[

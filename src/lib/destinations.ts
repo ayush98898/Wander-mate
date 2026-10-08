@@ -102,6 +102,18 @@ export const destinations: Destination[] = [
         image: "/images/holi.jpg",
       },
       {
+        slug: "dev-deepawali-2026",
+        name: "Dev Deepawali 2026",
+        format: "Festival",
+        duration: "2N · 3D",
+        price: "INR 39,999",
+        summary: "23–25 November: Akashganga at Ramnagar Fort, then all 84 ghats lit, seen from your own boat.",
+        highlights: ["Akashganga festival pass", "4-hour private Ganga cruise", "Dinner at Ramnagar Fort"],
+        feelings: ["awe", "indulgence"],
+        href: "/packages/dev-deepawali-2026",
+        image: "/images/dev-deepawali/fireworks.jpg",
+      },
+      {
         slug: "kashi-premium",
         name: "Wandermate Premium",
         format: "Private",

@@ -18,6 +18,8 @@ const nextConfig: NextConfig = isExport
           { source: "/banaras-unfiltered", destination: "/packages/banaras-unfiltered", permanent: true },
           { source: "/journeys/banaras-unfiltered", destination: "/packages/banaras-unfiltered", permanent: true },
           { source: "/enquire", destination: "/plan", permanent: true },
+          { source: "/dev-deepawali", destination: "/packages/dev-deepawali-2026", permanent: true },
+          { source: "/journeys/dev-deepawali-2026", destination: "/packages/dev-deepawali-2026", permanent: true },
         ];
       },
     };

@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BookingTerms } from "@/components/package/booking-terms";
 import { DayExplorer } from "@/components/package/day-explorer";
 import { Faq } from "@/components/package/faq";
+import { FeatureBand } from "@/components/package/feature-band";
 import { KashiStories } from "@/components/package/kashi-stories";
 import { GuestReviews } from "@/components/package/guest-reviews";
 import { statIcons } from "@/components/package/icons";
@@ -86,7 +88,12 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
     <>
       <JsonLd data={schema} />
       {/* ---------- Hero: one quiet, full-bleed photograph per day ---------- */}
-      <PackageHero name={p.name} length={p.length} days={p.days} />
+      <PackageHero
+        name={p.name}
+        length={p.length}
+        days={p.days}
+        video={p.heroVideo ? { src: p.heroVideo, poster: p.hero.image, alt: p.hero.alt } : undefined}
+      />
 
       {/* ---------- At a glance ---------- */}
       <section className="border-b border-ink/12">
@@ -129,7 +136,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
             <Reveal>
               <p className="label text-ochre-lit">{p.river.kicker}</p>
               <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
-                The river, <em>ghat by ghat.</em>
+                {p.river.title?.[0] ?? "The river,"} <em>{p.river.title?.[1] ?? "ghat by ghat."}</em>
               </h2>
               <p className="mt-6 max-w-sm text-bone/65">{p.river.note}</p>
             </Reveal>
@@ -137,6 +144,9 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       ) : null}
+
+      {/* ---------- Feature bands (a festival, a cruise) ---------- */}
+      {p.features?.map((f, i) => <FeatureBand key={f.title} feature={f} index={i} />)}
 
       {/* ---------- Day by day ---------- */}
       <section id="days" className="scroll-mt-16 py-24 md:py-32">
@@ -222,7 +232,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
           {p.booking ? (
             <>
               <Reveal className="mb-12">
-                <p className="label text-ochre">Small group · fixed dates</p>
+                <p className="label text-ochre">{p.booking.kicker ?? "Fixed dates"}</p>
                 <h2 className="display mt-6 text-5xl md:text-7xl">
                   Reserve <em>your seat</em>
                 </h2>
@@ -255,6 +265,24 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
           <Faq items={p.faqs} />
         </div>
       </section>
+
+      {/* ---------- Booking terms ---------- */}
+      {p.terms?.length ? (
+        <section className="border-t border-ink/12 py-24 md:py-32">
+          <div className="wrap grid gap-12 lg:grid-cols-[1fr_2fr] lg:gap-20">
+            <Reveal>
+              <p className="label text-ochre">Before you book</p>
+              <h2 className="display mt-6 text-5xl leading-[1] md:text-6xl">
+                Booking <em>terms</em>
+              </h2>
+              <p className="mt-6 max-w-xs text-smoke">The full terms for this journey. Tap one to read it.</p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <BookingTerms terms={p.terms} />
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       {/* ---------- The Heritage Store ---------- */}
       {shelf ? <HeritageStore shelf={shelf} /> : null}

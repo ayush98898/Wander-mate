@@ -4,6 +4,7 @@ import {
   Car,
   Castle,
   Clock,
+  Coffee,
   Flame,
   Flower2,
   Footprints,
@@ -11,7 +12,10 @@ import {
   Landmark,
   MapPinned,
   Moon,
+  Music,
+  Palette,
   Sailboat,
+  Sparkles,
   Users,
   Wallet,
   type LucideIcon,
@@ -30,6 +34,10 @@ export const stopIcons: Record<StopIcon, LucideIcon> = {
   flame: Flame,
   museum: MapPinned,
   campus: GraduationCap,
+  music: Music,
+  cup: Coffee,
+  craft: Palette,
+  sparkle: Sparkles,
 };
 
 export const statIcons: Record<TourPackage["stats"][number]["icon"], LucideIcon> = {
