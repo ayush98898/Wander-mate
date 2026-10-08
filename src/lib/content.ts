@@ -5,8 +5,8 @@ export const site = {
   tagline: "Heritage and cultural journeys across India and the world",
   description:
     "Story-led heritage and cultural journeys led by local people — temples, rituals, crafts and festivals across India and the world, from Kashi and Amritsar to Kyoto, Petra, Angkor and Machu Picchu.",
-  // Set NEXT_PUBLIC_SITE_URL to the production domain when deploying.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  // The live domain. NEXT_PUBLIC_SITE_URL can override it (e.g. for a staging copy).
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wandermate.in",
   whatsapp: "919214313559",
   phoneDisplay: "+91 92143 13559",
   instagram: "https://www.instagram.com/wandermate.in",
