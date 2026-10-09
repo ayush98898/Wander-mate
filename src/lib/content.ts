@@ -9,6 +9,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://wandermate.in",
   whatsapp: "919214313559",
   phoneDisplay: "+91 92143 13559",
+  email: "info@wandermate.in",
+  address: "First Floor, B27/92-13, Durgakund Road, Jawahar Nagar Colony, Bhelupur, Varanasi, Uttar Pradesh 221005, India",
   instagram: "https://www.instagram.com/wandermate.in",
   instagramHandle: "@wandermate.in",
   rating: { score: 4.9, count: 121 },

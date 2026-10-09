@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/journal", 0.7, "/images/priest-river.jpg", "weekly"),
     page("/about", 0.5, "/images/group.jpg"),
     page("/plan", 0.6, "/images/river-clouds.jpg"),
+    page("/privacy", 0.2, undefined, "yearly"),
     ...packages.map((p) => page(`/packages/${p.slug}`, 0.9, p.days[0]?.image ?? p.hero.image)),
     ...journeys.filter((j) => !j.external && !j.page).map((j) => page(`/journeys/${j.slug}`, 0.9, j.image)),
     ...destinations.map((d) => page(`/destinations/${d.slug}`, d.status === "Now" ? 0.8 : 0.6, d.image)),

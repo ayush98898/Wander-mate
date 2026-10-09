@@ -84,7 +84,12 @@ export function Footer() {
 
       <div className="wrap flex flex-col gap-2 border-t border-bone/12 py-6 text-bone/45 sm:flex-row sm:justify-between">
         <p className="label">© {new Date().getFullYear()} WanderMate</p>
-        <p className="label">Designed by Ayush Singh</p>
+        <p className="label flex gap-6">
+          <Link href="/privacy" className="hover:text-bone">
+            Privacy
+          </Link>
+          <span>Designed by Ayush Singh</span>
+        </p>
       </div>
     </footer>
   );
