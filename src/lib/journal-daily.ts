@@ -516,4 +516,505 @@ export const dailyPosts: Post[] = [
       { name: "Business Today: Banarasi paan gets GI tag (2023)", url: "https://businesstoday.in/industry/agriculture/story/banarasi-langda-mango-banarasi-paan-are-latest-entrants-to-gi-tag-club-375981-2023-04-04" },
     ],
   },
+  /* ---------------- Week of 16 October 2026 ---------------- */
+  {
+    slug: "durga-puja-kolkata-2026-guide",
+    published: "2026-10-16",
+    title: "Durga Puja in Kolkata 2026: dates, pandals and how to see it",
+    seo: {
+      title: "Durga Puja Kolkata 2026: Dates, Pandals & Tips",
+      description:
+        "Durga Puja 2026 in Kolkata runs from about 17 to 21 October. The days, the pandals worth queueing for, when to go out and how to see Sindoor Khela.",
+      keywords: ["Durga Puja 2026 Kolkata", "Kolkata pandal hopping", "Durga Puja dates 2026", "Sindoor Khela 2026", "Kumartuli Park"],
+    },
+    answer:
+      "Durga Puja 2026 in Kolkata runs from about Saptami on 17–18 October to Bijoya Dashami on 21 October, when Sindoor Khela is held. Go out on Shashthi or Saptami, when the queues are shorter, and walk the old north Kolkata pujas around Bagbazar and Kumartuli. Durga Puja of Kolkata has been on UNESCO's list of intangible heritage since 2021.",
+    excerpt: "For five days each autumn, Kolkata becomes one long walk from pandal to pandal. Here is how to time it and where to go.",
+    category: "Festivals",
+    region: "India",
+    place: "Kolkata",
+    destination: "kolkata",
+    tours: ["durga-puja-in-kolkata", "old-calcutta"],
+    image: "/images/destinations/kolkata.jpg",
+    imageAlt: "Kolkata during the festival season",
+    facts: [
+      { k: "2026 dates", v: "About 17–21 October" },
+      { k: "Sindoor Khela", v: "Bijoya Dashami, 21 October" },
+      { k: "Best days to go out", v: "Shashthi and Saptami" },
+      { k: "UNESCO", v: "Intangible heritage since 2021" },
+    ],
+    body: [
+      { t: "h", text: "When is Durga Puja in 2026?" },
+      {
+        t: "p",
+        text: "Durga Puja follows the lunar calendar, and Bengali almanacs and pan-Indian calendars count the days slightly differently. For 2026, most Kolkata listings place Maha Saptami on 17 or 18 October, Ashtami on 18 or 19, Navami on 19 or 20, and Bijoya Dashami on Wednesday 21 October. Confirm the exact days with a Bengali panjika or your puja committee before you book.",
+      },
+      { t: "h", text: "What happens on each day" },
+      {
+        t: "p",
+        text: "On Shashthi the goddess is unveiled. Saptami begins with the bathing of a banana plant, the kola bou, in the Ganga at dawn. Ashtami is the most devout day, with pushpanjali, the offering of flowers, in the morning and the Sandhi Puja at the hinge of Ashtami and Navami. Navami brings feasting. On Dashami, married women smear one another with vermilion in Sindoor Khela, and the idols are carried to the river for immersion.",
+      },
+      { t: "h", text: "Which pandals to see" },
+      {
+        t: "p",
+        text: "Start in the north, where Kolkata's oldest community pujas keep the traditional image: Bagbazar, Kumartuli Park and the College Square puja by the lake. The old family pujas of the great houses, such as Sovabazar Rajbari, show how the festival looked two centuries ago. For the spectacular theme pandals, which recreate anything from temples to forests, head to Suruchi Sangha, Dum Dum Park Tarun Sangha or Mohammad Ali Park.",
+      },
+      {
+        t: "quote",
+        text: "Pick one neighbourhood a night and walk it. Kolkata's Pujo is best on foot.",
+      },
+      { t: "h", text: "How to go pandal hopping" },
+      {
+        t: "p",
+        text: "Go out on Shashthi or Saptami: by Ashtami the queues at the famous pandals can run for hours. The city stays up all night, and late night and very early morning are the calmest times. Use the Metro where you can, wear comfortable shoes, carry water and small change, and pace yourself; trying to see everything in one night is the most common mistake.",
+      },
+      { t: "h", text: "Where to watch the immersion" },
+      {
+        t: "p",
+        text: "On Dashami and the days after, processions carry the idols to the ghats for immersion. Bagbazar Ghat and Prinsep Ghat are the best-known places to watch, and they fill early. It is a moving, noisy farewell; keep to the edges and follow police directions.",
+      },
+      { t: "h", text: "Before you go" },
+      {
+        t: "p",
+        text: "Hotels fill months ahead, so book early. Dress modestly for the family pujas. And spend an hour in Kumartuli, the potters' quarter, where the idols are made: in the days before the festival you can watch the last ones being painted. We plan private Durga Puja journeys to Kolkata on request.",
+      },
+    ],
+    faqs: [
+      { q: "When is Durga Puja 2026 in Kolkata?", a: "From about Saptami on 17–18 October to Bijoya Dashami on 21 October. Check a Bengali panjika for the exact days." },
+      { q: "Which is the best day to see Durga Puja pandals?", a: "Shashthi or Saptami, before the Ashtami crowds. Late night and early morning are the calmest times on any day." },
+      { q: "When is Sindoor Khela in 2026?", a: "On Bijoya Dashami, Wednesday 21 October 2026, before the idols are taken for immersion." },
+      { q: "Is Durga Puja a UNESCO heritage?", a: "Yes. Durga Puja in Kolkata was added to UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2021." },
+    ],
+    sources: [
+      { name: "Hindutone: Durga Puja 2026 dates in Kolkata", url: "https://hindutone.com/festivals/durga-puja-2026-dates-kolkata-mahalaya-to-sindoor-khela/" },
+      { name: "Publicholidays.in: Durga Puja 2026", url: "https://publicholidays.in/durga-puja/" },
+      { name: "UNESCO: Durga Puja in Kolkata", url: "https://ich.unesco.org/en/RL/durga-puja-in-kolkata-01503" },
+    ],
+  },
+
+  {
+    slug: "kyoto-autumn-leaves-guide",
+    published: "2026-10-17",
+    title: "Kyoto's autumn leaves: when they peak and where to see them",
+    seo: {
+      title: "Kyoto Autumn Leaves 2026: Peak Dates & Best Spots",
+      description:
+        "Kyoto's autumn colour peaks from late November into early December. The 2026 forecast, the best temples for maples and how to see them without the crowds.",
+      keywords: ["Kyoto autumn leaves 2026", "Kyoto momiji", "Kyoto koyo forecast", "Tofukuji autumn", "Eikando illumination"],
+    },
+    answer:
+      "Kyoto's autumn leaves usually peak from late November to early December. The first 2026 forecast puts yellow ginkgo at its best around 27 November and red maples around 11 December, later than average. Tofuku-ji, Eikan-do and Arashiyama are the classic places to see them; go at opening time on a weekday, and check each temple's site for evening illuminations.",
+    excerpt: "For a few weeks each year, Kyoto's temple gardens turn red and gold. Here is when to go, and how to see them before the crowds arrive.",
+    category: "Guides",
+    region: "World",
+    place: "Kyoto",
+    destination: "kyoto",
+    tours: ["temples-of-kyoto", "the-craft-of-kyoto"],
+    image: "/images/destinations/kyoto.jpg",
+    imageAlt: "A temple in Kyoto",
+    facts: [
+      { k: "Usual peak", v: "Late November to early December" },
+      { k: "2026 forecast", v: "Ginkgo ~27 Nov, maples ~11 Dec" },
+      { k: "Classic spots", v: "Tofuku-ji, Eikan-do, Arashiyama" },
+      { k: "Beat the crowds", v: "Arrive at opening, on a weekday" },
+    ],
+    body: [
+      { t: "h", text: "When do Kyoto's leaves turn?" },
+      {
+        t: "p",
+        text: "The Japanese call it koyo, the turning of the leaves, and in Kyoto it usually runs from mid-November, when the hills begin to change, to the first week of December, when the city's maples are at their deepest red. The exact timing depends on the cold. The first forecast for 2026 from the Japan Meteorological Corporation expects a late season, with Kyoto's ginkgo at its best around 27 November and its maples around 11 December. Forecasts are updated through the autumn, so check again before you book.",
+      },
+      { t: "h", text: "Where to see them" },
+      {
+        t: "p",
+        text: "Tofuku-ji in the south-east of the city is famous for the Tsutenkyo, a wooden covered bridge over a valley filled with some 2,000 maples. Eikan-do, at the foot of the eastern hills, is known as the temple of maples and opens in the evening during the season for illuminations. In the west, Arashiyama combines bamboo, temples and the hills along the Hozu river, and in the north the moss and maples of temples around Ohara and Takao are quieter.",
+      },
+      {
+        t: "quote",
+        text: "In Kyoto the leaves are a pilgrimage. Arrive before the gates open.",
+      },
+      { t: "h", text: "How to avoid the crowds" },
+      {
+        t: "p",
+        text: "Autumn is Kyoto's busiest season, and the famous temples are crowded by mid-morning. Be at the gate when it opens, choose weekdays, and visit the best-known places first, leaving smaller temples for the afternoon. Many temples charge a separate seasonal fee for special gardens or illuminations, and evening entry is often by timed ticket.",
+      },
+      { t: "h", text: "How to see them respectfully" },
+      {
+        t: "p",
+        text: "Stay on the paths, never shake branches or pick leaves, and keep tripods out of busy temple grounds unless they are allowed. Temples are places of worship first: walk quietly, and take off your shoes where asked.",
+      },
+      { t: "h", text: "Planning a trip" },
+      {
+        t: "p",
+        text: "Hotels in Kyoto fill early for late November, and prices rise; book months ahead, or stay in Osaka and travel in by train. Combine the leaves with Nara, an hour away, whose temples and deer park also glow in autumn. We plan private journeys to Kyoto and Nara on request.",
+      },
+    ],
+    faqs: [
+      { q: "When is the best time to see autumn leaves in Kyoto?", a: "Usually from late November to early December. The 2026 forecast expects a late season, with maples at their best around 11 December." },
+      { q: "Where is the best place to see autumn leaves in Kyoto?", a: "Tofuku-ji and its Tsutenkyo bridge, Eikan-do with its evening illuminations, and Arashiyama are the classics; Ohara and Takao are quieter." },
+      { q: "How do I avoid the crowds in Kyoto in autumn?", a: "Arrive when temples open, travel on weekdays, and see the most famous places first thing in the morning." },
+    ],
+    sources: [
+      { name: "Nippon.com: Japan's autumn foliage forecast 2026", url: "https://www.nippon.com/en/japan-data/h02888/japan%E2%80%99s-autumn-foliage-forecast-2026-peak-times-for-red-and-yellow-leaves.html" },
+      { name: "Time Out Tokyo: first official 2026 forecast", url: "https://www.timeout.com/tokyo/news/heres-the-first-official-2026-forecast-for-autumn-leaves-in-japan-090426" },
+      { name: "Watabi: Kyoto autumn foliage guide", url: "https://watabi.org/en/articles/kyoto-autumn-foliage-guide" },
+    ],
+  },
+
+  {
+    slug: "manikarnika-ghat-what-to-know",
+    published: "2026-10-18",
+    title: "Manikarnika Ghat: what to know before you go",
+    seo: {
+      title: "Manikarnika Ghat Varanasi: Etiquette & What to Know",
+      description:
+        "Manikarnika is Varanasi's great cremation ghat, where fires burn day and night. Why it matters, how to watch respectfully, photography and the scams to avoid.",
+      keywords: ["Manikarnika Ghat", "Manikarnika Ghat etiquette", "Varanasi cremation ghat", "Manikarnika photography", "Varanasi burning ghat"],
+    },
+    answer:
+      "Manikarnika Ghat is Varanasi's main cremation ground, where pyres burn day and night. Hindus believe that to be cremated here brings moksha, release from rebirth. Visitors may watch quietly from a distance or from a boat, but should never photograph the dead or the mourners, should dress modestly, and should politely refuse anyone who asks for money for wood.",
+    excerpt: "The fires of Manikarnika are the most moving sight in Varanasi. Here is what they mean, and how to be a respectful witness.",
+    category: "Guides",
+    region: "India",
+    place: "Varanasi",
+    destination: "kashi",
+    tours: ["kashi-in-four-days", "banaras-unfiltered", "kashi-premium"],
+    image: "/images/ghats-mono.jpg",
+    imageAlt: "The ghats and temples of Varanasi from the river",
+    facts: [
+      { k: "What it is", v: "Varanasi's main cremation ghat" },
+      { k: "Belief", v: "Cremation here brings moksha" },
+      { k: "Photography", v: "Never of the dead or mourners" },
+      { k: "Best way to see it", v: "Quietly, from a boat" },
+    ],
+    body: [
+      { t: "h", text: "Why Manikarnika matters" },
+      {
+        t: "p",
+        text: "Kashi has long been called the city where death is not feared, and Manikarnika is the reason. Hindus believe that to die in Kashi and be cremated here brings moksha, freedom from the cycle of rebirth, and families bring their dead from across India. The pyres burn day and night; tradition says the fire has not gone out for centuries.",
+      },
+      {
+        t: "p",
+        text: "The name comes from a legend that an earring, a manikarnika, fell here, from Shiva or from the goddess. Above the ghat is a small sacred tank, the Manikarnika Kund, said to have been dug by Vishnu at the beginning of time.",
+      },
+      { t: "h", text: "Who works at the ghat" },
+      {
+        t: "p",
+        text: "The cremations are carried out by the Dom community, who have tended the fires of Manikarnika for generations. They keep the sacred flame from which the pyres are lit, build the pyres and manage the wood. Families bring the body down through the lanes on a bamboo stretcher, chanting, and dip it in the Ganga before it is placed on the pyre.",
+      },
+      {
+        t: "quote",
+        text: "You are a guest at the most private moment in a family's life. Watch as you would wish to be watched.",
+      },
+      { t: "h", text: "How to watch respectfully" },
+      {
+        t: "p",
+        text: "It is acceptable to watch, quietly and at a distance. The best way for most visitors is from a boat on the river, which keeps you out of the way of the families and the work. On the ghat itself, stand aside, keep your voice low, dress modestly and do not touch anything. Women in grieving families traditionally stay away from the pyres, so you will see mostly men.",
+      },
+      { t: "h", text: "Can you take photographs?" },
+      {
+        t: "p",
+        text: "Do not photograph or film the cremations, the bodies or the mourners. It is deeply hurtful to families, and many people at the ghat will stop you. A distant photograph of the riverfront from a boat is another matter; if in doubt, keep the camera down.",
+      },
+      { t: "h", text: "Scams to avoid" },
+      {
+        t: "p",
+        text: "Visitors are often approached by men who offer to explain the ghat, lead them to a building above it and then ask for a large donation for wood for the poor or the dying. Politely decline. If you want to understand Manikarnika, go with a guide you trust, or simply sit in a boat and watch.",
+      },
+    ],
+    faqs: [
+      { q: "Can tourists visit Manikarnika Ghat?", a: "Yes, but quietly and at a distance. Watching from a boat on the river is the most respectful way for most visitors." },
+      { q: "Is photography allowed at Manikarnika Ghat?", a: "Do not photograph the cremations, the dead or the mourners. It is hurtful to families and you will be stopped." },
+      { q: "Why do people come to Manikarnika to be cremated?", a: "Hindus believe that cremation at Manikarnika in Kashi brings moksha, release from the cycle of rebirth." },
+      { q: "Should I give money for wood at Manikarnika?", a: "Politely decline anyone who approaches you for a wood donation. It is a well-known scam aimed at visitors." },
+    ],
+    sources: [
+      { name: "Lonely Planet: Manikarnika Ghat", url: "https://www.lonelyplanet.com/pois/1321849" },
+      { name: "Wikipedia: Manikarnika Ghat", url: "https://en.wikipedia.org/wiki/Manikarnika_Ghat" },
+    ],
+  },
+
+  {
+    slug: "loy-krathong-yi-peng-2026-guide",
+    published: "2026-10-19",
+    title: "Loy Krathong and Yi Peng 2026: dates and how to see them",
+    seo: {
+      title: "Loy Krathong & Yi Peng 2026: Dates & Where to Go",
+      description:
+        "Loy Krathong falls on the full moon of 24 November 2026, with Chiang Mai's Yi Peng lanterns on 24–25 November. What each festival is and how to see it well.",
+      keywords: ["Loy Krathong 2026", "Yi Peng 2026", "Chiang Mai lantern festival", "Thailand festival November", "Loy Krathong date"],
+    },
+    answer:
+      "Loy Krathong falls on the full moon of the twelfth Thai month: Tuesday 24 November 2026, though some listings give the 25th. People float krathongs, small boats of banana leaf, flowers and candles, on rivers and ponds across Thailand. In Chiang Mai, the Yi Peng festival of sky lanterns runs on 24–25 November 2026. Book Chiang Mai rooms and lantern events early.",
+    excerpt: "On the November full moon, Thailand sets little boats of light on its rivers, and Chiang Mai fills its sky with lanterns.",
+    category: "Festivals",
+    region: "World",
+    place: "Chiang Mai",
+    destination: "thailand",
+    tours: ["yi-peng-and-loy-krathong", "temples-of-chiang-mai", "ancient-capitals"],
+    image: "/images/destinations/thailand.jpg",
+    imageAlt: "A temple in Thailand",
+    facts: [
+      { k: "Loy Krathong", v: "Full moon, 24 November 2026" },
+      { k: "Yi Peng (Chiang Mai)", v: "24–25 November 2026" },
+      { k: "What you float", v: "A krathong of leaf, flowers and a candle" },
+      { k: "Book", v: "Months ahead for Chiang Mai" },
+    ],
+    body: [
+      { t: "h", text: "When are Loy Krathong and Yi Peng in 2026?" },
+      {
+        t: "p",
+        text: "Loy Krathong is held on the full moon of the twelfth month of the Thai lunar calendar, which in 2026 falls on Tuesday 24 November; a few listings give the 25th, so confirm closer to the date. In Chiang Mai and the old Lanna kingdom of the north, Loy Krathong coincides with Yi Peng, the festival of sky lanterns, which is set for 24 and 25 November 2026.",
+      },
+      {
+        t: "p",
+        text: "The same full moon is Kartik Purnima in India, the night of Dev Deepawali in Varanasi, when every ghat is lit with lamps. Two of Asia's great festivals of light fall on the same night this year.",
+      },
+      { t: "h", text: "What happens at Loy Krathong" },
+      {
+        t: "p",
+        text: "A krathong is a small float, traditionally made from a slice of banana trunk wrapped in banana leaf, decorated with flowers and carrying a candle and incense. After dark, people set them on rivers, canals and lakes to thank the water spirits and let go of misfortune, and many make a wish as theirs drifts away. Choose one made of natural materials, not foam.",
+      },
+      { t: "h", text: "What happens at Yi Peng" },
+      {
+        t: "p",
+        text: "In Chiang Mai, the old city is hung with paper lanterns, temples are lit with candles, and on the festival nights thousands of khom loi, sky lanterns, are released. Releasing lanterns in the city is regulated and limited to set times and places, for safety and because of the airport, so join an organised event or a temple ceremony rather than releasing one anywhere.",
+      },
+      {
+        t: "quote",
+        text: "Float a krathong on the river, then look up. Chiang Mai does both on the same night.",
+      },
+      { t: "h", text: "How to plan the trip" },
+      {
+        t: "p",
+        text: "This is one of the busiest weeks of the year in northern Thailand. Book flights and hotels in Chiang Mai months ahead, and book ticketed lantern events as soon as they are announced; many sell out. Sukhothai, the old capital, holds its own beautiful Loy Krathong among its ruins and is quieter. We plan private journeys to Thailand's ancient capitals and Chiang Mai on request.",
+      },
+    ],
+    faqs: [
+      { q: "When is Loy Krathong 2026?", a: "On the full moon of 24 November 2026, though some listings give the 25th. Confirm closer to the date." },
+      { q: "When is the Chiang Mai lantern festival in 2026?", a: "Yi Peng is set for 24–25 November 2026, the same nights as Loy Krathong." },
+      { q: "Can you release a sky lantern anywhere in Chiang Mai?", a: "No. Lantern releases are regulated and limited to set times and places; join an organised event or temple ceremony." },
+    ],
+    sources: [
+      { name: "Two Wandering Soles: Loy Krathong & Yi Peng 2026", url: "https://www.twowanderingsoles.com/blog/thailand-lantern-festival-loy-krathong-yi-peng" },
+      { name: "Umetravel: Thailand lantern festivals 2026", url: "https://www.umetravel.com/thailand/guide/history-culture_loy-krathong-festival/" },
+    ],
+  },
+
+  {
+    slug: "taj-mahal-tickets-timings-guide",
+    published: "2026-10-20",
+    title: "Taj Mahal: tickets, timings and the best time to visit",
+    seo: {
+      title: "Taj Mahal Tickets & Timings 2026: Complete Guide",
+      description:
+        "The Taj Mahal opens from sunrise to sunset and is closed on Fridays. Ticket prices, the mausoleum ticket, full-moon night viewing and the best time to go.",
+      keywords: ["Taj Mahal tickets", "Taj Mahal timings", "Taj Mahal closed Friday", "Taj Mahal night viewing", "best time to visit Taj Mahal"],
+    },
+    answer:
+      "The Taj Mahal opens from about sunrise to sunset every day except Friday, when it is closed. Foreign visitors pay about ₹1,100 plus ₹200 to enter the main mausoleum; Indian visitors pay much less, and children under 15 enter free. Night viewing is held on the full moon and two nights either side, with tickets booked online a day ahead. Go at sunrise.",
+    excerpt: "The most famous building in India is best seen at first light. Here is what you need to know before you go.",
+    category: "Guides",
+    region: "India",
+    place: "Agra",
+    destination: "agra",
+    tours: ["taj-at-first-light", "mughal-heartland", "marble-and-memory"],
+    image: "/images/destinations/agra.jpg",
+    imageAlt: "The Taj Mahal in Agra",
+    facts: [
+      { k: "Open", v: "Sunrise to sunset" },
+      { k: "Closed", v: "Every Friday" },
+      { k: "Foreign visitors", v: "About ₹1,100 + ₹200 mausoleum" },
+      { k: "Best time", v: "Sunrise, October to March" },
+    ],
+    body: [
+      { t: "h", text: "Opening hours and the Friday closure" },
+      {
+        t: "p",
+        text: "The Taj Mahal is open from about 30 minutes before sunrise to 30 minutes before sunset. It is closed to visitors every Friday, when the mosque in the complex is used for prayers. Plan your Agra day around that, and check the Archaeological Survey of India's notices before you go, as hours shift slightly with the season.",
+      },
+      { t: "h", text: "Tickets" },
+      {
+        t: "p",
+        text: "Foreign visitors pay about ₹1,100 for entry, and a further ₹200 for the main mausoleum, where the tombs of Mumtaz Mahal and Shah Jahan lie. Indian citizens and visitors from SAARC and BIMSTEC countries pay much lower fees, and children under 15 enter free. Buy tickets online through the official ASI site or at the counters; online tickets help you skip a queue. Prices change, so check the official site.",
+      },
+      { t: "h", text: "Night viewing on the full moon" },
+      {
+        t: "p",
+        text: "On the night of the full moon and the two nights before and after, except Fridays and during Ramadan, the Taj Mahal opens for night viewing in small groups between about 8:30 PM and 12:30 AM. Numbers are limited, and tickets must be bought online at least a day ahead. You see the Taj from a platform rather than up close, but the white marble in moonlight is unforgettable.",
+      },
+      {
+        t: "quote",
+        text: "Be at the gate before sunrise. The marble changes colour every few minutes.",
+      },
+      { t: "h", text: "The best time to visit" },
+      {
+        t: "p",
+        text: "Sunrise is best: the light is soft, the marble turns from grey to pink to white, and the crowds are thinnest. October to March brings the most comfortable weather; winter mornings can be foggy. Avoid weekends and Indian public holidays if you can.",
+      },
+      { t: "h", text: "What you can't take in" },
+      {
+        t: "p",
+        text: "Large bags, food, tripods, drones and many electronic items are not allowed, and there are lockers near the gates. Carry little: your ticket, ID, water and a phone or camera. Shoe covers are given with the mausoleum ticket, or you remove your shoes before stepping on the marble platform.",
+      },
+      { t: "h", text: "Beyond the Taj" },
+      {
+        t: "p",
+        text: "Give Agra a full day: Agra Fort, the tomb known as the Baby Taj, and the view of the Taj at sunset from Mehtab Bagh across the river. Fatehpur Sikri, Akbar's abandoned capital, is an hour away. We plan private journeys to Agra and the Mughal heartland on request.",
+      },
+    ],
+    faqs: [
+      { q: "Is the Taj Mahal open on Fridays?", a: "No. It is closed to visitors every Friday." },
+      { q: "How much is the Taj Mahal ticket for foreigners?", a: "About ₹1,100, plus ₹200 to enter the main mausoleum. Check the official ASI site, as prices change." },
+      { q: "Can you visit the Taj Mahal at night?", a: "Yes, on the full moon and two nights either side, except Fridays and Ramadan. Tickets are limited and booked online a day ahead." },
+      { q: "What is the best time to visit the Taj Mahal?", a: "At sunrise, between October and March, on a weekday." },
+    ],
+    sources: [
+      { name: "Archaeological Survey of India: online tickets", url: "https://asi.payumoney.com" },
+      { name: "Tourscanner: Taj Mahal tickets and timings", url: "https://tourscanner.com/blog/taj-mahal-tickets-price-timings/" },
+      { name: "Travel India Smart: Taj Mahal entrance fees", url: "https://www.travelindiasmart.com/taj_entrance_fee.php" },
+    ],
+  },
+
+  {
+    slug: "tihar-nepal-2026-guide",
+    published: "2026-10-21",
+    title: "Tihar in Nepal: the five days of the festival of lights",
+    seo: {
+      title: "Tihar 2026 in Nepal: Dates & the Five Days Explained",
+      description:
+        "Tihar, Nepal's festival of lights, runs about 7–11 November 2026. Crows, dogs, cows, the goddess Laxmi and brothers each have a day. How to see it in Kathmandu.",
+      keywords: ["Tihar 2026", "Tihar festival Nepal", "Kukur Tihar", "Laxmi Puja Nepal 2026", "Bhai Tika 2026"],
+    },
+    answer:
+      "Tihar, Nepal's five-day festival of lights, runs from about 7 to 11 November 2026. Each day honours someone: crows on Kaag Tihar, dogs on Kukur Tihar, cows and the goddess Laxmi on the third day, oxen and Govardhan on the fourth, and brothers on Bhai Tika. In Kathmandu, houses glow with oil lamps and groups sing deusi and bhailo door to door.",
+    excerpt: "Nepal's Diwali lasts five days and honours crows, dogs, cows, the goddess of wealth and brothers in turn.",
+    category: "Festivals",
+    region: "World",
+    place: "Kathmandu",
+    destination: "nepal",
+    tours: ["kathmandu-valley-heritage", "kashi-to-kathmandu"],
+    image: "/images/destinations/nepal.jpg",
+    imageAlt: "A temple in the Kathmandu Valley",
+    facts: [
+      { k: "2026 dates", v: "About 7–11 November" },
+      { k: "Kukur Tihar", v: "Dogs are garlanded and fed" },
+      { k: "Laxmi Puja", v: "About 8 November" },
+      { k: "Last day", v: "Bhai Tika, for brothers" },
+    ],
+    body: [
+      { t: "h", text: "When is Tihar in 2026?" },
+      {
+        t: "p",
+        text: "Tihar follows the lunar calendar and falls at the same time as Diwali in India. In 2026 it runs from about Saturday 7 to Wednesday 11 November. Sources differ by a day on which festival falls on which day, and Nepal's official calendar sets the auspicious times, so check a Nepali patro before planning around a particular day.",
+      },
+      { t: "h", text: "The five days" },
+      {
+        t: "p",
+        text: "On Kaag Tihar, crows, seen as messengers, are fed first thing in the morning. On Kukur Tihar, every dog, pet or stray, is garlanded with marigolds, given a red tika and fed well; it is the most photographed day of the festival. On the third day, cows are honoured in the morning, and in the evening families worship Laxmi, the goddess of wealth, and light lamps to guide her into their homes.",
+      },
+      {
+        t: "p",
+        text: "The fourth day honours oxen and, for many families, Govardhan; for the Newar community of the Kathmandu Valley it is also Mha Puja, worship of the self, and the start of their new year. On the fifth day, Bhai Tika, sisters give their brothers a tika of seven colours and garlands of makhamali flowers, and pray for their long life.",
+      },
+      {
+        t: "quote",
+        text: "In Kathmandu during Tihar, the dogs wear marigolds and the houses wear light.",
+      },
+      { t: "h", text: "Deusi and bhailo" },
+      {
+        t: "p",
+        text: "In the evenings, groups of young people go from house to house singing bhailo and deusi songs, and are given food or money in return. In Kathmandu's old neighbourhoods, the lanes are lit with oil lamps and marigold garlands, and the squares around Durbar Square are lively until late.",
+      },
+      { t: "h", text: "How to see Tihar" },
+      {
+        t: "p",
+        text: "Stay in or near the old city of Kathmandu or Patan, where the lamps and decorations are richest, and walk the lanes after dusk on Laxmi Puja. Ask before photographing rituals in homes. Many shops and offices close for part of the festival, and transport is busy as people travel home, so book ahead. We plan private journeys to the Kathmandu Valley on request, including from Varanasi.",
+      },
+    ],
+    faqs: [
+      { q: "When is Tihar in 2026?", a: "From about 7 to 11 November 2026, at the same time as Diwali in India. Check a Nepali patro for the exact days." },
+      { q: "What is Kukur Tihar?", a: "The day of Tihar when dogs are honoured with marigold garlands, a red tika and a good meal." },
+      { q: "Is Tihar the same as Diwali?", a: "They fall at the same time and both worship Laxmi with lamps, but Tihar lasts five days and honours crows, dogs, cows, oxen and brothers in turn." },
+    ],
+    sources: [
+      { name: "Nepal Hiking Team: Tihar 2026", url: "https://www.nepalhikingteam.com/tihar-festival" },
+      { name: "Best Heritage Tour: Kukur Tihar", url: "https://www.bestheritagetour.com/blog/kukur-tihar-celebration" },
+      { name: "Office Holidays: Laxmi Puja in Nepal 2026", url: "https://www.officeholidays.com/holidays/nepal/laxmi-puja" },
+    ],
+  },
+
+  {
+    slug: "varanasi-sunrise-boat-ride-guide",
+    published: "2026-10-22",
+    title: "A sunrise boat ride in Varanasi: routes, prices and tips",
+    seo: {
+      title: "Varanasi Sunrise Boat Ride: Route, Price & Tips",
+      description:
+        "A sunrise boat ride is the essential Varanasi experience. When to go, the route past the ghats, what rowing and private boats cost, and how to choose a boat.",
+      keywords: ["Varanasi sunrise boat ride", "Varanasi boat ride price", "Ganga boat ride Varanasi", "morning boat ride Varanasi", "Varanasi ghats by boat"],
+    },
+    answer:
+      "Take the boat about half an hour before sunrise, from Assi or Dashashwamedh, and drift past the ghats as the city bathes and prays. A private rowing boat costs roughly ₹400 an hour, shared seats less and motor boats more; agree the price, route and time before boarding. Allow 60 to 90 minutes, and wear a warm layer in winter.",
+    excerpt: "If you do one thing in Varanasi, take a boat on the Ganga at dawn. Here is how to do it well.",
+    category: "Guides",
+    region: "India",
+    place: "Varanasi",
+    destination: "kashi",
+    tours: ["kashi-in-four-days", "banaras-unfiltered", "kashi-premium"],
+    image: "/images/sunrise-boats.jpg",
+    imageAlt: "Boats on the Ganga at sunrise in Varanasi",
+    facts: [
+      { k: "When", v: "About 30 minutes before sunrise" },
+      { k: "Where from", v: "Assi or Dashashwamedh" },
+      { k: "Private rowing boat", v: "Roughly ₹400 an hour" },
+      { k: "How long", v: "60–90 minutes" },
+    ],
+    body: [
+      { t: "h", text: "Why go at sunrise" },
+      {
+        t: "p",
+        text: "The ghats of Varanasi face east, across the river, so the sun rises straight onto them. At dawn the city comes down to the water: people bathe and pray, priests chant, wrestlers train and the light turns the old palaces gold. Seen from the river, it is the clearest picture of how Kashi lives.",
+      },
+      { t: "h", text: "The route" },
+      {
+        t: "p",
+        text: "Most morning boats leave from Assi Ghat in the south or Dashashwamedh in the middle of the riverfront. From Assi, you drift north past Tulsi, Chet Singh and the painted ghats to Dashashwamedh, and on to Manikarnika, the cremation ghat; from Dashashwamedh you can go either way. A longer ride continues north to Panchaganga. Tell the boatman what you want to see before you set off.",
+      },
+      {
+        t: "quote",
+        text: "Ask the boatman to stop rowing for a minute at Manikarnika. Let the river carry you past.",
+      },
+      { t: "h", text: "What it costs" },
+      {
+        t: "p",
+        text: "Prices are agreed on the spot and rise in the festival season. As a rough guide, a private rowing boat costs about ₹400 an hour, a seat on a shared boat less, and a private motor boat several times more. Agree the price, the route and the length of the ride before you step aboard, and pay at the end.",
+      },
+      { t: "h", text: "Rowing boat or motor boat?" },
+      {
+        t: "p",
+        text: "A wooden rowing boat is quiet and slow, which suits the hour; you hear the bells and the chanting instead of an engine. A motor boat covers more of the riverfront in less time and is useful for larger groups or a longer route. Whichever you choose, ask for life jackets.",
+      },
+      { t: "h", text: "Tips" },
+      {
+        t: "p",
+        text: "Check the sunrise time the night before and be at the ghat half an hour early. In December and January, take a warm jacket and expect fog, which is beautiful in its own way. Do not photograph the cremations at Manikarnika. Float a diya if you like, and keep the river clean: take any plastic back with you. During the monsoon, from about July to September, boats may be suspended when the river is high.",
+      },
+      { t: "h", text: "If you'd like it arranged" },
+      {
+        t: "p",
+        text: "Every WanderMate journey in Varanasi includes a private boat at dawn with a companion who knows the stories of each ghat; on Kashi in Four Days you go out on the river twice.",
+      },
+    ],
+    faqs: [
+      { q: "How much does a boat ride cost in Varanasi?", a: "Roughly ₹400 an hour for a private rowing boat, less for a shared seat and more for a motor boat. Agree the price before boarding." },
+      { q: "What time should I take a sunrise boat in Varanasi?", a: "About 30 minutes before sunrise, so you are on the water as the light comes up. Check the sunrise time the night before." },
+      { q: "Where do sunrise boats leave from in Varanasi?", a: "Most leave from Assi Ghat or Dashashwamedh Ghat." },
+      { q: "Can you take a boat ride in Varanasi during the monsoon?", a: "Often not. When the Ganga is high, usually July to September, boat services may be suspended." },
+    ],
+    sources: [
+      { name: "GoWithGuide: Varanasi ghat tour costs", url: "https://gowithguide.com/blog/varanasi-ghat-tour-guide-sunrise-boat-river-walk-aarti-costs-itinerary-6238" },
+      { name: "Adventurous Miriam: Why you should do a Varanasi boat ride", url: "https://adventurousmiriam.com/varanasi-boat-ride/" },
+    ],
+  },
 ];
