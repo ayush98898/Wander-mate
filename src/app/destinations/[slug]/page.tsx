@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -10,8 +11,12 @@ import { TripCard } from "@/components/site/trip-card";
 import { Btn, Eyebrow } from "@/components/site/ui";
 import { feelings } from "@/lib/content";
 import { allTrips, destinations, getDestination, tripHref } from "@/lib/destinations";
+import { livePosts, readTime } from "@/lib/journal";
 import { getShelf } from "@/lib/store";
 import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
+
+// New Journal guides about a place appear here on their publication date.
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return destinations.map((d) => ({ slug: d.slug }));
@@ -22,7 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const d = getDestination(slug);
   if (!d) return {};
   return pageMeta({
-    title: `${d.name} Heritage Tours, ${d.country}`,
+    // Name the city people search for when it differs from ours, e.g. "Kashi (Varanasi)".
+    title: `${d.name}${d.hub && !d.name.includes(d.hub) ? ` (${d.hub})` : ""} Heritage Tours, ${d.country}`,
     description: `${d.line} ${d.trips.length} heritage journeys and ${d.experiences.length} experiences, planned with local people by WanderMate.`,
     path: `/destinations/${d.slug}`,
   });
@@ -47,6 +53,8 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
   const idx = destinations.findIndex((x) => x.slug === d.slug);
   const next = destinations.at((idx + 1) % destinations.length)!;
   const live = d.status === "Now";
+  // Journal guides and stories about this place, newest first.
+  const guides = livePosts().filter((p) => p.destination === d.slug && p.index !== false);
 
   const url = abs(`/destinations/${d.slug}`);
   const schema = [
@@ -60,7 +68,10 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
       ...(d.image && { image: abs(d.image) }),
       containedInPlace: { "@type": "Country", name: d.country },
       includesAttraction: d.experiences.map((e) => ({ "@type": "TouristAttraction", name: e.name, description: e.line })),
-      subjectOf: trips.map((t) => ({ "@type": "TouristTrip", name: t.name, description: t.summary, url: abs(tripHref(t)), provider: { "@id": ORG_ID } })),
+      subjectOf: [
+        ...trips.map((t) => ({ "@type": "TouristTrip", name: t.name, description: t.summary, url: abs(tripHref(t)), provider: { "@id": ORG_ID } })),
+        ...guides.map((p) => ({ "@type": "Article", headline: p.title, url: abs(`/journal/${p.slug}`), ...(p.published && { datePublished: p.published }) })),
+      ],
     },
     breadcrumbs([
       ["Destinations", "/destinations"],
@@ -170,6 +181,49 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
           </ol>
         </div>
       </section>
+
+      {/* Guides and stories about this place, from the Journal */}
+      {guides.length ? (
+        <section className="border-t border-ink/12 bg-paper py-24 md:py-32">
+          <div className="wrap">
+            <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <Eyebrow className="text-smoke">From the Journal</Eyebrow>
+                <h2 className="display mt-6 text-5xl leading-[1] md:text-7xl">
+                  Before you go to <em>{d.name}</em>
+                </h2>
+              </div>
+              <Btn href="/journal" variant="line">
+                All guides
+              </Btn>
+            </div>
+            <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+              {guides.slice(0, 6).map((p) => (
+                <li key={p.slug}>
+                  <Link href={`/journal/${p.slug}`} className="group block">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-ink">
+                      <Image
+                        src={p.image}
+                        alt={p.imageAlt}
+                        fill
+                        sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 100vw"
+                        style={{ objectPosition: p.imagePosition }}
+                        className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.04]"
+                      />
+                    </div>
+                    <p className="label mt-5 text-smoke">
+                      <span className="text-ochre">{p.category}</span> · {readTime(p)}
+                    </p>
+                    <h3 className="display mt-3 text-[1.8rem] leading-[1.1]">
+                      <span className="ul">{p.title}</span>
+                    </h3>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
 
       {/* The Heritage Store, where we have a shelf for this place */}
       {shelf ? <HeritageStore shelf={shelf} tone="light" /> : null}

@@ -15,10 +15,20 @@ import { SplitHeading } from "@/components/site/split-heading";
 import { Btn, Eyebrow } from "@/components/site/ui";
 import { approach, site, team, whatsappLink } from "@/lib/content";
 import { allTrips, destinations, featuredTripSlugs } from "@/lib/destinations";
-import { posts, readTime } from "@/lib/journal";
+import { livePosts, readTime } from "@/lib/journal";
+import { pageMeta } from "@/lib/seo";
 
 
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = pageMeta({
+  title: "WanderMate: Varanasi Tours & Heritage Journeys in India",
+  absolute: true,
+  description:
+    "Private and small-group Varanasi tours led by people from Kashi, from the Ganga Aarti to Dev Deepawali, and heritage journeys across India and the world.",
+  path: "/",
+});
+
+// The Journal section shows the newest guides; refresh hourly as new ones go live.
+export const revalidate = 3600;
 
 const featured = featuredTripSlugs.map((s) => allTrips.find((t) => t.slug === s)!);
 const tripCount = allTrips.length;
@@ -45,11 +55,12 @@ const traditions: CinematicItem[] = [
   { slug: "alms", title: "The dawn alms round", kicker: "Chiang Mai", time: "Thailand", duration: "Ritual", image: "/images/destinations/thailand.jpg", href: "/destinations/thailand" },
 ];
 
-const stories = ["langar-the-kitchen-that-feeds-everyone", "fushimi-inari-a-thousand-gates", "petra-the-city-the-nabataeans-carved"].map(
-  (s) => posts.find((p) => p.slug === s)!,
-);
+
 
 export default function Home() {
+  const stories = livePosts()
+    .filter((p) => p.index !== false)
+    .slice(0, 3);
   return (
     <>
       {/* ---------- Hero ---------- */}

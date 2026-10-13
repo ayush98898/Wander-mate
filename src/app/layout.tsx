@@ -78,6 +78,12 @@ export const metadata: Metadata = {
     locale: "en_IN",
   },
   twitter: { card: "summary_large_image", title: "WanderMate — Feel the centuries", description: site.description },
+  // Set these in Vercel (Settings → Environment Variables) to verify the site with
+  // Google Search Console and Bing Webmaster Tools.
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && { other: { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }),
+  },
   robots: {
     index: true,
     follow: true,

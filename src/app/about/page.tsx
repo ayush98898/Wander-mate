@@ -18,7 +18,26 @@ export const metadata: Metadata = pageMeta({
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={[{ "@context": "https://schema.org", "@type": "AboutPage", url: abs("/about"), about: { "@id": ORG_ID } }, breadcrumbs([["About", "/about"]])]} />
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            url: abs("/about"),
+            about: { "@id": ORG_ID },
+            mainEntity: team.map((m) => ({
+              "@type": "Person",
+              name: m.name,
+              jobTitle: m.role,
+              description: m.bio,
+              image: abs(m.image),
+              worksFor: { "@id": ORG_ID },
+              homeLocation: { "@type": "Place", name: "Varanasi, India" },
+            })),
+          },
+          breadcrumbs([["About", "/about"]]),
+        ]}
+      />
       <PageHero
         image="/images/group.jpg"
         position="50% 35%"

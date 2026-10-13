@@ -36,6 +36,11 @@ ${tours.join("\n")}
 
 ${guides.join("\n")}
 
+## More
+
+- [Full text of tours and guides](${abs("/llms-full.txt")})
+- [Journal RSS feed](${abs("/journal/feed.xml")})
+
 ## Contact
 
 - [Plan a journey](${abs("/plan")})
