@@ -1017,4 +1017,84 @@ export const dailyPosts: Post[] = [
       { name: "Adventurous Miriam: Why you should do a Varanasi boat ride", url: "https://adventurousmiriam.com/varanasi-boat-ride/" },
     ],
   },
+  {
+    slug: "angkor-wat-sunrise-tickets-guide",
+    published: "2026-10-23",
+    title: "Angkor Wat at sunrise: tickets, timings and what to wear",
+    seo: {
+      title: "Angkor Wat Sunrise Guide: Tickets, Times & Dress",
+      description:
+        "Angkor Wat opens at 5 AM for sunrise. What the Angkor Pass costs in 2026, the best spot by the reflecting pools, the dress code and the best months to go.",
+      keywords: ["Angkor Wat sunrise", "Angkor Pass price 2026", "Angkor Wat tickets", "Angkor Wat dress code", "best time to visit Angkor Wat"],
+    },
+    answer:
+      "Angkor Wat opens at 5 AM so visitors can watch the sun rise behind its towers from the reflecting pools by the western entrance. In 2026 the Angkor Pass costs US$37 for one day, US$62 for three days and US$72 for seven, sold only by Angkor Enterprise. Cover shoulders and knees, and visit from November to March, in the dry season.",
+    excerpt: "The sun comes up behind five stone towers, and the pools in front catch it twice. Here is how to be there for it.",
+    category: "Guides",
+    region: "World",
+    place: "Siem Reap",
+    destination: "cambodia",
+    tours: ["angkor-in-depth", "beyond-angkor", "angkor-and-phnom-penh"],
+    image: "/images/destinations/cambodia.jpg",
+    imageAlt: "The temples of Angkor in Cambodia",
+    facts: [
+      { k: "Opens for sunrise", v: "5 AM" },
+      { k: "Angkor Pass 2026", v: "US$37 / 62 / 72 (1, 3, 7 days)" },
+      { k: "Dress code", v: "Shoulders and knees covered" },
+      { k: "Best months", v: "November to March" },
+    ],
+    body: [
+      { t: "h", text: "Why sunrise at Angkor Wat" },
+      {
+        t: "p",
+        text: "Angkor Wat, built in the early twelfth century for King Suryavarman II and dedicated to Vishnu, is the largest religious monument in the world. Unusually for a Khmer temple, it faces west, so at dawn the sun rises behind its five lotus-bud towers. Watching the sky change colour behind them, reflected in the pools in front, is the most famous moment in Cambodia.",
+      },
+      { t: "h", text: "Tickets: the Angkor Pass" },
+      {
+        t: "p",
+        text: "You need an Angkor Pass for every temple in the park. In 2026 it costs US$37 for one day, US$62 for three days and US$72 for seven days, and children under 12 enter free with a passport. Passes are sold only by the government's Angkor Enterprise, at the official ticket centre in Siem Reap or online; your photograph is printed on the pass and checked at the temples, so do not buy from anyone else. Most guides say a three-day pass can be used on any three days within a week, but check the validity when you buy.",
+      },
+      { t: "h", text: "Opening times" },
+      {
+        t: "p",
+        text: "Angkor Wat opens at 5 AM for sunrise and closes at about 6 PM; most other temples in the park open from about 7:30 AM. Sunrise itself falls between about 5:30 and 6:30 AM depending on the month. Buy your pass the afternoon before: a pass bought after about 5 PM is valid for that evening's sunset and the next day.",
+      },
+      {
+        t: "quote",
+        text: "Arrive in the dark. The best of sunrise at Angkor is the half hour before the sun.",
+      },
+      { t: "h", text: "Where to stand" },
+      {
+        t: "p",
+        text: "Walk through the western entrance and along the causeway to the two pools in front of the temple. The pool on the left, in the north, is the classic view and the most crowded; the one on the right is quieter. Be there by about 4:45 AM to get a place at the water's edge, and bring a torch for the causeway. In November and December the pools may be covered with lotus.",
+      },
+      { t: "h", text: "What to wear" },
+      {
+        t: "p",
+        text: "Angkor is a sacred site and the dress code is enforced: shoulders and knees must be covered, for men and women. Light, loose cotton is best, with good shoes for steep stone steps. The highest level of Angkor Wat, the Bakan, has its own rules and is sometimes closed on Buddhist holy days, so check on the day.",
+      },
+      { t: "h", text: "When to go" },
+      {
+        t: "p",
+        text: "The dry season, from November to March, brings the clearest skies and the most comfortable heat. December and January are the busiest months; November and February balance good weather with fewer people. From April to May the heat is intense, and from June to October the rains bring green landscapes, fewer visitors and some cloudy dawns.",
+      },
+      { t: "h", text: "After sunrise" },
+      {
+        t: "p",
+        text: "Most visitors leave Angkor Wat for breakfast right after sunrise; stay instead, and you will have its galleries and their bas-reliefs of the Ramayana and the Churning of the Ocean of Milk almost to yourself. Then go on to the faces of the Bayon and the trees of Ta Prohm. We plan private journeys to Angkor on request, and our story on the epics carved in its stone is a good read before you go.",
+      },
+    ],
+    faqs: [
+      { q: "What time does Angkor Wat open for sunrise?", a: "At 5 AM. Arrive by about 4:45 AM for a place at the reflecting pools." },
+      { q: "How much is the Angkor Pass in 2026?", a: "US$37 for one day, US$62 for three days and US$72 for seven days. Buy it only from Angkor Enterprise." },
+      { q: "What is the dress code at Angkor Wat?", a: "Shoulders and knees must be covered, for men and women. It is enforced at the temples." },
+      { q: "When is the best time to visit Angkor Wat?", a: "November to March, the dry season. November and February are less crowded than December and January." },
+    ],
+    sources: [
+      { name: "Angkor Enterprise: official Angkor Pass", url: "https://www.angkorenterprise.gov.kh" },
+      { name: "Hello Angkor: Angkor ticket prices 2026", url: "https://helloangkor.com/angkor-ticket-prices/" },
+      { name: "Adventures Cambodia: Angkor Wat tickets", url: "https://adventurescambodia.com/blog/angkor-wat-tickets/" },
+      { name: "UNESCO: Angkor", url: "https://whc.unesco.org/en/list/668" },
+    ],
+  },
 ];
