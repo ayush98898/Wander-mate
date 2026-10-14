@@ -1097,4 +1097,86 @@ export const dailyPosts: Post[] = [
       { name: "UNESCO: Angkor", url: "https://whc.unesco.org/en/list/668" },
     ],
   },
+  {
+    slug: "pushkar-fair-2026-guide",
+    published: "2026-10-24",
+    title: "Pushkar Fair 2026: dates, the Kartik dip and how to visit",
+    seo: {
+      title: "Pushkar Fair 2026: Dates, Kartik Snan & Travel Tips",
+      description:
+        "Pushkar Fair 2026 runs about 17 to 24 November, ending with the holy dip on Kartik Purnima. When to go, the Brahma temple, etiquette and where to stand.",
+      keywords: ["Pushkar Fair 2026", "Pushkar Camel Fair dates", "Pushkar Mela 2026", "Kartik Purnima Pushkar", "Brahma temple Pushkar"],
+    },
+    answer:
+      "The Pushkar Fair in Rajasthan is expected to run from about 17 to 24 November 2026, ending on Kartik Purnima, Tuesday 24 November, when pilgrims bathe in Pushkar Lake. The camel and livestock trading comes in the first days; the holy dips build from Dev Uthani Ekadashi to the full moon. Confirm the official schedule with Rajasthan Tourism before you book.",
+    excerpt: "A desert town of 52 ghats, the one great temple to Brahma, and in November, camels as far as you can see.",
+    category: "Festivals",
+    region: "India",
+    place: "Pushkar",
+    destination: "rajputana",
+    image: "/images/destinations/rajputana.jpg",
+    imageAlt: "The forts and palaces of Rajasthan",
+    facts: [
+      { k: "Fair 2026", v: "About 17 – 24 November" },
+      { k: "Kartik Purnima", v: "Tuesday 24 November 2026" },
+      { k: "Ghats on the lake", v: "52" },
+      { k: "From Ajmer", v: "About 15 km" },
+    ],
+    body: [
+      {
+        t: "p",
+        text: "For most of the year Pushkar is a small, quiet pilgrim town on the edge of the Thar, built around a lake. For a week or so in the Hindu month of Kartik it becomes one of the largest gatherings in India: herders arrive from across Rajasthan with their camels, horses and cattle, and pilgrims come to bathe in the lake on the full moon. The two halves of the fair, the market and the pilgrimage, run side by side, and the best visits make room for both.",
+      },
+      { t: "h", text: "Pushkar Fair 2026 dates" },
+      {
+        t: "p",
+        text: "The fair follows the lunar calendar, so its dates move each year. In 2026 it is expected to run from about 17 to 24 November, with some listings extending it to the 25th. Kartik Purnima, the full moon that closes it, falls on Tuesday 24 November. The local administration and Rajasthan Tourism set the official programme each year, and they can move: in 2023 the fair was brought forward by almost a week because of state elections. Treat these dates as a guide and check before you book anything that cannot be changed.",
+      },
+      {
+        t: "p",
+        text: "The same full moon is Dev Deepawali in Varanasi, when the ghats of Kashi are lit with lamps. It is one night, celebrated in two holy towns a thousand kilometres apart.",
+      },
+      { t: "h", text: "The camel fair and the holy dip" },
+      {
+        t: "p",
+        text: "The trading comes first. In the opening days the dunes west of town fill with camps, and the buying and selling of camels and livestock is at its height; this is when photographers come for the light on the sand. As the week goes on the trade thins out and the pilgrims arrive. The bathing season runs for five days from Dev Uthani Ekadashi to Kartik Purnima, when Brahma is said to have performed his yajna at Pushkar, and the dip on the full moon is held to be the most auspicious of all.",
+      },
+      {
+        t: "quote",
+        text: "Come early for the camels, stay late for the moon.",
+      },
+      { t: "h", text: "The lake and the Brahma temple" },
+      {
+        t: "p",
+        text: "Pushkar Lake is ringed by 52 ghats, each with its own story. Legend says the lake formed where a lotus fell from Brahma's hand, and the town keeps one of the very few temples in India dedicated to him, the Jagatpita Brahma Mandir. The present building is usually dated to the fourteenth century, on a site much older. On the hills above stand the temples of Savitri, reached by a long climb of steps or by ropeway, and Gayatri; Savitri is best at sunrise, with the whole town below.",
+      },
+      { t: "h", text: "Etiquette on the ghats and in the temples" },
+      {
+        t: "p",
+        text: "Shoes come off before the ghats and in the temples, and leather belts and bags are left outside the Brahma temple. Cover shoulders and knees. Photography is not allowed inside the sanctum, and many pilgrims would rather not be photographed while they bathe, so ask first. You may be offered flowers on the ghats and then asked for a large donation; politely decline unless you wish to give. Pushkar is a holy town, and meat, eggs and alcohol are not served.",
+      },
+      { t: "h", text: "Where to stay and how to get there" },
+      {
+        t: "p",
+        text: "Pushkar is about 15 kilometres from Ajmer, which has the nearest major railway station, and around three hours by road from Jaipur, the nearest large airport. During the fair the town fills completely: hotels and the tented camps that spring up on its edge sell out months ahead and cost far more than usual. If you cannot find a room, staying in Ajmer and driving in each morning works well.",
+      },
+      { t: "h", text: "How to plan a visit" },
+      {
+        t: "p",
+        text: "Three nights is enough to see both halves of the fair. Arrive in the first days for the camps and the trading, walk the ghats at dawn and at the evening aarti, and stay for the full moon if you want to see the pilgrimage at its height, accepting that it is the most crowded day. WanderMate plans private journeys to Rajasthan on request, and Pushkar can be added to a route through Jaipur, Jodhpur and Udaipur.",
+      },
+    ],
+    faqs: [
+      { q: "When is the Pushkar Fair in 2026?", a: "From about 17 to 24 November 2026, ending on Kartik Purnima, 24 November. Confirm the official programme with Rajasthan Tourism." },
+      { q: "When is the best time to see the camels?", a: "The first few days of the fair, when the livestock trading is at its height. By the full moon most herders have left." },
+      { q: "Why do pilgrims bathe in Pushkar Lake on Kartik Purnima?", a: "Brahma is said to have performed his yajna at Pushkar from Kartik Ekadashi to the full moon, so a dip on Kartik Purnima is held to be the most auspicious of the year." },
+      { q: "How do I get to Pushkar?", a: "Take a train to Ajmer, about 15 km away, or fly to Jaipur and drive around three hours." },
+    ],
+    sources: [
+      { name: "Incredible India: Pushkar Camel Fair", url: "https://incredibleindia.gov.in/en/festivals-and-events/pushkar-camel-fair" },
+      { name: "Wikipedia: Pushkar Fair", url: "https://en.wikipedia.org/wiki/Pushkar_Fair" },
+      { name: "Wikipedia: Pushkar", url: "https://en.wikipedia.org/wiki/Pushkar" },
+      { name: "Hindutone: Pushkar Fair 2026", url: "https://hindutone.com/festivals/pushkar-fair-2026/" },
+    ],
+  },
 ];
