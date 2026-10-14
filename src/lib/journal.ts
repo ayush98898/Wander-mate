@@ -18,11 +18,24 @@ export type Category = (typeof categories)[number];
 
 export type Region = "India" | "World";
 
+/*
+ * Text in paragraphs, lists, tables and tips may carry two inline marks:
+ * **bold** and [a link](/journal/another-guide) — internal links stay on the site.
+ */
 export type Block =
   | { t: "p"; text: string }
+  /** A section heading (h2); it appears in the contents. */
   | { t: "h"; text: string }
+  /** A sub-heading (h3) inside a section. */
+  | { t: "h3"; text: string }
   | { t: "quote"; text: string; cite?: string }
-  | { t: "img"; src: string; alt: string; caption?: string };
+  | { t: "img"; src: string; alt: string; caption?: string; credit?: string }
+  /** A bulleted or numbered list; start an item with **Lead:** for a term-and-detail list. */
+  | { t: "list"; items: string[]; ordered?: boolean }
+  /** A table of facts: timings, prices, comparisons. */
+  | { t: "table"; caption?: string; head: string[]; rows: string[][]; note?: string }
+  /** A boxed note: what a local knows, what's useful to know, or what to avoid. */
+  | { t: "tip"; kind: "local" | "know" | "avoid"; title?: string; text: string };
 
 export type Post = {
   slug: string;
@@ -63,6 +76,8 @@ export type Post = {
   faqs?: { q: string; a: string }[];
   /** Where the facts come from. */
   sources?: { name: string; url: string }[];
+  /** Three to five points a reader should leave with, shown before the story. */
+  takeaways?: string[];
   body: Block[];
 };
 
@@ -601,14 +616,25 @@ export const glossary = [
 
 const WPM = 200;
 
-export function readTime(p: Post) {
-  const words = p.body.reduce((n, b) => n + ("text" in b ? b.text.split(/\s+/).length : 0), 0);
-  return `${Math.max(1, Math.ceil(words / WPM))} min read`;
+/** A block's readable text, inline marks removed. */
+export function blockText(b: Block): string {
+  const raw =
+    b.t === "list" ? b.items.join(" ") : b.t === "table" ? [b.caption ?? "", ...b.head, ...b.rows.flat(), b.note ?? ""].join(" ") : b.t === "img" ? (b.caption ?? "") : `${"title" in b && b.title ? b.title + " " : ""}${b.text}`;
+  return plain(raw);
 }
 
-/** Words in a story, for structured data. */
+/** Inline marks stripped: "**Go early.** See [the guide](/x)" → "Go early. See the guide". */
+export function plain(text: string) {
+  return text.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+}
+
+/** Words in a story, for read time and structured data. */
 export function wordCount(p: Post) {
-  return p.body.reduce((n, b) => n + ("text" in b ? b.text.split(/\s+/).length : 0), 0);
+  return p.body.reduce((n, b) => n + blockText(b).split(/\s+/).filter(Boolean).length, 0);
+}
+
+export function readTime(p: Post) {
+  return `${Math.max(1, Math.ceil(wordCount(p) / WPM))} min read`;
 }
 
 /** A heading's anchor, e.g. "How to watch it well" → "how-to-watch-it-well". */

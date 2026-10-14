@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BlockView } from "@/components/journal/block-view";
 import { ReadingProgress } from "@/components/journal/reading-progress";
 import { allTrips, getDestination, tripHref, type TripWithPlace } from "@/lib/destinations";
+import { site } from "@/lib/content";
 import { formatDate, getPost, headingId, isLive, livePosts, posts, readTime, wordCount, type Block } from "@/lib/journal";
 import { abs, breadcrumbs, JsonLd, ORG_ID, pageMeta } from "@/lib/seo";
 
@@ -192,6 +194,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 {post.author ? <p className="label mt-4 text-smoke">By {post.author}, WanderMate · Varanasi</p> : null}
               </div>
             ) : null}
+            {post.takeaways?.length ? (
+              <div className="mt-10 max-w-[68ch]">
+                <p className="label text-smoke">Key points</p>
+                <ul className="mt-4 grid gap-x-8 border-t border-ink/15 sm:grid-cols-2">
+                  {post.takeaways.map((t) => (
+                    <li key={t} className="flex gap-3 border-b border-ink/12 py-3.5 leading-snug text-ink">
+                      <span aria-hidden className="mt-[0.55em] size-1.5 shrink-0 rounded-full bg-ochre" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <div className="mt-12 max-w-[68ch] border-t border-ink/15 pt-12">
               {post.body.map((b, i) => (
                 <BlockView key={i} b={b} first={i === firstP} />
@@ -212,8 +227,27 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 </dl>
               </section>
             ) : null}
+            <section aria-label="About this guide" className="mt-16 grid max-w-[68ch] gap-6 border-y border-ink/15 py-8 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start">
+              <Image src="/images/logo-mark.png" alt="" width={48} height={48} className="size-12 rounded-full bg-ink object-contain p-2" />
+              <div>
+                <p className="label text-ochre">About this {post.category === "Guides" ? "guide" : "story"}</p>
+                <p className="mt-3 leading-relaxed text-ink-2">
+                  Written {post.author ? <>by {post.author} </> : null}for the WanderMate Journal by our team in Varanasi, where we plan and run journeys
+                  along the Ganga. We check facts against official and published sources, listed below, and revise guides when timings,
+                  prices or dates change.
+                  {post.published ? <> {post.updated ? `Last updated ${formatDate(post.updated)}.` : `Published ${formatDate(post.published)}.`}</> : null}
+                </p>
+                <p className="mt-3 text-sm text-smoke">
+                  Spotted something out of date?{" "}
+                  <a href={`mailto:${site.email}?subject=${encodeURIComponent(`Journal: ${post.title}`)}`} className="text-ochre underline underline-offset-4">
+                    Tell us
+                  </a>
+                  .
+                </p>
+              </div>
+            </section>
             {post.sources?.length ? (
-              <section aria-label="Sources" className="mt-12 max-w-[68ch]">
+              <section aria-label="Sources" className="mt-10 max-w-[68ch]">
                 <p className="label text-smoke">Sources</p>
                 <ul className="mt-3 space-y-1.5 text-sm">
                   {post.sources.map((c) => (
@@ -321,44 +355,4 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </section>
     </>
   );
-}
-
-function BlockView({ b, first }: { b: Block; first?: boolean }) {
-  switch (b.t) {
-    case "p":
-      return (
-        <p
-          className={
-            "mb-7 text-[1.15rem] leading-[1.75] text-ink-2 " +
-            (first
-              ? "first-letter:float-left first-letter:mt-1 first-letter:mr-3 first-letter:font-display first-letter:text-[4.6rem] first-letter:leading-[0.8] first-letter:text-ochre"
-              : "")
-          }
-        >
-          {b.text}
-        </p>
-      );
-    case "h":
-      return (
-        <h2 id={headingId(b.text)} className="display mt-14 mb-6 scroll-mt-28 text-[2.2rem] leading-[1.1] text-ink md:text-[2.6rem]">
-          {b.text}
-        </h2>
-      );
-    case "quote":
-      return (
-        <figure className="my-14 border-l-2 border-ochre pl-6 md:-ml-8 md:pl-8">
-          <blockquote className="display text-[clamp(1.8rem,3vw,2.6rem)] leading-[1.2] text-ink italic">&ldquo;{b.text}&rdquo;</blockquote>
-          {b.cite ? <figcaption className="label mt-5 text-smoke">{b.cite}</figcaption> : null}
-        </figure>
-      );
-    case "img":
-      return (
-        <figure className="my-12">
-          <div className="relative aspect-[3/2] overflow-hidden bg-ink">
-            <Image src={b.src} alt={b.alt} fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" />
-          </div>
-          {b.caption ? <figcaption className="mt-3 text-sm text-smoke">{b.caption}</figcaption> : null}
-        </figure>
-      );
-  }
 }
