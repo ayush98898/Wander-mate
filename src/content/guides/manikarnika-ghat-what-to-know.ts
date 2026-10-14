@@ -56,8 +56,8 @@ const guide: Post = {
     {
       t: "img",
       src: "/images/river-haze.jpg",
-      alt: "Haze over the Ganga at Varanasi",
-      caption: "Smoke from the pyres often hangs over this stretch of the river. Most visitors are best placed to watch from the water.",
+      alt: "Morning haze over moored boats on the Ganga at Varanasi, with the Malviya bridge in the distance",
+      caption: "Boats moored in the morning haze, looking north towards the Malviya bridge. The river is the most respectful place to watch the ghats from.",
     },
     { t: "h", text: "What happens at a cremation" },
     {

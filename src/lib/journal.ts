@@ -582,9 +582,12 @@ const stories: Post[] = [
 /** Every story, the daily guides first (newest first), then the long-form stories. */
 export const posts: Post[] = [...[...dailyPosts].sort((a, b) => (b.published ?? "").localeCompare(a.published ?? "")), ...stories];
 
-/** Today's date in India, "YYYY-MM-DD". */
+/**
+ * Today's date in India, "YYYY-MM-DD". Set JOURNAL_TODAY (e.g. "2026-12-31") when
+ * running the site locally to preview guides scheduled for later.
+ */
 export function todayIST(now = new Date()) {
-  return new Date(now.getTime() + 330 * 60_000).toISOString().slice(0, 10);
+  return process.env.JOURNAL_TODAY ?? new Date(now.getTime() + 330 * 60_000).toISOString().slice(0, 10);
 }
 
 /** A post is live once its publication date has arrived (undated stories always are). */

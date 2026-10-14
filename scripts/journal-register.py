@@ -1,25 +1,34 @@
-# Register every guide in src/content/guides: drop any inline copy from journal-daily.ts and import the file instead.
+# Register every guide in src/content/guides by regenerating src/lib/journal-daily.ts.
 # Usage: python3 scripts/journal-register.py
-import os, re
+import os
+import re
 
-os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-p = "src/lib/journal-daily.ts"
-s = open(p).read()
-files = sorted(f[:-3] for f in os.listdir("src/content/guides") if f.endswith(".ts"))
+root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+guides_dir = os.path.join(root, "src/content/guides")
+out = os.path.join(root, "src/lib/journal-daily.ts")
+
+slugs = sorted(f[:-3] for f in os.listdir(guides_dir) if f.endswith(".ts"))
 
 
 def ident(slug):
     return "g_" + re.sub(r"[^a-zA-Z0-9]", "_", slug)
 
 
-for slug in files:
-    m = re.search(r'\n  \{\n    slug: "%s",.*?\n  \},\n' % re.escape(slug), s, re.S)
-    if m:
-        s = s[: m.start()] + "\n" + s[m.end():]
-s = re.sub(r"\nimport g_[^\n]*", "", s)
-imports = "".join(f'\nimport {ident(f)} from "@/content/guides/{f}";' for f in files)
-s = s.replace('import type { Post } from "@/lib/journal";', 'import type { Post } from "@/lib/journal";' + imports, 1)
-s = re.sub(r"export const dailyPosts: Post\[\] = \[(\n  (?:g_\w+, )*g_\w+,)?", "export const dailyPosts: Post[] = [\n  " + ", ".join(ident(f) for f in files) + ",", s, 1)
-s = re.sub(r"\n{3,}", "\n\n", s)
-open(p, "w").write(s)
-print(len(files), "guides imported")
+header = """/*
+ * Daily guides for the Journal. Each guide is its own file in src/content/guides,
+ * carries a `published` date and goes live on that day (see journal.ts).
+ *
+ * This file is generated: add a guide file, then run
+ *   python3 scripts/journal-register.py
+ * The guides in src/content/guides set the standard for depth and shape.
+ */
+
+import type { Post } from "@/lib/journal";
+"""
+
+body = header + "".join(f'import {ident(s)} from "@/content/guides/{s}";\n' for s in slugs)
+body += "\nexport const dailyPosts: Post[] = [\n" + "".join(f"  {ident(s)},\n" for s in slugs) + "];\n"
+
+with open(out, "w") as f:
+    f.write(body)
+print(len(slugs), "guides registered")

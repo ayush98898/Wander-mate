@@ -5,7 +5,7 @@ import { RichText } from "@/components/journal/rich-text";
 import { headingId, type Block } from "@/lib/journal";
 
 const tipStyle = {
-  local: { label: "From Kashi", Icon: Compass, cls: "bg-ink text-bone", accent: "text-ochre-lit", body: "text-bone/80 [&_a]:text-ochre-lit [&_strong]:text-bone" },
+  local: { label: "Local knowledge", Icon: Compass, cls: "bg-ink text-bone", accent: "text-ochre-lit", body: "text-bone/80 [&_a]:text-ochre-lit [&_strong]:text-bone" },
   know: { label: "Good to know", Icon: Info, cls: "bg-paper text-ink", accent: "text-ochre", body: "text-ink-2" },
   avoid: { label: "Avoid", Icon: TriangleAlert, cls: "border border-ink/15 text-ink", accent: "text-[#a4321b]", body: "text-ink-2" },
 } as const;

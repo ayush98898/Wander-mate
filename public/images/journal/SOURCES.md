@@ -10,3 +10,8 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | kumartuli-artisan.jpg | https://www.pexels.com/photo/34009715/ |
 | kyoto-kiyomizu-autumn.jpg | https://www.pexels.com/photo/33229939/ |
 | kyoto-temple-gate-autumn.jpg | https://www.pexels.com/photo/29811129/ |
+| chiang-mai-sky-lantern.jpg | https://www.pexels.com/photo/4094254/ |
+| taj-mahal-sunrise.jpg | https://www.pexels.com/photo/33048666/ |
+| ta-prohm-tree.jpg | https://www.pexels.com/photo/15890916/ |
+| bayon-temple.jpg | https://www.pexels.com/photo/15928697/ |
+| pushkar-turban.jpg | https://www.pexels.com/photo/10593217/ |

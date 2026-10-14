@@ -106,7 +106,7 @@ const guide: Post = {
     {
       t: "img",
       src: "/images/holi.jpg",
-      alt: "Colour thrown into the air during Holi",
+      alt: "A crowd covered in red and pink colour during Holi",
       caption: "Holi in Varanasi is loud, joyful and best enjoyed with a local companion.",
     },
     { t: "h", text: "April to June: the hot season" },

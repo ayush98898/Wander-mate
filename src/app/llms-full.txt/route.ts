@@ -46,7 +46,7 @@ function blockToText(b: Block): string {
         .filter(Boolean)
         .join("\n");
     case "tip":
-      return `${b.title ?? (b.kind === "avoid" ? "Avoid" : b.kind === "local" ? "From Kashi" : "Good to know")}: ${plain(b.text)}`;
+      return `${b.title ?? (b.kind === "avoid" ? "Avoid" : b.kind === "local" ? "Local knowledge" : "Good to know")}: ${plain(b.text)}`;
     case "img":
       return "";
   }
