@@ -158,7 +158,7 @@ export const journeys: Journey[] = [
     price: "INR 39,999",
     priceNote: "per person, all-inclusive",
     route: "Varanasi",
-    image: "/images/dev-deepawali/fireworks.jpg",
+    image: "/images/dev-deepawali/aarti.jpg",
     feelings: ["awe", "indulgence"],
     summary:
       "23–25 November 2026: Akashganga at Ramnagar Fort, a 4-hour private cruise past all 84 lit ghats, and dinner at the fort.",

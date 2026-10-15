@@ -89,7 +89,7 @@ export type TourPackage = {
   terms?: { title: string; content: string }[];
   /** Journal stories to read before the trip (post slugs), lead story first. */
   stories?: string[];
-  closing: { image: string; alt: string; line: string };
+  closing: { image: string; alt: string; line: string; position?: string };
 };
 
 export const packages: TourPackage[] = [
@@ -426,7 +426,7 @@ export const packages: TourPackage[] = [
     name: "Dev Deepawali 2026",
     length: "2 nights · 3 days",
     tagline: "One night a year the gods come down to bathe in the Ganga, and Kashi lights a lamp on every step to greet them.",
-    hero: { image: "/images/dev-deepawali/fireworks.jpg", alt: "Fireworks over the lit ghats of Varanasi on Dev Deepawali" },
+    hero: { image: "/images/dev-deepawali/aarti.jpg", alt: "Priests raise tiered brass lamps at the Ganga Aarti in Varanasi" },
     heroVideo: "/videos/dev-deepawali.mp4",
     stats: [
       { value: "39,999", label: "INR per person, all-inclusive", icon: "wallet" },
@@ -451,8 +451,8 @@ export const packages: TourPackage[] = [
           "Security & event management",
           "A curated return gift",
         ],
-        image: "/images/dev-deepawali/akashganga-kathak.jpg",
-        alt: "Kathak dancers on the Akashganga stage at Ramnagar Fort",
+        image: "/images/dev-deepawali/lantern.jpg",
+        alt: "A pierced brass lantern glowing against the night",
       },
       {
         kicker: "Day 2 · 4-hour private cruise",
@@ -470,7 +470,7 @@ export const packages: TourPackage[] = [
           "The full 84-ghat view",
         ],
         image: "/images/dev-deepawali/fireworks.jpg",
-        alt: "Fireworks over the lit ghats, seen from the river",
+        alt: "Fireworks over the Ganga at Varanasi on Dev Deepawali night",
       },
     ],
     days: [
@@ -491,8 +491,8 @@ export const packages: TourPackage[] = [
         n: 2,
         title: "The night of lamps",
         line: "Akashganga at Ramnagar Fort by day, all 84 ghats lit from the river by night.",
-        image: "/images/dev-deepawali/ramnagar-fort.jpg",
-        imageAlt: "Ramnagar Fort on the Ganga, seen from above",
+        image: "/images/dev-deepawali/aarti-crowd.jpg",
+        imageAlt: "A priest leads the evening Aarti before a crowd on the ghats of Varanasi",
         stops: [
           { title: "Across to Ramnagar Fort", note: "Leave mid-morning for the Maharaja's fort on the far bank.", icon: "car" },
           { title: "Akashganga begins", note: "Exclusive QR-based entry to the festival inside the fort.", icon: "fort" },
@@ -545,7 +545,7 @@ export const packages: TourPackage[] = [
         line: "A premium 3-star hotel, with everything you need for the festival and nothing you don't.",
         features: ["Premium 3-star hotel", "Private sedan transfers", "A WanderMate guide", "Festival-night dinner at the fort"],
         hotels: [],
-        image: "/images/dev-deepawali/river-aerial.jpg",
+        image: "/images/dev-deepawali/darbhanga.jpg",
       },
       {
         name: "Luxury",
@@ -651,8 +651,9 @@ export const packages: TourPackage[] = [
     ],
     stories: ["dev-deepawali", "the-ganga-aarti-explained", "kashi-city-of-light"],
     closing: {
-      image: "/images/dev-deepawali/sparklers.jpg",
-      alt: "Guests with sparklers on Dev Deepawali night",
+      image: "/images/dev-deepawali/aarti-priest.jpg",
+      alt: "A priest raises the yak-tail whisk during the Ganga Aarti at night",
+      position: "50% 22%",
       line: "One night a year, Kashi lights a lamp for every god. Be on the river when it does.",
     },
   },

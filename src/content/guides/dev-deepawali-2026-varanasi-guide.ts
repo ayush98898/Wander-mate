@@ -27,7 +27,7 @@ const guide: Post = {
   destination: "kashi",
   tours: ["dev-deepawali-2026", "kashi-in-four-days", "kashi-premium"],
   image: "/images/dev-deepawali/fireworks.jpg",
-  imageAlt: "Fireworks over the lit ghats of Varanasi on Dev Deepawali",
+  imageAlt: "Fireworks over the Ganga at Varanasi on Dev Deepawali night",
   facts: [
     { k: "Date", v: "Tuesday 24 November 2026" },
     { k: "Lunar day", v: "Kartik Purnima" },
@@ -141,9 +141,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/dev-deepawali/river-aerial.jpg",
-      alt: "Ramnagar Fort on the east bank of the Ganga, seen from the air",
-      caption: "Ramnagar Fort on the far bank, home of the Maharaja of Banaras and of the Akashganga festival on Dev Deepawali.",
+      src: "/images/dev-deepawali/aarti-crowd.jpg",
+      alt: "A priest leads the evening Aarti before a crowd on the ghats of Varanasi",
+      caption: "The Ganga Aarti draws its biggest crowds of the year on Dev Deepawali; the steps fill from the afternoon.",
+      credit: "Photo: Pexels",
     },
     { t: "h", text: "Getting around on the day" },
     {

@@ -314,7 +314,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
 
       {/* ---------- Closing ---------- */}
       <section className="relative isolate flex min-h-[80svh] items-end overflow-hidden text-bone">
-        <Image src={p.closing.image} alt={p.closing.alt} fill sizes="100vw" className="-z-20 object-cover" />
+        <Image src={p.closing.image} alt={p.closing.alt} fill sizes="100vw" style={{ objectPosition: p.closing.position }} className="-z-20 object-cover" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/25 to-black/20" />
         <Reveal className="wrap flex flex-col items-start justify-between gap-8 pb-14 md:flex-row md:items-end md:pb-20">
           <p className="display max-w-3xl text-[clamp(2.5rem,6vw,5.5rem)] leading-[1]">{p.closing.line}</p>

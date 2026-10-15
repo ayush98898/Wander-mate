@@ -111,7 +111,7 @@ export const destinations: Destination[] = [
         highlights: ["Akashganga festival pass", "4-hour private Ganga cruise", "Dinner at Ramnagar Fort"],
         feelings: ["awe", "indulgence"],
         href: "/packages/dev-deepawali-2026",
-        image: "/images/dev-deepawali/fireworks.jpg",
+        image: "/images/dev-deepawali/aarti.jpg",
       },
       {
         slug: "kashi-premium",
