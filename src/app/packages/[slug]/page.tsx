@@ -92,7 +92,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
         name={p.name}
         length={p.length}
         days={p.days}
-        video={p.heroVideo ? { src: p.heroVideo, poster: p.hero.image, alt: p.hero.alt } : undefined}
+        video={p.heroVideo ? { src: p.heroVideo, srcMobile: p.heroVideoMobile, poster: p.hero.image, alt: p.hero.alt } : undefined}
       />
 
       {/* ---------- At a glance ---------- */}

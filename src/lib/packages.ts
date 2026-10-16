@@ -55,6 +55,8 @@ export type TourPackage = {
   hero: { image: string; alt: string; position?: string };
   /** A short muted loop for the hero, shown instead of the photographs (poster = hero.image). */
   heroVideo?: string;
+  /** A portrait cut of the hero video for phones. */
+  heroVideoMobile?: string;
   stats: { value: string; label: string; icon: "moon" | "car" | "boat" | "landmark" | "clock" | "users" | "wallet" | "calendar" }[];
   days: PackageDay[];
   /** The boat ride, ghat by ghat in the order you pass them (drawn bottom to top). */
@@ -428,6 +430,7 @@ export const packages: TourPackage[] = [
     tagline: "One night a year the gods come down to bathe in the Ganga, and Kashi lights a lamp on every step to greet them.",
     hero: { image: "/images/dev-deepawali/aarti.jpg", alt: "Priests raise tiered brass lamps at the Ganga Aarti in Varanasi" },
     heroVideo: "/videos/dev-deepawali.mp4",
+    heroVideoMobile: "/videos/dev-deepawali-mobile.mp4",
     stats: [
       { value: "39,999", label: "INR per person, all-inclusive", icon: "wallet" },
       { value: "23–25", label: "November 2026", icon: "calendar" },

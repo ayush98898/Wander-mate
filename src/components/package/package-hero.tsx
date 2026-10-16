@@ -25,7 +25,7 @@ export function PackageHero({
   length: string;
   days: PackageDay[];
   /** A muted loop and the still shown before it plays (and to reduced-motion visitors). */
-  video?: { src: string; poster: string; alt: string };
+  video?: { src: string; srcMobile?: string; poster: string; alt: string };
 }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
@@ -59,6 +59,7 @@ export function PackageHero({
               poster={video.poster}
               className="absolute inset-0 -z-20 size-full object-cover"
             >
+              {video.srcMobile ? <source src={video.srcMobile} type="video/mp4" media="(max-width: 767px)" /> : null}
               <source src={video.src} type="video/mp4" />
             </video>
           )}
