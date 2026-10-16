@@ -15,3 +15,5 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | ta-prohm-tree.jpg | https://www.pexels.com/photo/15890916/ |
 | bayon-temple.jpg | https://www.pexels.com/photo/15928697/ |
 | pushkar-turban.jpg | https://www.pexels.com/photo/10593217/ |
+| gem-obelisk.jpg | https://www.pexels.com/photo/34467242/ |
+| giza-pyramid.jpg | https://www.pexels.com/photo/3689863/ |
