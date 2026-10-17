@@ -17,3 +17,5 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | pushkar-turban.jpg | https://www.pexels.com/photo/10593217/ |
 | gem-obelisk.jpg | https://www.pexels.com/photo/34467242/ |
 | giza-pyramid.jpg | https://www.pexels.com/photo/3689863/ |
+| hampi-virupaksha-aerial.jpg | https://www.pexels.com/photo/37626167/ |
+| hampi-virupaksha-night.jpg | https://www.pexels.com/photo/14721498/ |
