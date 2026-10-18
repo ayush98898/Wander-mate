@@ -20,6 +20,10 @@ const nextConfig: NextConfig = isExport
           { source: "/enquire", destination: "/plan", permanent: true },
           { source: "/dev-deepawali", destination: "/packages/dev-deepawali-2026", permanent: true },
           { source: "/journeys/dev-deepawali-2026", destination: "/packages/dev-deepawali-2026", permanent: true },
+          // Short, shareable addresses for the Varanasi page.
+          { source: "/varanasi", destination: "/destinations/kashi", permanent: true },
+          { source: "/kashi", destination: "/destinations/kashi", permanent: true },
+          { source: "/varanasi-tours", destination: "/destinations/kashi", permanent: true },
         ];
       },
     };
