@@ -19,3 +19,5 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | giza-pyramid.jpg | https://www.pexels.com/photo/3689863/ |
 | hampi-virupaksha-aerial.jpg | https://www.pexels.com/photo/37626167/ |
 | hampi-virupaksha-night.jpg | https://www.pexels.com/photo/14721498/ |
+| bhutan-buddha-dordenma.jpg | https://www.pexels.com/photo/20499133/ |
+| bhutan-temple-mountains.jpg | https://www.pexels.com/photo/5011707/ |
