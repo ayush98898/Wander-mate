@@ -11,6 +11,7 @@ import type { Post } from "@/lib/journal";
 import g_angkor_wat_sunrise_tickets_guide from "@/content/guides/angkor-wat-sunrise-tickets-guide";
 import g_best_time_to_visit_varanasi from "@/content/guides/best-time-to-visit-varanasi";
 import g_bhutan_black_necked_crane_festival_2026 from "@/content/guides/bhutan-black-necked-crane-festival-2026";
+import g_chhath_puja_varanasi_2026 from "@/content/guides/chhath-puja-varanasi-2026";
 import g_dev_deepawali_2026_varanasi_guide from "@/content/guides/dev-deepawali-2026-varanasi-guide";
 import g_diwali_in_varanasi_2026 from "@/content/guides/diwali-in-varanasi-2026";
 import g_durga_puja_kolkata_2026_guide from "@/content/guides/durga-puja-kolkata-2026-guide";
@@ -33,6 +34,7 @@ export const dailyPosts: Post[] = [
   g_angkor_wat_sunrise_tickets_guide,
   g_best_time_to_visit_varanasi,
   g_bhutan_black_necked_crane_festival_2026,
+  g_chhath_puja_varanasi_2026,
   g_dev_deepawali_2026_varanasi_guide,
   g_diwali_in_varanasi_2026,
   g_durga_puja_kolkata_2026_guide,
