@@ -25,6 +25,7 @@ import g_loy_krathong_yi_peng_2026_guide from "@/content/guides/loy-krathong-yi-
 import g_manikarnika_ghat_what_to_know from "@/content/guides/manikarnika-ghat-what-to-know";
 import g_pushkar_fair_2026_guide from "@/content/guides/pushkar-fair-2026-guide";
 import g_sarnath_from_varanasi from "@/content/guides/sarnath-from-varanasi";
+import g_sigiriya_guide from "@/content/guides/sigiriya-guide";
 import g_taj_mahal_tickets_timings_guide from "@/content/guides/taj-mahal-tickets-timings-guide";
 import g_tihar_nepal_2026_guide from "@/content/guides/tihar-nepal-2026-guide";
 import g_varanasi_street_food_guide from "@/content/guides/varanasi-street-food-guide";
@@ -48,6 +49,7 @@ export const dailyPosts: Post[] = [
   g_manikarnika_ghat_what_to_know,
   g_pushkar_fair_2026_guide,
   g_sarnath_from_varanasi,
+  g_sigiriya_guide,
   g_taj_mahal_tickets_timings_guide,
   g_tihar_nepal_2026_guide,
   g_varanasi_street_food_guide,

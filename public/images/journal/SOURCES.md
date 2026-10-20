@@ -22,3 +22,5 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | bhutan-buddha-dordenma.jpg | https://www.pexels.com/photo/20499133/ |
 | bhutan-temple-mountains.jpg | https://www.pexels.com/photo/5011707/ |
 | chhath-howrah.jpg | https://www.pexels.com/photo/30909809/ |
+| sigiriya-aerial.jpg | https://www.pexels.com/photo/28838276/ |
+| sigiriya-rock.jpg | https://www.pexels.com/photo/19808398/ |
