@@ -16,6 +16,7 @@ import g_dev_deepawali_2026_varanasi_guide from "@/content/guides/dev-deepawali-
 import g_diwali_in_varanasi_2026 from "@/content/guides/diwali-in-varanasi-2026";
 import g_durga_puja_kolkata_2026_guide from "@/content/guides/durga-puja-kolkata-2026-guide";
 import g_ganga_aarti_timings_varanasi from "@/content/guides/ganga-aarti-timings-varanasi";
+import g_golden_temple_amritsar_guide from "@/content/guides/golden-temple-amritsar-guide";
 import g_grand_egyptian_museum_guide from "@/content/guides/grand-egyptian-museum-guide";
 import g_hampi_travel_guide from "@/content/guides/hampi-travel-guide";
 import g_how_many_days_in_varanasi from "@/content/guides/how-many-days-in-varanasi";
@@ -40,6 +41,7 @@ export const dailyPosts: Post[] = [
   g_diwali_in_varanasi_2026,
   g_durga_puja_kolkata_2026_guide,
   g_ganga_aarti_timings_varanasi,
+  g_golden_temple_amritsar_guide,
   g_grand_egyptian_museum_guide,
   g_hampi_travel_guide,
   g_how_many_days_in_varanasi,

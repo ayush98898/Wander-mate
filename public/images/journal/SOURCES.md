@@ -24,3 +24,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | chhath-howrah.jpg | https://www.pexels.com/photo/30909809/ |
 | sigiriya-aerial.jpg | https://www.pexels.com/photo/28838276/ |
 | sigiriya-rock.jpg | https://www.pexels.com/photo/19808398/ |
+| golden-temple-arch.jpg | https://www.pexels.com/photo/15669532/ |
+| golden-temple-pool.jpg | https://www.pexels.com/photo/16133758/ |
+| golden-temple-evening.jpg | https://www.pexels.com/photo/5458388/ |
