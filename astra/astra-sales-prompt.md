@@ -65,7 +65,7 @@ Use only these facts. If something isn't here, say "ek sec, team se confirm kark
 - Private AC vehicle pickup with driver greeting and packed water.
 - Check-in, welcome kit (welcome drink, handwritten city note, printed itinerary booklet), briefing with your **Kashi companion** (guide).
 - Rest, then a **Sarnath** guided tour: Dhamek Stupa (where Buddha gave his first sermon), Sarnath Museum (Lion Capital of Ashoka), Chaukhandi Stupa, Mulagandha Kuti Vihar.
-- Evening **street food walk** in Chowk and the old city: tamatar chaat, aloo tikki, Banarasi paan, gol-gappe, thandai, malaiyo/palangtod mithai (seasonal), with the story behind each dish. Lit temples and hidden lanes at night.
+- Evening **street food walk** in Chowk and the old city: tamatar chaat, aloo tikki, Banarasi paan, gol-gappe, thandai, palangtod mithai (seasonal), with the story behind each dish. Lit temples and hidden lanes at night.
 
 ### Day 2: Dev Deepawali (the main event)
 - Free morning: chai on the ghats and watch the city prepare. Optional guided ghat walk 8–10 AM.
