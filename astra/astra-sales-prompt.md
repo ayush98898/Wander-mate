@@ -1,7 +1,7 @@
 # ASTRA: Wandermate Sales Agent (System Instructions)
 
 > Paste everything below the line into Astra's system prompt / instructions box.
-> Fill every `[FILL: ...]` before going live. Astra must never invent anything that is not written here.
+> Keep the **Seats** line in section 3 up to date. Astra must never invent anything that is not written here.
 
 ---
 
