@@ -82,12 +82,21 @@ export function SeatBooker({ name, length, booking, included }: { name: string; 
                     key={x.name}
                     type="button"
                     aria-pressed={on}
+                    disabled={x.soldOut}
                     onClick={() => setT(i)}
-                    className={cn("flex min-h-11 flex-col gap-2 border p-5 text-left transition-colors", on ? "border-ink bg-ink text-bone" : "border-ink/20 hover:border-ink")}
+                    className={cn(
+                      "flex min-h-11 flex-col gap-2 border p-5 text-left transition-colors",
+                      on ? "border-ink bg-ink text-bone" : "border-ink/20 hover:border-ink",
+                      x.soldOut && "cursor-not-allowed border-ink/12 opacity-55 hover:border-ink/12",
+                    )}
                   >
                     <span className="flex items-baseline justify-between gap-4">
                       <span className="display text-3xl">{x.name}</span>
-                      <span className="display text-2xl tabular-nums">{x.price.replace(/^INR\s*/, "₹")}</span>
+                      {x.soldOut ? (
+                        <span className="label text-ochre">Sold out</span>
+                      ) : (
+                        <span className="display text-2xl tabular-nums">{x.price.replace(/^INR\s*/, "₹")}</span>
+                      )}
                     </span>
                     <span className={cn("text-sm leading-relaxed", on ? "text-bone/70" : "text-smoke")}>{x.line}</span>
                   </button>

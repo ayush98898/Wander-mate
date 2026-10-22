@@ -35,6 +35,8 @@ export type StayTier = {
   featured?: boolean;
   /** Small line above the name (defaults to "Chosen for your dates"). */
   kicker?: string;
+  /** No rooms left in this tier: shown greyed with a "Sold out" mark. */
+  soldOut?: boolean;
 };
 
 /** A feature band: one big photograph and what the experience holds. */
@@ -75,7 +77,7 @@ export type TourPackage = {
     group: string;
     departures: { dates: string; days: string; seats?: number }[];
     /** Price tiers to choose between; the first is the default and sets `price`. */
-    tiers?: { name: string; price: string; line: string }[];
+    tiers?: { name: string; price: string; line: string; soldOut?: boolean }[];
     /** Line under the seat counter (rooms, payment terms). */
     note?: string;
     /** Small line above the section title. */
@@ -547,8 +549,11 @@ export const packages: TourPackage[] = [
         kicker: "₹39,999 per person",
         line: "A premium 3-star hotel, with everything you need for the festival and nothing you don't.",
         features: ["Premium 3-star hotel", "Private sedan transfers", "A WanderMate guide", "Festival-night dinner at the fort"],
-        hotels: [],
-        image: "/images/dev-deepawali/darbhanga.jpg",
+        hotels: [
+          { name: "Hotel Dev Residency", image: "/images/hotel-dev.jpg" },
+          { name: "Hotel Ganesha Palace", image: "/images/hotel-ganesha.jpg" },
+          { name: "Hotel Elegance Inn", image: "/images/hotel-elegance.jpg" },
+        ],
       },
       {
         name: "Luxury",
@@ -557,7 +562,7 @@ export const packages: TourPackage[] = [
         features: ["5-star hotel", "Luxury vehicle or SUV", "A dedicated personal guide", "Fine dining at Ramnagar Fort"],
         hotels: [],
         image: "/images/golden-boats.jpg",
-        featured: true,
+        soldOut: true,
       },
     ],
     booking: {
@@ -568,7 +573,7 @@ export const packages: TourPackage[] = [
       departures: [{ dates: "23–25 November 2026", days: "Mon – Wed" }],
       tiers: [
         { name: "Premium", price: "INR 39,999", line: "3-star hotel · sedan · WanderMate guide" },
-        { name: "Luxury", price: "INR 59,999", line: "5-star hotel · SUV · personal guide · fort fine dining" },
+        { name: "Luxury", price: "INR 59,999", line: "5-star hotel · SUV · personal guide · fort fine dining", soldOut: true },
       ],
       note: "Pay 50% to confirm your seat and the rest 15 days before travel. Bookings are non-refundable, so we suggest travel insurance.",
     },
@@ -581,7 +586,7 @@ export const packages: TourPackage[] = [
       },
       {
         q: "What is the difference between Premium and Luxury?",
-        a: "Premium (₹39,999) has a 3-star hotel, a private sedan, a WanderMate guide and the festival-night dinner. Luxury (₹59,999) has a 5-star hotel, a luxury vehicle or SUV, a dedicated personal guide and fine dining at Ramnagar Fort. Both include Akashganga and the cruise.",
+        a: "Premium (₹39,999) has a 3-star hotel, a private sedan, a WanderMate guide and the festival-night dinner. Luxury (₹59,999) has a 5-star hotel, a luxury vehicle or SUV, a dedicated personal guide and fine dining at Ramnagar Fort. Both include Akashganga and the cruise. Luxury is now sold out for 2026; Premium seats are still open.",
         icon: "wallet",
       },
       {

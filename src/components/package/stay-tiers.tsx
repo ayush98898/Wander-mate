@@ -14,9 +14,10 @@ export function StayTiers({ tiers }: { tiers: StayTier[] }) {
     <div className={cn("grid gap-px bg-ink/12", !single && "md:grid-cols-2")}>
       {tiers.map((t) => {
         const hasHotels = t.hotels.length > 0;
-        const featured = hasHotels || Boolean(t.featured);
+        const soldOut = Boolean(t.soldOut);
+        const featured = !soldOut && (hasHotels || Boolean(t.featured));
         return (
-          <article key={t.name} className={cn("flex flex-col", single && "lg:grid lg:grid-cols-[1.35fr_1fr]", featured ? "bg-ink text-bone" : "bg-bone")}>
+          <article key={t.name} className={cn("flex flex-col", single && "lg:grid lg:grid-cols-[1.35fr_1fr]", featured ? "bg-ink text-bone" : "bg-bone", soldOut && "text-ink/60")}>
             {hasHotels ? (
               <div className={cn("grid h-64 grid-cols-3 gap-px bg-ink md:h-80", single && "lg:h-full lg:min-h-[28rem]")}>
                 {t.hotels.slice(0, 3).map((h) => (
@@ -27,11 +28,12 @@ export function StayTiers({ tiers }: { tiers: StayTier[] }) {
               </div>
             ) : t.image ? (
               <figure className="group relative h-64 overflow-hidden md:h-80">
-                <Image src={t.image} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-expo)] group-hover:scale-105" />
+                <Image src={t.image} alt="" fill sizes="(min-width:768px) 50vw, 100vw" className={cn("object-cover transition-transform duration-[1.2s] ease-[var(--ease-expo)]", soldOut ? "opacity-60 grayscale" : "group-hover:scale-105")} />
+                {soldOut ? <span className="label absolute top-5 left-5 bg-ink px-4 py-2 text-bone">Sold out</span> : null}
               </figure>
             ) : null}
             <div className={cn("flex flex-1 flex-col p-7 md:p-9", single && "lg:justify-center lg:p-14")}>
-              <p className={cn("label", featured ? "text-ochre-lit" : "text-ochre")}>{t.kicker ?? (hasHotels ? "Our partner hotels" : "Chosen for your dates")}</p>
+              <p className={cn("label", featured ? "text-ochre-lit" : "text-ochre")}>{soldOut ? `Sold out${t.kicker ? ` · ${t.kicker}` : ""}` : (t.kicker ?? (hasHotels ? "Our partner hotels" : "Chosen for your dates"))}</p>
               <h3 className="display mt-3 text-5xl">{t.name}</h3>
               <p className={cn("mt-3", featured ? "text-bone/75" : "text-ink-2")}>{t.line}</p>
               <ul className="mt-6 mb-8 space-y-3">

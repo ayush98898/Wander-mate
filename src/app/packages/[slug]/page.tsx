@@ -247,7 +247,7 @@ export default async function PackagePage({ params }: { params: Promise<{ slug: 
                   Build <em>your trip</em>
                 </h2>
               </Reveal>
-              <TripBuilder name={p.name} length={p.length} stays={p.stays.map((t) => t.name)} vehicles={p.vehicles ?? []} />
+              <TripBuilder name={p.name} length={p.length} stays={p.stays.filter((t) => !t.soldOut).map((t) => t.name)} vehicles={p.vehicles ?? []} />
             </>
           )}
         </div>
