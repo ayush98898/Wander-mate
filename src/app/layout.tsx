@@ -89,7 +89,6 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
-  icons: { icon: "/images/logo-mark.png", apple: "/images/logo-mark.png" },
   formatDetection: { telephone: false },
   category: "travel",
 };
