@@ -27,3 +27,4 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | golden-temple-arch.jpg | https://www.pexels.com/photo/15669532/ |
 | golden-temple-pool.jpg | https://www.pexels.com/photo/16133758/ |
 | golden-temple-evening.jpg | https://www.pexels.com/photo/5458388/ |
+| loom-weaver-mono.jpg | https://www.pexels.com/photo/17649771/ |
