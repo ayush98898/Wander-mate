@@ -28,3 +28,5 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | golden-temple-pool.jpg | https://www.pexels.com/photo/16133758/ |
 | golden-temple-evening.jpg | https://www.pexels.com/photo/5458388/ |
 | loom-weaver-mono.jpg | https://www.pexels.com/photo/17649771/ |
+| shah-i-zinda-street.jpg | https://www.pexels.com/photo/19839437/ |
+| shah-i-zinda-tiles.jpg | https://www.pexels.com/photo/19439186/ |
