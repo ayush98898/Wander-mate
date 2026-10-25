@@ -11,6 +11,7 @@ import type { Post } from "@/lib/journal";
 import g_angkor_wat_sunrise_tickets_guide from "@/content/guides/angkor-wat-sunrise-tickets-guide";
 import g_best_time_to_visit_varanasi from "@/content/guides/best-time-to-visit-varanasi";
 import g_bhutan_black_necked_crane_festival_2026 from "@/content/guides/bhutan-black-necked-crane-festival-2026";
+import g_bodh_gaya_mahabodhi_temple_guide from "@/content/guides/bodh-gaya-mahabodhi-temple-guide";
 import g_buying_banarasi_silk_saree_varanasi from "@/content/guides/buying-banarasi-silk-saree-varanasi";
 import g_chhath_puja_varanasi_2026 from "@/content/guides/chhath-puja-varanasi-2026";
 import g_dev_deepawali_2026_varanasi_guide from "@/content/guides/dev-deepawali-2026-varanasi-guide";
@@ -21,6 +22,7 @@ import g_golden_temple_amritsar_guide from "@/content/guides/golden-temple-amrit
 import g_grand_egyptian_museum_guide from "@/content/guides/grand-egyptian-museum-guide";
 import g_hampi_travel_guide from "@/content/guides/hampi-travel-guide";
 import g_how_many_days_in_varanasi from "@/content/guides/how-many-days-in-varanasi";
+import g_istanbul_hagia_sophia_blue_mosque_guide from "@/content/guides/istanbul-hagia-sophia-blue-mosque-guide";
 import g_kashi_vishwanath_darshan_guide from "@/content/guides/kashi-vishwanath-darshan-guide";
 import g_kyoto_autumn_leaves_guide from "@/content/guides/kyoto-autumn-leaves-guide";
 import g_loy_krathong_yi_peng_2026_guide from "@/content/guides/loy-krathong-yi-peng-2026-guide";
@@ -38,6 +40,7 @@ export const dailyPosts: Post[] = [
   g_angkor_wat_sunrise_tickets_guide,
   g_best_time_to_visit_varanasi,
   g_bhutan_black_necked_crane_festival_2026,
+  g_bodh_gaya_mahabodhi_temple_guide,
   g_buying_banarasi_silk_saree_varanasi,
   g_chhath_puja_varanasi_2026,
   g_dev_deepawali_2026_varanasi_guide,
@@ -48,6 +51,7 @@ export const dailyPosts: Post[] = [
   g_grand_egyptian_museum_guide,
   g_hampi_travel_guide,
   g_how_many_days_in_varanasi,
+  g_istanbul_hagia_sophia_blue_mosque_guide,
   g_kashi_vishwanath_darshan_guide,
   g_kyoto_autumn_leaves_guide,
   g_loy_krathong_yi_peng_2026_guide,
