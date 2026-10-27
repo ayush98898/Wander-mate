@@ -33,3 +33,4 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | bodh-gaya-great-buddha.jpg | https://www.pexels.com/photo/14237553/ |
 | blue-mosque-interior.jpg | https://www.pexels.com/photo/17186766/ |
 | suleymaniye-mosque.jpg | https://www.pexels.com/photo/10472126/ |
+| fes-tannery.jpg | https://www.pexels.com/photo/31704023/ |
