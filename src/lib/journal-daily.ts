@@ -38,6 +38,7 @@ import g_taj_mahal_tickets_timings_guide from "@/content/guides/taj-mahal-ticket
 import g_tihar_nepal_2026_guide from "@/content/guides/tihar-nepal-2026-guide";
 import g_varanasi_street_food_guide from "@/content/guides/varanasi-street-food-guide";
 import g_varanasi_sunrise_boat_ride_guide from "@/content/guides/varanasi-sunrise-boat-ride-guide";
+import g_where_to_stay_in_varanasi from "@/content/guides/where-to-stay-in-varanasi";
 
 export const dailyPosts: Post[] = [
   g_angkor_wat_sunrise_tickets_guide,
@@ -70,4 +71,5 @@ export const dailyPosts: Post[] = [
   g_tihar_nepal_2026_guide,
   g_varanasi_street_food_guide,
   g_varanasi_sunrise_boat_ride_guide,
+  g_where_to_stay_in_varanasi,
 ];
