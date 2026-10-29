@@ -26,7 +26,7 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["kashi-in-four-days", "kashi-premium", "kashi-luxury"],
-  image: "/images/dev-deepawali/darbhanga.jpg",
+  image: "/images/journal/darbhanga-ghat.jpg",
   imageAlt: "BrijRama Palace, a towering sandstone palace with round corner towers and tall columns, rising from Darbhanga Ghat in Varanasi with boats moored below",
   facts: [
     { k: "First-visit pick", v: "The ghats, Assi to Dashashwamedh" },

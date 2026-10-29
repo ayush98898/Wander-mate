@@ -25,8 +25,9 @@ const guide: Post = {
   region: "India",
   place: "Varanasi",
   destination: "kashi",
-  image: "/images/fog-boats.jpg",
-  imageAlt: "Boats in the winter mist on the Ganga at Varanasi",
+  image: "/images/journal/fog-boats-ganges.jpg",
+  imageAlt: "Wooden boats moored on the Ganga in thick morning fog, with the far bank fading into the mist",
+  imagePosition: "50% 70%",
   facts: [
     { k: "Best months", v: "October to March" },
     { k: "Most comfortable", v: "November and February" },
@@ -75,9 +76,9 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/ghats-evening.jpg",
-      alt: "The ghats of Varanasi in the evening light",
-      caption: "From October, the river falls back and the steps of the ghats are clear again.",
+      src: "/images/golden-boats.jpg",
+      alt: "Boats on the Ganga in a golden haze below the riverfront of Varanasi",
+      caption: "From October the river falls back, the boats return to the steps and the ghats are clear again.",
     },
     { t: "h", text: "December and January: fog, fires and malaiyo" },
     {

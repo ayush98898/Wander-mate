@@ -26,7 +26,7 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["banaras-unfiltered", "kashi-in-four-days", "kashi-premium"],
-  image: "/images/packages/old-city-lane.jpg",
+  image: "/images/journal/varanasi-lane.jpg",
   imageAlt: "A narrow lane in the old city of Varanasi between blue-washed walls, with a painted Ganesha on the right and a painted Shiva on the left",
   facts: [
     { k: "GI tag", v: "Banaras Brocades and Sarees, 2009" },

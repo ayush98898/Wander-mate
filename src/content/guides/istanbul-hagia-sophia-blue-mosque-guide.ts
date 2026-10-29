@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Istanbul",
   destination: "istanbul",
   tours: ["city-on-two-continents", "the-rumi-trail", "cappadocia-at-dawn"],
-  image: "/images/destinations/istanbul.jpg",
-  imageAlt: "Hagia Sophia with its great dome and four minarets, seen across the gardens and fountain of Sultanahmet Square on a cloudy evening",
+  image: "/images/journal/hagia-sophia-aerial.jpg",
+  imageAlt: "Hagia Sophia and its four minarets from the air in warm evening light, with the domes of the old city and the Bosphorus beyond",
   facts: [
     { k: "Hagia Sophia built", v: "532–537, under Justinian" },
     { k: "Hagia Sophia ticket", v: "€25 for foreigners" },

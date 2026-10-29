@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Siem Reap",
   destination: "cambodia",
   tours: ["angkor-in-depth", "beyond-angkor", "angkor-and-phnom-penh"],
-  image: "/images/destinations/cambodia.jpg",
-  imageAlt: "The towers of Angkor Wat in Cambodia",
+  image: "/images/journal/angkor-wat.jpg",
+  imageAlt: "The five towers of Angkor Wat rising above palm trees at the end of the stone causeway, under a blue sky with white clouds",
   facts: [
     { k: "Opens for sunrise", v: "5 AM" },
     { k: "Angkor Pass 2026", v: "US$37 / 62 / 72 (1, 3, 7 days)" },

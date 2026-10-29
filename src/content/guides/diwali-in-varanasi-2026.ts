@@ -26,8 +26,9 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["kashi-in-four-days", "kashi-premium", "dev-deepawali-2026"],
-  image: "/images/store/brass-diya.jpg",
-  imageAlt: "A lit brass oil lamp on a silver tray with red flowers",
+  image: "/images/journal/diya-lighting.jpg",
+  imageAlt: "A woman in a red sari lights rows of clay oil lamps at night, her face lit by the flames",
+  imagePosition: "50% 30%",
   facts: [
     { k: "Diwali 2026", v: "Sunday 8 November" },
     { k: "Dhanteras", v: "Friday 6 November" },

@@ -103,6 +103,13 @@ const guide: Post = {
         "**Bhuj**, the old capital, with the Aina Mahal and Prag Mahal palaces, rebuilt after the earthquake of **26 January 2001**, which devastated much of Kutch.",
       ],
     },
+    {
+      t: "img",
+      src: "/images/journal/rann-road.jpg",
+      alt: "A straight dirt road running across the flat salt marsh of the Rann of Kutch under a heavy grey sky",
+      caption: "The causeway road across the salt marsh of the Rann, the way north towards Khavda and Dholavira.",
+      credit: "Photo: Pexels",
+    },
     { t: "h", text: "The craft villages of Kutch" },
     {
       t: "p",

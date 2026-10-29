@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Sri Lanka",
   destination: "sri-lanka",
   tours: ["cultural-triangle", "ramayana-trail", "esala-perahera"],
-  image: "/images/destinations/sri-lanka.jpg",
-  imageAlt: "The flat-topped granite rock of Sigiriya rising out of green forest under a blue sky with white clouds",
+  image: "/images/journal/sigiriya-pidurangala.jpg",
+  imageAlt: "Sigiriya rock rising above green forest, seen from the summit of Pidurangala, with hills on the horizon under white clouds",
   facts: [
     { k: "Built", v: "c. AD 477–495" },
     { k: "UNESCO", v: "Inscribed 1982" },
@@ -126,9 +126,9 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/journal/sigiriya-rock.jpg",
-      alt: "Sigiriya rock seen across the forest from the boulders of a neighbouring hill, with a rock in the foreground",
-      caption: "Sigiriya from the boulders of a neighbouring rock. From Pidurangala's summit the whole citadel stands out against the morning sky.",
+      src: "/images/journal/sigiriya-drone.jpg",
+      alt: "Aerial view of the Sigiriya rock fortress rising sheer out of dense green forest",
+      caption: "Sigiriya from the air. The flat summit held Kashyapa's palace; the water and boulder gardens lie hidden in the forest at its foot.",
       credit: "Photo: Pexels",
     },
     {

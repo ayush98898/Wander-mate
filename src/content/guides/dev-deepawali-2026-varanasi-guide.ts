@@ -26,8 +26,9 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["dev-deepawali-2026", "kashi-in-four-days", "kashi-premium"],
-  image: "/images/dev-deepawali/fireworks.jpg",
+  image: "/images/journal/dev-deepawali-fireworks.jpg",
   imageAlt: "Fireworks over the Ganga at Varanasi on Dev Deepawali night",
+  imagePosition: "50% 45%",
   facts: [
     { k: "Date", v: "Tuesday 24 November 2026" },
     { k: "Lunar day", v: "Kartik Purnima" },

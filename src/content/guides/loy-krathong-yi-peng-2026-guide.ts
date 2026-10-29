@@ -26,9 +26,8 @@ const guide: Post = {
   place: "Chiang Mai",
   destination: "thailand",
   tours: ["yi-peng-and-loy-krathong", "temples-of-chiang-mai", "ancient-capitals"],
-  image: "/images/journal/chiang-mai-sky-lantern.jpg",
-  imageAlt: "Two people release a glowing paper sky lantern at night in Chiang Mai, with more lanterns in the sky",
-  imagePosition: "50% 30%",
+  image: "/images/journal/yi-peng-lanterns.jpg",
+  imageAlt: "People raise their hands to release a glowing paper lantern into the night sky in Chiang Mai",
   facts: [
     { k: "Loy Krathong", v: "Tuesday 24 November 2026" },
     { k: "Yi Peng (Chiang Mai)", v: "24–25 November 2026" },
@@ -85,6 +84,13 @@ const guide: Post = {
     {
       t: "p",
       text: "Yi Peng belongs to **Lanna**, the old northern kingdom whose capital was Chiang Mai. Its name means the full moon of the second month in the Lanna calendar, which falls at the same time as Loy Krathong. Its symbol is the lantern. **Khom fai**, paper lanterns, are hung in temples and houses to bring merit and light the way for the Buddha. **Khom loi**, sky lanterns of rice paper over a bamboo hoop with a fuel cell, are released to carry misfortune away, and in temples monks lead chanting and meditation by candlelight.",
+    },
+    {
+      t: "img",
+      src: "/images/journal/chiang-mai-sky-lantern.jpg",
+      alt: "Two people hold up a glowing paper sky lantern at night in Chiang Mai, about to let it go",
+      caption: "A khom loi, a paper sky lantern, about to be released in Chiang Mai. Releases are now limited to permitted sites and times.",
+      credit: "Photo: Pexels",
     },
     {
       t: "quote",

@@ -97,9 +97,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/priest-river.jpg",
-      alt: "A man in a white dhoti stands on a stone ghat facing the Ganga, with brass vessels beside him",
-      caption: "Facing the river at a ghat in Varanasi. On Chhath, the same steps are crowded from the afternoon with families and their offerings.",
+      src: "/images/journal/chhath-offerings.jpg",
+      alt: "A woman in an orange sari stands at the water's edge holding a basket of fruit, sugarcane leaves and offerings for Chhath",
+      caption: "A vratin carries her offerings to the river. The baskets hold sugarcane, coconut, fruit and thekua, raised to the sun at the arghya.",
+      credit: "Photo: Pexels",
     },
     { t: "h", text: "Where to see Chhath in Varanasi" },
     {

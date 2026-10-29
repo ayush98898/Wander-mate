@@ -26,8 +26,9 @@ const guide: Post = {
   place: "Sarnath",
   destination: "kashi",
   tours: ["kashi-in-four-days", "kashi-premium", "kashi-luxury"],
-  image: "/images/packages/sarnath.jpg",
-  imageAlt: "The Dhamek Stupa at Sarnath among palm trees",
+  image: "/images/journal/dhamek-stupa.jpg",
+  imageAlt: "The Dhamek Stupa at Sarnath, a massive drum of brick and carved stone, on a green lawn under a cloudy sky",
+  imagePosition: "50% 55%",
   facts: [
     { k: "Distance", v: "About 10 km from the ghats" },
     { k: "Time needed", v: "Half a day" },

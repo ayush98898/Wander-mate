@@ -26,8 +26,9 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["banaras-unfiltered", "kashi-in-four-days", "kashi-premium"],
-  image: "/images/aarti-priest.jpg",
-  imageAlt: "A priest raises a brass lamp during the Ganga Aarti at Dashashwamedh Ghat",
+  image: "/images/journal/aarti-torch.jpg",
+  imageAlt: "A priest raises a blazing brass lamp above his head during the Ganga Aarti at night, with the crowd on the steps behind him",
+  imagePosition: "50% 42%",
   facts: [
     { k: "Where", v: "Dashashwamedh Ghat, every evening" },
     { k: "Winter start", v: "About 6 PM (October–March)" },
@@ -88,9 +89,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/aarti-night.jpg",
-      alt: "Priests perform the evening Ganga Aarti on the ghats at night",
-      caption: "The priests face the river throughout; the crowd watches from behind them and from the water.",
+      src: "/images/journal/aarti-crowd-mono.jpg",
+      alt: "Black-and-white photograph of the crowd on the ghat steps at the Ganga Aarti, many holding up phones and small lamps",
+      caption: "The crowd on the steps at the evening Aarti. Arrive an hour early for a place near the front, or watch from a boat.",
+      credit: "Photo: Pexels",
     },
     { t: "h", text: "Where to sit: steps, boat or platform" },
     {
@@ -145,9 +147,9 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/diya.jpg",
-      alt: "A small clay lamp lit for the river",
-      caption: "After the Aarti, many in the crowd float a lamp on the river with a prayer.",
+      src: "/images/aarti-priest.jpg",
+      alt: "A priest seen from behind holding a tiered brass lamp ablaze with flames during the Aarti",
+      caption: "The great tiered lamp, offered to the river in slow circles, is the climax of the ceremony.",
     },
     {
       t: "p",

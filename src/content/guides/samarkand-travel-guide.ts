@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Uzbekistan",
   destination: "uzbekistan",
   tours: ["timurs-samarkand", "silk-road-cities", "roots-of-the-mughals"],
-  image: "/images/destinations/uzbekistan.jpg",
-  imageAlt: "The Registan in Samarkand: two tiled madrasas with minarets facing each other across the square, and the Tilya-Kori madrasa with its turquoise dome between them",
+  image: "/images/journal/registan-night.jpg",
+  imageAlt: "The Registan in Samarkand at night, its madrasas lit gold against a black sky, the square almost empty",
   facts: [
     { k: "UNESCO", v: "Samarkand – Crossroad of Cultures, 2001" },
     { k: "Registan built", v: "1417 to 1660" },

@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["banaras-unfiltered", "kashi-premium", "kashi-in-four-days"],
-  image: "/images/packages/old-city-lane.jpg",
-  imageAlt: "A lane in the old city of Varanasi",
+  image: "/images/journal/tikki-griddle.jpg",
+  imageAlt: "Golden aloo tikki frying on a wide iron griddle at a street stall, a cook turning them with a spatula",
   facts: [
     { k: "Breakfast", v: "Kachori sabzi and jalebi, before 10 AM" },
     { k: "Evening", v: "Tamatar chaat around Godowlia" },

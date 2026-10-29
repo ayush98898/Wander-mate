@@ -26,8 +26,9 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["kashi-in-four-days", "banaras-unfiltered", "kashi-premium"],
-  image: "/images/hero-ghats.jpg",
-  imageAlt: "The ghats of Varanasi along the Ganga",
+  image: "/images/journal/boats-temple-ganges.jpg",
+  imageAlt: "Painted wooden boats moored below the old sandstone ghats of Varanasi in clear morning light",
+  imagePosition: "50% 60%",
   facts: [
     { k: "Ideal stay", v: "2–3 full days" },
     { k: "Must do", v: "Dawn boat and evening Aarti" },

@@ -118,9 +118,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/destinations/hampi.jpg",
+      src: "/images/journal/hampi-vittala-chariot.jpg",
       alt: "The stone chariot in the courtyard of the Vittala Temple at Hampi under a blue sky",
       caption: "The stone chariot at the Vittala Temple, a shrine to Garuda in the form of a chariot, now pictured on India's ₹50 note.",
+      credit: "Photo: Pexels",
     },
     { t: "h", text: "The sites you should not miss" },
     {

@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Kolkata",
   destination: "kolkata",
   tours: ["durga-puja-in-kolkata", "old-calcutta"],
-  image: "/images/destinations/kolkata.jpg",
-  imageAlt: "Kolkata in the festival season",
+  image: "/images/journal/durga-pandal.jpg",
+  imageAlt: "Inside a Durga Puja pandal in Kolkata: a carved ceiling of gold and blue with a chandelier above the illuminated image of the goddess",
   facts: [
     { k: "2026 dates", v: "17–21 October (Shashthi to Dashami)" },
     { k: "Maha Ashtami", v: "Monday 19 October" },

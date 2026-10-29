@@ -26,7 +26,7 @@ const guide: Post = {
   place: "Bodh Gaya",
   destination: "bodh-gaya",
   tours: ["under-the-bodhi-tree", "kashi-to-bodh-gaya", "nalanda-and-rajgir"],
-  image: "/images/destinations/bodh-gaya.jpg",
+  image: "/images/journal/mahabodhi-temple.jpg",
   imageAlt: "The tall, carved pyramidal tower of the Mahabodhi Temple in Bodh Gaya under a clear blue sky, with green trees and pink shrines in the foreground",
   facts: [
     { k: "Present temple", v: "5th–6th century CE" },

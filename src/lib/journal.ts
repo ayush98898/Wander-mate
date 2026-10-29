@@ -206,8 +206,8 @@ const stories: Post[] = [
     region: "India",
     place: "Varanasi",
     destination: "kashi",
-    image: "/images/hero-ghats.jpg",
-    imageAlt: "The ghats of Varanasi from above, boats gathered on the Ganga",
+    image: "/images/journal/varanasi-waterfront.jpg",
+    imageAlt: "The ghats of Varanasi seen from the river, with temples, old palaces and umbrellas above the steps",
     facts: [
       { k: "Names", v: "Kashi, Varanasi, Banaras" },
       { k: "Sits between", v: "The Varuna and Assi rivers" },
@@ -255,7 +255,7 @@ const stories: Post[] = [
     region: "India",
     place: "Amritsar",
     destination: "amritsar",
-    image: "/images/destinations/amritsar.jpg",
+    image: "/images/journal/golden-temple-night.jpg",
     imageAlt: "The Golden Temple in Amritsar across its sacred pool at night",
     facts: [
       { k: "Where", v: "Harmandir Sahib, Amritsar" },
@@ -303,7 +303,7 @@ const stories: Post[] = [
     region: "India",
     place: "Bodh Gaya",
     destination: "bodh-gaya",
-    image: "/images/destinations/bodh-gaya.jpg",
+    image: "/images/journal/mahabodhi-temple.jpg",
     imageAlt: "The Mahabodhi Temple in Bodh Gaya among green trees",
     facts: [
       { k: "Where", v: "Mahabodhi Temple, Bodh Gaya, Bihar" },
@@ -351,7 +351,7 @@ const stories: Post[] = [
     region: "World",
     place: "Siem Reap, Cambodia",
     destination: "cambodia",
-    image: "/images/destinations/cambodia.jpg",
+    image: "/images/journal/angkor-wat.jpg",
     imageAlt: "The towers of Angkor Wat at the end of its long causeway",
     facts: [
       { k: "Built", v: "Early 12th century, under Suryavarman II" },
@@ -399,8 +399,8 @@ const stories: Post[] = [
     region: "World",
     place: "Kyoto, Japan",
     destination: "kyoto",
-    image: "/images/destinations/kyoto.jpg",
-    imageAlt: "Two visitors walk through a tunnel of vermilion torii gates at Fushimi Inari",
+    image: "/images/journal/fushimi-inari.jpg",
+    imageAlt: "A tunnel of vermilion torii gates inscribed with black lettering at Fushimi Inari, the path running away into the distance",
     facts: [
       { k: "What", v: "Head shrine of Inari, the kami of rice and prosperity" },
       { k: "Founded", v: "711 CE" },
@@ -447,8 +447,8 @@ const stories: Post[] = [
     region: "World",
     place: "Petra, Jordan",
     destination: "jordan",
-    image: "/images/destinations/jordan.jpg",
-    imageAlt: "The carved facade of Al-Khazneh, the Treasury, at Petra",
+    image: "/images/journal/petra-treasury.jpg",
+    imageAlt: "Al-Khazneh, the Treasury, carved into the rose-red cliff at Petra, seen from above with visitors in the canyon below",
     facts: [
       { k: "Who", v: "The Nabataeans" },
       { k: "Flourished", v: "Around the 1st century BCE to the 1st century CE" },
@@ -499,8 +499,8 @@ const stories: Post[] = [
     region: "India",
     place: "Varanasi",
     destination: "kashi",
-    image: "/images/priest-river.jpg",
-    imageAlt: "A priest at the edge of the Ganga at dawn",
+    image: "/images/journal/darbhanga-ghat.jpg",
+    imageAlt: "BrijRama Palace rising from Darbhanga Ghat in Varanasi, with boats moored at the foot of its walls",
     body: [
       {
         t: "p",
@@ -535,8 +535,8 @@ const stories: Post[] = [
     category: "Notes from WanderMate",
     region: "India",
     place: "Varanasi",
-    image: "/images/ghat-temple.jpg",
-    imageAlt: "A temple rising above the ghats of Varanasi",
+    image: "/images/sunrise-boats.jpg",
+    imageAlt: "Two boats on the Ganga at sunrise, the sun's reflection a path of gold across the water",
     body: [
       { t: "p", text: "Travel has always been about more than just checking a destination off a list." },
       {
@@ -560,8 +560,8 @@ const stories: Post[] = [
     category: "Notes from WanderMate",
     region: "India",
     place: "Varanasi",
-    image: "/images/boats-above.jpg",
-    imageAlt: "Boats on the Ganga seen from above",
+    image: "/images/journal/morning-ritual-ghat.jpg",
+    imageAlt: "A man stands above the Ganga at dawn, arms raised in prayer, with boats moored below and the ghats in the haze",
     body: [
       {
         t: "p",

@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Agra",
   destination: "agra",
   tours: ["taj-at-first-light", "mughal-heartland", "marble-and-memory"],
-  image: "/images/destinations/agra.jpg",
-  imageAlt: "The Taj Mahal framed by an arch in Agra",
+  image: "/images/journal/taj-mahal-fog.jpg",
+  imageAlt: "The Taj Mahal in soft golden fog at sunrise, seen across dark trees",
   facts: [
     { k: "Open", v: "30 min before sunrise to 30 min before sunset" },
     { k: "Closed", v: "Every Friday" },

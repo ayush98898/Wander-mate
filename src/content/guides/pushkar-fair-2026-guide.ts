@@ -25,9 +25,8 @@ const guide: Post = {
   region: "India",
   place: "Pushkar",
   destination: "rajputana",
-  image: "/images/journal/pushkar-turban.jpg",
-  imageAlt: "An elderly herder in a white turban and kurta at the Pushkar camel fair",
-  imagePosition: "50% 25%",
+  image: "/images/journal/pushkar-fair-camels.jpg",
+  imageAlt: "Camels resting on the sandy fairground at Pushkar at dawn as a flock of birds wheels overhead, with the hills behind",
   facts: [
     { k: "Fair 2026", v: "About 17–24 November" },
     { k: "Kartik Purnima", v: "Tuesday 24 November 2026" },
@@ -73,9 +72,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/destinations/rajputana.jpg",
-      alt: "Lake Pichola and the palaces of Udaipur in Rajasthan",
-      caption: "Pushkar fits easily into a journey through Rajasthan; Udaipur, on Lake Pichola, is about five hours by road.",
+      src: "/images/journal/pushkar-lake.jpg",
+      alt: "Old white buildings around Pushkar Lake reflected in still water, with flowers floating near the ghat",
+      caption: "Pushkar Lake and its ghats, with flower offerings on the water. Bathing here on Kartik Purnima is the heart of the pilgrimage.",
+      credit: "Photo: Pexels",
     },
     { t: "h", text: "The mela ground: competitions and culture" },
     {

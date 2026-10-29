@@ -107,9 +107,9 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/journal/giza-pyramid.jpg",
-      alt: "The pyramids of Khafre and Khufu rising from the sand of the Giza plateau under a blue sky",
-      caption: "The pyramids of Giza, a couple of kilometres from the museum and framed by the window at the top of its Grand Staircase.",
+      src: "/images/journal/giza-sunset.jpg",
+      alt: "The three pyramids of Giza under a dramatic orange and grey sunset sky, with two small figures on the sand",
+      caption: "The pyramids of Giza at sunset, a couple of kilometres from the museum, whose Grand Staircase frames them in its top window.",
       credit: "Photo: Pexels",
     },
     {

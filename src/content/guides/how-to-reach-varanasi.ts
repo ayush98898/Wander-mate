@@ -26,8 +26,9 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["kashi-in-four-days", "dev-deepawali-2026", "kashi-premium"],
-  image: "/images/ghats-panorama.jpg",
-  imageAlt: "The ghats of Varanasi stretching along the curve of the Ganga in hazy golden light, with small boats on the river",
+  image: "/images/journal/morning-ritual-ghat.jpg",
+  imageAlt: "A man stands on a stone platform above the Ganga at dawn, arms raised in prayer, with boats moored below and the ghats stretching away in the haze",
+  imagePosition: "50% 30%",
   facts: [
     { k: "Airport", v: "Lal Bahadur Shastri (VNS)" },
     { k: "Airport to ghats", v: "About 26 km, 45–90 min" },
@@ -131,9 +132,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/packages/ganga-waterfront.jpg",
+      src: "/images/journal/varanasi-waterfront.jpg",
       alt: "Ahilyabai Ghat and the neighbouring ghats in Varanasi seen from a boat on the Ganga, with temples, umbrellas and moored boats along the steps",
       caption: "Ahilyabai Ghat and its neighbours near Dashashwamedh, seen from the river. Many riverside hotels can only be reached on foot through the lanes behind.",
+      credit: "Photo: Pexels",
     },
     {
       t: "list",

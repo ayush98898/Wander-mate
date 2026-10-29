@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Morocco",
   destination: "morocco",
   tours: ["inside-the-medina-of-fes", "imperial-cities", "over-the-atlas-to-the-sahara"],
-  image: "/images/destinations/morocco.jpg",
-  imageAlt: "Bab Bou Jeloud in Fes, a crenellated gateway faced with green tilework above three horseshoe arches, with people walking through and cafés on either side",
+  image: "/images/journal/fes-panorama.jpg",
+  imageAlt: "The rooftops of Fes el-Bali filling the valley, seen from the hillside near the Merenid tombs, with ruined walls in the foreground",
   facts: [
     { k: "Founded", v: "789–809, by the Idrisids" },
     { k: "UNESCO", v: "Medina of Fez, 1981" },
@@ -65,6 +65,13 @@ const guide: Post = {
     {
       t: "p",
       text: "The 'Blue Gate', built in **1913**, is the main entrance from the west. Its outer face is tiled in blue, the colour of Fes; its inner face, which you see as you look back from the medina, is green, the colour of Islam. Two main streets begin just inside: **Talaa Kebira** and **Talaa Seghira**, the big and little slopes, both running downhill towards the Qarawiyyin. Remember them: almost every walk in the medina is downhill one way and uphill back.",
+    },
+    {
+      t: "img",
+      src: "/images/journal/bab-bou-jeloud.jpg",
+      alt: "Bab Bou Jeloud in Fes, a crenellated gateway faced with green tilework above three horseshoe arches, with people walking through and cafés on either side",
+      caption: "The inner, green face of Bab Bou Jeloud, seen from inside the medina at the top of Talaa Kebira.",
+      credit: "Photo: Pexels",
     },
     {
       t: "h3",

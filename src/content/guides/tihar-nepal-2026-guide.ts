@@ -26,7 +26,7 @@ const guide: Post = {
   place: "Kathmandu",
   destination: "nepal",
   tours: ["kathmandu-valley-heritage", "kashi-to-kathmandu"],
-  image: "/images/destinations/nepal.jpg",
+  image: "/images/journal/patan-durbar-square.jpg",
   imageAlt: "Temples of Patan Durbar Square in the Kathmandu Valley",
   facts: [
     { k: "2026 dates", v: "About 6 to 11 November" },
@@ -94,9 +94,10 @@ const guide: Post = {
     },
     {
       t: "img",
-      src: "/images/diya.jpg",
-      alt: "A small clay oil lamp burning",
-      caption: "Clay oil lamps, diyo in Nepali, line windows and doorsteps across Nepal on the night of Laxmi Puja.",
+      src: "/images/journal/kathmandu-festival-street.jpg",
+      alt: "A Kathmandu street at night strung with festival lights, with people walking below lit shopfronts",
+      caption: "Strings of lights over a street in Kathmandu. During Tihar, homes and shops across the valley are lit for Laxmi Puja.",
+      credit: "Photo: Pexels",
     },
     {
       t: "p",

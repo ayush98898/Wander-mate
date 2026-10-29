@@ -26,8 +26,8 @@ const guide: Post = {
   place: "Varanasi",
   destination: "kashi",
   tours: ["kashi-in-four-days", "banaras-unfiltered", "kashi-premium"],
-  image: "/images/ghats-mono.jpg",
-  imageAlt: "The ghats and temples of Varanasi seen from the river in black and white",
+  image: "/images/journal/manikarnika-ghat.jpg",
+  imageAlt: "Manikarnika Ghat seen from the river: temples and old buildings above the cremation ground, smoke rising and boats moored along the bank",
   facts: [
     { k: "What it is", v: "Varanasi's principal cremation ghat" },
     { k: "Open", v: "Day and night, all year" },
