@@ -67,3 +67,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | sarnath-ashoka-pillar.jpg | https://www.pexels.com/photo/12111355/ |
 | fes-tannery.jpg | https://www.pexels.com/photo/31704023/ |
 | bodh-gaya-great-buddha.jpg | https://www.pexels.com/photo/14237553/ |
+| petra-treasury-below.jpg | https://www.pexels.com/photo/15997972/ |
+| petra-by-night.jpg | https://www.pexels.com/photo/3214958/ |
+| petra-monastery.jpg | https://www.pexels.com/photo/720254/ |

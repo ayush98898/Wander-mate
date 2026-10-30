@@ -29,6 +29,7 @@ import g_kashi_vishwanath_darshan_guide from "@/content/guides/kashi-vishwanath-
 import g_kyoto_autumn_leaves_guide from "@/content/guides/kyoto-autumn-leaves-guide";
 import g_loy_krathong_yi_peng_2026_guide from "@/content/guides/loy-krathong-yi-peng-2026-guide";
 import g_manikarnika_ghat_what_to_know from "@/content/guides/manikarnika-ghat-what-to-know";
+import g_petra_tickets_jordan_pass_guide from "@/content/guides/petra-tickets-jordan-pass-guide";
 import g_pushkar_fair_2026_guide from "@/content/guides/pushkar-fair-2026-guide";
 import g_rann_utsav_2026_white_rann_kutch_guide from "@/content/guides/rann-utsav-2026-white-rann-kutch-guide";
 import g_samarkand_travel_guide from "@/content/guides/samarkand-travel-guide";
@@ -62,6 +63,7 @@ export const dailyPosts: Post[] = [
   g_kyoto_autumn_leaves_guide,
   g_loy_krathong_yi_peng_2026_guide,
   g_manikarnika_ghat_what_to_know,
+  g_petra_tickets_jordan_pass_guide,
   g_pushkar_fair_2026_guide,
   g_rann_utsav_2026_white_rann_kutch_guide,
   g_samarkand_travel_guide,
