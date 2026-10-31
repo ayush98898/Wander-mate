@@ -1,0 +1,75 @@
+# Journal photos
+
+From Pexels, free for commercial use under the Pexels licence (https://www.pexels.com/license/).
+
+| File | Pexels photo |
+|---|---|
+| loom-weaver-mono.jpg | https://www.pexels.com/photo/17649771/ |
+| aarti-torch.jpg | https://www.pexels.com/photo/7919635/ |
+| aarti-crowd-mono.jpg | https://www.pexels.com/photo/12387055/ |
+| kashi-vishwanath-spire.jpg | https://www.pexels.com/photo/15142391/ |
+| varanasi-waterfront.jpg | https://www.pexels.com/photo/12112985/ |
+| boats-temple-ganges.jpg | https://www.pexels.com/photo/16747080/ |
+| fog-boats-ganges.jpg | https://www.pexels.com/photo/9206389/ |
+| morning-ritual-ghat.jpg | https://www.pexels.com/photo/31072582/ |
+| manikarnika-ghat.jpg | https://www.pexels.com/photo/19272041/ |
+| tikki-griddle.jpg | https://www.pexels.com/photo/10102480/ |
+| jalebi-frying.jpg | https://www.pexels.com/photo/7242659/ |
+| varanasi-lane.jpg | https://www.pexels.com/photo/31445045/ |
+| chhath-howrah.jpg | https://www.pexels.com/photo/30909809/ |
+| chhath-offerings.jpg | https://www.pexels.com/photo/18852964/ |
+| diya-lighting.jpg | https://www.pexels.com/photo/4094848/ |
+| dhamek-stupa.jpg | https://www.pexels.com/photo/32814738/ |
+| darbhanga-ghat.jpg | https://www.pexels.com/photo/10461752/ |
+| dev-deepawali-fireworks.jpg | https://www.pexels.com/photo/19290938/ |
+| mahabodhi-temple.jpg | https://www.pexels.com/photo/6480363/ |
+| durga-pandal.jpg | https://www.pexels.com/photo/28832091/ |
+| fes-panorama.jpg | https://www.pexels.com/photo/30158523/ |
+| bab-bou-jeloud.jpg | https://www.pexels.com/photo/35036526/ |
+| giza-sunset.jpg | https://www.pexels.com/photo/10131669/ |
+| hampi-virupaksha-aerial.jpg | https://www.pexels.com/photo/37626167/ |
+| hampi-vittala-chariot.jpg | https://www.pexels.com/photo/18331785/ |
+| hampi-virupaksha-night.jpg | https://www.pexels.com/photo/14721498/ |
+| hagia-sophia-aerial.jpg | https://www.pexels.com/photo/7539845/ |
+| blue-mosque-interior.jpg | https://www.pexels.com/photo/17186766/ |
+| suleymaniye-mosque.jpg | https://www.pexels.com/photo/10472126/ |
+| kyoto-kiyomizu-autumn.jpg | https://www.pexels.com/photo/33229939/ |
+| kyoto-temple-gate-autumn.jpg | https://www.pexels.com/photo/29811129/ |
+| yi-peng-lanterns.jpg | https://www.pexels.com/photo/3044440/ |
+| chiang-mai-sky-lantern.jpg | https://www.pexels.com/photo/4094254/ |
+| pushkar-fair-camels.jpg | https://www.pexels.com/photo/21300377/ |
+| pushkar-lake.jpg | https://www.pexels.com/photo/19160122/ |
+| rann-road.jpg | https://www.pexels.com/photo/19220904/ |
+| rann-kutch-camel.jpg | https://www.pexels.com/photo/29230111/ |
+| registan-night.jpg | https://www.pexels.com/photo/19439122/ |
+| shah-i-zinda-street.jpg | https://www.pexels.com/photo/19839437/ |
+| shah-i-zinda-tiles.jpg | https://www.pexels.com/photo/19439186/ |
+| sigiriya-pidurangala.jpg | https://www.pexels.com/photo/13391116/ |
+| sigiriya-drone.jpg | https://www.pexels.com/photo/6045035/ |
+| sigiriya-aerial.jpg | https://www.pexels.com/photo/28838276/ |
+| taj-mahal-fog.jpg | https://www.pexels.com/photo/1260801/ |
+| taj-mahal-sunrise.jpg | https://www.pexels.com/photo/33048666/ |
+| kathmandu-festival-street.jpg | https://www.pexels.com/photo/34935558/ |
+| patan-durbar-square.jpg | https://www.pexels.com/photo/12857684/ |
+| angkor-wat.jpg | https://www.pexels.com/photo/5279020/ |
+| bayon-temple.jpg | https://www.pexels.com/photo/15928697/ |
+| ta-prohm-tree.jpg | https://www.pexels.com/photo/15890916/ |
+| fushimi-inari.jpg | https://www.pexels.com/photo/4098104/ |
+| petra-treasury.jpg | https://www.pexels.com/photo/11195793/ |
+| golden-temple-evening.jpg | https://www.pexels.com/photo/5458388/ |
+| golden-temple-arch.jpg | https://www.pexels.com/photo/15669532/ |
+| golden-temple-pool.jpg | https://www.pexels.com/photo/16133758/ |
+| golden-temple-night.jpg | https://www.pexels.com/photo/10456959/ |
+| bhutan-temple-mountains.jpg | https://www.pexels.com/photo/5011707/ |
+| bhutan-buddha-dordenma.jpg | https://www.pexels.com/photo/20499133/ |
+| gem-obelisk.jpg | https://www.pexels.com/photo/34467242/ |
+| kumartuli-artisan.jpg | https://www.pexels.com/photo/34009715/ |
+| sarnath-ashoka-pillar.jpg | https://www.pexels.com/photo/12111355/ |
+| fes-tannery.jpg | https://www.pexels.com/photo/31704023/ |
+| bodh-gaya-great-buddha.jpg | https://www.pexels.com/photo/14237553/ |
+| petra-treasury-below.jpg | https://www.pexels.com/photo/15997972/ |
+| petra-by-night.jpg | https://www.pexels.com/photo/3214958/ |
+| petra-monastery.jpg | https://www.pexels.com/photo/720254/ |
+| khajuraho-lakshmana.jpg | https://www.pexels.com/photo/5391330/ |
+| khajuraho-kandariya.jpg | https://www.pexels.com/photo/7184626/ |
+| khajuraho-western-group.jpg | https://www.pexels.com/photo/5246781/ |
