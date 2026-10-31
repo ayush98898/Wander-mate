@@ -70,3 +70,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | petra-treasury-below.jpg | https://www.pexels.com/photo/15997972/ |
 | petra-by-night.jpg | https://www.pexels.com/photo/3214958/ |
 | petra-monastery.jpg | https://www.pexels.com/photo/720254/ |
+| khajuraho-lakshmana.jpg | https://www.pexels.com/photo/5391330/ |
+| khajuraho-kandariya.jpg | https://www.pexels.com/photo/7184626/ |
+| khajuraho-western-group.jpg | https://www.pexels.com/photo/5246781/ |

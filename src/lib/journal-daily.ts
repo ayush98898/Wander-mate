@@ -26,6 +26,7 @@ import g_how_many_days_in_varanasi from "@/content/guides/how-many-days-in-varan
 import g_how_to_reach_varanasi from "@/content/guides/how-to-reach-varanasi";
 import g_istanbul_hagia_sophia_blue_mosque_guide from "@/content/guides/istanbul-hagia-sophia-blue-mosque-guide";
 import g_kashi_vishwanath_darshan_guide from "@/content/guides/kashi-vishwanath-darshan-guide";
+import g_khajuraho_temples_guide from "@/content/guides/khajuraho-temples-guide";
 import g_kyoto_autumn_leaves_guide from "@/content/guides/kyoto-autumn-leaves-guide";
 import g_loy_krathong_yi_peng_2026_guide from "@/content/guides/loy-krathong-yi-peng-2026-guide";
 import g_manikarnika_ghat_what_to_know from "@/content/guides/manikarnika-ghat-what-to-know";
@@ -60,6 +61,7 @@ export const dailyPosts: Post[] = [
   g_how_to_reach_varanasi,
   g_istanbul_hagia_sophia_blue_mosque_guide,
   g_kashi_vishwanath_darshan_guide,
+  g_khajuraho_temples_guide,
   g_kyoto_autumn_leaves_guide,
   g_loy_krathong_yi_peng_2026_guide,
   g_manikarnika_ghat_what_to_know,
