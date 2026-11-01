@@ -73,3 +73,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | khajuraho-lakshmana.jpg | https://www.pexels.com/photo/5391330/ |
 | khajuraho-kandariya.jpg | https://www.pexels.com/photo/7184626/ |
 | khajuraho-western-group.jpg | https://www.pexels.com/photo/5246781/ |
+| machu-picchu-huayna.jpg | https://www.pexels.com/photo/2929906/ |
+| machu-picchu-cloud.jpg | https://www.pexels.com/photo/14374098/ |
+| machu-picchu-terraces.jpg | https://www.pexels.com/photo/6175630/ |
