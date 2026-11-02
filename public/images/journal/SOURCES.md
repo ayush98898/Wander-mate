@@ -76,3 +76,5 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | machu-picchu-huayna.jpg | https://www.pexels.com/photo/2929906/ |
 | machu-picchu-cloud.jpg | https://www.pexels.com/photo/14374098/ |
 | machu-picchu-terraces.jpg | https://www.pexels.com/photo/6175630/ |
+| chet-singh-ghat.jpg | https://www.pexels.com/photo/16745034/ |
+| aarti-crowd-winter.jpg | https://www.pexels.com/photo/18073347/ |
