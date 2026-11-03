@@ -78,3 +78,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | machu-picchu-terraces.jpg | https://www.pexels.com/photo/6175630/ |
 | chet-singh-ghat.jpg | https://www.pexels.com/photo/16745034/ |
 | aarti-crowd-winter.jpg | https://www.pexels.com/photo/18073347/ |
+| borobudur-stupas.jpg | https://www.pexels.com/photo/4090091/ |
+| borobudur-panorama.jpg | https://www.pexels.com/photo/5505442/ |
+| prambanan-temples.jpg | https://www.pexels.com/photo/6488342/ |
