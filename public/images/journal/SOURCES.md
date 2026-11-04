@@ -81,3 +81,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | borobudur-stupas.jpg | https://www.pexels.com/photo/4090091/ |
 | borobudur-panorama.jpg | https://www.pexels.com/photo/5505442/ |
 | prambanan-temples.jpg | https://www.pexels.com/photo/6488342/ |
+| ellora-kailasa.jpg | https://www.pexels.com/photo/9455189/ |
+| ajanta-chaitya-facade.jpg | https://www.pexels.com/photo/4882666/ |
+| ajanta-chaitya-hall.jpg | https://www.pexels.com/photo/29503153/ |

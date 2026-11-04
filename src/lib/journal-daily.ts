@@ -8,6 +8,7 @@
  */
 
 import type { Post } from "@/lib/journal";
+import g_ajanta_ellora_caves_guide from "@/content/guides/ajanta-ellora-caves-guide";
 import g_angkor_wat_sunrise_tickets_guide from "@/content/guides/angkor-wat-sunrise-tickets-guide";
 import g_best_time_to_visit_varanasi from "@/content/guides/best-time-to-visit-varanasi";
 import g_bhutan_black_necked_crane_festival_2026 from "@/content/guides/bhutan-black-necked-crane-festival-2026";
@@ -46,6 +47,7 @@ import g_varanasi_sunrise_boat_ride_guide from "@/content/guides/varanasi-sunris
 import g_where_to_stay_in_varanasi from "@/content/guides/where-to-stay-in-varanasi";
 
 export const dailyPosts: Post[] = [
+  g_ajanta_ellora_caves_guide,
   g_angkor_wat_sunrise_tickets_guide,
   g_best_time_to_visit_varanasi,
   g_bhutan_black_necked_crane_festival_2026,
