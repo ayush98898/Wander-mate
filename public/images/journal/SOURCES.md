@@ -84,3 +84,4 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | ellora-kailasa.jpg | https://www.pexels.com/photo/9455189/ |
 | ajanta-chaitya-facade.jpg | https://www.pexels.com/photo/4882666/ |
 | ajanta-chaitya-hall.jpg | https://www.pexels.com/photo/29503153/ |
+| dashashwamedh-evening.jpg | https://www.pexels.com/photo/30210504/ |
