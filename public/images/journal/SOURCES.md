@@ -85,3 +85,7 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | ajanta-chaitya-facade.jpg | https://www.pexels.com/photo/4882666/ |
 | ajanta-chaitya-hall.jpg | https://www.pexels.com/photo/29503153/ |
 | dashashwamedh-evening.jpg | https://www.pexels.com/photo/30210504/ |
+| acropolis-sunset.jpg | https://www.pexels.com/photo/6924327/ |
+| acropolis-night-aerial.jpg | https://www.pexels.com/photo/20872423/ |
+| erechtheion-caryatids.jpg | https://www.pexels.com/photo/14481392/ |
+| parthenon-blue-sky.jpg | https://www.pexels.com/photo/20139253/ |
