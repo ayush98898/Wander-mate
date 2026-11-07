@@ -89,3 +89,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | acropolis-night-aerial.jpg | https://www.pexels.com/photo/20872423/ |
 | erechtheion-caryatids.jpg | https://www.pexels.com/photo/14481392/ |
 | parthenon-blue-sky.jpg | https://www.pexels.com/photo/20139253/ |
+| konark-jagamohana.jpg | https://www.pexels.com/photo/29065084/ |
+| konark-wheel-wall.jpg | https://www.pexels.com/photo/14862819/ |
+| konark-wheel-detail.jpg | https://www.pexels.com/photo/27951793/ |
