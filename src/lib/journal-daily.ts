@@ -17,6 +17,7 @@ import g_bodh_gaya_mahabodhi_temple_guide from "@/content/guides/bodh-gaya-mahab
 import g_borobudur_temple_climb_tickets_guide from "@/content/guides/borobudur-temple-climb-tickets-guide";
 import g_buying_banarasi_silk_saree_varanasi from "@/content/guides/buying-banarasi-silk-saree-varanasi";
 import g_chhath_puja_varanasi_2026 from "@/content/guides/chhath-puja-varanasi-2026";
+import g_colosseum_tickets_rome_guide from "@/content/guides/colosseum-tickets-rome-guide";
 import g_dev_deepawali_2026_varanasi_guide from "@/content/guides/dev-deepawali-2026-varanasi-guide";
 import g_diwali_in_varanasi_2026 from "@/content/guides/diwali-in-varanasi-2026";
 import g_durga_puja_kolkata_2026_guide from "@/content/guides/durga-puja-kolkata-2026-guide";
@@ -59,6 +60,7 @@ export const dailyPosts: Post[] = [
   g_borobudur_temple_climb_tickets_guide,
   g_buying_banarasi_silk_saree_varanasi,
   g_chhath_puja_varanasi_2026,
+  g_colosseum_tickets_rome_guide,
   g_dev_deepawali_2026_varanasi_guide,
   g_diwali_in_varanasi_2026,
   g_durga_puja_kolkata_2026_guide,

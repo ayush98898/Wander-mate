@@ -92,3 +92,7 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | konark-jagamohana.jpg | https://www.pexels.com/photo/29065084/ |
 | konark-wheel-wall.jpg | https://www.pexels.com/photo/14862819/ |
 | konark-wheel-detail.jpg | https://www.pexels.com/photo/27951793/ |
+| colosseum-night.jpg | https://www.pexels.com/photo/11898746/ |
+| colosseum-aerial.jpg | https://www.pexels.com/photo/13274354/ |
+| colosseum-interior.jpg | https://www.pexels.com/photo/33845903/ |
+| roman-forum-view.jpg | https://www.pexels.com/photo/17057107/ |
