@@ -96,3 +96,4 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | colosseum-aerial.jpg | https://www.pexels.com/photo/13274354/ |
 | colosseum-interior.jpg | https://www.pexels.com/photo/33845903/ |
 | roman-forum-view.jpg | https://www.pexels.com/photo/17057107/ |
+| aarti-torches-dashashwamedh.jpg | https://www.pexels.com/photo/7919683/ |
