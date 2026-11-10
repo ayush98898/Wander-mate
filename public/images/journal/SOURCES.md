@@ -97,3 +97,7 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | colosseum-interior.jpg | https://www.pexels.com/photo/33845903/ |
 | roman-forum-view.jpg | https://www.pexels.com/photo/17057107/ |
 | aarti-torches-dashashwamedh.jpg | https://www.pexels.com/photo/7919683/ |
+| wat-phra-kaew-roof.jpg | https://www.pexels.com/photo/27040693/ |
+| chakri-maha-prasat.jpg | https://www.pexels.com/photo/11105015/ |
+| phra-si-rattana-chedi.jpg | https://www.pexels.com/photo/5585153/ |
+| wat-arun-sunset.jpg | https://www.pexels.com/photo/30073413/ |

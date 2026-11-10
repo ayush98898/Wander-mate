@@ -25,6 +25,7 @@ import g_fes_medina_guide from "@/content/guides/fes-medina-guide";
 import g_ganga_aarti_timings_varanasi from "@/content/guides/ganga-aarti-timings-varanasi";
 import g_golden_temple_amritsar_guide from "@/content/guides/golden-temple-amritsar-guide";
 import g_grand_egyptian_museum_guide from "@/content/guides/grand-egyptian-museum-guide";
+import g_grand_palace_bangkok_guide from "@/content/guides/grand-palace-bangkok-guide";
 import g_hampi_travel_guide from "@/content/guides/hampi-travel-guide";
 import g_how_many_days_in_varanasi from "@/content/guides/how-many-days-in-varanasi";
 import g_how_to_reach_varanasi from "@/content/guides/how-to-reach-varanasi";
@@ -69,6 +70,7 @@ export const dailyPosts: Post[] = [
   g_ganga_aarti_timings_varanasi,
   g_golden_temple_amritsar_guide,
   g_grand_egyptian_museum_guide,
+  g_grand_palace_bangkok_guide,
   g_hampi_travel_guide,
   g_how_many_days_in_varanasi,
   g_how_to_reach_varanasi,
