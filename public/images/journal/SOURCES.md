@@ -101,3 +101,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | chakri-maha-prasat.jpg | https://www.pexels.com/photo/11105015/ |
 | phra-si-rattana-chedi.jpg | https://www.pexels.com/photo/5585153/ |
 | wat-arun-sunset.jpg | https://www.pexels.com/photo/30073413/ |
+| jama-masjid-eid-sunset.jpg | https://www.pexels.com/photo/3163677/ |
+| red-fort-lahori-gate.jpg | https://www.pexels.com/photo/14094276/ |
+| jama-masjid-arch.jpg | https://www.pexels.com/photo/3624566/ |
