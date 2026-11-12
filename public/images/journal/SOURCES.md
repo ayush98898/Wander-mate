@@ -104,3 +104,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | jama-masjid-eid-sunset.jpg | https://www.pexels.com/photo/3163677/ |
 | red-fort-lahori-gate.jpg | https://www.pexels.com/photo/14094276/ |
 | jama-masjid-arch.jpg | https://www.pexels.com/photo/3624566/ |
+| sangam-kumbh-aerial.jpg | https://www.pexels.com/photo/30218192/ |
+| sangam-boats-aerial.jpg | https://www.pexels.com/photo/30218191/ |
+| sangam-gulls.jpg | https://www.pexels.com/photo/30481503/ |

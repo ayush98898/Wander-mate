@@ -39,6 +39,7 @@ import g_machu_picchu_tickets_circuits_guide from "@/content/guides/machu-picchu
 import g_manikarnika_ghat_what_to_know from "@/content/guides/manikarnika-ghat-what-to-know";
 import g_old_delhi_red_fort_jama_masjid_guide from "@/content/guides/old-delhi-red-fort-jama-masjid-guide";
 import g_petra_tickets_jordan_pass_guide from "@/content/guides/petra-tickets-jordan-pass-guide";
+import g_prayagraj_sangam_from_varanasi from "@/content/guides/prayagraj-sangam-from-varanasi";
 import g_pushkar_fair_2026_guide from "@/content/guides/pushkar-fair-2026-guide";
 import g_rann_utsav_2026_white_rann_kutch_guide from "@/content/guides/rann-utsav-2026-white-rann-kutch-guide";
 import g_samarkand_travel_guide from "@/content/guides/samarkand-travel-guide";
@@ -85,6 +86,7 @@ export const dailyPosts: Post[] = [
   g_manikarnika_ghat_what_to_know,
   g_old_delhi_red_fort_jama_masjid_guide,
   g_petra_tickets_jordan_pass_guide,
+  g_prayagraj_sangam_from_varanasi,
   g_pushkar_fair_2026_guide,
   g_rann_utsav_2026_white_rann_kutch_guide,
   g_samarkand_travel_guide,
