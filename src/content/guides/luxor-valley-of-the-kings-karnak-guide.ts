@@ -167,7 +167,7 @@ const guide: Post = {
   ],
   sources: [
     { name: "UNESCO World Heritage Centre: Ancient Thebes with its Necropolis", url: "https://whc.unesco.org/en/list/87/" },
-    { name: "Egyptian Ministry of Tourism and Antiquities: tickets", url: "https://egymonuments.com/" },
+    { name: "Egyptian Ministry of Tourism and Antiquities: tickets", url: "https://egymonuments.gov.eg/" },
     { name: "Digital Karnak: the Hypostyle Hall", url: "https://digitalkarnak.ucsc.edu/hypostyle-hall" },
     { name: "Earth Trekkers: best tombs in the Valley of the Kings", url: "https://www.earthtrekkers.com/best-tombs-to-visit-in-the-valley-of-the-kings-luxor/" },
   ],
