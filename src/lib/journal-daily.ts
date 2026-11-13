@@ -35,6 +35,7 @@ import g_khajuraho_temples_guide from "@/content/guides/khajuraho-temples-guide"
 import g_konark_sun_temple_guide from "@/content/guides/konark-sun-temple-guide";
 import g_kyoto_autumn_leaves_guide from "@/content/guides/kyoto-autumn-leaves-guide";
 import g_loy_krathong_yi_peng_2026_guide from "@/content/guides/loy-krathong-yi-peng-2026-guide";
+import g_luxor_valley_of_the_kings_karnak_guide from "@/content/guides/luxor-valley-of-the-kings-karnak-guide";
 import g_machu_picchu_tickets_circuits_guide from "@/content/guides/machu-picchu-tickets-circuits-guide";
 import g_manikarnika_ghat_what_to_know from "@/content/guides/manikarnika-ghat-what-to-know";
 import g_old_delhi_red_fort_jama_masjid_guide from "@/content/guides/old-delhi-red-fort-jama-masjid-guide";
@@ -82,6 +83,7 @@ export const dailyPosts: Post[] = [
   g_konark_sun_temple_guide,
   g_kyoto_autumn_leaves_guide,
   g_loy_krathong_yi_peng_2026_guide,
+  g_luxor_valley_of_the_kings_karnak_guide,
   g_machu_picchu_tickets_circuits_guide,
   g_manikarnika_ghat_what_to_know,
   g_old_delhi_red_fort_jama_masjid_guide,

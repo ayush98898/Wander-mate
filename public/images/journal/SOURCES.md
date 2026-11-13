@@ -107,3 +107,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | sangam-kumbh-aerial.jpg | https://www.pexels.com/photo/30218192/ |
 | sangam-boats-aerial.jpg | https://www.pexels.com/photo/30218191/ |
 | sangam-gulls.jpg | https://www.pexels.com/photo/30481503/ |
+| karnak-hypostyle.jpg | https://www.pexels.com/photo/18934711/ |
+| luxor-temple-pylon.jpg | https://www.pexels.com/photo/18934668/ |
+| luxor-balloons-memnon.jpg | https://www.pexels.com/photo/15131559/ |
