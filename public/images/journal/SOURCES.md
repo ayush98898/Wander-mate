@@ -110,3 +110,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | karnak-hypostyle.jpg | https://www.pexels.com/photo/18934711/ |
 | luxor-temple-pylon.jpg | https://www.pexels.com/photo/18934668/ |
 | luxor-balloons-memnon.jpg | https://www.pexels.com/photo/15131559/ |
+| kerala-canal-houseboat.jpg | https://www.pexels.com/photo/12962171/ |
+| kerala-kettuvallam.jpg | https://www.pexels.com/photo/962464/ |
+| kerala-backwater-village.jpg | https://www.pexels.com/photo/30778230/ |
