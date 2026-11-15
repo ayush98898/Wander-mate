@@ -113,3 +113,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | kerala-canal-houseboat.jpg | https://www.pexels.com/photo/12962171/ |
 | kerala-kettuvallam.jpg | https://www.pexels.com/photo/962464/ |
 | kerala-backwater-village.jpg | https://www.pexels.com/photo/30778230/ |
+| boudhanath-stupa.jpg | https://www.pexels.com/photo/11703106/ |
+| pashupatinath-bagmati.jpg | https://www.pexels.com/photo/11507730/ |
+| boudhanath-aerial.jpg | https://www.pexels.com/photo/14838878/ |
