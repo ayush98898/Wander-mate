@@ -116,3 +116,4 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | boudhanath-stupa.jpg | https://www.pexels.com/photo/11703106/ |
 | pashupatinath-bagmati.jpg | https://www.pexels.com/photo/11507730/ |
 | boudhanath-aerial.jpg | https://www.pexels.com/photo/14838878/ |
+| aarti-priests-arches-varanasi.jpg | https://www.pexels.com/photo/32849604/ |
