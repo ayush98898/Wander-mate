@@ -117,3 +117,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | pashupatinath-bagmati.jpg | https://www.pexels.com/photo/11507730/ |
 | boudhanath-aerial.jpg | https://www.pexels.com/photo/14838878/ |
 | aarti-priests-arches-varanasi.jpg | https://www.pexels.com/photo/32849604/ |
+| merzouga-caravan-sunset.jpg | https://www.pexels.com/photo/15848441/ |
+| ait-benhaddou-reflection.jpg | https://www.pexels.com/photo/3581916/ |
+| sahara-camp-night.jpg | https://www.pexels.com/photo/4405241/ |
