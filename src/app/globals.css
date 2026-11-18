@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* WanderMate v2 — see design-system/wandermate/MASTER.md */
+
+@theme {
+  /* Brand: WanderMate navy (#072268) and off-white. The "ochre" names are kept
+     for existing classes but now hold the brand's lighter blues. */
+  --color-ink: #072268;
+  --color-ink-2: #23336b;
+  --color-bone: #f5f2ec;
+  --color-paper: #fbfaf7;
+  --color-stone: #d6d9e2;
+  --color-smoke: #5b6380;
+  --color-ochre: #1f45d6; /* royal blue — actions and highlights */
+  --color-ochre-lit: #9db4ff; /* royal blue, light — accents on navy */
+  --color-river: #1838b8; /* royal blue band */
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jost), "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-deva: var(--font-tiro), serif;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee-left: marquee-left var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-right: marquee-right var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-left-rtl: marquee-left-rtl var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-right-rtl: marquee-right-rtl var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-up: marquee-up var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-marquee-down: marquee-down var(--marquee-duration) linear var(--marquee-loop-count);
+  --animate-kenburns: kenburns 24s ease-out both;
+
+  @keyframes kenburns {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
+  }
+  @keyframes marquee-left {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(calc(-100% - var(--marquee-gap))); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(calc(-100% - var(--marquee-gap))); }
+    100% { transform: translateX(0%); }
+  }
+  @keyframes marquee-left-rtl {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(calc(100% + var(--marquee-gap))); }
+  }
+  @keyframes marquee-right-rtl {
+    0% { transform: translateX(calc(100% + var(--marquee-gap))); }
+    100% { transform: translateX(0%); }
+  }
+  @keyframes marquee-up {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(calc(-100% - var(--marquee-gap))); }
+  }
+  @keyframes marquee-down {
+    0% { transform: translateY(calc(-100% - var(--marquee-gap))); }
+    100% { transform: translateY(0%); }
+  }
+}
+
+/* shadcn-style aliases used by the 21st.dev components */
+@theme inline {
+  --color-background: var(--color-bone);
+  --color-foreground: var(--color-ink);
+  --color-card: var(--color-paper);
+  --color-muted-foreground: var(--color-smoke);
+  --color-ring: var(--color-ochre);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-feature-settings: "kern";
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-bone);
+  }
+  :focus-visible {
+    outline: 1.5px solid currentColor;
+    outline-offset: 4px;
+  }
+  button,
+  [role="button"],
+  a {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 96rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .wrap { padding-inline: 2.5rem; }
+  }
+
+  /* Small tracked caps — the only "label" voice on the site */
+  .label {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  .hairline {
+    border-color: color-mix(in oklab, currentColor 14%, transparent);
+  }
+
+  /* Underline that draws in from the left */
+  .ul {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.5s var(--ease-expo);
+  }
+  .ul:hover,
+  .ul:focus-visible,
+  .group:hover .ul {
+    background-size: 100% 1px;
+  }
+
+  /* SplitText lines get clipped so words rise from below */
+  .split-line {
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+  }
+}
+
+/* Hide horizontal scrollbars on the journey rail (still scrollable) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A bar that sticks just under the site header, and slides up when the header hides. */
+.under-head {
+  top: 4rem;
+  transition: top 0.5s var(--ease-expo);
+}
+@media (min-width: 48rem) {
+  .under-head {
+    top: 5rem;
+  }
+}
+html[data-head="hidden"] .under-head {
+  top: 0;
+}
