@@ -47,6 +47,7 @@ import g_petra_tickets_jordan_pass_guide from "@/content/guides/petra-tickets-jo
 import g_prayagraj_sangam_from_varanasi from "@/content/guides/prayagraj-sangam-from-varanasi";
 import g_pushkar_fair_2026_guide from "@/content/guides/pushkar-fair-2026-guide";
 import g_rann_utsav_2026_white_rann_kutch_guide from "@/content/guides/rann-utsav-2026-white-rann-kutch-guide";
+import g_rishikesh_haridwar_ganga_aarti_guide from "@/content/guides/rishikesh-haridwar-ganga-aarti-guide";
 import g_samarkand_travel_guide from "@/content/guides/samarkand-travel-guide";
 import g_sarnath_from_varanasi from "@/content/guides/sarnath-from-varanasi";
 import g_sigiriya_guide from "@/content/guides/sigiriya-guide";
@@ -99,6 +100,7 @@ export const dailyPosts: Post[] = [
   g_prayagraj_sangam_from_varanasi,
   g_pushkar_fair_2026_guide,
   g_rann_utsav_2026_white_rann_kutch_guide,
+  g_rishikesh_haridwar_ganga_aarti_guide,
   g_samarkand_travel_guide,
   g_sarnath_from_varanasi,
   g_sigiriya_guide,

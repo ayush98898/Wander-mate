@@ -120,3 +120,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | merzouga-caravan-sunset.jpg | https://www.pexels.com/photo/15848441/ |
 | ait-benhaddou-reflection.jpg | https://www.pexels.com/photo/3581916/ |
 | sahara-camp-night.jpg | https://www.pexels.com/photo/4405241/ |
+| rishikesh-triveni-aarti.jpg | https://www.pexels.com/photo/29905263/ |
+| rishikesh-shiva-statue.jpg | https://www.pexels.com/photo/32592262/ |
+| haridwar-har-ki-pauri.jpg | https://www.pexels.com/photo/8171698/ |
