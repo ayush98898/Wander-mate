@@ -123,3 +123,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | rishikesh-triveni-aarti.jpg | https://www.pexels.com/photo/29905263/ |
 | rishikesh-shiva-statue.jpg | https://www.pexels.com/photo/32592262/ |
 | haridwar-har-ki-pauri.jpg | https://www.pexels.com/photo/8171698/ |
+| thiksey-aerial.jpg | https://www.pexels.com/photo/30743691/ |
+| thiksey-monastery-hill.jpg | https://www.pexels.com/photo/6576275/ |
+| thiksey-stupas-flags.jpg | https://www.pexels.com/photo/5015007/ |
