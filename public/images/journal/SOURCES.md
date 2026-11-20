@@ -126,3 +126,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | thiksey-aerial.jpg | https://www.pexels.com/photo/30743691/ |
 | thiksey-monastery-hill.jpg | https://www.pexels.com/photo/6576275/ |
 | thiksey-stupas-flags.jpg | https://www.pexels.com/photo/5015007/ |
+| kandy-lake-aerial.jpg | https://www.pexels.com/photo/739409/ |
+| temple-of-the-tooth-moat.jpg | https://www.pexels.com/photo/14041994/ |
+| kandy-lake-pillar.jpg | https://www.pexels.com/photo/39838954/ |

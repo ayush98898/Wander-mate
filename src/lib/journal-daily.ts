@@ -30,6 +30,7 @@ import g_hampi_travel_guide from "@/content/guides/hampi-travel-guide";
 import g_how_many_days_in_varanasi from "@/content/guides/how-many-days-in-varanasi";
 import g_how_to_reach_varanasi from "@/content/guides/how-to-reach-varanasi";
 import g_istanbul_hagia_sophia_blue_mosque_guide from "@/content/guides/istanbul-hagia-sophia-blue-mosque-guide";
+import g_kandy_temple_of_the_tooth_guide from "@/content/guides/kandy-temple-of-the-tooth-guide";
 import g_kashi_banaras_varanasi_names_explained from "@/content/guides/kashi-banaras-varanasi-names-explained";
 import g_kashi_vishwanath_darshan_guide from "@/content/guides/kashi-vishwanath-darshan-guide";
 import g_kerala_backwaters_houseboat_guide from "@/content/guides/kerala-backwaters-houseboat-guide";
@@ -84,6 +85,7 @@ export const dailyPosts: Post[] = [
   g_how_many_days_in_varanasi,
   g_how_to_reach_varanasi,
   g_istanbul_hagia_sophia_blue_mosque_guide,
+  g_kandy_temple_of_the_tooth_guide,
   g_kashi_banaras_varanasi_names_explained,
   g_kashi_vishwanath_darshan_guide,
   g_kerala_backwaters_houseboat_guide,
