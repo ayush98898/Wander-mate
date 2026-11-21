@@ -129,3 +129,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | kandy-lake-aerial.jpg | https://www.pexels.com/photo/739409/ |
 | temple-of-the-tooth-moat.jpg | https://www.pexels.com/photo/14041994/ |
 | kandy-lake-pillar.jpg | https://www.pexels.com/photo/39838954/ |
+| brihadeeswarar-vimana-thanjavur.jpg | https://www.pexels.com/photo/5124396/ |
+| brihadeeswarar-gateway-rain-reflection.jpg | https://www.pexels.com/photo/13226732/ |
+| airavatesvara-darasuram-relief.jpg | https://www.pexels.com/photo/19634903/ |
