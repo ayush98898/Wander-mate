@@ -132,3 +132,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | brihadeeswarar-vimana-thanjavur.jpg | https://www.pexels.com/photo/5124396/ |
 | brihadeeswarar-gateway-rain-reflection.jpg | https://www.pexels.com/photo/13226732/ |
 | airavatesvara-darasuram-relief.jpg | https://www.pexels.com/photo/19634903/ |
+| wadi-rum-golden-hour.jpg | https://www.pexels.com/photo/28086996/ |
+| wadi-rum-dome-camp.jpg | https://www.pexels.com/photo/18682554/ |
+| wadi-rum-campfire-bedouin.jpg | https://www.pexels.com/photo/16386936/ |

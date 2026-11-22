@@ -61,6 +61,7 @@ import g_varanasi_ghats_guide from "@/content/guides/varanasi-ghats-guide";
 import g_varanasi_in_winter from "@/content/guides/varanasi-in-winter";
 import g_varanasi_street_food_guide from "@/content/guides/varanasi-street-food-guide";
 import g_varanasi_sunrise_boat_ride_guide from "@/content/guides/varanasi-sunrise-boat-ride-guide";
+import g_wadi_rum_desert_camp_guide from "@/content/guides/wadi-rum-desert-camp-guide";
 import g_where_to_stay_in_varanasi from "@/content/guides/where-to-stay-in-varanasi";
 
 export const dailyPosts: Post[] = [
@@ -117,5 +118,6 @@ export const dailyPosts: Post[] = [
   g_varanasi_in_winter,
   g_varanasi_street_food_guide,
   g_varanasi_sunrise_boat_ride_guide,
+  g_wadi_rum_desert_camp_guide,
   g_where_to_stay_in_varanasi,
 ];
