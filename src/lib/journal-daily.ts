@@ -55,6 +55,7 @@ import g_sarnath_from_varanasi from "@/content/guides/sarnath-from-varanasi";
 import g_sigiriya_guide from "@/content/guides/sigiriya-guide";
 import g_taj_mahal_tickets_timings_guide from "@/content/guides/taj-mahal-tickets-timings-guide";
 import g_thanjavur_brihadeeswarar_temple_guide from "@/content/guides/thanjavur-brihadeeswarar-temple-guide";
+import g_tigers_nest_hike_paro_taktsang_guide from "@/content/guides/tigers-nest-hike-paro-taktsang-guide";
 import g_tihar_nepal_2026_guide from "@/content/guides/tihar-nepal-2026-guide";
 import g_varanasi_dos_and_donts_first_time from "@/content/guides/varanasi-dos-and-donts-first-time";
 import g_varanasi_ghats_guide from "@/content/guides/varanasi-ghats-guide";
@@ -112,6 +113,7 @@ export const dailyPosts: Post[] = [
   g_sigiriya_guide,
   g_taj_mahal_tickets_timings_guide,
   g_thanjavur_brihadeeswarar_temple_guide,
+  g_tigers_nest_hike_paro_taktsang_guide,
   g_tihar_nepal_2026_guide,
   g_varanasi_dos_and_donts_first_time,
   g_varanasi_ghats_guide,

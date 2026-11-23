@@ -135,3 +135,6 @@ From Pexels, free for commercial use under the Pexels licence (https://www.pexel
 | wadi-rum-golden-hour.jpg | https://www.pexels.com/photo/28086996/ |
 | wadi-rum-dome-camp.jpg | https://www.pexels.com/photo/18682554/ |
 | wadi-rum-campfire-bedouin.jpg | https://www.pexels.com/photo/16386936/ |
+| tigers-nest-cliff-valley.jpg | https://www.pexels.com/photo/910368/ |
+| tigers-nest-prayer-flags.jpg | https://www.pexels.com/photo/9982525/ |
+| paro-white-prayer-flags.jpg | https://www.pexels.com/photo/6904727/ |
